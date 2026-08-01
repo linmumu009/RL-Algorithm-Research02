@@ -1,0 +1,17 @@
+experiment_id: E0-H014-GRADIENT-LEVERAGE-AUDIT
+hypothesis_id: H-014
+question: Does clean-gradient leverage allocate a fixed audit budget more efficiently than random or entropy sampling?
+prediction: It reduces clean-gradient MSE by at least 10% under heavy-tailed score norms and collapses to random selection when score norms and uncertainty are equal.
+null_result_interpretation: Gradient leverage adds no audit value beyond label uncertainty or random coverage.
+dataset: fixed score-function vectors with hidden clean binary labels and logged acquisition propensities
+model: finite-population audit estimator; no language-model training
+baseline: [uniform_sampling, reward_entropy_sampling, gradient_norm_sampling, D_optimal_proxy]
+primary_metric: clean_gradient_mse_per_audit
+secondary_metrics: [effective_sample_size, bias, variance, propensity_minimum]
+seed_policy: five fixed seeds [11, 23, 47, 89, 131]
+budget_limit: 1
+stop_condition: fixed audit budgets [16, 32, 64, 128] with no adaptive retuning
+success_threshold: >= 10% MSE reduction over best baseline at two budgets and <= 2% difference from random in equal-norm control
+failure_threshold: < 5% MSE reduction or effective sample size below 25% of audit budget
+code_commit: TO_BE_SET_BEFORE_EXECUTION
+status: PREREGISTERED_NOT_RUN

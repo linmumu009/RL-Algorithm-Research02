@@ -1,0 +1,19 @@
+hypothesis_id: H-013
+name: Baseline-Only Noise Control Variate
+target_problem: Q-001
+mechanism_family: baseline_correction
+observed_failure: verifier bias shifts group rewards
+causal_claim: subtracting predicted verifier bias only from the group baseline corrects the policy gradient
+changed_mathematical_quantity: "baseline b -> b - predicted_noise_bias"
+mechanism: leave the observed reward unchanged and adjust only the control variate
+difference_from_existing_methods: distinct formula but inconsistent with the claimed action-correlated bias
+falsifiable_predictions: [baseline_adjustment_recovers_clean_gradient]
+cheapest_falsification_test: two-action counterexample with action-dependent false positives
+failure_threshold: "nonzero gradient bias in the exact two-action calculation"
+estimated_budget: 1
+score_total: 74
+status: REJECTED_NO_MECHANISM
+repair_count: 0
+closest_prior_work: [P-ARXIV-240214740, P-ARXIV-251000915]
+lineage_parent: null
+rejection_reason: cannot remove action-correlated verifier bias from the reward term

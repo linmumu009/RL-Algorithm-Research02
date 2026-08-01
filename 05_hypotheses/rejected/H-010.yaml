@@ -1,0 +1,19 @@
+hypothesis_id: H-010
+name: Selective Abstention Gradient
+target_problem: Q-001
+mechanism_family: gradient_filtering
+observed_failure: high-risk verifier outcomes can dominate updates
+causal_claim: masking uncertain samples prevents noisy gradients
+changed_mathematical_quantity: "gradient weight -> zero above estimated verifier-risk threshold"
+mechanism: abstain from policy updates on high-risk outcomes
+difference_from_existing_methods: confidence filtering only; no correction of the selected causal error
+falsifiable_predictions: [lower_noisy_gradient_fraction, reduced_effective_sample_size]
+cheapest_falsification_test: synthetic confidence-calibrated masking curve
+failure_threshold: "matched-ESS baseline has equal or better clean-gradient cosine"
+estimated_budget: 2
+score_total: 73
+status: REJECTED_NO_MECHANISM
+repair_count: 0
+closest_prior_work: [P-ARXIV-240100243, P-ARXIV-250512763]
+lineage_parent: null
+rejection_reason: confidence filtering masks evidence rather than correcting the claimed causal error

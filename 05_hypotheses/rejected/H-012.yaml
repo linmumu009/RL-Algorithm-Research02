@@ -1,0 +1,19 @@
+hypothesis_id: H-012
+name: Group Advantage Decontamination
+target_problem: Q-001
+mechanism_family: advantage_correction
+observed_failure: group-relative advantages inherit verifier false positives and false negatives
+causal_claim: correcting group advantages rather than raw rewards removes group-level noise bias
+changed_mathematical_quantity: "A_i = r_i - mean(r) -> corrected_r_i - mean(corrected_r)"
+mechanism: contextual correction followed by ordinary group centering
+difference_from_existing_methods: notation changes the location of H-001 but not the resulting estimator
+falsifiable_predictions: [corrected_group_gradient_matches_clean_group_gradient]
+cheapest_falsification_test: symbolic expansion and numeric equality test
+failure_threshold: "algebraically identical to H-001 before group centering"
+estimated_budget: 1
+score_total: 82
+status: REJECTED_EQUIVALENT
+repair_count: 0
+closest_prior_work: [H-001, P-ARXIV-240203300, P-ARXIV-251000915]
+lineage_parent: H-001
+rejection_reason: contextual reward correction followed by group centering is H-001 in GRPO notation

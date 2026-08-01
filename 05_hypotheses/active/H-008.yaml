@@ -1,0 +1,19 @@
+hypothesis_id: H-008
+name: Counterfactual Pair Control Variate
+target_problem: Q-001
+mechanism_family: counterfactual_estimator
+observed_failure: verifier reward changes under meaning-preserving rewrites even though clean correctness should remain invariant
+causal_claim: paired reward differences under semantic invariances estimate an exploit-specific noise component that can serve as a control variate
+changed_mathematical_quantity: "score-function reward -> original reward minus paired counterfactual reward-difference control variate"
+mechanism: generate predeclared semantics-preserving transformations and subtract only the verifier-sensitive paired component rather than replacing reward with a second verifier
+difference_from_existing_methods: GamingVerifiers uses isomorphic perturbations for detection/direct verification; this candidate uses paired differences to reduce gradient variance and bias without treating the perturbation checker as ground truth
+falsifiable_predictions: [paired_difference_correlates_with_exploit_gradient, corrected_gradient_cosine_improves, no_gain_under_invariant_verifier]
+cheapest_falsification_test: fixed responses with known invariant transformations and injected verifier sensitivity
+failure_threshold: "paired term explains < 10% exploit-gradient variance or cosine improvement <= 0.02"
+estimated_budget: 4
+score_total: 89
+status: PREREGISTERED
+repair_count: 0
+closest_prior_work: [P-ARXIV-260415149, P-ARXIV-251001367]
+lineage_parent: null
+rejection_reason: null

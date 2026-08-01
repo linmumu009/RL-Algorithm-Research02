@@ -1,0 +1,19 @@
+hypothesis_id: H-017
+name: Audit-Propensity Corrected Channel
+target_problem: Q-001
+mechanism_family: selection_bias_correction
+observed_failure: active audits overrepresent high-risk samples and bias channel-rate estimates
+causal_claim: inverse audit propensity recovers population noise rates under adaptive selection
+changed_mathematical_quantity: "audit likelihood contribution -> contribution divided by known selection propensity"
+mechanism: use logged acquisition probabilities to correct channel estimation
+difference_from_existing_methods: technically distinct estimator but only required when H-014 performs active sampling
+falsifiable_predictions: [unbiased_channel_rates_under_adaptive_audits, higher_variance_when_propensities_are_small]
+cheapest_falsification_test: biased reveal simulation with known inclusion probabilities
+failure_threshold: "fails to recover population rates or offers no role beyond H-014"
+estimated_budget: 2
+score_total: 84
+status: REJECTED_EQUIVALENT
+repair_count: 0
+closest_prior_work: [H-014, P-ARXIV-241017055]
+lineage_parent: H-014
+rejection_reason: necessary auxiliary correction for H-014 but not an independent branch

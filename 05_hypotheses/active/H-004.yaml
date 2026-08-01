@@ -1,0 +1,19 @@
+hypothesis_id: H-004
+name: Doubly Robust Audit Gradient
+target_problem: Q-001
+mechanism_family: gradient_estimator
+observed_failure: contextual noise-rate estimation is unreliable in rare strata, while a clean-reward predictor is also misspecified out of distribution
+causal_claim: an augmented estimator can recover the clean policy gradient when either the contextual confusion model or the clean-reward regression is correct
+changed_mathematical_quantity: "policy-gradient reward term -> outcome regression + inverse-channel residual correction"
+mechanism: combine a clean-reward predictor fitted on audited samples with a residual correction derived from the noisy verifier channel
+difference_from_existing_methods: Doubly Robust Alignment protects preference/reference misspecification; this candidate targets audited binary verifier outcomes and a clean-gradient estimand
+falsifiable_predictions: [unbiased_when_either_nuisance_model_is_correct, fails_only_when_both_models_are_misspecified, lower_MSE_than_single_correction_under_sparse_audits]
+cheapest_falsification_test: four-cell synthetic test crossing correct/incorrect channel and reward-regression models on fixed score-function vectors
+failure_threshold: "bias exceeds 0.05 in either single-correct cell or MSE is not below both single estimators"
+estimated_budget: 4
+score_total: 87
+status: PREREGISTERED
+repair_count: 0
+closest_prior_work: [P-ARXIV-250601183, P-ARXIV-251000915]
+lineage_parent: null
+rejection_reason: null

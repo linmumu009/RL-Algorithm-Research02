@@ -1,0 +1,19 @@
+hypothesis_id: H-018
+name: Conformal Lower Clean-Reward Bound
+target_problem: Q-001
+mechanism_family: uncertainty_constraint
+observed_failure: rare or shifted verifier-risk strata have poorly estimated clean correctness and can receive overconfident positive updates
+causal_claim: a finite-sample lower bound on stratum-conditional clean correctness prevents positive policy gradients unsupported by audit coverage
+changed_mathematical_quantity: "estimated clean reward -> audit-calibrated lower confidence bound with declared coverage"
+mechanism: calibrate stratum-level clean-reward intervals on held-out audits and optimize the lower bound, abstaining only when the bound crosses zero advantage
+difference_from_existing_methods: unlike generic uncertainty penalties, it makes a finite-sample coverage prediction tied to audit strata and separates conservatism from point correction
+falsifiable_predictions: [empirical_undercoverage_at_or_below_alpha, lower_false_positive_update_rate, conservatism_vanishes_with_audit_size]
+cheapest_falsification_test: exchangeable stratified binary data with distribution-shift stress tests
+failure_threshold: "undercoverage exceeds alpha + 0.03 or false-positive update rate is not reduced at matched clean-gradient norm"
+estimated_budget: 4
+score_total: 86
+status: PREREGISTERED
+repair_count: 0
+closest_prior_work: [P-ARXIV-240100243, P-ARXIV-231004373, P-ARXIV-251000915]
+lineage_parent: null
+rejection_reason: null

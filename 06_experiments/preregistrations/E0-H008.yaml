@@ -1,0 +1,17 @@
+experiment_id: E0-H008-COUNTERFACTUAL-CV
+hypothesis_id: H-008
+question: Do semantics-preserving paired reward differences identify an exploit-specific gradient component?
+prediction: The paired control variate explains at least 10% of exploit-gradient variance and improves clean-gradient cosine by at least 0.05 when verifier sensitivity is injected, with no gain under a truly invariant verifier.
+null_result_interpretation: Counterfactual disagreement is only a detector or extra verifier call, not a useful gradient control variate.
+dataset: fixed semantic labels with valid paired transformations and injected verifier sensitivity
+model: analytic paired score-function estimator
+baseline: [raw_reward, direct_pair_average, independent_second_verifier]
+primary_metric: clean_gradient_cosine
+secondary_metrics: [exploit_variance_explained, estimator_variance, pair_covariance]
+seed_policy: five fixed seeds [11, 23, 47, 89, 131]
+budget_limit: 1
+stop_condition: stop after invariant and sensitivity grids; transformation rules are frozen
+success_threshold: variance explained >= 0.10 and cosine gain >= 0.05 in sensitive cells with <= 0.01 gain in invariant cells
+failure_threshold: variance explained < 0.10 or cosine gain <= 0.02
+code_commit: TO_BE_SET_BEFORE_EXECUTION
+status: PREREGISTERED_NOT_RUN

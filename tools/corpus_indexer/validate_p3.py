@@ -124,9 +124,9 @@ def main() -> None:
     if test_count < 8:
         errors.append(f"only {test_count} low-cost discriminators found")
 
-    state = (ROOT / "research_state.yaml").read_text(encoding="utf-8")
-    if "current_phase: P4_PROBLEM_SELECTION" not in state or "current_gate: G4" not in state:
-        errors.append("research state is not paused at P4/G4")
+    decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
+    if "D-0004" not in decision_log or "PASS_G3_ENTER_P4" not in decision_log:
+        errors.append("G3 pass decision is absent from the decision log")
 
     summary = {
         "inventory_records": len(inventory),

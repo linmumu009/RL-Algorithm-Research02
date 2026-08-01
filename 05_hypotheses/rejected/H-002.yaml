@@ -1,0 +1,19 @@
+hypothesis_id: H-002
+name: Policy-Divergence Noise Tracker
+target_problem: Q-001
+mechanism_family: training_time_channel
+observed_failure: verifier error changes as the policy moves away from its initial distribution
+causal_claim: policy divergence is the primary state variable governing verifier noise drift
+changed_mathematical_quantity: "T -> T(KL(pi_t || pi_0), t)"
+mechanism: condition the confusion channel on policy divergence and update it over time
+difference_from_existing_methods: adds temporal policy features to contextual noise correction
+falsifiable_predictions: [policy_KL_predicts_channel_drift_better_than_step_index, time_conditioning_improves_gradient_cosine]
+cheapest_falsification_test: regress known synthetic channel drift on step and policy KL using fixed checkpoints
+failure_threshold: "policy KL adds < 5% held-out error reduction over contextual H-001"
+estimated_budget: 2
+score_total: 82
+status: REJECTED_EQUIVALENT
+repair_count: 0
+closest_prior_work: [H-001, P-ARXIV-251000915]
+lineage_parent: H-001
+rejection_reason: context features are a special case of H-001 plus a schedule

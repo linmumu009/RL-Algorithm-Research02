@@ -1,0 +1,19 @@
+hypothesis_id: H-005
+name: Nuisance-Orthogonal Reward
+target_problem: Q-001
+mechanism_family: nuisance_constraint
+observed_failure: verifier reward is spuriously predictable from length, formatting, and superficial answer features that the policy can manipulate
+causal_claim: the exploitable gradient component lies in the reward projection onto declared nuisance features
+changed_mathematical_quantity: "r_obs -> r_obs - projection(r_obs | nuisance_features), with clean-signal protection constraints"
+mechanism: orthogonalize the verifier reward against manipulable nuisance directions estimated on audit data while preserving components predictive of independent correctness
+difference_from_existing_methods: unlike generic reward calibration, it predicts feature-specific gradient removal and possible harm when a nuisance feature carries legitimate task signal
+falsifiable_predictions: [nuisance_gradient_component_shrinks, independent_correctness_is_preserved, method_hurts_when_nuisance_feature_is_causally_required]
+cheapest_falsification_test: synthetic rewards with separately controlled causal and spurious feature coefficients
+failure_threshold: "spurious gradient reduction < 50% or clean-gradient cosine drops by > 0.05 when nuisance is noncausal"
+estimated_budget: 3
+score_total: 85
+status: PREREGISTERED
+repair_count: 0
+closest_prior_work: [P-ARXIV-260415149, P-ARXIV-240419409, P-ARXIV-250512763]
+lineage_parent: null
+rejection_reason: null

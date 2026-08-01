@@ -1,0 +1,19 @@
+hypothesis_id: H-001
+name: Contextual Confusion Correction
+target_problem: Q-001
+mechanism_family: reward_channel_model
+observed_failure: verifier pass rate rises while independently audited correctness stagnates, with errors concentrated by task type, length, and answer format
+causal_claim: a single global FP/FN channel averages incompatible strata and therefore produces a biased clean-gradient estimate
+changed_mathematical_quantity: "T -> T(z), where z is a predeclared verifier-risk stratum and T is the binary confusion matrix"
+mechanism: estimate a regularized contextual confusion channel from a small audit set and invert or forward-correct rewards by stratum
+difference_from_existing_methods: NoisyVerifierRL assumes global asymmetric rates; this hypothesis predicts systematic gains specifically when conditional rates vary while marginal rates remain unchanged
+falsifiable_predictions: [conditional_correction_improves_clean_gradient_cosine, gains_increase_with_between_stratum_noise_variance, no_gain_when_all_strata_share_one_channel]
+cheapest_falsification_test: inject equal-marginal but stratum-dependent FP/FN into fixed rollouts and compare corrected gradients to known clean gradients
+failure_threshold: "mean cosine improvement <= 0.02 or 95% CI includes zero across all heterogeneous settings"
+estimated_budget: 3
+score_total: 95
+status: PREREGISTERED
+repair_count: 0
+closest_prior_work: [P-ARXIV-251000915, P-ARXIV-240100243, P-ARXIV-260415149]
+lineage_parent: null
+rejection_reason: null

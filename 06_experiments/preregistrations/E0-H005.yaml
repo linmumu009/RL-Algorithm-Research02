@@ -1,0 +1,17 @@
+experiment_id: E0-H005-NUISANCE-ORTHOGONAL
+hypothesis_id: H-005
+question: Can nuisance orthogonalization remove exploitable gradient components without deleting causal reward signal?
+prediction: It removes at least 50% of spurious gradient mass when nuisance is noncausal but degrades when the same feature becomes causally necessary.
+null_result_interpretation: The projection cannot distinguish exploitability from legitimate task signal.
+dataset: synthetic causal graph with independently controlled causal and spurious feature coefficients
+model: logistic verifier and analytic policy gradient
+baseline: [raw_reward, reward_calibration, norm_matched_shrinkage]
+primary_metric: spurious_gradient_mass
+secondary_metrics: [clean_gradient_cosine, causal_signal_retention, gradient_norm]
+seed_policy: five fixed seeds [11, 23, 47, 89, 131]
+budget_limit: 1
+stop_condition: stop after the declared causal/spurious coefficient grid
+success_threshold: >= 50% spurious-mass reduction and cosine drop <= 0.05 in noncausal cells
+failure_threshold: spurious-mass reduction < 25% or clean cosine drops > 0.05 in noncausal cells
+code_commit: TO_BE_SET_BEFORE_EXECUTION
+status: PREREGISTERED_NOT_RUN

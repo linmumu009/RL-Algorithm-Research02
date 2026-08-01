@@ -1,0 +1,19 @@
+hypothesis_id: H-014
+name: Clean-Gradient Leverage Auditing
+target_problem: Q-001
+mechanism_family: active_audit_sampling
+observed_failure: a small audit budget is wasted on uncertain samples that contribute little to the policy gradient
+causal_claim: audit value is proportional to expected reduction in clean-gradient uncertainty, not label entropy alone
+changed_mathematical_quantity: "audit acquisition score -> expected trace reduction of clean policy-gradient covariance"
+mechanism: select verifier outcomes for independent audit using score-function leverage multiplied by uncertainty in their clean reward
+difference_from_existing_methods: Active DPO and Sharpe active learning select preference pairs for model learning; this candidate selects rollout verifier audits to estimate a clean policy-gradient target
+falsifiable_predictions: [lower_gradient_MSE_per_audit_than_random_or_entropy, largest_gain_under_heavy_tailed_score_norms, no_gain_when_score_vectors_have_equal_norm]
+cheapest_falsification_test: fixed score-function vectors with hidden clean labels and a limited reveal budget
+failure_threshold: "< 10% MSE reduction over entropy sampling at equal audits or no predicted equal-norm collapse"
+estimated_budget: 4
+score_total: 88
+status: PREREGISTERED
+repair_count: 0
+closest_prior_work: [P-ARXIV-241017055, P-ARXIV-250301076, P-ARXIV-250322137]
+lineage_parent: null
+rejection_reason: null

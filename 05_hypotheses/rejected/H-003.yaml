@@ -1,0 +1,19 @@
+hypothesis_id: H-003
+name: Online Negative Appeal
+target_problem: Q-001
+mechanism_family: active_verifier
+observed_failure: rule verifier false negatives reject semantically correct answers
+causal_claim: rechecking negative outcomes with a stronger judge estimates the FN rate online
+changed_mathematical_quantity: "observed negative reward -> appealed reward or estimated FN rate"
+mechanism: selectively send verifier negatives to a second verifier and update reward correction
+difference_from_existing_methods: none after novelty search
+falsifiable_predictions: [appeal_reduces_false_negatives, corrected_gradient_aligns_with_clean_gradient]
+cheapest_falsification_test: replay a noisy binary-verifier dataset with an oracle appeal channel
+failure_threshold: "no clean-gradient cosine gain over uncorrected rewards"
+estimated_budget: 2
+score_total: 75
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+closest_prior_work: [P-ARXIV-251000915, P-ARXIV-250609942]
+lineage_parent: null
+rejection_reason: already covered by the appeal mechanism in NoisyVerifierRL

@@ -1,20 +1,40 @@
 project_id: rl_algorithm_discovery_v1
-current_phase: P4_PROBLEM_SELECTION
-current_gate: G4
-phase_status: awaiting_human_approval
-selected_problem: null
+current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
+current_gate: G6
+phase_status: ready_for_E0
+selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
   total_units: 100
-  used_units: 20
+  used_units: 45
   infrastructure_cap: 10
   exploration_reserve: 30
   scale_up_reserve: 30
 
 branches:
-  active: []
+  active:
+    - H-001
+    - H-004
+    - H-005
+    - H-008
+    - H-014
+    - H-018
   paused: []
-  rejected: []
+  rejected:
+    - H-002
+    - H-003
+    - H-006
+    - H-007
+    - H-009
+    - H-010
+    - H-011
+    - H-012
+    - H-013
+    - H-015
+    - H-016
+    - H-017
+    - H-019
+    - H-020
 
 core15:
   status: approved_with_replacements
@@ -27,12 +47,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0004
-  action: PASS_G3_ENTER_P4
-  rationale: The knowledge map answers all five G3 questions with traceable mechanisms, conflicts, evidence gaps, pseudo-gaps, and low-cost discriminators.
+  decision_id: D-0006
+  action: PASS_G5_RETAIN_SIX
+  rationale: Twenty hypotheses were screened; six candidates from six mechanism families passed score, falsifiability, difference, risk, and preregistration requirements.
 
 blockers: []
-next_allowed_task: Await human G4 confirmation of a real problem; do not generate algorithm hypotheses or training code before approval.
+next_allowed_task: Implement and execute only the six preregistered E0 mathematical/synthetic falsification tests; no language-model training before E0 review.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

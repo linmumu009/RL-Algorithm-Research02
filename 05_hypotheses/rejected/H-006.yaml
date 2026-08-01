@@ -1,0 +1,19 @@
+hypothesis_id: H-006
+name: Stratified Worst-Case Confusion DRO
+target_problem: Q-001
+mechanism_family: robust_optimization
+observed_failure: estimated stratum-specific noise rates have wide uncertainty intervals
+causal_claim: optimizing the worst plausible confusion matrix prevents verifier exploitation
+changed_mathematical_quantity: "expected corrected reward -> minimum over a confusion-matrix uncertainty set"
+mechanism: robust optimization over per-stratum noise-rate confidence regions
+difference_from_existing_methods: no distinct behavior beyond generic pessimistic or constrained proxy optimization
+falsifiable_predictions: [lower_worst_case_error, conservative_reward_updates]
+cheapest_falsification_test: finite confusion-set synthetic optimization
+failure_threshold: "no improvement in worst-case clean reward at matched average update"
+estimated_budget: 3
+score_total: 75
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+closest_prior_work: [P-ARXIV-231004373, P-ARXIV-240100243, P-ARXIV-240419409]
+lineage_parent: H-001
+rejection_reason: generic DRO or constrained proxy optimization without a distinct verifier-noise prediction

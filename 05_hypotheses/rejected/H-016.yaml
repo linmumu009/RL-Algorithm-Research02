@@ -1,0 +1,19 @@
+hypothesis_id: H-016
+name: Two-Timescale Channel Game
+target_problem: Q-001
+mechanism_family: training_schedule
+observed_failure: the policy changes faster than verifier-noise estimates
+causal_claim: a faster channel-estimation timescale tracks policy-induced drift
+changed_mathematical_quantity: "channel update frequency relative to policy update frequency"
+mechanism: update the noise model multiple times per policy update
+difference_from_existing_methods: schedule change only
+falsifiable_predictions: [faster_channel_updates_reduce_tracking_lag]
+cheapest_falsification_test: simulated drifting channel with configurable update frequency
+failure_threshold: "benefit disappears after matching estimator sample count"
+estimated_budget: 2
+score_total: 69
+status: REJECTED_NO_MECHANISM
+repair_count: 0
+closest_prior_work: [H-001]
+lineage_parent: H-001
+rejection_reason: changes update frequency without a new estimand or behavior prediction

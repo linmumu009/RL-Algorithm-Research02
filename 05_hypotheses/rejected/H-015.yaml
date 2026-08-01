@@ -1,0 +1,19 @@
+hypothesis_id: H-015
+name: Verifier-Adversarial Curriculum
+target_problem: Q-001
+mechanism_family: verifier_training
+observed_failure: the verifier has exploitable blind spots
+causal_claim: generating boundary cases improves verifier robustness before policy updates
+changed_mathematical_quantity: "verifier training distribution -> adversarial boundary curriculum"
+mechanism: adversarially train the verifier on policy-discovered failures
+difference_from_existing_methods: standard adversarial training and verification engineering
+falsifiable_predictions: [verifier_robustness_improves_on_held_out_attacks]
+cheapest_falsification_test: retrain a toy verifier on generated boundary cases
+failure_threshold: "no held-out attack accuracy gain"
+estimated_budget: 6
+score_total: 65
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+closest_prior_work: [P-ARXIV-260415149, P-ARXIV-250609942]
+lineage_parent: null
+rejection_reason: standard adversarial verifier training and outside the selected policy-gradient mechanism

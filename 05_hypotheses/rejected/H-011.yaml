@@ -1,0 +1,19 @@
+hypothesis_id: H-011
+name: Posterior Clean-Reward Gradient
+target_problem: Q-001
+mechanism_family: posterior_reweighting
+observed_failure: observed binary reward does not equal clean correctness
+causal_claim: posterior clean correctness is a better score-function weight
+changed_mathematical_quantity: "r_obs -> P(r_clean=1 | r_obs, z)"
+mechanism: estimate posterior clean reward and use it in the policy gradient
+difference_from_existing_methods: under a fixed binary confusion channel this is a reparameterization of forward correction
+falsifiable_predictions: [posterior_weighting_aligns_with_clean_gradient]
+cheapest_falsification_test: known-confusion binary simulation
+failure_threshold: "gradient differs from forward correction only by scaling or centering"
+estimated_budget: 2
+score_total: 85
+status: REJECTED_EQUIVALENT
+repair_count: 0
+closest_prior_work: [P-ARXIV-251000915, H-001]
+lineage_parent: H-001
+rejection_reason: reduces to forward noise correction under a fixed confusion model

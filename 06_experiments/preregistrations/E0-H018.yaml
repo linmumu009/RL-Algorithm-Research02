@@ -1,0 +1,17 @@
+experiment_id: E0-H018-CONFORMAL-LOWER-BOUND
+hypothesis_id: H-018
+question: Does an audit-calibrated lower clean-reward bound control false-positive policy updates at declared coverage?
+prediction: Empirical undercoverage is at most alpha plus 0.03, false-positive updates fall by at least 30%, and conservatism shrinks monotonically with audit size.
+null_result_interpretation: The coverage guarantee is invalid or offers only generic gradient shrinkage.
+dataset: stratified binary clean/noisy outcomes with exchangeable and shifted stress conditions
+model: finite-sample interval estimator plus analytic policy gradient
+baseline: [point_contextual_correction, ensemble_standard_deviation_lcb, norm_matched_reward_shrinkage]
+primary_metric: empirical_undercoverage
+secondary_metrics: [false_positive_update_rate, clean_gradient_cosine, gradient_norm, interval_width]
+seed_policy: five fixed seeds [11, 23, 47, 89, 131]
+budget_limit: 1
+stop_condition: fixed alpha values [0.05, 0.10] and audit sizes [50, 100, 200, 500]
+success_threshold: undercoverage <= alpha + 0.03 and false-positive update reduction >= 30% at matched clean-gradient norm
+failure_threshold: undercoverage > alpha + 0.03 or no false-positive reduction after norm matching
+code_commit: TO_BE_SET_BEFORE_EXECUTION
+status: PREREGISTERED_NOT_RUN

@@ -1,0 +1,19 @@
+hypothesis_id: H-007
+name: Latent Failure-Mode Mixture
+target_problem: Q-001
+mechanism_family: mixture_channel_model
+observed_failure: one response may belong to an unknown verifier-failure archetype
+causal_claim: a mixture of confusion experts identifies hidden verifier modes
+changed_mathematical_quantity: "T(z) -> sum_k p(k|z) T_k"
+mechanism: learn a latent mixture of binary noise channels
+difference_from_existing_methods: only a more complex parameterization of contextual correction
+falsifiable_predictions: [latent_modes_recover_injected_noise_types, mixture_improves_gradient_cosine]
+cheapest_falsification_test: synthetic mixture-channel recovery
+failure_threshold: "no improvement over regularized observed strata"
+estimated_budget: 5
+score_total: 68
+status: REJECTED_EQUIVALENT
+repair_count: 0
+closest_prior_work: [H-001]
+lineage_parent: H-001
+rejection_reason: overparameterized form of H-001

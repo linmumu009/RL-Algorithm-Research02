@@ -1,0 +1,17 @@
+experiment_id: E0-H001-CONTEXTUAL-CHANNEL
+hypothesis_id: H-001
+question: Does contextual confusion correction recover the clean gradient when marginal noise rates are identical but stratum-conditional rates differ?
+prediction: H-001 improves clean-gradient cosine by at least 0.05 over global correction as between-stratum noise variance increases and collapses to the global baseline when channels are equal.
+null_result_interpretation: Contextual heterogeneity is not sufficient to justify a separate correction mechanism.
+dataset: synthetic binary rewards with fixed score-function vectors and predeclared strata
+model: analytic categorical policy; no language-model training
+baseline: [uncorrected_reward, global_backward_correction, global_forward_correction]
+primary_metric: clean_gradient_cosine
+secondary_metrics: [gradient_bias, variance, mse, channel_condition_number]
+seed_policy: five fixed seeds [11, 23, 47, 89, 131]
+budget_limit: 1
+stop_condition: stop after the declared heterogeneity grid and five seeds; no tuning on test cells
+success_threshold: mean cosine gain >= 0.05 with 95% CI above 0 in at least three heterogeneous cells
+failure_threshold: mean cosine gain <= 0.02 or no gain across all heterogeneous cells
+code_commit: TO_BE_SET_BEFORE_EXECUTION
+status: PREREGISTERED_NOT_RUN

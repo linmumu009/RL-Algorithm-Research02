@@ -1,0 +1,19 @@
+hypothesis_id: H-020
+name: Change-Point Correction Reset
+target_problem: Q-001
+mechanism_family: training_schedule
+observed_failure: verifier-audit residuals can shift abruptly after policy changes
+causal_claim: resetting the correction estimator at detected change points prevents stale noise rates
+changed_mathematical_quantity: "correction-state retention schedule"
+mechanism: run a residual change-point detector and reset or rewarm the channel estimator
+difference_from_existing_methods: adaptive schedule only; the corrected estimand remains H-001
+falsifiable_predictions: [lower_post_shift_tracking_error, no_gain_under_smooth_drift]
+cheapest_falsification_test: abrupt-versus-smooth synthetic drift series
+failure_threshold: "no tracking benefit after matching effective window length"
+estimated_budget: 2
+score_total: 81
+status: REJECTED_NO_MECHANISM
+repair_count: 0
+closest_prior_work: [H-001]
+lineage_parent: H-001
+rejection_reason: adaptive reset rule changes scheduling only and is subsumed by H-001 diagnostics

@@ -3,3 +3,5 @@ B-0001,2026-08-01,P0,infrastructure,2,2,repository_restructure,D-0001
 B-0002,2026-08-01,P1,corpus_audit,3,5,01_corpus/inventory.csv,D-0001
 B-0003,2026-08-01,P2,core_audit,5,10,10_deliverables/core15_audit.md,D-0002
 B-0004,2026-08-01,P3,knowledge_map,10,20,10_deliverables/knowledge_map.md,D-0004
+B-0005,2026-08-01,P4,problem_diagnosis,10,30,04_problems/selected_problem.md,D-0005
+B-0006,2026-08-01,P5_P6,hypothesis_generation_and_screening,15,45,10_deliverables/hypothesis_screening.md,D-0006

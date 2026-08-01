@@ -2,4 +2,11 @@ branch_id,status,phase,budget_units,latest_decision,evidence
 corpus_audit,COMPLETED,P1,5,D-0001,01_corpus/inventory.csv
 core15_audit,COMPLETED,P2,5,D-0003,10_deliverables/core15_audit.md
 knowledge_map,COMPLETED,P3,10,D-0004,10_deliverables/knowledge_map.md
-problem_selection,PAUSED_AT_GATE,P4,0,D-0004,04_problems/candidate_problem_statements.md
+problem_selection,COMPLETED,P4,10,D-0005,04_problems/selected_problem.md
+hypothesis_screening,COMPLETED,P5_P6,15,D-0006,10_deliverables/hypothesis_screening.md
+H-001,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H001.yaml
+H-004,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H004.yaml
+H-005,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H005.yaml
+H-008,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H008.yaml
+H-014,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H014.yaml
+H-018,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H018.yaml

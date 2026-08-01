@@ -4,13 +4,15 @@
 
 ## 当前状态
 
-- 当前阶段：`P4_PROBLEM_SELECTION`
-- 当前验收门：`G4`
-- 状态：P3 知识地图已通过 `G3`，等待人工确认真实研究问题后才能生成算法假设。
-- 本地语料：200 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
+- 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
+- 当前验收门：`G6`
+- 状态：Q-001 已通过 G4；20 个候选完成 P5/P6 筛选，6 个分支通过 G5 并完成 E0 预注册。
+- 本地语料：206 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
-- G4 首选问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
+- 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
+- 活跃分支：H-001、H-004、H-005、H-008、H-014、H-018。
+- 当前边界：只允许执行已预注册的数学/合成 E0；E0 评审前不进行语言模型训练。
 
 ## 关键入口
 
@@ -25,16 +27,31 @@
 - 方法谱系：[`03_taxonomy/method_lineage.md`](03_taxonomy/method_lineage.md)
 - 候选研究问题：[`04_problems/candidate_problem_statements.md`](04_problems/candidate_problem_statements.md)
 - 低成本区分实验：[`04_problems/baseline_diagnostics/p3_low_cost_discriminators.md`](04_problems/baseline_diagnostics/p3_low_cost_discriminators.md)
+- 正式问题：[`04_problems/selected_problem.md`](04_problems/selected_problem.md)
+- 假设筛选报告：[`10_deliverables/hypothesis_screening.md`](10_deliverables/hypothesis_screening.md)
+- 候选谱系：[`05_hypotheses/lineage_graph.json`](05_hypotheses/lineage_graph.json)
+- E0 预注册：[`06_experiments/preregistrations/`](06_experiments/preregistrations/)
 
 ## 目录
 
-项目按施工方案分为治理、语料、文献、分类体系、问题、假设、实验、结果、评审、决策和交付物目录。当前已完成 P0–P3，并形成 P4 候选问题；尚未生成正式算法候选或训练实现。
+项目按施工方案分为治理、语料、文献、分类体系、问题、假设、实验、结果、评审、决策和交付物目录。当前已完成 P0–P6，进入 P7 的 E0 准备阶段；尚未进行语言模型训练。
 
 ## 更新约定
 
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.5.0 — 2026-08-01
+
+- 用户确认 `Q-001 — 适应性、实例依赖的 verifier 噪声`，通过 G4 并冻结正式问题定义。
+- 为新颖性审查补充 6 篇最接近论文及 MinerU Markdown，语料达到 206 篇，完整性与去重检查全部通过。
+- 生成 20 个满足因果链模板的初始候选，每个均登记改变的数学量、行为预测、最低成本否定实验、失败阈值和预算。
+- 完成语义近似、数学等价、行为等价和理论风险审查，淘汰 14 个已有、等价、调度型或机制不成立的候选。
+- 保留 6 个候选：H-001、H-004、H-005、H-008、H-014、H-018，来自 6 个不同机制家族，评分 85–95。
+- 建立完整 `lineage_graph.json`，记录父候选、修改、淘汰原因和重命名判定，防止失败想法循环出现。
+- 为 6 个保留分支分别完成 E0 预注册；在 E0 审查前不允许进行语言模型训练。
+- P5/P6 验收结论为 `G5 PASS`；新增自动验证器检查候选数量、状态、机制多样性、谱系和预注册一致性。
 
 ### v0.4.0 — 2026-08-01
 

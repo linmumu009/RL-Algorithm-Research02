@@ -1,0 +1,19 @@
+hypothesis_id: H-019
+name: Hierarchical Shrinkage Confusion Strata
+target_problem: Q-001
+mechanism_family: hierarchical_estimation
+observed_failure: rare contextual strata have unstable FP/FN estimates
+causal_claim: partial pooling improves contextual channel estimates
+changed_mathematical_quantity: "independent T(z) estimates -> hierarchical shrinkage around a global channel"
+mechanism: fit a hierarchical prior across contextual confusion matrices
+difference_from_existing_methods: estimation parameterization of H-001
+falsifiable_predictions: [lower_rare_stratum_MSE]
+cheapest_falsification_test: sparse-stratum binomial simulation
+failure_threshold: "no improvement over regularized H-001"
+estimated_budget: 2
+score_total: 71
+status: REJECTED_EQUIVALENT
+repair_count: 0
+closest_prior_work: [H-001]
+lineage_parent: H-001
+rejection_reason: estimation parameterization of H-001
