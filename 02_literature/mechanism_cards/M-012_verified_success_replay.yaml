@@ -1,0 +1,15 @@
+mechanism_id: M-012
+canonical_name: verified_success_replay
+aliases: [RLEP, success_buffer, replayed_reasoning_trajectories]
+mathematical_form: "Each update mixes fresh rollouts with previously verified successful trajectories."
+changed_quantity: training_data_age_and_mixture
+intended_effect: reuse expensive trajectories and focus learning on productive reasoning paths
+target_failure_mode: [FM06, FM11, FM12]
+required_assumptions: [old_successes_remain_useful, replay_mixture_does_not_collapse_exploration]
+known_benefits: [faster_convergence, lower_rollout_demand, simple_data_reuse]
+known_side_effects: [selection_bias_to_known_successes, stale_logprob_mismatch, reduced_failure_coverage]
+supporting_papers: [P-ARXIV-250707451]
+contradicting_papers: [P-ARXIV-251201374, P-ARXIV-260105002]
+equivalent_forms: [elite_trajectory_buffer, positive_only_replay]
+incompatible_mechanisms: [strictly_on_policy_updates_without_correction]
+open_questions: [safe_reuse_horizon, replay_ratio_vs_exploration, matched_compute_generalization]

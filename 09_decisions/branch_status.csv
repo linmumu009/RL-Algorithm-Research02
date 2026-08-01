@@ -1,3 +1,5 @@
 branch_id,status,phase,budget_units,latest_decision,evidence
 corpus_audit,COMPLETED,P1,5,D-0001,01_corpus/inventory.csv
-core15_audit,PAUSED_AT_GATE,P2,5,D-0002,10_deliverables/core15_audit.md
+core15_audit,COMPLETED,P2,5,D-0003,10_deliverables/core15_audit.md
+knowledge_map,COMPLETED,P3,10,D-0004,10_deliverables/knowledge_map.md
+problem_selection,PAUSED_AT_GATE,P4,0,D-0004,04_problems/candidate_problem_statements.md

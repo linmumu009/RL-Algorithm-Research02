@@ -1,0 +1,15 @@
+mechanism_id: M-002
+canonical_name: length_weighted_outcome_gradient
+aliases: [token_normalization, response_normalization, length_invariant_weighting]
+mathematical_form: "L = -f_alpha(T) * A * sum_t log pi(a_t|s_t); choices of f trade unbiasedness against length invariance."
+changed_quantity: per_sequence_gradient_weight
+intended_effect: control how variable response length changes total gradient mass
+target_failure_mode: [FM01, FM14]
+required_assumptions: [outcome_reward_is_broadcast_to_tokens, response_length_varies_materially]
+known_benefits: [explicit_length_control, interpretable_bias_tradeoff]
+known_side_effects: [cannot_be_both_unbiased_and_length_invariant_under_stated_setting, may_incentivize_verbosity_or_brevity]
+supporting_papers: [P-ARXIV-250320783, P-ARXIV-250314476, P-ARXIV-260723364]
+contradicting_papers: [P-ARXIV-250320783, P-ARXIV-260723364]
+equivalent_forms: [per_token_mean_loss, per_response_sum_loss, parametric_length_weight_family]
+incompatible_mechanisms: []
+open_questions: [whether_dense_process_rewards_escape_the_boundary, task_conditional_length_utility]

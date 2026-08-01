@@ -1,12 +1,12 @@
 project_id: rl_algorithm_discovery_v1
-current_phase: P2_CORE15_AUDIT
-current_gate: G2
+current_phase: P4_PROBLEM_SELECTION
+current_gate: G4
 phase_status: awaiting_human_approval
 selected_problem: null
 
 budget:
   total_units: 100
-  used_units: 10
+  used_units: 20
   infrastructure_cap: 10
   exploration_reserve: 30
   scale_up_reserve: 30
@@ -17,7 +17,7 @@ branches:
   rejected: []
 
 core15:
-  status: pass_with_replacements_awaiting_approval
+  status: approved_with_replacements
   coverage_score: 89
   missing_axes:
     - independent_verifier_noise_intervention
@@ -27,12 +27,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0002
-  action: PAUSE_AT_G2
-  rationale: The replacement core set passes quantitative coverage, but construction rules require human approval before P3.
+  decision_id: D-0004
+  action: PASS_G3_ENTER_P4
+  rationale: The knowledge map answers all five G3 questions with traceable mechanisms, conflicts, evidence gaps, pseudo-gaps, and low-cost discriminators.
 
 blockers: []
-next_allowed_task: Correct evidence or metadata if needed; otherwise wait for human approval of core15_v2.
+next_allowed_task: Await human G4 confirmation of a real problem; do not generate algorithm hypotheses or training code before approval.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

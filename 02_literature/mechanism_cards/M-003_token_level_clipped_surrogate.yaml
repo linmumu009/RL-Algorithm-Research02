@@ -1,0 +1,15 @@
+mechanism_id: M-003
+canonical_name: token_level_clipped_surrogate
+aliases: [PPO_clip, GRPO_clip, token_ratio_clipping]
+mathematical_form: "min(rho_t A, clip(rho_t, 1-eps_low, 1+eps_high) A) aggregated over response tokens."
+changed_quantity: token_policy_update_weight
+intended_effect: bound policy updates and stabilize repeated optimization
+target_failure_mode: [FM05, FM06, FM14]
+required_assumptions: [token_surrogate_tracks_sequence_reward_locally, behavior_logprobs_are_accurate]
+known_benefits: [simple_trust_region_proxy, widespread_implementation_support]
+known_side_effects: [hard_gradient_loss, optimizer_momentum_can_cross_boundary, tokenwise_ratio_variance]
+supporting_papers: [P-ARXIV-240203300, P-ARXIV-250314476]
+contradicting_papers: [P-ARXIV-250613585, P-ARXIV-251120347, P-ARXIV-251201374, P-ARXIV-260105002]
+equivalent_forms: [asymmetric_token_clip]
+incompatible_mechanisms: [M-004_as_the_same_gate_unit, M-005_as_the_same_gate_function]
+open_questions: [true_sequence_improvement_under_long_horizon, interaction_with_adamw_state]

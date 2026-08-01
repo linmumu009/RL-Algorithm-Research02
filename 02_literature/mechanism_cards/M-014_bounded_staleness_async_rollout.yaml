@@ -1,0 +1,15 @@
+mechanism_id: M-014
+canonical_name: bounded_staleness_async_rollout
+aliases: [AReaL, DORA, multi_version_streaming, staleness_window]
+mathematical_form: "Generation and training overlap while accepting only trajectories whose behavior-policy version lag is bounded; optional importance/staleness correction is applied."
+changed_quantity: rollout_update_schedule
+intended_effect: remove synchronization bubbles without losing policy consistency
+target_failure_mode: [FM06, FM07, FM12]
+required_assumptions: [policy_changes_slowly_inside_window, behavior_version_is_recorded, difficulty_is_controlled_in_analysis]
+known_benefits: [higher_gpu_utilization, preserves_long_tail_trajectories, explicit_staleness_budget]
+known_side_effects: [off_policy_bias, manual_window_choice, system_specific_complexity]
+supporting_papers: [P-ARXIV-250524298, P-ARXIV-260426256]
+contradicting_papers: [P-ARXIV-251201374]
+equivalent_forms: [asynchronous_rollout_with_versioned_policy]
+incompatible_mechanisms: [strict_fresh_rollout_barrier]
+open_questions: [portable_staleness_threshold, interaction_with_fast_learning_phases_and_moe_routing]

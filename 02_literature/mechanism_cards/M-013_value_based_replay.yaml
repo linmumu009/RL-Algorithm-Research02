@@ -1,0 +1,15 @@
+mechanism_id: M-013
+canonical_name: value_based_replay
+aliases: [ReVal, Bellman_update_replay, off_policy_value_learning]
+mathematical_form: "Q/value targets combine stepwise internal-consistency signals with verified terminal outcomes and are optimized from a replay buffer."
+changed_quantity: policy_optimization_paradigm
+intended_effect: enable natural off-policy reuse for long-horizon reasoning
+target_failure_mode: [FM03, FM06, FM12]
+required_assumptions: [bellman_targets_are_meaningful_for_language_prefixes, value_errors_are_controlled]
+known_benefits: [trajectory_reuse, dense_bootstrapped_signal, faster_reported_convergence]
+known_side_effects: [bootstrapping_bias, value_extrapolation_error, extra_modeling_complexity]
+supporting_papers: [P-ARXIV-260323355]
+contradicting_papers: [P-ARXIV-240214740, P-ARXIV-250405118]
+equivalent_forms: [off_policy_q_learning_for_language]
+incompatible_mechanisms: [critic_free_only_design]
+open_questions: [stability_across_task_families, value_calibration_on_long_wrong_prefixes]

@@ -1,0 +1,15 @@
+mechanism_id: M-004
+canonical_name: sequence_level_trust_region
+aliases: [GSPO, sequence_ratio_clipping, sequence_gate]
+mathematical_form: "rho_seq = exp(mean_t(log pi_theta - log pi_old)); one sequence-level gate weights all token gradients."
+changed_quantity: trust_region_unit
+intended_effect: preserve trajectory coherence and reduce token-ratio variance
+target_failure_mode: [FM05, FM06, FM07]
+required_assumptions: [geometric_mean_ratio_represents_sequence_shift, whole_sequence_suppression_is_acceptable]
+known_benefits: [moe_stability, coherent_off_policy_control, lower_ratio_variance]
+known_side_effects: [one_outlier_can_suppress_useful_tokens, length_normalization_changes_geometry]
+supporting_papers: [P-ARXIV-250718071, P-ARXIV-251201374]
+contradicting_papers: [P-ARXIV-250613585, P-ARXIV-251120347]
+equivalent_forms: [geometric_mean_sequence_ratio]
+incompatible_mechanisms: [M-003_as_the_same_gate_unit]
+open_questions: [token_vs_sequence_causal_comparison_with_matched_compute, sequence_gate_under_mixed_quality_steps]

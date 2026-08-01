@@ -1,0 +1,15 @@
+mechanism_id: M-015
+canonical_name: distribution_preserving_rollout_acceleration
+aliases: [self_speculative_rollout, hybrid_execution_plan, parameter_reallocation]
+mathematical_form: "Reduce rollout or orchestration time while preserving the target sampling distribution and holding the learning objective fixed."
+changed_quantity: systems_execution_path
+intended_effect: reduce wall-clock cost without claiming an optimizer improvement
+target_failure_mode: [FM12]
+required_assumptions: [sampling_distribution_is_preserved, speed_measurement_separates_latency_and_throughput]
+known_benefits: [higher_throughput, lower_rollout_latency, scalable_model_placement]
+known_side_effects: [hardware_specific_results, evolving_policy_can_stale_drafters, throughput_does_not_imply_single_request_latency]
+supporting_papers: [P-ARXIV-260618967, P-ARXIV-240919256, P-ARXIV-240501481, P-ARXIV-240511143, P-ARXIV-240614088]
+contradicting_papers: []
+equivalent_forms: [execution_plan_optimization, system_aware_speculative_decoding]
+incompatible_mechanisms: []
+open_questions: [standardized_p50_p95_and_end_to_end_reporting, cross_hardware_transfer]

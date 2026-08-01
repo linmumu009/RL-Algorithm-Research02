@@ -1,0 +1,15 @@
+mechanism_id: M-007
+canonical_name: implicit_process_reward
+aliases: [PRIME, likelihood_ratio_process_reward, dense_implicit_reward]
+mathematical_form: "token/step reward is inferred from policy-reference likelihood changes and updated using outcome labels."
+changed_quantity: reward_granularity
+intended_effect: densify long-horizon credit without manually labeled process data
+target_failure_mode: [FM03, FM09, FM15]
+required_assumptions: [likelihood_change_correlates_with_reasoning_quality, outcome_labels_anchor_online_updates]
+known_benefits: [dense_credit, no_static_prm_labels, online_adaptation]
+known_side_effects: [likelihood_miscalibration, self_reinforcing_proxy_error, residual_length_effects]
+supporting_papers: [P-ARXIV-250201456]
+contradicting_papers: [P-ARXIV-260415149, P-ARXIV-251000915]
+equivalent_forms: [implicit_reward_from_policy_ratio]
+incompatible_mechanisms: []
+open_questions: [robustness_under_false_positive_outcomes, causal_process_validity]

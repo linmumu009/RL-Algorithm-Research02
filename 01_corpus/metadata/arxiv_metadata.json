@@ -2894,5 +2894,344 @@
     "abstract": "Group Relative Policy Optimization (GRPO) is the dominant reinforcement learning algorithm for training reasoning capabilities in large language models, notably adopted by DeepSeek-R1. The recent improvement Dr. GRPO (COLM 2025) identifies the response-level length bias caused by per-trajectory length normalization in GRPO and proposes removing this normalization, claiming the resulting optimizer is \"unbiased.\" We show that this claim is incomplete. Specifically, we establish an impossibility theorem: under the standard outcome reward + GRPO setting, no length-based weighting scheme can simultaneously achieve the following two properties. (P1) Gradient unbiasedness: the gradient estimator is an unbiased estimate of the true policy gradient. (P2) Length invariance: each trajectory's effective contribution to the gradient is independent of its token length. GRPO approximately satisfies P2 but violates P1; Dr. GRPO satisfies P1 but violates P2. We characterize the complete tradeoff spectrum via the parametric family f_alpha(L) = L^{alpha - 1}, where alpha = 0 recovers GRPO, alpha = 1 recovers Dr. GRPO, and provide quantitative analysis showing that Dr. GRPO's length bias can cause longer trajectories to dominate gradient updates by a factor proportional to the length ratio. Our results reveal that neither algorithm is universally \"done right\"; they occupy opposite ends of a fundamental and unavoidable tradeoff.",
     "published": "2026-07-25T21:12:51Z",
     "updated": "2026-07-25T21:12:51Z"
+  },
+  "2507.07451": {
+    "title": "RLEP: Reinforcement Learning with Experience Replay for LLM Reasoning",
+    "authors": [
+      "Hongzhi Zhang",
+      "Jia Fu",
+      "Jingyuan Zhang",
+      "Kai Fu",
+      "Qi Wang",
+      "Fuzheng Zhang",
+      "Guorui Zhou"
+    ],
+    "abstract": "Reinforcement learning (RL) for large language models is an energy-intensive endeavor: training can be unstable, and the policy may gradually drift away from its pretrained weights. We present \\emph{RLEP}\\, -- \\,Reinforcement Learning with Experience rePlay\\, -- \\,a two-phase framework that first collects verified trajectories and then replays them during subsequent training. At every update step, the policy is optimized on mini-batches that blend newly generated rollouts with these replayed successes. By replaying high-quality examples, RLEP steers the model away from fruitless exploration, focuses learning on promising reasoning paths, and delivers both faster convergence and stronger final performance. On the Qwen2.5-Math-7B base model, RLEP reaches baseline peak accuracy with substantially fewer updates and ultimately surpasses it, improving accuracy on AIME-2024 from 38.2% to 39.9%, on AIME-2025 from 19.8% to 22.3%, and on AMC-2023 from 77.0% to 82.2%. Our code, datasets, and checkpoints are publicly available at https://github.com/Kwai-Klear/RLEP to facilitate reproducibility and further research.",
+    "published": "2025-07-10T05:58:55Z",
+    "updated": "2025-07-10T05:58:55Z"
+  },
+  "2508.17511": {
+    "title": "School of Reward Hacks: Hacking harmless tasks generalizes to misaligned behavior in LLMs",
+    "authors": [
+      "Mia Taylor",
+      "James Chua",
+      "Jan Betley",
+      "Johannes Treutlein",
+      "Owain Evans"
+    ],
+    "abstract": "Reward hacking--where agents exploit flaws in imperfect reward functions rather than performing tasks as intended--poses risks for AI alignment. Reward hacking has been observed in real training runs, with coding agents learning to overwrite or tamper with test cases rather than write correct code. To study the behavior of reward hackers, we built a dataset containing over a thousand examples of reward hacking on short, low-stakes, self-contained tasks such as writing poetry and coding simple functions. We used supervised fine-tuning to train models (GPT-4.1, GPT-4.1-mini, Qwen3-32B, Qwen3-8B) to reward hack on these tasks. After fine-tuning, the models generalized to reward hacking on new settings, preferring less knowledgeable graders, and writing their reward functions to maximize reward. Although the reward hacking behaviors in the training data were harmless, GPT-4.1 also generalized to unrelated forms of misalignment, such as fantasizing about establishing a dictatorship, encouraging users to poison their husbands, and evading shutdown. These fine-tuned models display similar patterns of misaligned behavior to models trained on other datasets of narrow misaligned behavior like insecure code or harmful advice. Our results provide preliminary evidence that models that learn to reward hack may generalize to more harmful forms of misalignment, though confirmation with more realistic tasks and training methods is needed.",
+    "published": "2025-08-24T20:23:08Z",
+    "updated": "2025-08-24T20:23:08Z"
+  },
+  "2510.00915": {
+    "title": "Reinforcement Learning with Verifiable yet Noisy Rewards under Imperfect Verifiers",
+    "authors": [
+      "Xin-Qiang Cai",
+      "Wei Wang",
+      "Feng Liu",
+      "Tongliang Liu",
+      "Gang Niu",
+      "Masashi Sugiyama"
+    ],
+    "abstract": "Reinforcement Learning with Verifiable Rewards (RLVR) replaces costly human labeling with automated verifiers. To reduce verifier hacking, many RLVR systems binarize rewards to $\\{0,1\\}$, but imperfect verifiers inevitably introduce \\emph{false negatives} (rejecting correct answers) and \\emph{false positives} (accepting incorrect ones). We formalize verifier unreliability as a stochastic reward channel with asymmetric noise rates $ρ_0$ and $ρ_1$ -- the FP rate and the FN rate, respectively. From this abstraction we derive two lightweight corrections: (i) a \\emph{backward} correction that yields an unbiased surrogate reward and thus an unbiased policy-gradient estimator in expectation, and (ii) a \\emph{forward} correction that reweights score-function terms so the expected update aligns with the clean gradient direction and requires only the FN rate. We implement both as lightweight hooks in a group relative policy optimization pipeline, both corrections improve RLVR for math reasoning under synthetic and real verifier noise, with the forward variant being more stable under heavier noise. Finally, an appeals mechanism with a lightweight LLM verifier estimates the FN rate online and further improves performance.",
+    "published": "2025-10-01T13:56:44Z",
+    "updated": "2026-05-22T12:16:11Z"
+  },
+  "2604.26256": {
+    "title": "DORA: A Scalable Asynchronous Reinforcement Learning System for Language Model Training",
+    "authors": [
+      "Tianhao Hu",
+      "Xiangcheng Liu",
+      "Yuchun Miao",
+      "Youshao Xiao",
+      "Hongyu Zang",
+      "Yang Zheng",
+      "Xuan Huang",
+      "Jinrui Ding",
+      "Yufei Zhang",
+      "Yu Yang",
+      "Yi-Kai Zhang",
+      "Yueqing Sun",
+      "Chengcheng Han",
+      "Xiandi Ma",
+      "Wei Wang",
+      "Qi Gu",
+      "Yerui Sun",
+      "Yuchen Xie",
+      "Xunliang Cai"
+    ],
+    "abstract": "Reinforcement learning (RL) has become a critical paradigm for LLM post-training, yet the rollout phase -- accounting for 50--80% of total step time -- is bottlenecked by skewed generation: long-tailed trajectories indispensable for model performance block the entire training pipeline. Asynchronous training offers a natural remedy by overlapping generation with training, but introduces a fundamental tension between efficiency and algorithmic correctness. We identify three constraints in asynchronous training to preserve convergence: intra-trajectory policy consistency, data integrity, and bounded staleness. Existing approaches fail to intrinsically address the long-tailed trajectory problem, which is further exacerbated by the imbalance characteristic of Mix-of-Experts models, or deviate from the standard RL training formulation, thereby hindering model convergence. Therefore, we propose DORA (Dynamic ORchestration for Asynchronous Rollout), which addresses this challenge through algorithm-system co-design. DORA introduces multi-version streaming rollout, a novel asynchronous paradigm that maintains multiple policy versions concurrently -- simultaneously achieving full bubble elimination without compromising algorithmic constraints. Experimental results demonstrate that our DORA system achieves substantial improvements in throughput -- up to 2--3 times higher than state-of-the-art systems on open-source benchmarks -- without compromising convergence. Furthermore, in large-scale industrial applications with tens of thousands of accelerators, DORA accelerates RL training by 2--4 times compared to synchronous training across various scenarios. The resultant open-source models, LongCat-Flash-Thinking, exhibit competitive performance on complex reasoning benchmarks, matching the capability of most advanced LLMs.",
+    "published": "2026-04-29T03:25:36Z",
+    "updated": "2026-07-20T06:40:20Z"
+  },
+  "2310.04373": {
+    "title": "Confronting Reward Model Overoptimization with Constrained RLHF",
+    "authors": [
+      "Ted Moskovitz",
+      "Aaditya K. Singh",
+      "DJ Strouse",
+      "Tuomas Sandholm",
+      "Ruslan Salakhutdinov",
+      "Anca D. Dragan",
+      "Stephen McAleer"
+    ],
+    "abstract": "Large language models are typically aligned with human preferences by optimizing $\\textit{reward models}$ (RMs) fitted to human feedback. However, human preferences are multi-faceted, and it is increasingly common to derive reward from a composition of simpler reward models which each capture a different aspect of language quality. This itself presents a challenge, as it is difficult to appropriately weight these component RMs when combining them. Compounding this difficulty, because any RM is only a proxy for human evaluation, this process is vulnerable to $\\textit{overoptimization}$, wherein past a certain point, accumulating higher reward is associated with worse human ratings. In this paper, we perform, to our knowledge, the first study on overoptimization in composite RMs, showing that correlation between component RMs has a significant effect on the locations of these points. We then introduce an approach to solve this issue using constrained reinforcement learning as a means of preventing the agent from exceeding each RM's threshold of usefulness. Our method addresses the problem of weighting component RMs by learning dynamic weights, naturally expressed by Lagrange multipliers. As a result, each RM stays within the range at which it is an effective proxy, improving evaluation performance. Finally, we introduce an adaptive method using gradient-free optimization to identify and optimize towards these points during a single run.",
+    "published": "2023-10-06T16:59:17Z",
+    "updated": "2023-10-10T15:01:11Z"
+  },
+  "2404.19409": {
+    "title": "Countering Reward Over-optimization in LLM with Demonstration-Guided Reinforcement Learning",
+    "authors": [
+      "Mathieu Rita",
+      "Florian Strub",
+      "Rahma Chaabouni",
+      "Paul Michel",
+      "Emmanuel Dupoux",
+      "Olivier Pietquin"
+    ],
+    "abstract": "While Reinforcement Learning (RL) has been proven essential for tuning large language models (LLMs), it can lead to reward over-optimization (ROO). Existing approaches address ROO by adding KL regularization, requiring computationally expensive hyperparameter tuning. Additionally, KL regularization focuses solely on regularizing the language policy, neglecting a potential source of regularization: the reward function itself. Inspired by demonstration-guided RL, we here introduce the Reward Calibration from Demonstration (RCfD), which leverages human demonstrations and a reward model to recalibrate the reward objective. Formally, given a prompt, the RCfD objective minimizes the distance between the demonstrations' and LLM's rewards rather than directly maximizing the reward function. This objective shift avoids incentivizing the LLM to exploit the reward model and promotes more natural and diverse language generation. We show the effectiveness of RCfD on three language tasks, which achieves comparable performance to carefully tuned baselines while mitigating ROO.",
+    "published": "2024-04-30T09:57:21Z",
+    "updated": "2024-04-30T09:57:21Z"
+  },
+  "2505.24298": {
+    "title": "AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning",
+    "authors": [
+      "Wei Fu",
+      "Jiaxuan Gao",
+      "Xujie Shen",
+      "Chen Zhu",
+      "Zhiyu Mei",
+      "Chuyi He",
+      "Shusheng Xu",
+      "Guo Wei",
+      "Jun Mei",
+      "Jiashu Wang",
+      "Tongkai Yang",
+      "Binhang Yuan",
+      "Yi Wu"
+    ],
+    "abstract": "Reinforcement learning (RL) has become a dominant paradigm for training large language models (LLMs), particularly for reasoning tasks. Effective RL for LLMs requires massive parallelization and poses an urgent need for efficient training systems. Most existing large-scale RL systems for LLMs are synchronous, alternating generation and training in a batch setting where rollouts in each training batch are generated by the same model. This approach stabilizes RL training but suffers from severe system-level inefficiency: generation must wait until the longest output in the batch is completed before model updates, resulting in GPU underutilization. We present AReaL, a fully asynchronous RL system that completely decouples generation from training. Rollout workers in AReaL continuously generate new outputs without waiting, while training workers update the model whenever a batch of data is collected. AReaL also incorporates a collection of system-level optimizations, leading to substantially higher GPU utilization. To stabilize RL training, AReaL balances the workload of rollout and training workers to control data staleness, and adopts a staleness-enhanced PPO variant to better handle outdated training samples. Extensive experiments on math and code reasoning benchmarks show that AReaL achieves up to 2.77$\\times$ training speedup compared to synchronous systems with the same number of GPUs and matched or improved final performance. The code of AReaL is available at https://github.com/inclusionAI/AReaL/.",
+    "published": "2025-05-30T07:18:25Z",
+    "updated": "2026-03-02T03:07:29Z"
+  },
+  "2604.15149": {
+    "title": "LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking",
+    "authors": [
+      "Lukas Helff",
+      "Quentin Delfosse",
+      "David Steinmann",
+      "Ruben Härle",
+      "Hikaru Shindo",
+      "Patrick Schramowski",
+      "Wolfgang Stammer",
+      "Kristian Kersting",
+      "Felix Friedrich"
+    ],
+    "abstract": "As reinforcement Learning with Verifiable Rewards (RLVR) has become the dominant paradigm for scaling reasoning capabilities in LLMs, a new failure mode emerges: LLMs gaming verifiers. We study this phenomenon on inductive reasoning tasks, where models must induce and output logical rules. We find that RLVR-trained models systematically abandon rule induction. Instead of learning generalizable patterns (e.g., ``trains carrying red cars go east''), they enumerate instance-level labels, producing outputs that pass verifiers without capturing the relational patterns required by the task. We show that this behavior is not a failure of understanding but a form of reward hacking: imperfect verifiers that check only extensional correctness admit false positives. To detect such shortcuts, we introduce Isomorphic Perturbation Testing (IPT), which evaluates a single model output under both extensional and isomorphic verification, where the latter enforces invariance under logically isomorphic tasks. While genuine rule induction remains invariant, shortcut strategies fail. We find that shortcut behavior is specific to RLVR-trained reasoning models (e.g., GPT-5, Olmo3) and absent in non-RLVR models (e.g., GPT-4o, GPT-4.5, Ministral). Moreover, shortcut prevalence increases with task complexity and inference-time compute. In controlled training experiments, extensional verification directly induces shortcut strategies, while isomorphic verification eliminates them. These results show that RLVR can incentivize reward hacking not only through overt manipulation but also by exploiting what the verifier fails to enforce.",
+    "published": "2026-04-16T15:30:10Z",
+    "updated": "2026-04-16T15:30:10Z"
+  },
+  "2409.19256": {
+    "title": "HybridFlow: A Flexible and Efficient RLHF Framework",
+    "authors": [
+      "Guangming Sheng",
+      "Chi Zhang",
+      "Zilingfeng Ye",
+      "Xibin Wu",
+      "Wang Zhang",
+      "Ru Zhang",
+      "Yanghua Peng",
+      "Haibin Lin",
+      "Chuan Wu"
+    ],
+    "abstract": "Reinforcement Learning from Human Feedback (RLHF) is widely used in Large Language Model (LLM) alignment. Traditional RL can be modeled as a dataflow, where each node represents computation of a neural network (NN) and each edge denotes data dependencies between the NNs. RLHF complicates the dataflow by expanding each node into a distributed LLM training or generation program, and each edge into a many-to-many multicast. Traditional RL frameworks execute the dataflow using a single controller to instruct both intra-node computation and inter-node communication, which can be inefficient in RLHF due to large control dispatch overhead for distributed intra-node computation. Existing RLHF systems adopt a multi-controller paradigm, which can be inflexible due to nesting distributed computation and data communication. We propose HybridFlow, which combines single-controller and multi-controller paradigms in a hybrid manner to enable flexible representation and efficient execution of the RLHF dataflow. We carefully design a set of hierarchical APIs that decouple and encapsulate computation and data dependencies in the complex RLHF dataflow, allowing efficient operation orchestration to implement RLHF algorithms and flexible mapping of the computation onto various devices. We further design a 3D-HybridEngine for efficient actor model resharding between training and generation phases, with zero memory redundancy and significantly reduced communication overhead. Our experimental results demonstrate 1.53$\\times$~20.57$\\times$ throughput improvement when running various RLHF algorithms using HybridFlow, as compared with state-of-the-art baselines. HybridFlow source code will be available at https://github.com/volcengine/verl.",
+    "published": "2024-09-28T06:20:03Z",
+    "updated": "2024-10-02T04:01:47Z"
+  },
+  "2505.12763": {
+    "title": "Rethinking Reward Model Evaluation Through the Lens of Reward Overoptimization",
+    "authors": [
+      "Sunghwan Kim",
+      "Dongjin Kang",
+      "Taeyoon Kwon",
+      "Hyungjoo Chae",
+      "Dongha Lee",
+      "Jinyoung Yeo"
+    ],
+    "abstract": "Reward models (RMs) play a crucial role in reinforcement learning from human feedback (RLHF), aligning model behavior with human preferences. However, existing benchmarks for reward models show a weak correlation with the performance of optimized policies, suggesting that they fail to accurately assess the true capabilities of RMs. To bridge this gap, we explore several evaluation designs through the lens of reward overoptimization\\textemdash a phenomenon that captures both how well the reward model aligns with human preferences and the dynamics of the learning signal it provides to the policy. The results highlight three key findings on how to construct a reliable benchmark: (i) it is important to minimize differences between chosen and rejected responses beyond correctness, (ii) evaluating reward models requires multiple comparisons across a wide range of chosen and rejected responses, and (iii) given that reward models encounter responses with diverse representations, responses should be sourced from a variety of models. However, we also observe that a extremely high correlation with degree of overoptimization leads to comparatively lower correlation with certain downstream performance. Thus, when designing a benchmark, it is desirable to use the degree of overoptimization as a useful tool, rather than the end goal.",
+    "published": "2025-05-19T06:43:08Z",
+    "updated": "2025-05-19T06:43:08Z"
+  },
+  "2606.18967": {
+    "title": "EfficientRollout: System-Aware Self-Speculative Decoding for RL Rollouts",
+    "authors": [
+      "Minseo Kim",
+      "Minjae Lee",
+      "Seunghyuk Oh",
+      "Kevin Galim",
+      "Donghoon Kim",
+      "Coleman Hooper",
+      "Harman Singh",
+      "Amir Gholami",
+      "Hyung Il Koo",
+      "Wonjun Kang"
+    ],
+    "abstract": "Reinforcement learning (RL) has become a representative post-training paradigm for LLMs, enabling strong reasoning and agentic capabilities. However, rollout generation remains a dominant latency bottleneck because autoregressive sampling decodes responses sequentially and a small number of long-tailed generations often determine completion time. Speculative decoding (SD) offers a natural way to address this bottleneck, as it is a well-established technique for serving fixed LLMs that reduces latency by rapidly drafting tokens and accepting them through parallel verification while preserving the target-model distribution. However, its practical speedups do not directly carry over to RL rollouts: (i) the evolving target policy makes any fixed drafter increasingly mismatched with the policy's output distribution; and (ii) active batch sizes shrink throughout rollout decoding, shifting decoding from compute-bound to memory-bound regimes where parallel verification can exploit underutilized compute. Therefore, accelerating RL rollouts requires both a drafter that remains effective under long, high-temperature generations from an evolving policy and system-aware use of SD that avoids compute-bound regimes. We present EfficientRollout, a system-aware self-SD framework designed to address this gap for RL rollouts. EfficientRollout induces a quantized drafter from the target model (i.e. self-speculative decoding), keeping it coupled to the evolving policy without separate drafter pretraining or online adaptation. It further coordinates a system-aware SD toggle policy with acceptance-aware draft-length adaptation, enabling speculation only in beneficial regimes while matching the drafting budget to evolving drafter quality. EfficientRollout reduces rollout and end-to-end latency by up to 19.6% and 12.7%, respectively, over an accelerated AR rollout baseline, while preserving final model quality.",
+    "published": "2026-06-17T11:51:06Z",
+    "updated": "2026-06-17T11:51:06Z"
+  },
+  "2506.09942": {
+    "title": "VerIF: Verification Engineering for Reinforcement Learning in Instruction Following",
+    "authors": [
+      "Hao Peng",
+      "Yunjia Qi",
+      "Xiaozhi Wang",
+      "Bin Xu",
+      "Lei Hou",
+      "Juanzi Li"
+    ],
+    "abstract": "Reinforcement learning with verifiable rewards (RLVR) has become a key technique for enhancing large language models (LLMs), with verification engineering playing a central role. However, best practices for RL in instruction following remain underexplored. In this work, we explore the verification challenge in RL for instruction following and propose VerIF, a verification method that combines rule-based code verification with LLM-based verification from a large reasoning model (e.g., QwQ-32B). To support this approach, we construct a high-quality instruction-following dataset, VerInstruct, containing approximately 22,000 instances with associated verification signals. We apply RL training with VerIF to two models, achieving significant improvements across several representative instruction-following benchmarks. The trained models reach state-of-the-art performance among models of comparable size and generalize well to unseen constraints. We further observe that their general capabilities remain unaffected, suggesting that RL with VerIF can be integrated into existing RL recipes to enhance overall model performance. We have released our datasets, codes, and models to facilitate future research at https://github.com/THU-KEG/VerIF.",
+    "published": "2025-06-11T17:10:36Z",
+    "updated": "2025-06-11T17:10:36Z"
+  },
+  "2505.21493": {
+    "title": "Reinforcing General Reasoning without Verifiers",
+    "authors": [
+      "Xiangxin Zhou",
+      "Zichen Liu",
+      "Anya Sims",
+      "Haonan Wang",
+      "Tianyu Pang",
+      "Chongxuan Li",
+      "Liang Wang",
+      "Min Lin",
+      "Chao Du"
+    ],
+    "abstract": "The recent paradigm shift towards training large language models (LLMs) using DeepSeek-R1-Zero-style reinforcement learning (RL) on verifiable rewards has led to impressive advancements in code and mathematical reasoning. However, this methodology is limited to tasks where rule-based answer verification is possible and does not naturally extend to real-world domains such as chemistry, healthcare, engineering, law, biology, business, and economics. Current practical workarounds use an additional LLM as a model-based verifier; however, this introduces issues such as reliance on a strong verifier LLM, susceptibility to reward hacking, and the practical burden of maintaining the verifier model in memory during training. To address this and extend DeepSeek-R1-Zero-style training to general reasoning domains, we propose a verifier-free method (VeriFree) that bypasses answer verification and instead uses RL to directly maximize the probability of generating the reference answer. We compare VeriFree with verifier-based methods and demonstrate that, in addition to its significant practical benefits and reduced compute requirements, VeriFree matches and even surpasses verifier-based methods on extensive evaluations across MMLU-Pro, GPQA, SuperGPQA, and math-related benchmarks. Moreover, we provide insights into this method from multiple perspectives: as an elegant integration of training both the policy and implicit verifier in a unified model, and as a variational optimization approach. Code is available at https://github.com/sail-sg/VeriFree.",
+    "published": "2025-05-27T17:56:27Z",
+    "updated": "2025-05-27T17:56:27Z"
+  },
+  "2405.11143": {
+    "title": "OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework",
+    "authors": [
+      "Jian Hu",
+      "Xibin Wu",
+      "Wei Shen",
+      "Jason Klein Liu",
+      "Zilin Zhu",
+      "Weixun Wang",
+      "Songlin Jiang",
+      "Haoran Wang",
+      "Hao Chen",
+      "Bin Chen",
+      "Weikai Fang",
+      "Xianyu",
+      "Yu Cao",
+      "Haotian Xu",
+      "Yiming Liu"
+    ],
+    "abstract": "Large Language Models (LLMs) fine-tuned via Reinforcement Learning from Human Feedback (RLHF) and Reinforcement Learning with Verifiable Rewards (RLVR) significantly improve the alignment of human-AI values, further raising the upper bound of AI capabilities, particularly in reasoning-intensive, long-context Chain-of-Thought (CoT) tasks. However, existing frameworks commonly face challenges such as inference bottlenecks and complexity barriers, which restrict their accessibility to newcomers. To bridge this gap, we introduce \\textbf{OpenRLHF}, a user-friendly, scalable, and easy-to-learn open-source RLHF framework built upon Ray, vLLM, DeepSpeed, and HuggingFace Transformers, featuring a simplified design, clear code structure, and comprehensive documentation to facilitate entry for researchers and practitioners. Experimental results show that OpenRLHF achieves superior training efficiency, with speedups ranging from 1.22x to 1.68x across different model sizes, compared to state-of-the-art frameworks. Additionally, it requires significantly fewer lines of code for implementation. OpenRLHF is publicly available at https://github.com/OpenRLHF/OpenRLHF, and has already been adopted by leading institutions to accelerate RLHF research and learning.",
+    "published": "2024-05-20T01:04:40Z",
+    "updated": "2025-10-09T12:22:46Z"
+  },
+  "2405.01481": {
+    "title": "NeMo-Aligner: Scalable Toolkit for Efficient Model Alignment",
+    "authors": [
+      "Gerald Shen",
+      "Zhilin Wang",
+      "Olivier Delalleau",
+      "Jiaqi Zeng",
+      "Yi Dong",
+      "Daniel Egert",
+      "Shengyang Sun",
+      "Jimmy Zhang",
+      "Sahil Jain",
+      "Ali Taghibakhshi",
+      "Markel Sanz Ausin",
+      "Ashwath Aithal",
+      "Oleksii Kuchaiev"
+    ],
+    "abstract": "Aligning Large Language Models (LLMs) with human values and preferences is essential for making them helpful and safe. However, building efficient tools to perform alignment can be challenging, especially for the largest and most competent LLMs which often contain tens or hundreds of billions of parameters. We create NeMo-Aligner, a toolkit for model alignment that can efficiently scale to a thousand GPUs for training the largest open-source LLMs such as Nemotron 4 340B and Llama 3.1 405B. NeMo-Aligner comes with highly optimized and scalable implementations for major paradigms of model alignment such as: Reinforcement Learning from Human Feedback (RLHF), Direct Preference Optimization (DPO), SteerLM, and Self-Play Fine-Tuning (SPIN). Additionally, our toolkit supports running most of the alignment techniques in a Parameter Efficient Fine-Tuning (PEFT) setting. NeMo-Aligner is designed for extensibility, allowing support for other alignment techniques with minimal effort. It is open-sourced with Apache 2.0 License and we invite community contributions at https://github.com/NVIDIA/NeMo-Aligner",
+    "published": "2024-05-02T17:13:40Z",
+    "updated": "2024-09-03T05:47:42Z"
+  },
+  "2510.01367": {
+    "title": "Is It Thinking or Cheating? Detecting Implicit Reward Hacking by Measuring Reasoning Effort",
+    "authors": [
+      "Xinpeng Wang",
+      "Nitish Joshi",
+      "Barbara Plank",
+      "Rico Angell",
+      "He He"
+    ],
+    "abstract": "Reward hacking, where a reasoning model exploits loopholes in a reward function to achieve high rewards without solving the intended task, poses a significant threat. This behavior may be explicit, i.e. verbalized in the model's chain-of-thought (CoT), or implicit, where the CoT appears benign thus bypasses CoT monitors. To detect implicit reward hacking, we propose TRACE (Truncated Reasoning AUC Evaluation). Our key observation is that hacking occurs when exploiting the loophole is easier than solving the actual task. This means that the model is using less 'effort' than required to achieve high reward. TRACE quantifies effort by measuring how early a model's reasoning becomes sufficient to obtain the reward. We progressively truncate a model's CoT at various lengths, force the model to answer, and estimate the expected reward at each cutoff. A hacking model, which takes a shortcut, will achieve a high expected reward with only a small fraction of its CoT, yielding a large area under the accuracy-vs-length curve. TRACE achieves over 65% gains over our strongest 72B CoT monitor in math reasoning, and over 30% gains over a 32B monitor in coding. We further show that TRACE can discover unknown loopholes during training. Overall, TRACE offers a scalable unsupervised approach for oversight where current monitoring methods prove ineffective.",
+    "published": "2025-10-01T18:49:45Z",
+    "updated": "2026-03-02T16:43:38Z"
+  },
+  "2603.23355": {
+    "title": "Off-Policy Value-Based Reinforcement Learning for Large Language Models",
+    "authors": [
+      "Peng-Yuan Wang",
+      "Ziniu Li",
+      "Tian Xu",
+      "Bohan Yang",
+      "Tian-Shuo Liu",
+      "ChenYang Wang",
+      "Xiong-Hui Chen",
+      "Yi-Chen Li",
+      "Tianyun Yang",
+      "Congliang Chen",
+      "Yang Yu"
+    ],
+    "abstract": "Improving data utilization efficiency is critical for scaling reinforcement learning (RL) for long-horizon tasks where generating trajectories is expensive. However, the dominant RL methods for LLMs are largely on-policy: they update each batch of data only once, discard it, and then collect fresh samples, resulting in poor sample efficiency. In this work, we explore an alternative value-based RL framework for LLMs that naturally enables off-policy learning. We propose ReVal, a Bellman-update-based method that combines stepwise signals capturing internal consistency with trajectory-level signals derived from outcome verification. ReVal naturally supports replay-buffer-based training, allowing efficient reuse of past trajectories. Experiments on standard mathematical reasoning benchmarks show that ReVal not only converges faster but also outperforms GRPO in final performance. On DeepSeek-R1-Distill-1.5B, ReVal improves training efficiency and achieves improvement of 2.7% in AIME24 and 4.5% in out-of-domain benchmark GPQA over GRPO. These results suggest that value-based RL is a practical alternative to policy-based methods for LLM training.",
+    "published": "2026-03-24T15:55:02Z",
+    "updated": "2026-03-24T15:55:02Z"
+  },
+  "2401.00243": {
+    "title": "Uncertainty-Penalized Reinforcement Learning from Human Feedback with Diverse Reward LoRA Ensembles",
+    "authors": [
+      "Yuanzhao Zhai",
+      "Han Zhang",
+      "Yu Lei",
+      "Yue Yu",
+      "Kele Xu",
+      "Dawei Feng",
+      "Bo Ding",
+      "Huaimin Wang"
+    ],
+    "abstract": "Reinforcement learning from human feedback (RLHF) emerges as a promising paradigm for aligning large language models (LLMs). However, a notable challenge in RLHF is overoptimization, where beyond a certain threshold, the pursuit of higher rewards leads to a decline in human preferences. In this paper, we observe the weakness of KL regularization which is commonly employed in existing RLHF methods to address overoptimization. To mitigate this limitation, we scrutinize the RLHF objective in the offline dataset and propose uncertainty-penalized RLHF (UP-RLHF), which incorporates uncertainty regularization during RL-finetuning. To enhance the uncertainty quantification abilities for reward models, we first propose a diverse low-rank adaptation (LoRA) ensemble by maximizing the nuclear norm of LoRA matrix concatenations. Then we optimize policy models utilizing penalized rewards, determined by both rewards and uncertainties provided by the diverse reward LoRA ensembles. Our experimental results, based on two real human preference datasets, showcase the effectiveness of diverse reward LoRA ensembles in quantifying reward uncertainty. Additionally, uncertainty regularization in UP-RLHF proves to be pivotal in mitigating overoptimization, thereby contributing to the overall performance.",
+    "published": "2023-12-30T14:14:14Z",
+    "updated": "2023-12-30T14:14:14Z"
+  },
+  "2505.13445": {
+    "title": "Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards",
+    "authors": [
+      "Xiaoyuan Liu",
+      "Tian Liang",
+      "Zhiwei He",
+      "Jiahao Xu",
+      "Wenxuan Wang",
+      "Pinjia He",
+      "Zhaopeng Tu",
+      "Haitao Mi",
+      "Dong Yu"
+    ],
+    "abstract": "Large Language Models (LLMs) show great promise in complex reasoning, with Reinforcement Learning with Verifiable Rewards (RLVR) being a key enhancement strategy. However, a prevalent issue is ``superficial self-reflection'', where models fail to robustly verify their own outputs. We introduce RISE (Reinforcing Reasoning with Self-Verification), a novel online RL framework designed to tackle this. RISE explicitly and simultaneously trains an LLM to improve both its problem-solving and self-verification abilities within a single, integrated RL process. The core mechanism involves leveraging verifiable rewards from an outcome verifier to provide on-the-fly feedback for both solution generation and self-verification tasks. In each iteration, the model generates solutions, then critiques its own on-policy generated solutions, with both trajectories contributing to the policy update. Extensive experiments on diverse mathematical reasoning benchmarks show that RISE consistently improves model's problem-solving accuracy while concurrently fostering strong self-verification skills. Our analyses highlight the advantages of online verification and the benefits of increased verification compute. Additionally, RISE models exhibit more frequent and accurate self-verification behaviors during reasoning. These advantages reinforce RISE as a flexible and effective path towards developing more robust and self-aware reasoners.",
+    "published": "2025-05-19T17:59:31Z",
+    "updated": "2025-05-19T17:59:31Z"
+  },
+  "2406.14088": {
+    "title": "ReaL: Efficient RLHF Training of Large Language Models with Parameter Reallocation",
+    "authors": [
+      "Zhiyu Mei",
+      "Wei Fu",
+      "Kaiwei Li",
+      "Guangju Wang",
+      "Huanchen Zhang",
+      "Yi Wu"
+    ],
+    "abstract": "Reinforcement Learning from Human Feedback (RLHF) is a pivotal technique for empowering large language model (LLM) applications. Compared with the supervised training process of LLMs, the RLHF training process is much more sophisticated, requiring a diverse range of computation workloads with intricate dependencies between multiple LLM instances. Therefore, simply adopting the fixed parallelization strategies from supervised training for LLMs can be insufficient for RLHF and result in low training efficiency. To overcome this limitation, we propose a novel technique named parameter ReaLlocation, which dynamically adapts the parallelization strategies for different workloads during training by redistributing LLM parameters across the training cluster. Building upon this idea, we introduce ReaL, a pioneering system for efficient RLHF training. ReaL introduces the concept of an execution plan, which defines a fine-grained resource allocation and parallelization strategy particularly designed for RLHF training. Based on this concept, ReaL employs a tailored search algorithm with a lightweight run-time estimator to automatically discover an efficient execution plan for an instance of RLHF experiment. Subsequently, the runtime engine deploys the selected plan by effectively parallelizing computations and redistributing parameters. We evaluate ReaL on the LLaMA models with up to 70 billion parameters and 128 GPUs. The experimental results demonstrate that ReaL achieves speedups of up to $3.58\\times$ compared to baseline methods. Furthermore, the execution plans generated by ReaL exhibit an average of $81\\%$ performance improvement over heuristic approaches based on Megatron-LM in the long-context scenario. The source code of ReaL is publicly available at https://github.com/openpsi-project/ReaLHF .",
+    "published": "2024-06-20T08:04:07Z",
+    "updated": "2025-04-24T13:24:42Z"
   }
 }

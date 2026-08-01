@@ -1,0 +1,15 @@
+mechanism_id: M-006
+canonical_name: learned_value_and_decoupled_gae
+aliases: [critic_based_credit, VAPO, long_cot_gae]
+mathematical_form: "A_t = sum_l (gamma lambda)^l delta_{t+l}, with a separately trained value model and length-aware normalization."
+changed_quantity: token_level_advantage_estimator
+intended_effect: provide dense temporal credit on long trajectories
+target_failure_mode: [FM03, FM08, FM12]
+required_assumptions: [critic_generalizes_along_reasoning_prefixes, value_pretraining_reduces_initial_bias]
+known_benefits: [dense_credit, lower_policy_gradient_variance, explicit_long_horizon_signal]
+known_side_effects: [extra_memory_and_compute, value_model_bias, coupled_training_instability]
+supporting_papers: [P-ARXIV-250405118]
+contradicting_papers: [P-ARXIV-240214740, P-ARXIV-240203300]
+equivalent_forms: [actor_critic, pretrained_value_baseline]
+incompatible_mechanisms: [strict_critic_free_budget]
+open_questions: [critic_calibration_on_wrong_but_plausible_prefixes, value_error_vs_process_reward_error]

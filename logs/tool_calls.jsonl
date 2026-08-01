@@ -1,1 +1,2 @@
 {"timestamp":"2026-08-01T20:00:00+08:00","phase":"P1","tool_class":"mineru_precise_api","purpose":"parse_core_and_missing_papers","status":"completed"}
+{"timestamp":"2026-08-01T22:00:00+08:00","phase":"P3","tool_class":"arxiv_and_mineru_precise_api","purpose":"acquire_and_parse_20_targeted_papers","status":"completed","batch_id":"20a0d05d-8fcb-4694-9052-d4dba8bc83b1"}

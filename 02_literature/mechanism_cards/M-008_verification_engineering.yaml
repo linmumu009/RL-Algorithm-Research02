@@ -1,0 +1,15 @@
+mechanism_id: M-008
+canonical_name: verification_engineering
+aliases: [hybrid_verifier, rule_plus_llm_verifier, self_verification]
+mathematical_form: "r = aggregate(rule_checks, model_judge, optional_self_check); aggregation may be hard or confidence weighted."
+changed_quantity: reward_channel
+intended_effect: expand verifiable coverage and reduce brittle single-verifier failures
+target_failure_mode: [FM09, FM15]
+required_assumptions: [verifier_errors_are_not_perfectly_correlated, added_judge_cost_is_affordable]
+known_benefits: [broader_instruction_coverage, online_critique_signal, explicit_verifier_design]
+known_side_effects: [judge_can_be_gamed, correlated_false_positives, extra_inference_cost]
+supporting_papers: [P-ARXIV-250609942, P-ARXIV-250513445]
+contradicting_papers: [P-ARXIV-260415149, P-ARXIV-251001367]
+equivalent_forms: [verifier_ensemble, self_check_auxiliary_task]
+incompatible_mechanisms: []
+open_questions: [error_correlation_measurement, adversarially_robust_aggregation]

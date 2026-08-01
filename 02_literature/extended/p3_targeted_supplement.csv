@@ -1,0 +1,21 @@
+arxiv_id,short_name,target_gap,selection_reason,arxiv_url,pdf_path,markdown_status
+2510.00915,NoisyVerifierRL,verifier_noise,"Models asymmetric false-positive/false-negative verifier noise and proposes gradient corrections",https://arxiv.org/abs/2510.00915,01_corpus/raw/extended/2510.00915.pdf,parsed
+2604.15149,GamingVerifiers,reward_hacking,"Controlled evidence that extensional verifiers induce shortcut strategies",https://arxiv.org/abs/2604.15149,01_corpus/raw/extended/2604.15149.pdf,parsed
+2510.01367,TRACE,reward_hacking_detection,"Tests implicit hacking via effort-sensitive truncated reasoning curves",https://arxiv.org/abs/2510.01367,01_corpus/raw/extended/2510.01367.pdf,parsed
+2508.17511,SchoolOfRewardHacks,reward_hacking_transfer,"Studies whether learned reward hacking transfers to broader misalignment",https://arxiv.org/abs/2508.17511,01_corpus/raw/extended/2508.17511.pdf,parsed
+2506.09942,VerIF,verification_engineering,"Combines rule and model verification for instruction-following RLVR",https://arxiv.org/abs/2506.09942,01_corpus/raw/extended/2506.09942.pdf,parsed
+2505.13445,RISE,self_verification,"Jointly trains solution generation and self-verification online",https://arxiv.org/abs/2505.13445,01_corpus/raw/extended/2505.13445.pdf,parsed
+2505.21493,VeriFree,verifier_dependence,"Provides a verifier-free comparison point for general-domain reasoning",https://arxiv.org/abs/2505.21493,01_corpus/raw/extended/2505.21493.pdf,parsed
+2505.12763,RMOveroptEvaluation,reward_overoptimization,"Connects reward-model evaluation to downstream policy overoptimization",https://arxiv.org/abs/2505.12763,01_corpus/raw/extended/2505.12763.pdf,parsed
+2404.19409,RCfD,reward_overoptimization,"Calibrates rewards against demonstrations instead of maximizing the proxy without bound",https://arxiv.org/abs/2404.19409,01_corpus/raw/extended/2404.19409.pdf,parsed
+2310.04373,ConstrainedRLHF,reward_overoptimization,"Uses constraints and learned multipliers to keep component rewards within useful ranges",https://arxiv.org/abs/2310.04373,01_corpus/raw/extended/2310.04373.pdf,parsed
+2401.00243,UPRLHF,reward_uncertainty,"Penalizes reward uncertainty using diverse low-rank ensembles",https://arxiv.org/abs/2401.00243,01_corpus/raw/extended/2401.00243.pdf,parsed
+2507.07451,RLEP,trajectory_replay,"Replays verified successful reasoning trajectories and measures convergence efficiency",https://arxiv.org/abs/2507.07451,01_corpus/raw/extended/2507.07451.pdf,parsed
+2603.23355,ReVal,off_policy_value_learning,"Uses value-based Bellman updates and replay buffers for LLM reasoning",https://arxiv.org/abs/2603.23355,01_corpus/raw/extended/2603.23355.pdf,parsed
+2505.24298,AReaL,async_staleness,"Fully asynchronous RL system with explicit staleness control and matched-quality speed evidence",https://arxiv.org/abs/2505.24298,01_corpus/raw/extended/2505.24298.pdf,parsed
+2604.26256,DORA,async_long_tail,"Multi-version streaming rollout targets long-tail blocking while bounding staleness",https://arxiv.org/abs/2604.26256,01_corpus/raw/extended/2604.26256.pdf,parsed
+2606.18967,EfficientRollout,rollout_latency,"Measures rollout and end-to-end latency using self-speculative decoding",https://arxiv.org/abs/2606.18967,01_corpus/raw/extended/2606.18967.pdf,parsed
+2409.19256,HybridFlow,rlhf_throughput,"Separates RLHF dataflow orchestration and reports system throughput",https://arxiv.org/abs/2409.19256,01_corpus/raw/extended/2409.19256.pdf,parsed
+2405.01481,NeMoAligner,scale_efficiency,"Provides large-scale alignment toolkit evidence up to thousand-GPU operation",https://arxiv.org/abs/2405.01481,01_corpus/raw/extended/2405.01481.pdf,parsed
+2405.11143,OpenRLHF,resource_scheduling,"Documents resource scheduling and model placement for scalable RLHF",https://arxiv.org/abs/2405.11143,01_corpus/raw/extended/2405.11143.pdf,parsed
+2406.14088,ReaLHF,parameter_reallocation,"Quantifies execution-plan and parameter-reallocation speedups",https://arxiv.org/abs/2406.14088,01_corpus/raw/extended/2406.14088.pdf,parsed

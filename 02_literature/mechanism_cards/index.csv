@@ -1,0 +1,16 @@
+mechanism_id,canonical_name,target_failure_modes,status
+M-001,group_relative_control_variate,"FM04;FM16",established
+M-002,length_weighted_outcome_gradient,"FM01;FM14",fundamental_tradeoff
+M-003,token_level_clipped_surrogate,"FM05;FM06;FM14",established_but_biased
+M-004,sequence_level_trust_region,"FM05;FM06;FM07",emerging
+M-005,smooth_adaptive_importance_gate,"FM05;FM06",emerging
+M-006,learned_value_and_decoupled_gae,"FM03;FM08;FM12",established_conditional
+M-007,implicit_process_reward,"FM03;FM09;FM15",emerging
+M-008,verification_engineering,"FM09;FM15",established_conditional
+M-009,asymmetric_verifier_noise_correction,"FM09",emerging_direct
+M-010,proxy_reward_conservatism,"FM09;FM11",multi_family
+M-011,on_policy_progress_reward,"FM10;FM11",established_domain_specific
+M-012,verified_success_replay,"FM06;FM11;FM12",emerging
+M-013,value_based_replay,"FM03;FM06;FM12",emerging
+M-014,bounded_staleness_async_rollout,"FM06;FM07;FM12",system_algorithm_codesign
+M-015,distribution_preserving_rollout_acceleration,"FM12",system_mechanism

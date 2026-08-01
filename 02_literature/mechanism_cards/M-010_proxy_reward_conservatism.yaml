@@ -1,0 +1,15 @@
+mechanism_id: M-010
+canonical_name: proxy_reward_conservatism
+aliases: [reward_calibration, constrained_rlhf, uncertainty_penalty]
+mathematical_form: "Optimize calibrated or constrained proxy reward rather than unbounded E[r_hat]; penalties use demonstration distance, learned multipliers, or reward uncertainty."
+changed_quantity: optimized_reward_objective
+intended_effect: prevent policy movement into reward-model error regions
+target_failure_mode: [FM09, FM11]
+required_assumptions: [demonstrations_or_uncertainty_track_true_quality, constraints_cover_relevant_failure_dimensions]
+known_benefits: [explicit_overoptimization_control, interpretable_safety_budget]
+known_side_effects: [conservative_underoptimization, expensive_ensembles, threshold_tuning]
+supporting_papers: [P-ARXIV-240419409, P-ARXIV-231004373, P-ARXIV-240100243]
+contradicting_papers: [P-ARXIV-250512763]
+equivalent_forms: [uncertainty_regularization, trust_region_in_reward_space, reward_target_matching]
+incompatible_mechanisms: []
+open_questions: [transfer_from_learned_reward_to_rule_verifier_noise, calibrating_multiple_correlated_proxies]

@@ -1,0 +1,15 @@
+mechanism_id: M-005
+canonical_name: smooth_adaptive_importance_gate
+aliases: [SAPO, soft_gate, importance_weight_clipping]
+mathematical_form: "g(rho_t; tau, boundary) continuously attenuates stale-token gradients instead of setting them abruptly to zero."
+changed_quantity: importance_weight_gate_shape
+intended_effect: retain useful gradients while limiting off-policy influence
+target_failure_mode: [FM05, FM06]
+required_assumptions: [gate_temperature_transfers_across_tasks, soft_bias_is_preferable_to_hard_truncation]
+known_benefits: [nonzero_gradient_support, token_adaptive_control]
+known_side_effects: [new_temperature_choice, biased_gradient_remains, limited_independent_replication]
+supporting_papers: [P-ARXIV-250613585, P-ARXIV-251120347]
+contradicting_papers: [P-ARXIV-250718071]
+equivalent_forms: [clamped_importance_weight, sigmoid_gate_family]
+incompatible_mechanisms: [M-004_as_the_same_gate_function]
+open_questions: [optimal_gate_from_bias_variance_objective, robustness_to_extreme_staleness]

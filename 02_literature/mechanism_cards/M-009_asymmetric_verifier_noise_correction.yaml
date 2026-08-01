@@ -1,0 +1,15 @@
+mechanism_id: M-009
+canonical_name: asymmetric_verifier_noise_correction
+aliases: [backward_reward_correction, forward_gradient_correction, verifier_appeal]
+mathematical_form: "Observed binary reward is corrected using false-positive/false-negative channel rates; forward correction can align the expected update using the FN rate."
+changed_quantity: reward_or_score_function_weight
+intended_effect: recover a clean-gradient direction under imperfect verification
+target_failure_mode: [FM09]
+required_assumptions: [noise_channel_is_estimable, verifier_errors_fit_the_channel_model]
+known_benefits: [direct_noise_intervention, lightweight_training_hook, separates_fp_from_fn]
+known_side_effects: [rate_estimation_error, instance_dependent_noise_breaks_model, correction_variance]
+supporting_papers: [P-ARXIV-251000915]
+contradicting_papers: [P-ARXIV-260415149]
+equivalent_forms: [label_noise_backward_correction, score_function_reweighting]
+incompatible_mechanisms: []
+open_questions: [instance_dependent_and_adversarial_noise, online_rate_drift]
