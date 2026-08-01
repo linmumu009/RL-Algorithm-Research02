@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision Record",
+  "type": "object",
+  "required": ["decision_id", "phase", "action", "rationale", "evidence", "budget_impact", "next_allowed_task"],
+  "properties": {
+    "decision_id": {"type": "string"},
+    "action": {"enum": ["CONTINUE", "LIMITED_REPAIR", "PAUSE", "REJECT", "GLOBAL_RESTART", "RESTRUCTURE_AND_AUDIT"]},
+    "evidence": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

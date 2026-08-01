@@ -1,0 +1,42 @@
+project_id: rl_algorithm_discovery_v1
+current_phase: P2_CORE15_AUDIT
+current_gate: G2
+phase_status: awaiting_human_approval
+selected_problem: null
+
+budget:
+  total_units: 100
+  used_units: 10
+  infrastructure_cap: 10
+  exploration_reserve: 30
+  scale_up_reserve: 30
+
+branches:
+  active: []
+  paused: []
+  rejected: []
+
+core15:
+  status: pass_with_replacements_awaiting_approval
+  coverage_score: 89
+  missing_axes:
+    - independent_verifier_noise_intervention
+    - safe_long_trajectory_reuse
+    - latency_vs_throughput_evidence
+  replacement_required: true
+  candidate_set: core15_v2
+
+latest_decision:
+  decision_id: D-0002
+  action: PAUSE_AT_G2
+  rationale: The replacement core set passes quantitative coverage, but construction rules require human approval before P3.
+
+blockers: []
+next_allowed_task: Correct evidence or metadata if needed; otherwise wait for human approval of core15_v2.
+
+hard_constraints:
+  max_local_repairs_per_hypothesis: 2
+  max_early_budget_per_hypothesis: 20
+  max_scale_up_candidates: 2
+  min_parallel_branches: 4
+  max_parallel_branches: 6

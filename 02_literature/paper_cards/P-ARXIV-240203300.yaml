@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-240203300
+title: "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models"
+authors: "Zhihong Shao et al."
+year: 2024
+source_file: 01_corpus/raw/core_candidates/2402.03300_DeepSeekMath.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.md
+paper_type: foundational_algorithm
+problem_addressed: "PPO 的 critic 带来显存与训练成本，数学推理 RL 需要低成本组内基线。"
+core_claim: "GRPO 用同一提示的组内相对奖励估计优势，可省去价值模型并提升数学推理。"
+algorithm_family: group_relative_policy_gradient
+design_axes: [critic_free, group_baseline, token_policy_gradient, clipping, outcome_reward]
+mechanism_changes: "以组内奖励均值/标准差构造相对优势，替代显式 critic。"
+objective_function: "PPO-style clipped surrogate with group-relative advantages and KL regularization."
+gradient_estimator: "group-relative Monte Carlo policy gradient"
+baseline_or_critic: "group reward statistics; no learned critic"
+sampling_strategy: "multiple completions per prompt"
+regularization: "importance-ratio clipping and KL"
+credit_assignment: "outcome reward broadcast over response tokens"
+off_policy_usage: "limited; assumes fresh policy rollouts"
+length_handling: "per-response/token normalization can induce length bias"
+compute_tradeoff: "removes value model but requires grouped rollouts"
+main_evidence: "DeepSeekMath 7B mathematical reasoning evaluations and RL ablations."
+reported_failures: [length_bias, zero_variance_groups, sparse_credit, clipping_bias]
+limitations: "Mechanism evidence is entangled with data and training recipe; later work identifies objective bias."
+unverified_assumptions: "group samples are comparable and reward scale is informative"
+closest_prior_work: [PPO, REINFORCE_with_baseline]
+reproducibility_status: partial_open
+relevance_to_project: core_origin
+confidence: high

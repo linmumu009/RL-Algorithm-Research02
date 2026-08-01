@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-240912917
+title: "Training Language Models to Self-Correct via Reinforcement Learning"
+authors: "Aviral Kumar et al."
+year: 2024
+source_file: 01_corpus/raw/extended/2409.12917.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/Training_Language_Models_to_Self-Correct_via_Reinforcement_Learning.md
+paper_type: algorithm_diagnostic
+problem_addressed: "离线自纠错数据存在分布偏移，普通 RL/SFT 容易学成表面改写或行为坍缩。"
+core_claim: "两阶段 on-policy 多轮 RL 与 progress reward 可训练真正的内生自纠错。"
+algorithm_family: multi_turn_online_rl
+design_axes: [multi_turn, self_generated_data, progress_reward, behavior_collapse]
+mechanism_changes: "先约束第一轮策略建立初始化，再以第二轮改进奖励联合优化两轮。"
+objective_function: "multi-turn policy objective with progress reward shaping"
+gradient_estimator: "online policy gradient"
+baseline_or_critic: "implementation uses established RL machinery"
+sampling_strategy: "self-generated correction trajectories"
+regularization: "first-turn closeness constraint and progress bonus"
+credit_assignment: "reward distinguishes first answer and correction improvement"
+off_policy_usage: "on-policy to avoid correction-distribution mismatch"
+length_handling: "not a central mechanism"
+compute_tradeoff: "sequential correction rollouts cost more than single response"
+main_evidence: "MATH and HumanEval self-correction gains plus SFT/RL failure analysis."
+reported_failures: [distribution_shift, behavior_collapse, superficial_revision]
+limitations: "Evidence centers on self-correction and proprietary Gemini base models."
+unverified_assumptions: "available reward reliably scores both attempts"
+closest_prior_work: [STaR, multi_turn_RL, self_training]
+reproducibility_status: partial
+relevance_to_project: failure_mode_diversity
+confidence: high

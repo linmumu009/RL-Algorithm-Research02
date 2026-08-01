@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-250608007
+title: "Reinforcement Pre-Training"
+authors: "Qingxiu Dong et al."
+year: 2025
+source_file: 01_corpus/raw/extended/2506.08007.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/Reinforcement_Pre-Training.md
+paper_type: paradigm
+problem_addressed: "RLHF/RLVR 受人工偏好和可验证题目规模限制，难扩展到通用预训练。"
+core_claim: "把 next-token prediction 重写为带可验证奖励的推理任务，可把 RL 扩展到网页语料。"
+algorithm_family: reinforcement_pretraining
+design_axes: [pretraining_stage, intrinsic_verifiable_reward, scale, exploration]
+mechanism_changes: "模型先推理再预测下一 token，并以真实下一 token 提供规则奖励。"
+objective_function: "RL objective over next-token reasoning and prediction accuracy"
+gradient_estimator: "verifiable-reward policy optimization"
+baseline_or_critic: "implementation-dependent"
+sampling_strategy: "large-scale text contexts"
+regularization: "pretraining mixture and policy controls"
+credit_assignment: "prediction outcome rewards reasoning traces"
+off_policy_usage: "not the primary contribution"
+length_handling: "reasoning overhead introduces compute-length tradeoff"
+compute_tradeoff: "uses abundant unlabeled text but adds reasoning tokens per prediction"
+main_evidence: "next-token accuracy scaling curves and downstream reinforcement fine-tuning."
+reported_failures: [scarce_verifiable_data, reward_hacking, domain_specificity]
+limitations: "Paradigm differs from post-training and may not directly answer long-CoT optimizer bias."
+unverified_assumptions: "next-token correctness rewards useful transferable reasoning"
+closest_prior_work: [next_token_pretraining, RLVR]
+reproducibility_status: paper_recipe
+relevance_to_project: paradigm_boundary
+confidence: medium

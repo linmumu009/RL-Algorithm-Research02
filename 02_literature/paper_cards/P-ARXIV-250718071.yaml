@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-250718071
+title: "Group Sequence Policy Optimization"
+authors: "Chujie Zheng et al."
+year: 2025
+source_file: 01_corpus/raw/core_candidates/2507.18071v2_GSPO.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/Group_Sequence_Policy_Optimization.md
+paper_type: algorithm
+problem_addressed: "token-level importance ratios在长序列和 MoE 中方差高且破坏序列一致性。"
+core_claim: "序列级 importance ratio、裁剪和奖励可提高训练稳定性与效率。"
+algorithm_family: sequence_level_group_policy
+design_axes: [sequence_ratio, sequence_clipping, moe_stability, off_policy_control]
+mechanism_changes: "将重要性比和裁剪单元从 token 提升到整条序列。"
+objective_function: "sequence-level clipped group policy objective"
+gradient_estimator: "group-relative sequence-coherent policy gradient"
+baseline_or_critic: "group baseline; no critic"
+sampling_strategy: "grouped rollouts"
+regularization: "sequence-level clipping"
+credit_assignment: "sequence reward with shared sequence gate"
+off_policy_usage: "controls stale trajectories at sequence level"
+length_handling: "geometric/length-normalized sequence likelihood"
+compute_tradeoff: "simpler RL infrastructure but may discard whole-sequence gradients"
+main_evidence: "GRPO comparisons, clipping-fraction analysis and MoE training studies."
+reported_failures: [token_ratio_variance, moe_routing_mismatch, whole_sequence_suppression]
+limitations: "Sequence gate can suppress useful tokens because of a few outliers."
+unverified_assumptions: "sequence likelihood is the right trust-region unit"
+closest_prior_work: [GRPO, PPO]
+reproducibility_status: paper_recipe
+relevance_to_project: core_algorithm
+confidence: high

@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-251201374
+title: "Stabilizing Reinforcement Learning with LLMs: Formulation and Practices"
+authors: "Chujie Zheng et al."
+year: 2025
+source_file: 01_corpus/raw/core_candidates/2512.01374v3_Stabilizing-RL-with-LLMs.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/Stabilizing_Reinforcement_Learning_with_LLMs_Formulation_and_Practices.md
+paper_type: theory_diagnostic
+problem_addressed: "token surrogate 何时近似真实 sequence reward 缺乏清晰条件，MoE 与策略陈旧导致不稳定。"
+core_claim: "只有训练—推理差异和 policy staleness 足够小时，一阶 token surrogate 才可靠。"
+algorithm_family: policy_gradient_stability
+design_axes: [sequence_objective, token_surrogate, staleness, importance_sampling, routing_replay]
+mechanism_changes: "给出近似条件，并用 importance correction、clipping 和 Routing Replay 控制误差。"
+objective_function: "first-order token surrogate to expected sequence reward"
+gradient_estimator: "importance-corrected policy gradient"
+baseline_or_critic: "MiniRL/basic policy gradient focus"
+sampling_strategy: "on-policy and controlled off-policy comparisons"
+regularization: "clipping under policy staleness"
+credit_assignment: "analyzes token surrogate rather than proposing dense rewards"
+off_policy_usage: "explicitly studies stale policy and routing replay"
+length_handling: "sequence-to-token approximation is length-sensitive"
+compute_tradeoff: "routing replay and fresh rollouts trade throughput for stability"
+main_evidence: "Derivation plus large MoE on/off-policy experiments."
+reported_failures: [policy_staleness, train_inference_mismatch, moe_routing_mismatch, unstable_surrogate]
+limitations: "Large-scale evidence is costly and model-family specific."
+unverified_assumptions: "first-order approximation captures relevant training regime"
+closest_prior_work: [REINFORCE, GRPO, GSPO]
+reproducibility_status: paper_recipe
+relevance_to_project: theory_and_stability_core
+confidence: high

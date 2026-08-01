@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-260723364
+title: "On the Impossibility of Unbiased and Length-Invariant Policy Optimization with Outcome Rewards"
+authors: "Fei Ding et al."
+year: 2026
+source_file: 01_corpus/raw/core_candidates/2607.23364v1_Unbiased-Length-Invariant-Impossibility.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/On_the_Impossibility_of_Unbiased_and_Length-Invariant_Policy_Optimization_with_Outcome_Rewards.md
+paper_type: negative_theory
+problem_addressed: "GRPO 与 Dr. GRPO 关于无偏性和长度公平的主张互相冲突。"
+core_claim: "在 outcome reward + GRPO 设置下，任何长度权重都不能同时满足梯度无偏与长度不变。"
+algorithm_family: length_bias_impossibility
+design_axes: [length_weighting, unbiased_gradient, length_invariance, outcome_reward]
+mechanism_changes: "给出 f_alpha(L) 权衡族；GRPO 与 Dr. GRPO 位于不同端点。"
+objective_function: "parametric length-weighted policy-gradient family"
+gradient_estimator: "outcome-reward policy gradient"
+baseline_or_critic: "group-relative setting"
+sampling_strategy: "theoretical group rollouts"
+regularization: "not central"
+credit_assignment: "outcome reward broadcast over variable-length sequences"
+off_policy_usage: "not central"
+length_handling: "proves unavoidable tradeoff between unbiasedness and length invariance"
+compute_tradeoff: "theoretical boundary; no added compute"
+main_evidence: "Impossibility theorem, corollaries and quantitative GRPO/Dr. GRPO bias analysis."
+reported_failures: [gradient_bias, length_bias, incompatible_objectives]
+limitations: "Applies to the stated outcome-reward/group-relative formulation; denser feedback may escape the theorem."
+unverified_assumptions: "deployment matches theorem conditions"
+closest_prior_work: [GRPO, DrGRPO]
+reproducibility_status: theory
+relevance_to_project: boundary_and_negative_core
+confidence: high

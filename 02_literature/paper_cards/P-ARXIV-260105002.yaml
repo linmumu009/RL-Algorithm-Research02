@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-260105002
+title: "On the Hidden Objective Biases of Group-based Reinforcement Learning"
+authors: "Aleksandar Fontana et al."
+year: 2026
+source_file: 01_corpus/raw/core_candidates/2601.05002v1_Hidden-Objective-Biases.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/On_the_Hidden_Objective_Biases_of_Group-based_Reinforcement_Learning.md
+paper_type: negative_diagnostic
+problem_addressed: "GRPO 风格 surrogate 与真实 reward objective 存在结构错配。"
+core_claim: "非均匀组权重、AdamW 与重复更新共同产生 shared-prefix bias、奖励缩放不敏感和动量越界。"
+algorithm_family: objective_bias_analysis
+design_axes: [group_weighting, shared_prefix, optimizer_interaction, clipping, repeated_updates]
+mechanism_changes: "不提出新算法；统一分析多个 group-based surrogate。"
+objective_function: "unified GRPO-style surrogate family"
+gradient_estimator: "analytical decomposition of token gradients"
+baseline_or_critic: "group-based objectives"
+sampling_strategy: "analysis plus controlled examples"
+regularization: "studies clipping interaction with AdamW momentum"
+credit_assignment: "reveals non-uniform gradient on shared prefixes"
+off_policy_usage: "multiple optimization steps create mismatch"
+length_handling: "token weighting and prefixes introduce systematic biases"
+compute_tradeoff: "diagnostic; no direct efficiency claim"
+main_evidence: "Theoretical propositions and optimizer analyses."
+reported_failures: [shared_prefix_bias, reward_scale_insensitivity, momentum_overshoot, surrogate_mismatch]
+limitations: "Does not supply a complete replacement optimizer or broad empirical validation."
+unverified_assumptions: "unified surrogate captures deployed implementations"
+closest_prior_work: [GRPO, DrGRPO, DAPO]
+reproducibility_status: theory
+relevance_to_project: negative_result_core
+confidence: high

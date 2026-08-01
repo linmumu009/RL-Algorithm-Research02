@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-250320783
+title: "Understanding R1-Zero-Like Training: A Critical Perspective"
+authors: "Zichen Liu et al."
+year: 2025
+source_file: 01_corpus/raw/core_candidates/2503.20783_DrGRPO.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.md
+paper_type: diagnostic_algorithm
+problem_addressed: "R1-Zero 训练收益可能被基座模型、提示模板和 GRPO 长度偏差混淆。"
+core_claim: "移除 GRPO 的组内标准差与响应长度归一化可减少难题放大和长度偏差。"
+algorithm_family: grpo_diagnostic
+design_axes: [advantage_normalization, length_bias, base_model_diagnostics, prompt_bias]
+mechanism_changes: "Dr. GRPO 使用未除以组内标准差的中心化奖励，并调整 loss 归一化。"
+objective_function: "group-centered policy gradient without reward standard-deviation normalization"
+gradient_estimator: "group-relative policy gradient"
+baseline_or_critic: "group mean; no critic"
+sampling_strategy: "grouped on-policy rollouts"
+regularization: "implementation-dependent clipping"
+credit_assignment: "outcome reward; removes per-response length normalization"
+off_policy_usage: "not the primary focus"
+length_handling: "reduces response-level bias but introduces length-dependent contribution"
+compute_tradeoff: "similar to GRPO"
+main_evidence: "Base-model, template and question-coverage diagnostics plus GRPO/Dr. GRPO comparisons."
+reported_failures: [pretraining_confounds, template_confounds, incorrect_response_length_growth]
+limitations: "Later impossibility analysis shows 'unbiased' and length-invariant cannot both hold."
+unverified_assumptions: "token contribution without length normalization is the desired objective"
+closest_prior_work: [GRPO]
+reproducibility_status: code_available
+relevance_to_project: core_diagnostic
+confidence: high

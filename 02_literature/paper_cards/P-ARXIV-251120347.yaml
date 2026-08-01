@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-251120347
+title: "Soft Adaptive Policy Optimization"
+authors: "Chang Gao et al."
+year: 2025
+source_file: 01_corpus/raw/core_candidates/2511.20347v2_Soft-Adaptive-Policy-Optimization.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/Soft_Adaptive_Policy_Optimization.md
+paper_type: algorithm
+problem_addressed: "GRPO/GSPO 硬裁剪在少数高偏移 token 出现时造成梯度骤停。"
+core_claim: "连续温度门能按 token 软降权离策略更新，同时保持序列一致性。"
+algorithm_family: soft_gated_policy_optimization
+design_axes: [soft_gate, token_adaptation, sequence_coherence, off_policy]
+mechanism_changes: "用可微 sigmoid/温度门替代硬裁剪区间。"
+objective_function: "soft-gated importance-weighted policy objective"
+gradient_estimator: "token-adaptive group policy gradient"
+baseline_or_critic: "group baseline; no critic"
+sampling_strategy: "grouped rollouts"
+regularization: "continuous gate-defined trust region"
+credit_assignment: "outcome reward with token-selective gating"
+off_policy_usage: "smooth attenuation of stale tokens"
+length_handling: "sequence-coherent gate; length bias remains a separate concern"
+compute_tradeoff: "more useful gradients than hard clipping with modest extra gate computation"
+main_evidence: "Controlled comparisons and Qwen3-VL training."
+reported_failures: [brittle_hard_clipping, token_ratio_variance, off_policy_instability]
+limitations: "Gate family and temperature introduce design choices; long-run independent evidence is limited."
+unverified_assumptions: "smooth gate shape transfers across models and tasks"
+closest_prior_work: [GRPO, GSPO, CISPO]
+reproducibility_status: paper_recipe
+relevance_to_project: core_algorithm
+confidence: medium_high

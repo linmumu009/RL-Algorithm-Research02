@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mechanism Card",
+  "type": "object",
+  "required": ["mechanism_id", "canonical_name", "changed_quantity", "intended_effect", "target_failure_mode", "supporting_papers"],
+  "properties": {
+    "mechanism_id": {"type": "string"},
+    "canonical_name": {"type": "string"},
+    "aliases": {"type": "array", "items": {"type": "string"}},
+    "changed_quantity": {"type": "string"},
+    "intended_effect": {"type": "string"},
+    "target_failure_mode": {"type": "array", "items": {"type": "string"}},
+    "supporting_papers": {"type": "array", "items": {"type": "string"}},
+    "contradicting_papers": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

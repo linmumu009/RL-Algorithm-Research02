@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hypothesis Card",
+  "type": "object",
+  "required": ["hypothesis_id", "target_problem", "causal_claim", "mechanism", "falsifiable_predictions", "cheapest_falsification_test", "failure_threshold", "estimated_budget", "status", "repair_count"],
+  "properties": {
+    "hypothesis_id": {"type": "string"},
+    "status": {"enum": ["IDEA", "SCREENING", "PREREGISTERED", "PAUSED", "REJECTED_EQUIVALENT", "REJECTED_NO_MECHANISM", "REJECTED_FAILED_PREDICTION", "REJECTED_TOO_EXPENSIVE", "REJECTED_NOT_NOVEL", "REJECTED_UNSTABLE"]},
+    "repair_count": {"type": "integer", "minimum": 0, "maximum": 2},
+    "estimated_budget": {"type": "number", "minimum": 0, "maximum": 20}
+  },
+  "additionalProperties": true
+}

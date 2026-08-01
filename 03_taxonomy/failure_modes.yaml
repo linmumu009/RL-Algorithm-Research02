@@ -1,0 +1,33 @@
+failure_modes:
+  - id: FM01
+    name: response_length_bias
+  - id: FM02
+    name: shared_prefix_gradient_bias
+  - id: FM03
+    name: sparse_outcome_credit
+  - id: FM04
+    name: zero_variance_or_zero_gradient_groups
+  - id: FM05
+    name: hard_clipping_gradient_loss
+  - id: FM06
+    name: policy_staleness
+  - id: FM07
+    name: train_inference_or_moe_routing_mismatch
+  - id: FM08
+    name: value_model_bias
+  - id: FM09
+    name: reward_hacking_or_noisy_verifier
+  - id: FM10
+    name: entropy_or_behavior_collapse
+  - id: FM11
+    name: correction_distribution_shift
+  - id: FM12
+    name: long_context_rollout_cost
+  - id: FM13
+    name: optimizer_momentum_overshoot
+  - id: FM14
+    name: surrogate_true_objective_mismatch
+  - id: FM15
+    name: scarce_verifiable_or_process_labels
+  - id: FM16
+    name: group_size_variance_tradeoff

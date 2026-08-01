@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Result Card",
+  "type": "object",
+  "required": ["result_id", "experiment_id", "raw_artifacts", "primary_metric", "decision_relevance", "created_at"],
+  "properties": {
+    "result_id": {"type": "string"},
+    "experiment_id": {"type": "string"},
+    "raw_artifacts": {"type": "array", "items": {"type": "string"}},
+    "created_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,16 @@
+aliases:
+  grpo:
+    canonical: Group Relative Policy Optimization
+    caution: "不要与 Group-Robust Preference Optimization 混淆"
+  dapo:
+    canonical: Decoupled Clip and Dynamic Sampling Policy Optimization
+    caution: "不要与 Direct Advantage Policy Optimization 混淆"
+  sapo:
+    canonical: Soft Adaptive Policy Optimization
+    caution: "不要与 Self-Augmented Preference Optimization 混淆"
+  cispo:
+    canonical: Clipped Importance Sampling Policy Optimization
+  gspo:
+    canonical: Group Sequence Policy Optimization
+  rloo:
+    canonical: REINFORCE Leave-One-Out

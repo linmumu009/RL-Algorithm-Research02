@@ -1,0 +1,3 @@
+branch_id,status,phase,budget_units,latest_decision,evidence
+corpus_audit,COMPLETED,P1,5,D-0001,01_corpus/inventory.csv
+core15_audit,PAUSED_AT_GATE,P2,5,D-0002,10_deliverables/core15_audit.md

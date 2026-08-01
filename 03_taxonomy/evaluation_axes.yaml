@@ -1,0 +1,14 @@
+evaluation_axes:
+  - primary_task_quality
+  - failure_scenario_quality
+  - training_stability
+  - gradient_statistics
+  - effective_token_fraction
+  - sample_efficiency
+  - rollout_cost
+  - wall_clock_latency
+  - peak_memory
+  - seed_variance
+  - cross_task_transfer
+  - cross_scale_transfer
+  - mechanism_specific_ablation

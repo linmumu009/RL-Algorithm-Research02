@@ -1,0 +1,16 @@
+paper_id,short_name,policy_update,critic_baseline,advantage_estimation,sequence_token_objective,importance_clipping,kl_entropy,reward_process,group_comparison,data_sampling,on_off_policy,long_credit,length_bias,exploration_collapse,stability_gradient,rollout_efficiency,reward_noise,transfer_scale,negative_failure
+P-ARXIV-240203300,GRPO,3,3,3,2,3,2,1,3,1,1,1,2,1,2,3,1,2,1
+P-ARXIV-240214740,RLOO,3,3,3,1,0,2,0,3,1,1,1,1,1,2,3,1,2,2
+P-ARXIV-250314476,DAPO,3,2,2,3,3,1,2,3,3,1,1,3,2,3,3,1,2,2
+P-ARXIV-250320783,DrGRPO,2,2,3,3,1,0,0,3,2,0,1,3,1,2,2,0,2,3
+P-ARXIV-250405118,VAPO,3,3,3,3,3,2,2,0,1,1,3,3,1,3,2,1,2,2
+P-ARXIV-250718071,GSPO,3,2,2,3,3,1,1,3,1,3,1,2,1,3,3,0,3,2
+P-ARXIV-250613585,CISPO,3,2,2,3,3,1,1,2,2,3,1,2,1,3,3,1,3,2
+P-ARXIV-251120347,SAPO,3,2,2,3,3,1,1,3,1,3,1,2,1,3,3,0,3,2
+P-ARXIV-250201456,PRIME,2,1,3,3,0,2,3,1,1,2,3,2,1,2,2,3,2,2
+P-ARXIV-240912917,SCoRe,2,1,2,2,0,3,3,0,3,3,3,1,3,2,1,2,2,3
+P-ARXIV-250608007,RPT,2,1,2,2,0,1,3,0,3,1,2,1,3,2,2,2,3,2
+P-ARXIV-251201374,StabilizingRL,3,1,2,3,3,1,0,1,1,3,1,2,0,3,2,0,3,3
+P-ARXIV-260105002,HiddenBiases,2,1,2,3,3,0,0,3,0,2,2,3,0,3,1,0,1,3
+P-ARXIV-260301162,GRPOUStatistic,2,3,3,1,0,0,0,3,2,0,1,1,0,2,3,0,2,2
+P-ARXIV-260723364,LengthImpossibility,2,1,3,3,0,0,0,3,0,0,2,3,0,2,1,0,1,3

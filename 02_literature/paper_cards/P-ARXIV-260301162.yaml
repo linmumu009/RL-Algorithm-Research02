@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-260301162
+title: "Demystifying Group Relative Policy Optimization: Its Policy Gradient is a U-Statistic"
+authors: "Hongyi Zhou et al."
+year: 2026
+source_file: 01_corpus/raw/core_candidates/2603.01162v3_GRPO-U-Statistic.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/Demystifying_Group_Relative_Policy_Optimization_Its_Policy_Gradient_is_a_U-Statistic.md
+paper_type: theory
+problem_addressed: "GRPO 组相对梯度的有限样本性质与组大小选择缺少理论解释。"
+core_claim: "GRPO 梯度是 U-statistic，可推导 MSE、次优间隙分布和最优组大小缩放律。"
+algorithm_family: grpo_statistical_theory
+design_axes: [group_size, gradient_variance, asymptotics, oracle_equivalence]
+mechanism_changes: "重新表达并分析 GRPO 梯度，而非加入训练组件。"
+objective_function: "group-relative policy objective analyzed as a U-statistic"
+gradient_estimator: "U-statistic group gradient"
+baseline_or_critic: "implicit oracle-like group baseline asymptotically"
+sampling_strategy: "grouped iid responses under stated assumptions"
+regularization: "not central"
+credit_assignment: "outcome-level group gradient"
+off_policy_usage: "not central"
+length_handling: "not a complete length-bias treatment"
+compute_tradeoff: "principled group-size versus variance guidance"
+main_evidence: "Finite-sample theory, asymptotics and group-size experiments."
+reported_failures: [finite_group_variance, poor_group_size_choice]
+limitations: "Guarantees rely on sampling and optimization assumptions that may fail in long-CoT practice."
+unverified_assumptions: "group rollouts satisfy independence and regularity conditions"
+closest_prior_work: [GRPO, U_statistics]
+reproducibility_status: theory_with_experiments
+relevance_to_project: theory_core
+confidence: high

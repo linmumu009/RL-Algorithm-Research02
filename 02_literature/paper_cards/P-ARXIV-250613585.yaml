@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-250613585
+title: "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention"
+authors: "MiniMax team"
+year: 2025
+source_file: 01_corpus/raw/core_candidates/2506.13585v1_MiniMax-M1_CISPO.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/MiniMax-M1_Scaling_Test-Time_Compute_Eficiently_with_Lightning_Attention.md
+paper_type: algorithm_system
+problem_addressed: "硬裁剪会让越界 token 失去更新，长上下文 RL 的样本效率下降。"
+core_claim: "CISPO 只裁剪重要性权重而保留 token 更新，可提高长推理 RL 效率。"
+algorithm_family: clipped_importance_sampling_policy
+design_axes: [importance_weight_clipping, token_updates, long_context, compute_efficiency]
+mechanism_changes: "clamp importance sampling weight rather than clipping the policy-gradient update."
+objective_function: "importance-weight-clipped token policy objective"
+gradient_estimator: "importance-sampled token policy gradient"
+baseline_or_critic: "group/outcome baseline; no central contribution from critic"
+sampling_strategy: "large-scale diverse RL rollouts"
+regularization: "importance-weight clipping"
+credit_assignment: "outcome reward at token level"
+off_policy_usage: "explicitly tolerates policy mismatch"
+length_handling: "designed for long contexts but not a full length-bias solution"
+compute_tradeoff: "retains more token gradients; demonstrated lower training cost"
+main_evidence: "Controlled Qwen2.5 comparisons and MiniMax-M1 large-scale training."
+reported_failures: [hard_clip_gradient_loss, kernel_precision_mismatch, long_context_cost]
+limitations: "Algorithm evidence is embedded in a model system report; independent reproduction is limited."
+unverified_assumptions: "clipped weights preserve acceptable bias-variance tradeoff"
+closest_prior_work: [GRPO, DAPO]
+reproducibility_status: open_weights_partial_recipe
+relevance_to_project: efficiency_core
+confidence: medium_high

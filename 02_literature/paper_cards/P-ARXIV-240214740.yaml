@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-240214740
+title: "Back to Basics: Revisiting REINFORCE Style Optimization for Learning from Human Feedback in LLMs"
+authors: "Arash Ahmadian et al."
+year: 2024
+source_file: 01_corpus/raw/extended/2402.14740.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/Back_to_Basics_Revisiting_REINFORCE_Style_Optimization_for_Learning_from_Human_Feedback_in_LLMs.md
+paper_type: foundational_baseline
+problem_addressed: "PPO 在 RLHF 中成本高、超参数敏感，许多复杂组件可能并非必要。"
+core_claim: "适配 LLM 场景的 REINFORCE 与 leave-one-out 基线可低成本达到或超过 PPO。"
+algorithm_family: reinforce_leave_one_out
+design_axes: [critic_free, leave_one_out_baseline, online_rl, low_compute]
+mechanism_changes: "用同提示其他样本平均奖励作为基线，移除 learned critic。"
+objective_function: "REINFORCE policy gradient with leave-one-out baseline and optional KL control"
+gradient_estimator: "Monte Carlo policy gradient"
+baseline_or_critic: "leave-one-out reward baseline"
+sampling_strategy: "multiple responses per prompt"
+regularization: "KL to reference policy"
+credit_assignment: "sequence reward assigned across response tokens"
+off_policy_usage: "primarily on-policy"
+length_handling: "does not by itself solve outcome-reward token credit or length bias"
+compute_tradeoff: "lower memory and tuning cost than PPO"
+main_evidence: "RLHF comparisons against PPO, DPO and RAFT-style baselines."
+reported_failures: [high_variance, sparse_credit, group_sample_cost]
+limitations: "Alignment benchmarks do not fully cover long-CoT RLVR dynamics."
+unverified_assumptions: "multiple samples per prompt provide an adequate baseline"
+closest_prior_work: [REINFORCE, PPO, RLOO]
+reproducibility_status: open_method
+relevance_to_project: strong_baseline
+confidence: high

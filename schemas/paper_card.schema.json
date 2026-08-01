@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paper Card",
+  "type": "object",
+  "required": ["paper_id", "title", "source_file", "problem_addressed", "core_claim", "mechanism_changes", "main_evidence", "limitations", "confidence"],
+  "properties": {
+    "paper_id": {"type": "string"},
+    "title": {"type": "string"},
+    "source_file": {"type": "string"},
+    "parsed_text": {"type": "string"},
+    "problem_addressed": {"type": "string"},
+    "core_claim": {"type": "string"},
+    "mechanism_changes": {"type": "string"},
+    "main_evidence": {"type": "string"},
+    "reported_failures": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "string"},
+    "confidence": {"enum": ["low", "medium", "medium_high", "high"]}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-250314476
+title: "DAPO: An Open-Source LLM Reinforcement Learning System at Scale"
+authors: "Qiying Yu et al."
+year: 2025
+source_file: 01_corpus/raw/core_candidates/2503.14476_DAPO.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.md
+paper_type: algorithm_system
+problem_addressed: "GRPO 长 CoT 训练中存在裁剪上限、零梯度组、长度归一化和超长截断问题。"
+core_claim: "Clip-Higher、动态采样、token-level loss 与超长奖励塑形能稳定并扩大推理 RL。"
+algorithm_family: grpo_variant
+design_axes: [decoupled_clipping, dynamic_sampling, token_loss, overlong_shaping]
+mechanism_changes: "上/下裁剪解耦；过滤全对/全错组；按 token 聚合；软惩罚超长响应。"
+objective_function: "GRPO-derived clipped policy objective with decoupled bounds"
+gradient_estimator: "group-relative token policy gradient"
+baseline_or_critic: "group baseline; no critic"
+sampling_strategy: "dynamic resampling of informative groups"
+regularization: "decoupled clipping; no mandatory KL"
+credit_assignment: "outcome reward with token-level loss aggregation"
+off_policy_usage: "mostly on-policy with repeated updates"
+length_handling: "token-level normalization plus overlong reward shaping"
+compute_tradeoff: "higher rollout filtering cost but fewer zero-gradient batches"
+main_evidence: "Open-source 32B training reaches reported AIME 2024 performance with component ablations."
+reported_failures: [entropy_collapse, zero_gradient_groups, long_response_bias, truncation]
+limitations: "Four interventions are coupled; causal contribution is only partially isolated."
+unverified_assumptions: "filtered groups do not distort task distribution"
+closest_prior_work: [GRPO, PPO]
+reproducibility_status: open_code_data_recipe
+relevance_to_project: core_algorithm
+confidence: high

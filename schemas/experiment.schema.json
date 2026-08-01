@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experiment Preregistration",
+  "type": "object",
+  "required": ["experiment_id", "hypothesis_id", "question", "prediction", "null_result_interpretation", "dataset", "model", "baseline", "primary_metric", "seed_policy", "budget_limit", "stop_condition", "success_threshold", "failure_threshold", "code_commit"],
+  "properties": {
+    "experiment_id": {"type": "string"},
+    "hypothesis_id": {"type": "string"},
+    "budget_limit": {"type": "number", "minimum": 0},
+    "code_commit": {"type": "string"}
+  },
+  "additionalProperties": true
+}

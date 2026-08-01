@@ -1,0 +1,16 @@
+paper_id,arxiv_id,short_name,role,pdf_path,markdown_path
+P-ARXIV-240203300,2402.03300,GRPO,foundational,01_corpus/raw/core_candidates/2402.03300_DeepSeekMath.pdf,01_corpus/text_cache/mineru/core_candidates/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.md
+P-ARXIV-240214740,2402.14740,RLOO,baseline,01_corpus/raw/extended/2402.14740.pdf,01_corpus/text_cache/mineru/core_candidates/Back_to_Basics_Revisiting_REINFORCE_Style_Optimization_for_Learning_from_Human_Feedback_in_LLMs.md
+P-ARXIV-250314476,2503.14476,DAPO,algorithm,01_corpus/raw/core_candidates/2503.14476_DAPO.pdf,01_corpus/text_cache/mineru/core_candidates/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.md
+P-ARXIV-250320783,2503.20783,DrGRPO,diagnostic_algorithm,01_corpus/raw/core_candidates/2503.20783_DrGRPO.pdf,01_corpus/text_cache/mineru/core_candidates/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.md
+P-ARXIV-250405118,2504.05118,VAPO,algorithm,01_corpus/raw/core_candidates/2504.05118_VAPO.pdf,01_corpus/text_cache/mineru/core_candidates/VAPO_Efficient_and_Reliable_Reinforcement_Learning_for_Advanced_Reasoning_Tasks.md
+P-ARXIV-250718071,2507.18071,GSPO,algorithm,01_corpus/raw/core_candidates/2507.18071v2_GSPO.pdf,01_corpus/text_cache/mineru/core_candidates/Group_Sequence_Policy_Optimization.md
+P-ARXIV-250613585,2506.13585,CISPO,algorithm_efficiency,01_corpus/raw/core_candidates/2506.13585v1_MiniMax-M1_CISPO.pdf,01_corpus/text_cache/mineru/core_candidates/MiniMax-M1_Scaling_Test-Time_Compute_Eficiently_with_Lightning_Attention.md
+P-ARXIV-251120347,2511.20347,SAPO,algorithm,01_corpus/raw/core_candidates/2511.20347v2_Soft-Adaptive-Policy-Optimization.pdf,01_corpus/text_cache/mineru/core_candidates/Soft_Adaptive_Policy_Optimization.md
+P-ARXIV-250201456,2502.01456,PRIME,process_reward,01_corpus/raw/extended/2502.01456.pdf,01_corpus/text_cache/mineru/core_candidates/PROCESS_REINFORCEMENT_THROUGH_IMPLICIT_RE-WARDS.md
+P-ARXIV-240912917,2409.12917,SCoRe,multi_turn,01_corpus/raw/extended/2409.12917.pdf,01_corpus/text_cache/mineru/core_candidates/Training_Language_Models_to_Self-Correct_via_Reinforcement_Learning.md
+P-ARXIV-250608007,2506.08007,RPT,paradigm,01_corpus/raw/extended/2506.08007.pdf,01_corpus/text_cache/mineru/core_candidates/Reinforcement_Pre-Training.md
+P-ARXIV-251201374,2512.01374,StabilizingRL,theory_diagnostic,01_corpus/raw/core_candidates/2512.01374v3_Stabilizing-RL-with-LLMs.pdf,01_corpus/text_cache/mineru/core_candidates/Stabilizing_Reinforcement_Learning_with_LLMs_Formulation_and_Practices.md
+P-ARXIV-260105002,2601.05002,HiddenBiases,negative_diagnostic,01_corpus/raw/core_candidates/2601.05002v1_Hidden-Objective-Biases.pdf,01_corpus/text_cache/mineru/core_candidates/On_the_Hidden_Objective_Biases_of_Group-based_Reinforcement_Learning.md
+P-ARXIV-260301162,2603.01162,GRPOUStatistic,theory,01_corpus/raw/core_candidates/2603.01162v3_GRPO-U-Statistic.pdf,01_corpus/text_cache/mineru/core_candidates/Demystifying_Group_Relative_Policy_Optimization_Its_Policy_Gradient_is_a_U-Statistic.md
+P-ARXIV-260723364,2607.23364,LengthImpossibility,negative_theory,01_corpus/raw/core_candidates/2607.23364v1_Unbiased-Length-Invariant-Impossibility.pdf,01_corpus/text_cache/mineru/core_candidates/On_the_Impossibility_of_Unbiased_and_Length-Invariant_Policy_Optimization_with_Outcome_Rewards.md

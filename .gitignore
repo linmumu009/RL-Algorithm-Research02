@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.zip
+*.tmp
+01_corpus/text_cache/mineru/**/_artifacts/
+07_results/raw/**/*.ckpt
+07_results/raw/**/*.safetensors

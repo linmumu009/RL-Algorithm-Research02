@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-250201456
+title: "Process Reinforcement through Implicit Rewards"
+authors: "Ganqu Cui et al."
+year: 2025
+source_file: 01_corpus/raw/extended/2502.01456.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/PROCESS_REINFORCEMENT_THROUGH_IMPLICIT_RE-WARDS.md
+paper_type: algorithm
+problem_addressed: "终局奖励稀疏，显式过程奖励模型又依赖昂贵标签并容易 reward hacking。"
+core_claim: "利用策略自身似然变化构造隐式过程奖励，可仅用 outcome label 在线更新过程奖励。"
+algorithm_family: implicit_process_reward
+design_axes: [process_reward, dense_credit, online_reward_update, reward_hacking]
+mechanism_changes: "从策略与参考模型的 token likelihood ratio 提取隐式过程奖励。"
+objective_function: "policy optimization driven by implicit token-level process rewards"
+gradient_estimator: "compatible with multiple advantage estimators"
+baseline_or_critic: "method-dependent"
+sampling_strategy: "online policy rollouts with outcome labels"
+regularization: "implicit reward/reference likelihood constraints"
+credit_assignment: "dense token/step process rewards"
+off_policy_usage: "online reward model updates reduce stale labels"
+length_handling: "finer-grained signal but length calibration remains necessary"
+compute_tradeoff: "removes dedicated PRM labeling/training phase"
+main_evidence: "Reasoning benchmarks and compatibility tests with different policy objectives."
+reported_failures: [sparse_outcome_reward, explicit_prm_cost, reward_hacking]
+limitations: "Implicit reward quality depends on likelihood calibration and outcome labels."
+unverified_assumptions: "likelihood changes identify useful intermediate reasoning"
+closest_prior_work: [process_reward_models, GRPO, PPO]
+reproducibility_status: open_code
+relevance_to_project: credit_assignment_core
+confidence: high

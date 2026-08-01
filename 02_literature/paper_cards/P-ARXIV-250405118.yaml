@@ -1,0 +1,29 @@
+paper_id: P-ARXIV-250405118
+title: "VAPO: Efficient and Reliable Reinforcement Learning for Advanced Reasoning Tasks"
+authors: "Yu Yue et al."
+year: 2025
+source_file: 01_corpus/raw/core_candidates/2504.05118_VAPO.pdf
+parsed_text: 01_corpus/text_cache/mineru/core_candidates/VAPO_Efficient_and_Reliable_Reinforcement_Learning_for_Advanced_Reasoning_Tasks.md
+paper_type: algorithm
+problem_addressed: "长 CoT 下 value bias、异质序列长度与稀疏奖励使 PPO 不稳定。"
+core_claim: "价值预训练、解耦 GAE、长度归一化和正样本 LM loss 可恢复 value-based RL 的稳定性。"
+algorithm_family: value_augmented_ppo
+design_axes: [learned_critic, value_pretraining, decoupled_gae, positive_lm_loss, long_cot]
+mechanism_changes: "为长序列重构 value/advantage 学习，并向正奖励样本加入语言模型监督。"
+objective_function: "PPO surrogate plus value and positive-sample language-model losses"
+gradient_estimator: "GAE-based actor-critic policy gradient"
+baseline_or_critic: "pretrained and separately optimized value model"
+sampling_strategy: "on-policy reasoning trajectories"
+regularization: "PPO clipping and auxiliary LM objective"
+credit_assignment: "decoupled GAE provides token-level temporal signal"
+off_policy_usage: "limited"
+length_handling: "explicit normalization for heterogeneous sequence lengths"
+compute_tradeoff: "greater critic cost for stability and credit assignment"
+main_evidence: "AIME evaluations, training stability across runs and component ablations."
+reported_failures: [value_bias, sparse_reward, heterogeneous_length, training_crash]
+limitations: "Large integrated recipe makes mechanism attribution difficult."
+unverified_assumptions: "critic can generalize along long reasoning trajectories"
+closest_prior_work: [PPO, GRPO, DAPO]
+reproducibility_status: paper_recipe
+relevance_to_project: core_algorithm
+confidence: medium_high
