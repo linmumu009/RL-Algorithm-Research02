@@ -1,0 +1,18 @@
+experiment_id: E0-H021-NEGATIVE-CONTROL-BRIDGE
+seeds: [11, 23, 47, 89, 131]
+sample_size: 60000
+audit_size: 6000
+proxy_relevance_grid: [0.90, 0.80, 0.70, 0.55, 0.52, 0.50]
+strong_proxy_threshold: 0.70
+latent_exploit_strength_grid: [0.00, 0.15, 0.30]
+base_false_positive: 0.10
+base_false_negative: 0.15
+bridge_ridge: 1.0e-6
+table_smoothing: 2.0
+invalid_exclusion_strength: 0.30
+success_thresholds:
+  strong_proxy_bias_max: 0.05
+  cosine_gain_min: 0.05
+  minimum_gain_cells: 3
+  revealed_oracle_cosine_difference_max: 0.02
+  weak_condition_ratio_min: 2.0

@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：E0 后完成定向组合修复；6 个替代候选中保留 H-021，活跃组合恢复至 4 条，等待 H-021 E0。
+- 状态：H-021 的 E0 实现、配置、控制组与测试已冻结；正式结果尚未生成，等待不可变提交绑定。
 - 本地语料：212 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（`E0_VALIDATED`）与 H-021（`PREREGISTERED`）。
-- 当前边界：只允许实现、冻结并执行 H-021 的 1 单位解析/合成 E0；G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（`E0_VALIDATED`）与 H-021（`E0_IMPLEMENTATION_FROZEN_NOT_RUN`）。
+- 当前边界：只允许先绑定冻结提交，再一次性执行 H-021 的 1 单位解析/合成 E0；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -40,6 +40,9 @@
 - E0 本地审查：[`08_reviews/local_reviews/e0_review.md`](08_reviews/local_reviews/e0_review.md)
 - 替代分支筛选：[`10_deliverables/replacement_hypothesis_screening.md`](10_deliverables/replacement_hypothesis_screening.md)
 - H-021 预注册：[`06_experiments/preregistrations/E0-H021.yaml`](06_experiments/preregistrations/E0-H021.yaml)
+- H-021 冻结配置：[`06_experiments/configs/e0_h021.yaml`](06_experiments/configs/e0_h021.yaml)
+- H-021 冻结实现：[`06_experiments/code/h021_bridge_e0.py`](06_experiments/code/h021_bridge_e0.py)
+- H-021 数学测试：[`06_experiments/unit_tests/test_h021_bridge_e0.py`](06_experiments/unit_tests/test_h021_bridge_e0.py)
 - P7 补证清单：[`02_literature/extended/p7_regeneration_supplement.csv`](02_literature/extended/p7_regeneration_supplement.csv)
 
 ## 目录
@@ -51,6 +54,15 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.7.1 — 2026-08-02
+
+- 冻结 H-021 离散负控桥接 E0：在 `(context, observed reward)` 分层内，用 sparse clean audit 求解 `E[Y-h(W,R,X)|Z,R,X]=0` 的 2×2 bridge moment。
+- 固定 5 个随机种子、6 档代理相关性、3 档 latent exploit 强度和 6000/60000 的审计比例；0.70 及以上为强代理，0.55/0.52/0.50 为弱秩压力。
+- 同时冻结 H-001 observed-stratum correction、H-005 nuisance projection、direct proxy regression、direct pair average 与 revealed-latent oracle，避免弱基线制造虚假增益。
+- 加入 no-latent-exploit、invalid exclusion 与 rank collapse 控制；奇异 moment 仅按预声明 ridge 规则处理，不允许结果后调参。
+- H-021 新增 4 项数学测试，连同原 E0 测试共 10 项全部通过；正式 H-021 网格尚未运行，本轮预算消耗为 0。
+- 下一步先提交并推送这份不可变实现，再把精确提交哈希写入预注册，随后只执行一次完整网格。
 
 ### v0.7.0 — 2026-08-02
 

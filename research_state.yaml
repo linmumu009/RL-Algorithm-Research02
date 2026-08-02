@@ -1,7 +1,7 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: replacement_preregistered_ready_for_E0
+phase_status: h021_e0_implementation_frozen_pending_commit_binding
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
@@ -53,12 +53,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0010
-  action: PASS_TARGETED_REGENERATION_RETAIN_H021
-  rationale: Six mechanism-distinct replacements were screened against 212 papers; H-021 alone retained a distinct latent-exploit bridge estimand and a one-unit falsification path.
+  decision_id: D-0011
+  action: FREEZE_H021_E0_IMPLEMENTATION
+  rationale: The categorical bridge, strong and weak proxy grid, invalid-exclusion stress, revealed-latent oracle and four non-oracle baselines are frozen; ten mathematical consistency tests pass and no formal H-021 result exists.
 
 blockers: []
-next_allowed_task: Implement and freeze only the preregistered H-021 discrete negative-control bridge E0, bind its immutable code commit, and execute once; no E1 or language-model training before H-021 E0 review.
+next_allowed_task: Commit and push the frozen H-021 E0 implementation, bind that immutable commit to E0-H021.yaml, then execute the complete grid exactly once; no E1 or language-model training before review.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2
