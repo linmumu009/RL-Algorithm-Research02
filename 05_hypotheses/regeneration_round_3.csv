@@ -1,0 +1,7 @@
+hypothesis_id,name,mechanism_family,total_score,falsifiability_score,difference_score,status,rejection_reason
+H-033,Privacy-Stable Reusable Audit Gradient,adaptive_audit_release,87,15,11,PREREGISTERED,
+H-034,Modewise Youden Barrier,mode_dynamics_gate,84,14,5,REJECTED_EQUIVALENT,"arXiv:2601.04411 directly derives the mode-wise Youden phase boundary; gating or inverse-J scaling is H-001 channel correction plus a threshold"
+H-035,Counterfactual-Invariant Reward Head,causal_reward_representation,89,14,2,REJECTED_NOT_NOVEL,"arXiv:2501.09620 and 2601.21350 directly cover counterfactual invariance and causal/noncausal reward representations"
+H-036,Trusted Update Subspace,clean_direction_projection,86,14,2,REJECTED_NOT_NOVEL,"arXiv:2605.25189 directly proposes trusted-direction projection and the object is also adjacent to H-005"
+H-037,Adversarial Hacker-Auditor Gate,adversarial_auditing,88,13,1,REJECTED_NOT_NOVEL,"arXiv:2602.01750 directly trains a Hacker and latent Auditor then gates reward during RLHF"
+H-038,Real-Time Policy-Feedback Reward Adapter,dynamic_reward_modeling,85,13,2,REJECTED_NOT_NOVEL,"arXiv:2601.22664 directly adapts the reward model with evolving policy hidden states and iterated RM retraining is established"

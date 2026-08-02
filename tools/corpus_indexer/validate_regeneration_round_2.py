@@ -11,8 +11,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 ROUND_IDS = {"H-027", "H-028", "H-029", "H-030", "H-031", "H-032"}
-ACTIVE_IDS = {"H-001", "H-005", "H-014", "H-027"}
-POST_H027_ACTIVE_IDS = {"H-001", "H-005", "H-014"}
+BASE_SURVIVORS = {"H-001", "H-005", "H-014"}
 ROUND_REJECTED = {"H-028", "H-029", "H-030", "H-031", "H-032"}
 HYPOTHESIS_KEYS = {
     "hypothesis_id",
@@ -61,8 +60,8 @@ def main() -> None:
     candidates = read_csv("05_hypotheses/regeneration_round_2.csv")
     inventory_ids = {row["arxiv_id"] for row in inventory}
 
-    if len(inventory) != 219 or len(inventory_ids) != 219:
-        errors.append("inventory does not contain exactly 219 unique arXiv papers")
+    if len(inventory) < 219 or len(inventory_ids) != len(inventory):
+        errors.append("inventory does not preserve at least 219 unique arXiv papers")
     if any(row["readable"] != "true" for row in inventory):
         errors.append("inventory contains unreadable PDFs")
     if any(not row["abstract"] for row in inventory):
@@ -111,14 +110,13 @@ def main() -> None:
             errors.append(f"{path.name} lacks hypothesis keys: {sorted(missing)}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
-    expected_active = POST_H027_ACTIVE_IDS if h027_rejected.is_file() else ACTIVE_IDS
-    if active_ids != expected_active:
-        errors.append(f"active portfolio is {sorted(active_ids)} instead of {sorted(expected_active)}")
+    if not BASE_SURVIVORS <= active_ids or (h027_rejected.is_file() and "H-027" in active_ids):
+        errors.append("current portfolio does not preserve the round-2 survivors and H-027 lifecycle")
     lineage = json.loads((ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8"))
     nodes = lineage.get("nodes", [])
     node_ids = {node["id"] for node in nodes}
-    if len(nodes) != 32 or len(node_ids) != 32 or not ROUND_IDS <= node_ids:
-        errors.append("lineage graph does not contain 32 unique hypotheses including round 2")
+    if len(nodes) < 32 or len(node_ids) != len(nodes) or not ROUND_IDS <= node_ids:
+        errors.append("lineage graph does not preserve round 2 inside the current unique hypothesis set")
 
     prereg = ROOT / "06_experiments/preregistrations/E0-H027.yaml"
     if not prereg.is_file():
@@ -158,14 +156,14 @@ def main() -> None:
             errors.append(f"missing or short round-2 report: {relative}")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != expected_active:
+    if set(state.get("branches", {}).get("active", [])) != active_ids:
         errors.append("research_state active portfolio is inconsistent with the H-027 lifecycle")
-    expected_budget = 61 if h027_rejected.is_file() else 60
-    if state.get("budget", {}).get("used_units") != expected_budget:
-        errors.append(f"research_state budget is not {expected_budget}")
-    if not h027_rejected.is_file() and state.get("blockers"):
-        errors.append("research_state reports a portfolio blocker before H-027 completion")
-    if state.get("latest_decision", {}).get("decision_id") not in {"D-0014", "D-0015", "D-0016", "D-0017"}:
+    expected_budget_floor = 61 if h027_rejected.is_file() else 60
+    if state.get("budget", {}).get("used_units", 0) < expected_budget_floor:
+        errors.append(f"research_state budget is below {expected_budget_floor}")
+    if len(active_ids) < 4 and not state.get("blockers"):
+        errors.append("research_state omits the current undersized-portfolio blocker")
+    if state.get("latest_decision", {}).get("decision_id") not in {"D-0014", "D-0015", "D-0016", "D-0017", "D-0018"}:
         errors.append("research_state latest decision is outside the H-027 lifecycle")
 
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")

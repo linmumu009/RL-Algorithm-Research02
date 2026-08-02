@@ -174,3 +174,14 @@
 - 反事实判断：若尚未投入时间，仍会执行这项 E0，因为它证明 set-valued 安全性不自动构成超过 point correction 的算法收益；不会删基线、降低阈值或事后增加非线性集合。
 - G6：`NOT_YET_PASS`。活跃组合再次低于并行下限 4，未获得 E1 或语言模型训练权限。
 - 下一项允许任务：从当前语料的未覆盖机制族开展第三轮定向再生成；不得把 H-021 或 H-027 改名复活。
+
+## D-0018 — 2026-08-02
+
+- 阶段：P7 / G6（第三轮定向组合修复）
+- 动作：`PASS_REGENERATION_ROUND_3_RETAIN_H033`
+- 决定：H-033–H-038 六个候选中，仅条件性保留 H-033 `Privacy-Stable Reusable Audit Gradient`；其余五个因直接已有或等价于 H-001/H-005 的旧对象淘汰，活跃组合恢复为 4 条。
+- 依据：新增 12 篇官方 arXiv/MinerU 直接近邻，语料达到 231 篇；第三轮新颖性、等价性、理论风险审查和 H-033 E0 预注册。
+- 预算影响：4 单位，累计 65/100；仍保留 35 单位，满足至少 30% 探索/重启保留要求。
+- 反事实判断：若尚未投入时间，仍只暂留 H-033，因为它把 adaptive leakage from reusable audits 设为独立失败对象，并强制与 Reusable/Generic Holdout 和 private reward model 正面对比；不会保留已有 causal reward、trusted projection、ARA 或 R2M 的换名。
+- 边界：H-033 只获得解析/合成 E0 权限；不得把 DP 隐私保证当作 reward robustness 结果，也不得开始 E1 或语言模型训练。
+- 下一项允许任务：实现并冻结 H-033 adaptive audit-query E0，提交代码快照、绑定预注册后一次性执行。

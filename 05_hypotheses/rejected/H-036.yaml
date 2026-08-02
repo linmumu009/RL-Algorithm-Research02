@@ -1,0 +1,12 @@
+hypothesis_id: H-036
+name: Trusted Update Subspace
+target_problem: Q-001
+causal_claim: constraining verifier gradients to the dominant subspace of clean reference updates prevents shortcut drift
+mechanism: estimate a low-dimensional trusted update subspace and project each policy gradient into it
+falsifiable_predictions: [smaller_directional_drift, delayed_reward_hacking]
+cheapest_falsification_test: low-rank synthetic clean/hacking gradient sequence
+failure_threshold: direct match to published trusted-direction projection or H-005 nuisance projection
+estimated_budget: 1
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+rejection_reason: arXiv:2605.25189 directly proposes trusted-direction projection and tests it on reward hacking

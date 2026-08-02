@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：H-027 正式 E0 已完成并因无增量收益淘汰；活跃组合回到 3 条，需再次定向补充。
-- 本地语料：219 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
+- 状态：第三轮定向再生成完成；H-033 暂留并完成 E0 预注册，活跃组合恢复至 4 条。
+- 本地语料：231 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）；H-027 已淘汰。
-- 当前边界：只允许从未覆盖机制族开展第三轮定向再生成并恢复至少 4 条非等价分支；G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）与 H-033（`PREREGISTERED`）。
+- 当前边界：只允许实现、冻结并执行 H-033 的 1 单位 adaptive audit-query E0；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -58,6 +58,9 @@
 - H-027 结果卡：[`07_results/result_cards/R-E0-H027.yaml`](07_results/result_cards/R-E0-H027.yaml)
 - H-027 实验报告：[`10_deliverables/h027_e0_experimental_report.md`](10_deliverables/h027_e0_experimental_report.md)
 - H-027 本地审查：[`08_reviews/local_reviews/h027_e0_review.md`](08_reviews/local_reviews/h027_e0_review.md)
+- 第三轮替代筛选：[`10_deliverables/replacement_hypothesis_screening_round_3.md`](10_deliverables/replacement_hypothesis_screening_round_3.md)
+- 第三轮补证清单：[`02_literature/extended/p7_regeneration_round_3_supplement.csv`](02_literature/extended/p7_regeneration_round_3_supplement.csv)
+- H-033 预注册：[`06_experiments/preregistrations/E0-H033.yaml`](06_experiments/preregistrations/E0-H033.yaml)
 
 ## 目录
 
@@ -68,6 +71,16 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.11.0 — 2026-08-02
+
+- 在 H-027 失败后完成第三轮定向再生成，生成并筛查 H-033–H-038 六个候选；未把 H-021、H-027 或已淘汰 gate/projection 机制换名复活。
+- 从官方 arXiv 补充 12 篇直接近邻并通过 MinerU `vlm` 批次全部解析，覆盖 adaptive holdout reuse、private RLHF、causal reward、mode-wise verifier dynamics、adversarial auditing、实时 reward adaptation 和 trusted-direction projection；语料达到 231 篇。
+- 淘汰 H-034：Youden phase boundary 已直接发表且 gate 等价 H-001；淘汰 H-035：causal/counterfactual reward 已直接覆盖；淘汰 H-036：trusted-direction projection 已直接覆盖。
+- 淘汰 H-037：ARA 已直接实现 Hacker/Auditor gate；淘汰 H-038：R2M 已直接实现 policy-feedback reward adapter。
+- 条件性保留 H-033 `Privacy-Stable Reusable Audit Gradient`：对固定 clean-audit 集的自适应向量查询使用 contribution clipping、Gaussian release、zCDP composition 和 privacy filter，目标是限制跨 policy round 的 audit 信息泄漏。
+- 完成 H-033 的 1 单位 E0 预注册，强制比较 naive reuse、fresh audit、disjoint split、Reusable Holdout、Generic Holdout、once-trained private reward model 和 H-001 single-query correction；若只是 DP/holdout 搬用或无增量收益即淘汰。
+- 本轮消耗 4 单位，累计预算 65/100；活跃组合恢复为 H-001、H-005、H-014、H-033，G6 仍未通过。
 
 ### v0.10.0 — 2026-08-02
 

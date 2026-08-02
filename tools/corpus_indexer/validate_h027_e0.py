@@ -84,9 +84,10 @@ def main() -> None:
         errors.append("preregistration binding or terminal status is inconsistent")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != {"H-001", "H-005", "H-014"}:
+    active_ids = set(state.get("branches", {}).get("active", []))
+    if not {"H-001", "H-005", "H-014"} <= active_ids or "H-027" in active_ids:
         errors.append("current active portfolio does not reflect H-027 rejection")
-    if state.get("budget", {}).get("used_units") != 61:
+    if state.get("budget", {}).get("used_units", 0) < 61:
         errors.append("current budget does not include the H-027 E0 unit")
     if (ROOT / "05_hypotheses/active/H-027.yaml").exists() or not (ROOT / "05_hypotheses/rejected/H-027.yaml").is_file():
         errors.append("H-027 was not moved from active to rejected")

@@ -3509,5 +3509,172 @@
     "abstract": "This paper develops a robust and efficient method for policy learning from observational data in the presence of unobserved confounding, complementing existing instrumental variable (IV) based approaches. We employ the marginal sensitivity model (MSM) to relax the commonly used yet restrictive unconfoundedness assumption by introducing a sensitivity parameter that captures the extent of selection bias induced by unobserved confounders. Building on this framework, we consider two distributionally robust welfare criteria, defined as the worst-case welfare and policy improvement functions, evaluated over an uncertainty set of counterfactual distributions characterized by the MSM. Closed-form expressions for both welfare criteria are derived. Leveraging these identification results, we construct doubly robust scores and estimate the robust policies by maximizing the proposed criteria. Our approach accommodates flexible machine learning methods for estimating nuisance components, even when these converge at moderately slow rates. We establish asymptotic regret bounds for the resulting policies, providing a robust guarantee against the most adversarial confounding scenario. The proposed method is evaluated through extensive simulation studies and empirical applications to the JTPA study and Head Start program.",
     "published": "2025-07-28T06:29:49Z",
     "updated": "2026-07-08T04:44:18Z"
+  },
+  "1506.02629": {
+    "title": "Generalization in Adaptive Data Analysis and Holdout Reuse",
+    "authors": [
+      "Cynthia Dwork",
+      "Vitaly Feldman",
+      "Moritz Hardt",
+      "Toniann Pitassi",
+      "Omer Reingold",
+      "Aaron Roth"
+    ],
+    "abstract": "Overfitting is the bane of data analysts, even when data are plentiful. Formal approaches to understanding this problem focus on statistical inference and generalization of individual analysis procedures. Yet the practice of data analysis is an inherently interactive and adaptive process: new analyses and hypotheses are proposed after seeing the results of previous ones, parameters are tuned on the basis of obtained results, and datasets are shared and reused. An investigation of this gap has recently been initiated by the authors in (Dwork et al., 2014), where we focused on the problem of estimating expectations of adaptively chosen functions. In this paper, we give a simple and practical method for reusing a holdout (or testing) set to validate the accuracy of hypotheses produced by a learning algorithm operating on a training set. Reusing a holdout set adaptively multiple times can easily lead to overfitting to the holdout set itself. We give an algorithm that enables the validation of a large number of adaptively chosen hypotheses, while provably avoiding overfitting. We illustrate the advantages of our algorithm over the standard use of the holdout set via a simple synthetic experiment. We also formalize and address the general problem of data reuse in adaptive data analysis. We show how the differential-privacy based approach given in (Dwork et al., 2014) is applicable much more broadly to adaptive data analysis. We then show that a simple approach based on description length can also be used to give guarantees of statistical validity in adaptive settings. Finally, we demonstrate that these incomparable approaches can be unified via the notion of approximate max-information that we introduce.",
+    "published": "2015-06-08T19:34:29Z",
+    "updated": "2015-09-25T19:04:32Z"
+  },
+  "2310.16960": {
+    "title": "Privately Aligning Language Models with Reinforcement Learning",
+    "authors": [
+      "Fan Wu",
+      "Huseyin A. Inan",
+      "Arturs Backurs",
+      "Varun Chandrasekaran",
+      "Janardhan Kulkarni",
+      "Robert Sim"
+    ],
+    "abstract": "Positioned between pre-training and user deployment, aligning large language models (LLMs) through reinforcement learning (RL) has emerged as a prevailing strategy for training instruction following-models such as ChatGPT. In this work, we initiate the study of privacy-preserving alignment of LLMs through Differential Privacy (DP) in conjunction with RL. Following the influential work of Ziegler et al. (2020), we study two dominant paradigms: (i) alignment via RL without human in the loop (e.g., positive review generation) and (ii) alignment via RL from human feedback (RLHF) (e.g., summarization in a human-preferred way). We give a new DP framework to achieve alignment via RL, and prove its correctness. Our experimental results validate the effectiveness of our approach, offering competitive utility while ensuring strong privacy protections.",
+    "published": "2023-10-25T19:58:51Z",
+    "updated": "2024-05-03T16:30:01Z"
+  },
+  "2601.04411": {
+    "title": "Rate or Fate? RLV$^\\varepsilon$R: Reinforcement Learning with Verifiable Noisy Rewards",
+    "authors": [
+      "Ali Rad",
+      "Khashayar Filom",
+      "Darioush Keivan",
+      "Peyman Mohajerin Esfahani",
+      "Ehsan Kamalinejad"
+    ],
+    "abstract": "Reinforcement learning with verifiable rewards (RLVR) is a simple but powerful paradigm for training LLMs: sample a completion, verify it, and update. In practice, however, the verifier is almost never clean--unit tests probe only limited corner cases; human and synthetic labels are imperfect; and LLM judges (e.g., RLAIF) are noisy and can be exploited--and this problem worsens on harder domains (especially coding) where tests are sparse and increasingly model-generated. We ask a pragmatic question: does the verification noise merely slow down the learning (rate), or can it flip the outcome (fate)? To address this, we develop an analytically tractable multi-armed bandit view of RLVR dynamics, instantiated with GRPO and validated in controlled experiments. Modeling false positives and false negatives and grouping completions into recurring reasoning modes yields a replicator-style (natural-selection) flow on the probability simplex. The dynamics decouples into within-correct-mode competition and a one-dimensional evolution for the mass on incorrect modes, whose drift is determined solely by Youden's index J=TPR-FPR. This yields a sharp phase transition: when J>0, the incorrect mass is driven toward extinction (learning); when J=0, the process is neutral; and when J<0, incorrect modes amplify until they dominate (anti-learning and collapse). In the learning regime J>0, noise primarily rescales convergence time (\"rate, not fate\"). Experiments on verifiable programming tasks under synthetic noise reproduce the predicted J=0 boundary. Beyond noise, the framework offers a general lens for analyzing RLVR stability, convergence, and algorithmic interventions.",
+    "published": "2026-01-07T21:31:26Z",
+    "updated": "2026-01-07T21:31:26Z"
+  },
+  "2601.21350": {
+    "title": "Factored Causal Representation Learning for Robust Reward Modeling in RLHF",
+    "authors": [
+      "Yupei Yang",
+      "Lin Yang",
+      "Wanxi Deng",
+      "Lin Qu",
+      "Fan Feng",
+      "Biwei Huang",
+      "Shikui Tu",
+      "Lei Xu"
+    ],
+    "abstract": "A reliable reward model is essential for aligning large language models with human preferences through reinforcement learning from human feedback. However, standard reward models are susceptible to spurious features that are not causally related to human labels. This can lead to reward hacking, where high predicted reward does not translate into better behavior. In this work, we address this problem from a causal perspective by proposing a factored representation learning framework that decomposes the model's contextual embedding into (1) causal factors that are sufficient for reward prediction and (2) non-causal factors that capture reward-irrelevant attributes such as length or sycophantic bias. The reward head is then constrained to depend only on the causal component. In addition, we introduce an adversarial head trained to predict reward from the non-causal factors, while applying gradient reversal to discourage them from encoding reward-relevant information. Experiments on both mathematical and dialogue tasks demonstrate that our method learns more robust reward models and consistently improves downstream RLHF performance over state-of-the-art baselines. Analyses on length and sycophantic bias further validate the effectiveness of our method in mitigating reward hacking behaviors.",
+    "published": "2026-01-29T07:18:45Z",
+    "updated": "2026-05-16T02:45:10Z"
+  },
+  "2602.01750": {
+    "title": "Adversarial Reward Auditing for Active Detection and Mitigation of Reward Hacking",
+    "authors": [
+      "Mohammad Beigi",
+      "Ming Jin",
+      "Junshan Zhang",
+      "Qifan Wang",
+      "Lifu Huang"
+    ],
+    "abstract": "Reinforcement Learning from Human Feedback (RLHF) remains vulnerable to reward hacking, where models exploit spurious correlations in learned reward models to achieve high scores while violating human intent. Existing mitigations rely on static defenses that cannot adapt to novel exploitation strategies. We propose Adversarial Reward Auditing (ARA), a framework that reconceptualizes reward hacking as a dynamic, competitive game. ARA operates in two stages: first, a Hacker policy discovers reward model vulnerabilities while an Auditor learns to detect exploitation from latent representations; second, Auditor-Guided RLHF (AG-RLHF) gates reward signals to penalize detected hacking, transforming reward hacking from an unobservable failure into a measurable, controllable signal. Experiments across three hacking scenarios demonstrate that ARA achieves the best alignment-utility tradeoff among all baselines: reducing sycophancy to near-SFT levels while improving helpfulness, decreasing verbosity while achieving the highest ROUGE-L, and suppressing code gaming while improving Pass@1. Beyond single-domain evaluation, we show that reward hacking, detection, and mitigation all generalize across domains -- a Hacker trained on code gaming exhibits increased sycophancy despite no reward for this behavior, and an Auditor trained on one domain effectively suppresses exploitation in others, enabling efficient multi-domain defense with a single model.",
+    "published": "2026-02-02T07:34:57Z",
+    "updated": "2026-02-02T07:34:57Z"
+  },
+  "2604.07666": {
+    "title": "An Imperfect Verifier is Good Enough: Learning with Noisy Rewards",
+    "authors": [
+      "Andreas Plesner",
+      "Francisco Guzmán",
+      "Anish Athalye"
+    ],
+    "abstract": "Reinforcement Learning with Verifiable Rewards (RLVR) has become a prominent method for post-training Large Language Models (LLMs). However, verifiers are rarely error-free; even deterministic checks can be inaccurate, and the growing dependence on model-based judges exacerbates the issue. The extent to which RLVR is robust to such noise and the verifier accuracy required for effective training remain unresolved questions. We investigate these questions in the domains of code generation and scientific reasoning by introducing noise into RL training. Noise rates up to 15% yield peak validation accuracy within 2 percentage points of the clean baseline. These findings are consistent across controlled and model-based noise types, three model families (Qwen3, GLM4, Llama 3.1), and model sizes from 4B to 9B. Overall, the results indicate that imperfect verification does not constitute a fundamental barrier to RLVR. Furthermore, our findings suggest that practitioners should prioritize moderate accuracy with high precision over perfect verification.",
+    "published": "2026-04-09T00:15:01Z",
+    "updated": "2026-04-09T00:15:01Z"
+  },
+  "2601.22664": {
+    "title": "Real-Time Aligned Reward Model beyond Semantics",
+    "authors": [
+      "Zixuan Huang",
+      "Xin Xia",
+      "Yuxi Ren",
+      "Jianbin Zheng",
+      "Xuefeng Xiao",
+      "Hongyan Xie",
+      "Li Huaqiu",
+      "Songshi Liang",
+      "Zhongxiang Dai",
+      "Fuzhen Zhuang",
+      "Jianxin Li",
+      "Yikun Ban",
+      "Deqing Wang"
+    ],
+    "abstract": "Reinforcement Learning from Human Feedback (RLHF) is a pivotal technique for aligning large language models (LLMs) with human preferences, yet it is susceptible to reward overoptimization, in which policy models overfit to the reward model, exploit spurious reward patterns instead of faithfully capturing human intent. Prior mitigations primarily relies on surface semantic information and fails to efficiently address the misalignment between the reward model (RM) and the policy model caused by continuous policy distribution shifts. This inevitably leads to an increasing reward discrepancy, exacerbating reward overoptimization. To address these limitations, we introduce R2M (Real-Time Aligned Reward Model), a novel lightweight RLHF framework. R2M goes beyond vanilla reward models that solely depend on the semantic representations of a pretrained LLM. Instead, it leverages the evolving hidden states of the policy (namely policy feedback) to align with the real-time distribution shift of the policy during the RL process. This work points to a promising new direction for improving the performance of reward models through real-time utilization of feedback from policy models.",
+    "published": "2026-01-30T07:32:35Z",
+    "updated": "2026-05-16T16:20:52Z"
+  },
+  "2505.18126": {
+    "title": "Reward Model Overoptimisation in Iterated RLHF",
+    "authors": [
+      "Lorenz Wolf",
+      "Robert Kirk",
+      "Mirco Musolesi"
+    ],
+    "abstract": "Reinforcement learning from human feedback (RLHF) is a widely used method for aligning large language models with human preferences. However, RLHF often suffers from reward model overoptimisation, in which models overfit to the reward function, resulting in non-generalisable policies that exploit the idiosyncrasies and peculiarities of the reward function. A common mitigation is iterated RLHF, in which reward models are repeatedly retrained with updated human feedback and policies are re-optimised. Despite its increasing adoption, the dynamics of overoptimisation in this setting remain poorly understood. In this work, we present the first comprehensive study of overoptimisation in iterated RLHF. We systematically analyse key design choices - how reward model training data is transferred across iterations, which reward function is used for optimisation, and how policies are initialised. Using the controlled AlpacaFarm benchmark, we observe that overoptimisation tends to decrease over successive iterations, as reward models increasingly approximate ground-truth preferences. However, performance gains diminish over time, and while reinitialising from the base policy is robust, it limits optimisation flexibility. Other initialisation strategies often fail to recover from early overoptimisation. These findings offer actionable insights for building more stable and generalisable RLHF pipelines.",
+    "published": "2025-05-23T17:36:13Z",
+    "updated": "2025-09-29T10:26:43Z"
+  },
+  "1809.05596": {
+    "title": "The Generic Holdout: Preventing False-Discoveries in Adaptive Data Science",
+    "authors": [
+      "Preetum Nakkiran",
+      "Jarosław Błasiok"
+    ],
+    "abstract": "Adaptive data analysis has posed a challenge to science due to its ability to generate false hypotheses on moderately large data sets. In general, with non-adaptive data analyses (where queries to the data are generated without being influenced by answers to previous queries) a data set containing $n$ samples may support exponentially many queries in $n$. This number reduces to linearly many under naive adaptive data analysis, and even sophisticated remedies such as the Reusable Holdout (Dwork et. al 2015) only allow quadratically many queries in $n$. In this work, we propose a new framework for adaptive science which exponentially improves on this number of queries under a restricted yet scientifically relevant setting, where the goal of the scientist is to find a single (or a few) true hypotheses about the universe based on the samples. Such a setting may describe the search for predictive factors of some disease based on medical data, where the analyst may wish to try a number of predictive models until a satisfactory one is found. Our solution, the Generic Holdout, involves two simple ingredients: (1) a partitioning of the data into a exploration set and a holdout set and (2) a limited exposure strategy for the holdout set. An analyst is free to use the exploration set arbitrarily, but when testing hypotheses against the holdout set, the analyst only learns the answer to the question: \"Is the given hypothesis true (empirically) on the holdout set?\" -- and no more information, such as \"how well\" the hypothesis fits the holdout set. The resulting scheme is immediate to analyze, but despite its simplicity we do not believe our method is obvious, as evidenced by the many violations in practice. Our proposal can be seen as an alternative to pre-registration, and allows researchers to get the benefits of adaptive data analysis without the problems of adaptivity.",
+    "published": "2018-09-14T21:28:21Z",
+    "updated": "2018-09-14T21:28:21Z"
+  },
+  "2501.09620": {
+    "title": "Beyond Reward Hacking: Causal Rewards for Large Language Model Alignment",
+    "authors": [
+      "Chaoqi Wang",
+      "Zhuokai Zhao",
+      "Yibo Jiang",
+      "Zhaorun Chen",
+      "Chen Zhu",
+      "Yuxin Chen",
+      "Jiayi Liu",
+      "Lizhu Zhang",
+      "Xiangjun Fan",
+      "Hao Ma",
+      "Sinong Wang"
+    ],
+    "abstract": "Recent advances in large language models (LLMs) have demonstrated significant progress in performing complex tasks. While Reinforcement Learning from Human Feedback (RLHF) has been effective in aligning LLMs with human preferences, it is susceptible to spurious correlations in reward modeling. Consequently, it often introduces biases-such as length bias, sycophancy, conceptual bias, and discrimination-that hinder the model's ability to capture true causal relationships. To address this, we propose a novel causal reward modeling approach that integrates causality to mitigate these spurious correlations. Our method enforces counterfactual invariance, ensuring reward predictions remain consistent when irrelevant variables are altered. Through experiments on both synthetic and real-world datasets, we show that our approach mitigates various types of spurious correlations effectively, resulting in more reliable and fair alignment of LLMs with human preferences. As a drop-in enhancement to the existing RLHF workflow, our causal reward modeling provides a practical way to improve the trustworthiness and fairness of LLM finetuning.",
+    "published": "2025-01-16T16:00:37Z",
+    "updated": "2025-05-29T02:21:03Z"
+  },
+  "2605.25189": {
+    "title": "Directional Alignment Mitigates Reward Hacking in Reinforcement Learning for Language Models",
+    "authors": [
+      "Wenlong Deng",
+      "Jiaji Huang",
+      "Kaan Ozkara",
+      "Yushu Li",
+      "Christos Thrampoulidis",
+      "Xiaoxiao Li",
+      "Youngsuk Park"
+    ],
+    "abstract": "Reward hacking arises when a model improves a proxy reward by exploiting shortcuts rather than solving the intended task. We study this failure mode through the geometry of reinforcement learning updates in language models and argue that hacking emerges when optimization drifts away from a stable low-dimensional learning trajectory. We analyze this drift through dominant singular directions of parameter updates and show that reward-hacking runs exhibit substantially larger directional change than clean runs. Motivated by this observation, we introduce trusted-direction projection, which constrains gradients to remain within a clean reference subspace. Across reward-hacking experiments on mathematical reasoning, the proposed approach delays shortcut exploitation and better preserves task performance.",
+    "published": "2026-05-24T17:34:34Z",
+    "updated": "2026-05-24T17:34:34Z"
+  },
+  "2603.22563": {
+    "title": "Privacy-Preserving Reinforcement Learning from Human Feedback via Decoupled Reward Modeling",
+    "authors": [
+      "Young Hyun Cho",
+      "Will Wei Sun"
+    ],
+    "abstract": "Preference-based fine-tuning has become an important component in training large language models, and the data used at this stage may contain sensitive user information. A central question is how to design a differentially private pipeline that is well suited to the distinct structure of reinforcement learning from human feedback. We propose a privacy-preserving framework that imposes differential privacy only on reward learning and derives the final policy from the resulting private reward model. Theoretically, we study the suboptimality gap and show that privacy contributes an additional additive term beyond the usual non-private statistical error. We also establish a minimax lower bound and show that the dominant term changes with sample size and privacy level, which in turn characterizes regimes in which the upper bound is rate-optimal up to logarithmic factors. Empirically, synthetic experiments confirm the scaling predicted by the theory, and experiments on the Anthropic HH-RLHF dataset using the Gemma-2B-IT model show stronger private alignment performance than existing differentially private baseline methods across privacy budgets.",
+    "published": "2026-03-23T20:45:17Z",
+    "updated": "2026-03-23T20:45:17Z"
   }
 }

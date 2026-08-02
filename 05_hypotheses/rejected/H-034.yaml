@@ -1,0 +1,12 @@
+hypothesis_id: H-034
+name: Modewise Youden Barrier
+target_problem: Q-001
+causal_claim: suppressing updates in reasoning modes whose verifier Youden index is nonpositive prevents anti-learning mode amplification
+mechanism: estimate mode-conditional TPR minus FPR and gate or rescale each mode update at the zero phase boundary
+falsifiable_predictions: [no_incorrect_mode_amplification_when_lower_bound_positive, abstention_near_zero_youden]
+cheapest_falsification_test: analytic replicator flow and seeded mode-mixture simulation
+failure_threshold: any behavioral difference disappears after matching H-001 mode-conditional channel correction and threshold
+estimated_budget: 1
+status: REJECTED_EQUIVALENT
+repair_count: 0
+rejection_reason: arXiv:2601.04411 directly derives the Youden phase boundary and the intervention is H-001 channel inversion plus a gate

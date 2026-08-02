@@ -1,0 +1,12 @@
+hypothesis_id: H-035
+name: Counterfactual-Invariant Reward Head
+target_problem: Q-001
+causal_claim: isolating causal reward factors from shortcut features prevents verifier exploitation under policy shift
+mechanism: impose counterfactual invariance and adversarial factor separation in reward representation learning
+falsifiable_predictions: [stable_reward_under_irrelevant_interventions, lower_shortcut_gradient]
+cheapest_falsification_test: synthetic causal/spurious representation benchmark
+failure_threshold: direct mathematical or behavioral match to published causal reward models
+estimated_budget: 1
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+rejection_reason: arXiv:2501.09620 and 2601.21350 directly instantiate the claimed reward invariance and factorization

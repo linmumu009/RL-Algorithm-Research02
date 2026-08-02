@@ -36,3 +36,13 @@
 
 - H-027：valid-coverage 安全性、point-limit 和 abstention 控制通过，但 45 个非对称非共线 cell 中 0 个达到 0.05 增益，最大仅 0.011294；H-001 midpoint 在 400 次比较中赢 332 次。
 - 不允许删除 H-001、降低增益阈值或把仅有安全性改写为算法成功；任何后续 set-valued 候选必须改变信息结构或给出不同于本 convex-hull maximin direction 的可证伪对象。
+
+## 第三轮定向再生成淘汰 — 2026-08-02
+
+- H-034：mode-wise Youden phase boundary 已由 arXiv:2601.04411 直接推导；barrier/gate 是 H-001 channel correction 的阈值版本。
+- H-035：counterfactual-invariant causal reward head 已由 arXiv:2501.09620 和 2601.21350 直接覆盖。
+- H-036：trusted update subspace 已由 arXiv:2605.25189 直接作为 reward-hacking 缓解提出，也邻近 H-005 projection。
+- H-037：Hacker/Auditor 两阶段训练与 reward gate 已由 arXiv:2602.01750 的 ARA 直接覆盖。
+- H-038：实时 policy hidden-state reward adapter 已由 arXiv:2601.22664 直接覆盖，iterated RM 也已有系统研究。
+
+以上候选不得作为 H-033 的组件计入新颖性。H-033 若不能超过 exact Reusable Holdout、Generic Holdout 或 once-trained private reward model，也必须按等价/无增量价值淘汰。

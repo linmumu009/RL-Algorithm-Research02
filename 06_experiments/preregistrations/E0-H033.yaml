@@ -1,0 +1,22 @@
+experiment_id: E0-H033-PRIVACY-STABLE-REUSABLE-AUDIT-GRADIENT
+hypothesis_id: H-033
+question: Does a privacy-accounted clipped audit-gradient release preserve population clean-gradient validity under adaptive policy queries better than naive reuse, disjoint splitting, exact reusable-holdout baselines, and a once-trained private reward model?
+prediction: Before the frozen privacy filter is exhausted H-033 has population gradient bias at most 0.05, false-positive direction rate at most 0.05, and clean-gradient cosine at least 0.90; it provides at least twice the usable rounds of disjoint splitting and at least 0.05 cosine or 0.10 false-positive-rate improvement over both naive reuse and the best exact holdout/private-RM non-oracle baseline in three adaptive-query cells, with no claimed advantage for nonadaptive queries.
+null_result_interpretation: Differentially private audit-gradient release is only a direct Reusable Holdout application or loses too much utility to noise and privacy exhaustion.
+negative_result_interpretation: Reject H-033 if exact reusable-holdout or private-reward baselines match it, if it has no adaptive-query-specific gain, if privacy noise causes harmful directions, or if it supports no more usable rounds than disjoint splitting.
+dataset: seeded synthetic fixed binary clean-audit table independent population table adaptively selected clipped linear score queries and declared population-drift stress table
+model: clipped vector query Gaussian mechanism zCDP composition and privacy filter; no language-model training
+baseline: [naive_exact_audit_reuse, fresh_audit_oracle, disjoint_sample_splitting, reusable_holdout_thresholdout, generic_holdout_binary_release, once_trained_private_reward_model, H001_single_query_correction]
+controls: [nonadaptive_query_sequence, privacy_off_limit, zero_population_gradient, permuted_audit_labels, contribution_clip_violation, population_drift_after_audit, equal_audit_rows_and_query_candidates]
+metrics: [population_gradient_bias, clean_gradient_cosine, false_positive_direction_rate, usable_release_rounds, privacy_rho_spent, audit_generalization_gap, gain_over_best_nonoracle]
+primary_metric: population_gradient_bias
+secondary_metrics: [false_positive_direction_rate, clean_gradient_cosine, usable_release_rounds, privacy_rho_spent]
+fixed_hyperparameters: audit sizes [128, 256, 512]; adaptive query counts [10, 50, 100, 250]; zCDP rho budgets [0.10, 0.30, 1.00, 3.00]; score dimensions [2, 8, 32]; contribution L2 clip 1.0; fixed Gaussian calibration and privacy filter
+allowed_tuning: none after code snapshot; noise draws query generator clipping accountant and release rule are frozen before formal execution
+seed_policy: five fixed seeds [11, 23, 47, 89, 131]
+budget_limit: 1
+stop_condition: stop after all declared adaptive and nonadaptive grids plus every control; do not continue release after privacy exhaustion and do not remove low-rho high-dimension or population-drift cells
+success_threshold: "population gradient bias <= 0.05, false-positive direction rate <= 0.05, and clean-gradient cosine >= 0.90 before privacy exhaustion; usable rounds >= 2x disjoint splitting; >= 0.05 cosine or >= 0.10 false-positive-rate gain over the best exact non-oracle baseline in at least three adaptive cells; and no positive gain claim in nonadaptive controls"
+failure_threshold: "bias > 0.05 or false-positive direction rate > 0.05 before exhaustion, zero qualifying adaptive gain cells, usable rounds < 2x disjoint splitting, exact Reusable Holdout/private reward model behavioral equivalence, or any apparent benefit that requires omitting low-rho high-dimension or drift controls"
+code_commit: TO_BE_SET_BEFORE_EXECUTION
+status: PREREGISTERED_NOT_RUN
