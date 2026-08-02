@@ -6,7 +6,7 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：Q-001 已通过 G4；20 个候选完成 P5/P6 筛选，6 个分支通过 G5 并完成 E0 预注册。
+- 状态：Q-001 已通过 G4；6 个分支通过 G5，E0 实现与固定配置已冻结，等待登记代码提交后执行。
 - 本地语料：206 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
@@ -31,6 +31,9 @@
 - 假设筛选报告：[`10_deliverables/hypothesis_screening.md`](10_deliverables/hypothesis_screening.md)
 - 候选谱系：[`05_hypotheses/lineage_graph.json`](05_hypotheses/lineage_graph.json)
 - E0 预注册：[`06_experiments/preregistrations/`](06_experiments/preregistrations/)
+- E0 冻结配置：[`06_experiments/configs/e0_suite.yaml`](06_experiments/configs/e0_suite.yaml)
+- E0 实现：[`06_experiments/code/e0_suite.py`](06_experiments/code/e0_suite.py)
+- E0 数学一致性测试：[`06_experiments/unit_tests/test_e0_suite.py`](06_experiments/unit_tests/test_e0_suite.py)
 
 ## 目录
 
@@ -41,6 +44,14 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.5.1 — 2026-08-02
+
+- 冻结 `Q001-E0-v1`：6 个分支共享五个固定随机种子，并分别锁定异质性、模型正确性、因果/伪相关、语义不变性、审计预算和覆盖率压力网格。
+- 实现统一的解析/合成实验程序，只计算 clean-gradient bias、variance、MSE、cosine、ESS、false-positive update 等预注册指标，不进行语言模型训练。
+- 新增 6 项数学一致性测试，验证二值噪声反演、奇异通道拒绝、等杠杆退化、区间收缩和分支完整性。
+- 在正式运行前显式保留两个危险反例：H-004 的“增强项”可能代数退化为 channel-only correction；H-018 的有限样本覆盖可能在分布漂移下失效。
+- 正式 E0 结果尚未生成；先提交不可变实现快照，再将提交哈希写入预注册后一次性执行。
 
 ### v0.5.0 — 2026-08-01
 

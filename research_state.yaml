@@ -1,7 +1,7 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: ready_for_E0
+phase_status: e0_implementation_frozen_pending_execution
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
@@ -47,12 +47,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0006
-  action: PASS_G5_RETAIN_SIX
-  rationale: Twenty hypotheses were screened; six candidates from six mechanism families passed score, falsifiability, difference, risk, and preregistration requirements.
+  decision_id: D-0007
+  action: FREEZE_E0_IMPLEMENTATION
+  rationale: The six-branch analytic/synthetic suite, fixed grids, seeds, controls, metrics, and mathematical consistency tests are frozen before any preregistered result is generated.
 
 blockers: []
-next_allowed_task: Implement and execute only the six preregistered E0 mathematical/synthetic falsification tests; no language-model training before E0 review.
+next_allowed_task: Commit the frozen E0 implementation, write that immutable commit to all six preregistrations, then execute the suite exactly once; no language-model training.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2
