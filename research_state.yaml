@@ -1,7 +1,7 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: h039_e0_implementation_frozen_awaiting_commit_binding
+phase_status: h039_e0_bound_ready_for_single_execution
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
@@ -71,12 +71,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0023
-  action: FREEZE_H039_E0_IMPLEMENTATION
-  rationale: The joint-context channel-corner implementation shared-group centering eight comparators eight controls 216-cell grid five seeds thresholds output schema and single-execution guard are frozen; formal H-039 results do not exist.
+  decision_id: D-0024
+  action: BIND_H039_E0_CODE_SNAPSHOT
+  rationale: The H-039 preregistration is bound to pushed immutable commit ddb66391e42bbaf5e63c85949df6c4fac8d32414; its code config and tests match that snapshot and formal result artifacts remain absent.
 
 blockers: []
-next_allowed_task: Commit and push the immutable H-039 implementation snapshot, bind its exact commit in the preregistration, and only then run the formal grid once; do not start E1 or language-model training.
+next_allowed_task: From bound commit ddb66391e42bbaf5e63c85949df6c4fac8d32414 execute the complete H-039 formal grid exactly once, retain every row control and negative result, and do not tune rerun start E1 or train a language model.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

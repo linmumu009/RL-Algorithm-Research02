@@ -246,3 +246,15 @@
 - 反事实判断：若尚未投入本轮时间，仍会保留逐 context 联合枚举、共享 group baseline、SignCert-PO/H-027 强对照和等接受率控制，因为缺少任一项都可能制造虚假符号证书收益。
 - 边界：必须先提交并推送不可变实现，再将精确提交哈希绑定到预注册；不得根据正式结果调整数据、角点映射、强识别定义、基线、控制或阈值。
 - 下一项允许任务：提交并推送冻结实现，绑定其精确提交哈希，然后唯一一次执行 `E0-H039-CHANNEL-SET-ADVANTAGE-SIGN-CERTIFICATE`。
+
+## D-0024 — 2026-08-02
+
+- 阶段：P7 / G6
+- 动作：`BIND_H039_E0_CODE_SNAPSHOT`
+- 决定：H-039 预注册绑定到已推送的不可变冻结提交 `ddb66391e42bbaf5e63c85949df6c4fac8d32414`。
+- 依据：该提交包含 joint-context channel-corner 枚举、共享 group centering、216 个聚合 cell/1080 个 seed cell、8 个基线、8 类控制、输出结构、单次执行保护及 34 项通过的测试；绑定时正式原始结果与汇总表均不存在。
+- 完整性判断：当前 code、config 和 test 的 Git blob 与冻结提交逐一一致，绑定提交只改变预注册、治理记录、校验器和 README，不回改实现或阈值。
+- 预算影响：0（正式实验尚未执行，累计保持 70/100）。
+- 反事实判断：若尚未投入本轮时间，仍会先独立完成提交绑定，因为这能阻止依据正式结果修改角点枚举、共享中心、SignCert-PO radius matching、matched acceptance 或成功阈值。
+- 边界：完整网格只能运行一次；必须保留所有 1080 个 seed cell、40 个控制行、216-cell 汇总及负结果，不得静默重跑或结果后调参。
+- 下一项允许任务：从绑定实现唯一一次执行 `E0-H039-CHANNEL-SET-ADVANTAGE-SIGN-CERTIFICATE`，保存全部原始行并按原预注册门槛审查。

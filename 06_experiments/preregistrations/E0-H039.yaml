@@ -18,5 +18,5 @@ budget_limit: 1
 stop_condition: stop after the complete declared grid and every control; do not remove wide intervals zero-certificate cells channel misspecification or matched-acceptance comparisons
 success_threshold: "valid-coverage false-certified sign rate <= 0.05; strong-cell clean-gradient cosine >= 0.90 harmful sample update rate <= 0.05 and certified mass >= 0.50; at least three heterogeneous non-collinear cells with cosine gain >= 0.05 or harmful-rate reduction >= 0.10 over both H-001 and the best exact non-oracle baseline after matched acceptance; point-limit direction difference <= 0.01"
 failure_threshold: "false-certified sign rate > 0.05 under valid coverage, zero qualifying gain cells, behavior equivalent to SignCert-PO or H-027, gain disappears after matched acceptance, certified mass collapses in all target cells, or benefit requires omitting misspecification or wide-interval controls"
-code_commit: TO_BE_SET_BEFORE_EXECUTION
-status: IMPLEMENTATION_FROZEN_NOT_RUN
+code_commit: ddb66391e42bbaf5e63c85949df6c4fac8d32414
+status: BOUND_NOT_RUN

@@ -45,7 +45,7 @@ def main() -> None:
     raw_path = ROOT / "07_results/raw/e0_h039_results.json"
     table_path = ROOT / "07_results/tables/e0_h039_summary.csv"
     if raw_path.exists() or table_path.exists():
-        errors.append("formal H-039 results exist before commit binding")
+        errors.append("formal H-039 results exist before the frozen lifecycle permits them")
 
     config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
     if config.get("experiment_id") != "E0-H039-CHANNEL-SET-ADVANTAGE-SIGN-CERTIFICATE":
@@ -101,18 +101,26 @@ def main() -> None:
             errors.append(f"H-039 implementation lacks frozen token: {token}")
 
     prereg = yaml.safe_load(prereg_path.read_text(encoding="utf-8"))
-    if prereg.get("status") != "IMPLEMENTATION_FROZEN_NOT_RUN":
-        errors.append("H-039 preregistration is not frozen/not-run")
-    if prereg.get("code_commit") != "TO_BE_SET_BEFORE_EXECUTION":
-        errors.append("H-039 preregistration was bound before immutable commit")
+    lifecycle = prereg.get("status")
+    if lifecycle not in {"IMPLEMENTATION_FROZEN_NOT_RUN", "BOUND_NOT_RUN"}:
+        errors.append("H-039 preregistration is outside the frozen pre-result lifecycle")
+    expected_commit = (
+        "TO_BE_SET_BEFORE_EXECUTION"
+        if lifecycle == "IMPLEMENTATION_FROZEN_NOT_RUN"
+        else "ddb66391e42bbaf5e63c85949df6c4fac8d32414"
+    )
+    if prereg.get("code_commit") != expected_commit:
+        errors.append("H-039 preregistration commit does not match its frozen lifecycle")
     if prereg.get("budget_limit") != 1:
         errors.append("H-039 budget changed")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
     if state.get("budget", {}).get("used_units") != 70:
         errors.append("freeze incorrectly changed the budget")
-    if state.get("latest_decision", {}).get("decision_id") != "D-0023":
-        errors.append("research_state does not record D-0023")
+    latest_decision = str(state.get("latest_decision", {}).get("decision_id", ""))
+    match = re.fullmatch(r"D-(\d{4})", latest_decision)
+    if match is None or int(match.group(1)) < 23:
+        errors.append("research_state predates the H-039 freeze")
     if set(state.get("branches", {}).get("active", [])) != {"H-001", "H-005", "H-014", "H-039"}:
         errors.append("active portfolio changed during H-039 freeze")
 
