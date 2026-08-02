@@ -4,3 +4,4 @@
 {"timestamp":"2026-08-02T00:30:00+08:00","phase":"P7","drift_detected":false,"check":"E0 code and fixed grids were frozen before result generation; no language-model training was introduced."}
 {"timestamp":"2026-08-02T00:45:00+08:00","phase":"P7","drift_detected":false,"check":"All preregistrations were bound to pushed commit 34fea81 before the first formal E0 run."}
 {"timestamp":"2026-08-02T01:00:00+08:00","phase":"P7","drift_detected":false,"check":"Formal E0 ran once with all frozen seeds and controls; failed and equivalent branches were preserved and rejected without post-result tuning."}
+{"timestamp":"2026-08-02T02:00:00+08:00","phase":"P7_REGENERATION","drift_detected":false,"check":"Replacement search did not rename or narrow the three E0 rejections; five direct-prior or nonmechanistic candidates were killed before experiment implementation."}

@@ -1,0 +1,7 @@
+hypothesis_id,name,mechanism_family,total_score,falsifiability_score,difference_score,status,rejection_reason
+H-021,Negative-Control Verifier Bridge,proxy_bridge_identification,87,15,12,PREREGISTERED,
+H-022,Policy-Transported Audit Moment,distribution_transport,82,14,6,REJECTED_NOT_NOVEL,"OCRM and standard covariate-shift importance weighting already change the same population moment"
+H-023,Gradient-Flat Verifier Trust Region,gradient_regularization,84,14,4,REJECTED_NOT_NOVEL,"arXiv:2602.18037 directly proposes finite-difference gradient regularization for RLHF and RLVR reward hacking"
+H-024,Self-Internalization Gradient Gate,diagnostic_gating,76,13,6,REJECTED_NO_MECHANISM,"self-internalization is a detector; gating high-gap samples revives H-010 filtering without clean-gradient identification"
+H-025,Hidden Verifier-View Randomization,verifier_randomization,83,15,8,REJECTED_EQUIVALENT,"random verifier views are proxy acquisition for H-021 or hybrid verification, not an independent estimand"
+H-026,Quantile-Randomized Reward Update,reward_quantilisation,74,12,4,REJECTED_NOT_NOVEL,"corrupted-reward quantilisation was formalized in arXiv:1705.08417 and only blunts optimization"

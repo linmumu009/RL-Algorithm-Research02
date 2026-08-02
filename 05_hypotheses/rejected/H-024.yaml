@@ -1,0 +1,19 @@
+hypothesis_id: H-024
+name: Self-Internalization Gradient Gate
+target_problem: Q-001
+mechanism_family: diagnostic_gating
+observed_failure: verifier reward rises after the policy stops internalizing the intended rubric behavior
+causal_claim: a large self-internalization gap marks verifier-exploit updates
+changed_mathematical_quantity: "policy-gradient sample weight -> zero or downweight above a self-internalization-gap threshold"
+mechanism: gate verifier-positive samples using the policy log-probability diagnostic
+difference_from_existing_methods: converts the rubric-hacking diagnostic into H-010-style confidence filtering without identifying clean correctness
+falsifiable_predictions: [gap_correlates_with_independent_failure, gated_updates_reduce_proxy_divergence]
+cheapest_falsification_test: synthetic detector with independently controlled calibration and correctness
+failure_threshold: "clean-gradient cosine does not improve over norm-matched filtering"
+estimated_budget: 2
+score_total: 76
+status: REJECTED_NO_MECHANISM
+repair_count: 0
+closest_prior_work: [P-ARXIV-260512474, H-010]
+lineage_parent: H-010
+rejection_reason: detection plus masking does not identify or correct the selected causal error

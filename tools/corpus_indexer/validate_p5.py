@@ -61,9 +61,10 @@ def main() -> None:
     supplement = read_csv("02_literature/extended/p5_novelty_supplement.csv")
     active_cards = sorted((ROOT / "05_hypotheses/active").glob("H-*.yaml"))
     rejected_cards = sorted((ROOT / "05_hypotheses/rejected").glob("H-*.yaml"))
-    preregistrations = sorted(
-        (ROOT / "06_experiments/preregistrations").glob("E0-H*.yaml")
-    )
+    preregistrations = [
+        ROOT / "06_experiments/preregistrations" / f"E0-{hypothesis_id.replace('H-', 'H')}.yaml"
+        for hypothesis_id in sorted(G5_APPROVED_IDS)
+    ]
 
     if len(inventory) < 206:
         errors.append(f"inventory contains only {len(inventory)} records")
@@ -109,8 +110,8 @@ def main() -> None:
             errors.append(f"active difference below 10: {row['hypothesis_id']}")
 
     card_ids = {card.stem for card in active_cards + rejected_cards}
-    if len(card_ids) != 20 or card_ids != initial_ids:
-        errors.append("current active/rejected card files do not cover all 20 hypotheses")
+    if not initial_ids <= card_ids:
+        errors.append("current active/rejected card files do not preserve all initial 20 hypotheses")
     for card in active_cards + rejected_cards:
         missing = HYPOTHESIS_KEYS - yaml_keys(card)
         if missing:
@@ -120,8 +121,9 @@ def main() -> None:
         (ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8-sig")
     )
     nodes = lineage.get("nodes", [])
-    if len(nodes) != 20 or {node["id"] for node in nodes} != initial_ids:
-        errors.append("lineage graph does not contain the same 20 hypotheses")
+    node_ids = {node["id"] for node in nodes}
+    if len(node_ids) != len(nodes) or not initial_ids <= node_ids:
+        errors.append("lineage graph does not preserve the same initial 20 hypotheses")
 
     if len(preregistrations) != 6:
         errors.append(f"E0 preregistration count is {len(preregistrations)} instead of 6")

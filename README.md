@@ -6,14 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：`Q001-E0-v1` 已按冻结提交一次性完成；3 个分支保留，2 个失败预测、1 个行为等价被淘汰，G6 尚未通过。
-- 本地语料：206 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
+- 状态：E0 后完成定向组合修复；6 个替代候选中保留 H-021，活跃组合恢复至 4 条，等待 H-021 E0。
+- 本地语料：212 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）。
-- 当前阻塞：活跃分支为 3，低于施工方案下限 4；必须先补充并完整筛选至少一个非等价分支。
-- 当前边界：G6 尚未通过，不进行语言模型训练或扩大验证；不得复活 H-004、H-008、H-018 的原主张。
+- 活跃分支：H-001、H-005、H-014（`E0_VALIDATED`）与 H-021（`PREREGISTERED`）。
+- 当前边界：只允许实现、冻结并执行 H-021 的 1 单位解析/合成 E0；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -39,16 +38,28 @@
 - E0 结果卡：[`07_results/result_cards/`](07_results/result_cards/)
 - E0 实验报告：[`10_deliverables/e0_experimental_report.md`](10_deliverables/e0_experimental_report.md)
 - E0 本地审查：[`08_reviews/local_reviews/e0_review.md`](08_reviews/local_reviews/e0_review.md)
+- 替代分支筛选：[`10_deliverables/replacement_hypothesis_screening.md`](10_deliverables/replacement_hypothesis_screening.md)
+- H-021 预注册：[`06_experiments/preregistrations/E0-H021.yaml`](06_experiments/preregistrations/E0-H021.yaml)
+- P7 补证清单：[`02_literature/extended/p7_regeneration_supplement.csv`](02_literature/extended/p7_regeneration_supplement.csv)
 
 ## 目录
 
-项目按施工方案分为治理、语料、文献、分类体系、问题、假设、实验、结果、评审、决策和交付物目录。当前已完成 P0–P6 和 P7/E0，正在恢复最少四分支组合；尚未进行语言模型训练。
+项目按施工方案分为治理、语料、文献、分类体系、问题、假设、实验、结果、评审、决策和交付物目录。当前已完成 P0–P6、首轮 P7/E0 和定向组合修复；尚未进行语言模型训练。
 
 ## 更新约定
 
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.7.0 — 2026-08-02
+
+- 针对 E0 后活跃分支不足，生成并筛查 H-021–H-026 六个替代候选；未复活 H-004、H-008 或 H-018 的原论点。
+- 从 arXiv 补充 6 篇直接近邻并用 MinerU 全部解析，覆盖 corrupted reward、negative controls、proximal RL、OCRM、gradient regularization 和 rubric reward hacking；语料达到 212 篇。
+- 淘汰 H-022：OCRM/importance transport 已覆盖；淘汰 H-023：2026 年 gradient regularization 直接覆盖；淘汰 H-024：诊断加 gate 无 clean-gradient 机制；淘汰 H-025：属于 hybrid verification 或 H-021 proxy 步骤；淘汰 H-026：quantilisation 已有。
+- 保留 H-021 `Negative-Control Verifier Bridge`：用 randomized verifier proxy、exploit-sensitive diagnostic 与 sparse clean audit 识别 latent-exploit clean-gradient bridge。
+- 完成 H-021 的 1 单位 E0 预注册，锁定 strong/weak proxy、invalid exclusion、revealed latent 和非对称强基线控制。
+- 活跃组合恢复为 H-001、H-005、H-014、H-021；本轮消耗 4 单位，累计 55/100，G6 仍未通过。
 
 ### v0.6.0 — 2026-08-02
 

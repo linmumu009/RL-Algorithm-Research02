@@ -1,7 +1,7 @@
 # Corpus Deduplication and Integrity Report
 
-- PDF files scanned: 206
-- Unique arXiv IDs: 206
+- PDF files scanned: 212
+- Unique arXiv IDs: 212
 - Exact hash duplicate groups: 0
 - Repeated arXiv ID groups: 0
 - Unreadable PDFs: 0

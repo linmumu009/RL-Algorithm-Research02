@@ -86,3 +86,14 @@
 - G6：`NOT_YET_PASS`。三条分支仅通过 E0，尚无 E1/E2 证据，也未获得扩大实验权限。
 - 组合约束：活跃分支降至 3，低于并行下限 4；触发定向再生成，不得用已淘汰候选改名补数。
 - 下一项允许任务：生成并按 P5/P6 全流程筛选至少一个机制不同的替代分支，恢复四分支组合后再预注册 E1。
+
+## D-0010 — 2026-08-02
+
+- 阶段：P7 / G6（定向组合修复）
+- 动作：`PASS_TARGETED_REGENERATION_RETAIN_H021`
+- 决定：6 个替代候选中仅保留 H-021 `Negative-Control Verifier Bridge`，其余 5 个按直接已有、无机制或非独立分支淘汰；活跃组合恢复为 4 条。
+- 依据：语料扩充至 212 篇；`replacement_hypothesis_screening.md`、再生成新颖性/等价性/理论风险审查以及 H-021 E0 预注册。
+- 预算影响：4 单位，累计 55/100；仍保留 45 单位，满足至少 30% 探索/重启保留要求。
+- 反事实判断：若尚未投入时间，仍只选择 H-021，因为其 latent-exploit bridge estimand 与三条存活分支不同，且可用 1 单位实验直接证伪；不会选择已有 OCRM、gradient regularization 或 quantilisation 的换名。
+- 边界：H-021 只获得解析/合成 E0 权限；不得开始 E1 或语言模型训练。
+- 下一项允许任务：实现并冻结 H-021 离散 negative-control bridge E0，提交代码快照、绑定预注册后一次性执行。

@@ -82,7 +82,10 @@ def main() -> None:
     if {row.get("hypothesis_id") for row in table_rows} != EXPECTED_IDS:
         errors.append("E0 summary table branch IDs are incomplete")
 
-    prereg_paths = sorted((ROOT / "06_experiments/preregistrations").glob("E0-H*.yaml"))
+    prereg_paths = [
+        ROOT / "06_experiments/preregistrations" / f"E0-{hypothesis_id.replace('H-', 'H')}.yaml"
+        for hypothesis_id in sorted(EXPECTED_IDS)
+    ]
     if len(prereg_paths) != 6:
         errors.append("expected six E0 preregistrations")
     for path in prereg_paths:
@@ -104,19 +107,20 @@ def main() -> None:
                 errors.append(f"{path.name} references missing artifact {artifact}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
-    if active_ids != SURVIVORS:
-        errors.append(f"E0 survivor files are {sorted(active_ids)}")
+    if not SURVIVORS <= active_ids:
+        errors.append(f"one or more E0 survivor files are absent: {sorted(SURVIVORS - active_ids)}")
     rejected_ids = {path.stem for path in (ROOT / "05_hypotheses/rejected").glob("H-*.yaml")}
     if not REJECTED_AT_E0 <= rejected_ids:
         errors.append("one or more E0 rejections are absent from rejected cards")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != SURVIVORS:
-        errors.append("research_state active branches differ from E0 survivors")
-    if state.get("budget", {}).get("used_units") != 51:
-        errors.append("research_state budget is not 51 after six E0 units")
-    if "active_portfolio_below_minimum_4_after_E0" not in state.get("blockers", []):
-        errors.append("portfolio minimum blocker is not recorded")
+    state_active = set(state.get("branches", {}).get("active", []))
+    if not SURVIVORS <= state_active:
+        errors.append("research_state no longer preserves all E0 survivors")
+    if REJECTED_AT_E0 & state_active:
+        errors.append("an E0-rejected branch was reactivated")
+    if state.get("budget", {}).get("used_units", 0) < 51:
+        errors.append("research_state budget lost the six E0 units")
 
     required_reports = [
         "08_reviews/local_reviews/e0_review.md",

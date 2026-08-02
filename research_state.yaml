@@ -1,12 +1,12 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: e0_review_complete_portfolio_repair_required
+phase_status: replacement_preregistered_ready_for_E0
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
   total_units: 100
-  used_units: 51
+  used_units: 55
   infrastructure_cap: 10
   exploration_reserve: 30
   scale_up_reserve: 30
@@ -16,6 +16,7 @@ branches:
     - H-001
     - H-005
     - H-014
+    - H-021
   paused: []
   rejected:
     - H-002
@@ -35,6 +36,11 @@ branches:
     - H-018
     - H-019
     - H-020
+    - H-022
+    - H-023
+    - H-024
+    - H-025
+    - H-026
 
 core15:
   status: approved_with_replacements
@@ -47,13 +53,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0009
-  action: E0_REVIEW_RETAIN_THREE
-  rationale: H-001, H-005, and H-014 passed mechanism-relevant E0 controls; H-004 and H-018 failed frozen predictions, while H-008 was behaviorally equivalent to direct pair averaging.
+  decision_id: D-0010
+  action: PASS_TARGETED_REGENERATION_RETAIN_H021
+  rationale: Six mechanism-distinct replacements were screened against 212 papers; H-021 alone retained a distinct latent-exploit bridge estimand and a one-unit falsification path.
 
-blockers:
-  - active_portfolio_below_minimum_4_after_E0
-next_allowed_task: Generate and fully screen at least one mechanism-distinct replacement branch to restore the four-branch minimum before E1; do not resurrect H-004, H-008, or H-018 by renaming or narrowing claims.
+blockers: []
+next_allowed_task: Implement and freeze only the preregistered H-021 discrete negative-control bridge E0, bind its immutable code commit, and execute once; no E1 or language-model training before H-021 E0 review.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

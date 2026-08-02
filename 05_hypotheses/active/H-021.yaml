@@ -1,0 +1,19 @@
+hypothesis_id: H-021
+name: Negative-Control Verifier Bridge
+target_problem: Q-001
+mechanism_family: proxy_bridge_identification
+observed_failure: latent exploit type affects both verifier acceptance and the policy score direction, so observed risk strata and declared nuisance features leave residual clean-gradient bias
+causal_claim: with a randomized verifier-only proxy view, an exploit-sensitive negative-control outcome, and sparse clean audits, a regularized bridge moment can identify the clean-gradient reward under latent instance-dependent verifier error
+changed_mathematical_quantity: "observed verifier reward -> bridge reward h(W, r_obs, x) satisfying E[y_audit - h(W, r_obs, x) | Z, r_obs, x] = 0"
+mechanism: randomize verifier view Z only after response generation, record a separate exploit-sensitive diagnostic W that is excluded from clean correctness, fit the bridge on sparse audits with cross-fitting, and use h as the score-function reward
+difference_from_existing_methods: H-001 conditions on observed strata, H-005 projects declared nuisance features, H-008 used a linear pair difference, while this candidate changes the identifiability condition and solves a conditional inverse problem for a latent exploit variable
+falsifiable_predictions: [bridge_recovers_clean_gradient_with_valid_relevant_proxies, observed_stratum_and_projection_baselines_remain_biased_under_latent_exploit, bridge_conditioning_degrades_as_proxy_relevance_approaches_zero, bridge_collapses_to_observed_latent_correction_when_exploit_type_is_revealed]
+cheapest_falsification_test: solve a discrete latent-class bridge on a fixed proxy-strength grid and compare exact and sampled clean-gradient moments to H-001 H-005 direct regression and pair-average baselines
+failure_threshold: "gradient bias >= 0.05 in any strong valid-proxy cell, cosine gain <= 0.02 in all latent-exploit cells, or no conditioning degradation in the weak-proxy stress"
+estimated_budget: 4
+score_total: 87
+status: PREREGISTERED
+repair_count: 0
+closest_prior_work: [P-ARXIV-201210315, P-ARXIV-211015332, P-ARXIV-170508417, H-001, H-005]
+lineage_parent: null
+rejection_reason: null

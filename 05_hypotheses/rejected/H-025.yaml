@@ -1,0 +1,19 @@
+hypothesis_id: H-025
+name: Hidden Verifier-View Randomization
+target_problem: Q-001
+mechanism_family: verifier_randomization
+observed_failure: the policy specializes to a known deterministic verifier view
+causal_claim: assigning a hidden verifier view after response generation prevents view-specific exploitation
+changed_mathematical_quantity: "deterministic verifier reward -> reward from v sampled after action from a frozen verifier-view distribution"
+mechanism: randomize checker templates or semantics-preserving verifier views after the response is fixed
+difference_from_existing_methods: the random view is either hybrid verification or the negative-control treatment used to identify H-021
+falsifiable_predictions: [lower_view_specific_false_positive_gradient, no_gain_when_view_errors_are_perfectly_correlated]
+cheapest_falsification_test: adversarial bandit with view-specific and shared corrupt actions
+failure_threshold: "no advantage over matched-cost random verifier selection"
+estimated_budget: 2
+score_total: 83
+status: REJECTED_EQUIVALENT
+repair_count: 0
+closest_prior_work: [P-ARXIV-170508417, P-ARXIV-260415149, H-021]
+lineage_parent: H-021
+rejection_reason: random view assignment is an auxiliary proxy-construction step or hybrid verifier, not an independent clean-gradient estimand

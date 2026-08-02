@@ -1,0 +1,19 @@
+hypothesis_id: H-026
+name: Quantile-Randomized Reward Update
+target_problem: Q-001
+mechanism_family: reward_quantilisation
+observed_failure: maximizing the highest verifier reward selects a small corrupt mode
+causal_claim: randomizing uniformly among a top reward quantile reduces worst-case concentration on corrupt modes
+changed_mathematical_quantity: "reward maximization -> stochastic update support restricted to a top verifier-reward quantile"
+mechanism: quantilize policy updates instead of maximizing the proxy reward
+difference_from_existing_methods: direct specialization of corrupted-reward quantilisation to RLVR
+falsifiable_predictions: [lower_worst_case_corrupt_mode_mass, intentional_proxy_reward_sacrifice]
+cheapest_falsification_test: finite corrupt-reward bandit with variable corrupt-state prevalence
+failure_threshold: "no true-reward gain over random top-quantile selection"
+estimated_budget: 2
+score_total: 74
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+closest_prior_work: [P-ARXIV-170508417]
+lineage_parent: null
+rejection_reason: quantilisation is already the named corrupted-reward mechanism and does not identify clean gradients

@@ -1,0 +1,19 @@
+hypothesis_id: H-022
+name: Policy-Transported Audit Moment
+target_problem: Q-001
+mechanism_family: distribution_transport
+observed_failure: clean audits from older policies do not represent current rollout features
+causal_claim: density-ratio transport of old audits recovers the current clean-gradient moment under covariate shift
+changed_mathematical_quantity: "audit estimating equation -> current-to-audit feature density ratio times the clean-gradient moment"
+mechanism: estimate current-versus-audit density ratios and importance-weight clean outcomes
+difference_from_existing_methods: direct application of off-policy corrected reward modeling and standard covariate-shift weighting
+falsifiable_predictions: [unbiased_under_covariate_shift, fails_under_conditional_concept_shift]
+cheapest_falsification_test: two-population Gaussian covariate-shift simulation
+failure_threshold: "no bias reduction over unweighted audits"
+estimated_budget: 2
+score_total: 82
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+closest_prior_work: [P-ARXIV-250715507, P-ARXIV-201210315]
+lineage_parent: H-001
+rejection_reason: OCRM and standard covariate-shift importance weighting already change the same population moment
