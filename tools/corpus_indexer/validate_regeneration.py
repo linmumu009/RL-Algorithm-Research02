@@ -11,7 +11,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 ROUND_IDS = {"H-021", "H-022", "H-023", "H-024", "H-025", "H-026"}
-ACTIVE_IDS = {"H-001", "H-005", "H-014", "H-027"}
+BASE_SURVIVORS = {"H-001", "H-005", "H-014"}
 ROUND_REJECTED = {"H-021", "H-022", "H-023", "H-024", "H-025", "H-026"}
 HYPOTHESIS_KEYS = {
     "hypothesis_id",
@@ -99,8 +99,8 @@ def main() -> None:
             errors.append(f"{path.name} lacks hypothesis keys: {sorted(missing)}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
-    if active_ids != ACTIVE_IDS:
-        errors.append(f"active portfolio is {sorted(active_ids)} instead of {sorted(ACTIVE_IDS)}")
+    if not BASE_SURVIVORS <= active_ids or "H-021" in active_ids:
+        errors.append("current portfolio does not preserve the three first-round E0 survivors and H-021 rejection")
 
     lineage = json.loads((ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8"))
     nodes = lineage.get("nodes", [])
@@ -132,12 +132,12 @@ def main() -> None:
             errors.append(f"missing or short regeneration report: {relative}")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != ACTIVE_IDS:
-        errors.append("research_state active portfolio does not contain the four round-2 branches")
-    if state.get("budget", {}).get("used_units") != 60:
-        errors.append("research_state budget is not 60")
-    if state.get("blockers"):
-        errors.append("research_state still reports a portfolio blocker after round 2")
+    if set(state.get("branches", {}).get("active", [])) != active_ids:
+        errors.append("research_state active portfolio differs from the current hypothesis cards")
+    if state.get("budget", {}).get("used_units", 0) < 61:
+        errors.append("research_state budget lost completed H-021 or H-027 E0 costs")
+    if len(active_ids) < 4 and not state.get("blockers"):
+        errors.append("research_state omits the current undersized-portfolio blocker")
 
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if "D-0010" not in decision_log or "PASS_TARGETED_REGENERATION_RETAIN_H021" not in decision_log:

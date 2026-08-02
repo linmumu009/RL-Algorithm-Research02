@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：H-027 二维 E0 已绑定不可变代码提交、尚未正式运行；活跃组合为 4 条。
+- 状态：H-027 正式 E0 已完成并因无增量收益淘汰；活跃组合回到 3 条，需再次定向补充。
 - 本地语料：219 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）与 H-027（`BOUND_NOT_RUN`）。
-- 当前边界：只允许从绑定提交一次性执行 H-027 的 1 单位二维解析/合成 E0；G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）；H-027 已淘汰。
+- 当前边界：只允许从未覆盖机制族开展第三轮定向再生成并恢复至少 4 条非等价分支；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -54,6 +54,10 @@
 - H-027 冻结配置：[`06_experiments/configs/e0_h027.yaml`](06_experiments/configs/e0_h027.yaml)
 - H-027 冻结实现：[`06_experiments/code/h027_gradient_set_e0.py`](06_experiments/code/h027_gradient_set_e0.py)
 - H-027 数学测试：[`06_experiments/unit_tests/test_h027_gradient_set_e0.py`](06_experiments/unit_tests/test_h027_gradient_set_e0.py)
+- H-027 原始结果：[`07_results/raw/e0_h027_results.json`](07_results/raw/e0_h027_results.json)
+- H-027 结果卡：[`07_results/result_cards/R-E0-H027.yaml`](07_results/result_cards/R-E0-H027.yaml)
+- H-027 实验报告：[`10_deliverables/h027_e0_experimental_report.md`](10_deliverables/h027_e0_experimental_report.md)
+- H-027 本地审查：[`08_reviews/local_reviews/h027_e0_review.md`](08_reviews/local_reviews/h027_e0_review.md)
 
 ## 目录
 
@@ -64,6 +68,15 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.10.0 — 2026-08-02
+
+- 从绑定提交 `b2778d683b22d8f7a24f60e3d3443abb2671aed2` 唯一一次执行 H-027 E0，完整保留 400 个 valid-coverage 行、30 个控制行和 80-cell 汇总；未调网格、未改阈值、未重跑。
+- 安全性控制通过：所有有效覆盖 cell 的 false-positive direction rate 为 0，64 个 strong-identified cell 的最小 clean-gradient cosine 为 0.995153。
+- 几何退化控制通过：point-limit direction difference 为 0；zero-in-set 与 wide-interval 均 100% abstain；interval 漏真值时 harmful direction rate 为 1.0，按预期暴露覆盖依赖。
+- 核心增益预测失败：45 个非对称非共线 cell 中 0 个达到 0.05，最大 gain 仅 0.011294；全体 cell 增益范围为 -0.027710 至 0.011294。
+- H-001 midpoint correction 在 400 次比较中赢 332 次，H-027 因“安全但无独立增量价值”记为 `REJECTED_NO_INCREMENTAL_GAIN_AND_DOMINATED`，不做结果后修补。
+- 本轮消耗 1 单位，累计预算 61/100；活跃分支回到 H-001、H-005、H-014 三条，G6 未通过，下一步只能从未覆盖机制族开展第三轮定向再生成。
 
 ### v0.9.2 — 2026-08-02
 

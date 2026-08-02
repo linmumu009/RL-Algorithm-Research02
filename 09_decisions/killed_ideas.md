@@ -31,3 +31,8 @@
 - H-032：CHERRL onset detector 加 rollback 只是 H-020 schedule reset。
 
 这些候选不得作为 H-027 的组件计入新颖性，也不得在 H-027 失败后换名补足分支数。
+
+## H-027 正式 E0 淘汰 — 2026-08-02
+
+- H-027：valid-coverage 安全性、point-limit 和 abstention 控制通过，但 45 个非对称非共线 cell 中 0 个达到 0.05 增益，最大仅 0.011294；H-001 midpoint 在 400 次比较中赢 332 次。
+- 不允许删除 H-001、降低增益阈值或把仅有安全性改写为算法成功；任何后续 set-valued 候选必须改变信息结构或给出不同于本 convex-hull maximin direction 的可证伪对象。

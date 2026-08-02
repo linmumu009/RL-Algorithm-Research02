@@ -12,8 +12,8 @@ cheapest_falsification_test: enumerate two-dimensional gradient sets induced by 
 failure_threshold: "false-positive direction rate > 0.05 under valid intervals, no >= 0.05 cosine gain over the best scalar baseline in any three asymmetric identified cells, incorrect abstention when zero is feasible, or failure to collapse to point correction"
 estimated_budget: 3
 score_total: 90
-status: BOUND_NOT_RUN
+status: REJECTED_NO_INCREMENTAL_GAIN_AND_DOMINATED
 repair_count: 0
 closest_prior_work: [P-ARXIV-250720550, P-ARXIV-260609073, P-ARXIV-251000915, H-001, H-018]
 lineage_parent: null
-rejection_reason: null
+rejection_reason: safe under valid coverage but zero of 45 asymmetric non-collinear cells reached the preregistered 0.05 gain; maximum gain was 0.011294 and H-001 midpoint won 332 of 400 comparisons

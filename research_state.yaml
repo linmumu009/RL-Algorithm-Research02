@@ -1,12 +1,12 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: h027_e0_bound_not_run
+phase_status: h027_e0_failed_targeted_regeneration_required
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
   total_units: 100
-  used_units: 60
+  used_units: 61
   infrastructure_cap: 10
   exploration_reserve: 30
   scale_up_reserve: 30
@@ -16,7 +16,6 @@ branches:
     - H-001
     - H-005
     - H-014
-    - H-027
   paused: []
   rejected:
     - H-002
@@ -42,6 +41,7 @@ branches:
     - H-024
     - H-025
     - H-026
+    - H-027
     - H-028
     - H-029
     - H-030
@@ -59,12 +59,13 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0016
-  action: BIND_H027_E0_CODE_SNAPSHOT
-  rationale: The preregistration is bound to pushed immutable commit b2778d683b22d8f7a24f60e3d3443abb2671aed2 while formal H-027 result artifacts are absent.
+  decision_id: D-0017
+  action: REJECT_H027_NO_INCREMENTAL_GAIN
+  rationale: H-027 was safe under valid interval coverage but zero of 45 asymmetric non-collinear cells reached the preregistered 0.05 gain and H-001 midpoint won 332 of 400 comparisons.
 
-blockers: []
-next_allowed_task: Execute E0-H027-AUDIT-IDENTIFIED-GRADIENT-SET exactly once from bound commit b2778d683b22d8f7a24f60e3d3443abb2671aed2, preserve every grid and control row, then review against the original thresholds; no rerun or tuning.
+blockers:
+  - active_portfolio_below_minimum: 3_active_vs_4_required
+next_allowed_task: Run a third targeted regeneration only from mechanism families not equivalent to H-001 H-005 H-014 H-021 or H-027; restore at least four active branches before E1 and do not rename failed candidates.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

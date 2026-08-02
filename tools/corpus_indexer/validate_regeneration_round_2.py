@@ -12,6 +12,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 ROUND_IDS = {"H-027", "H-028", "H-029", "H-030", "H-031", "H-032"}
 ACTIVE_IDS = {"H-001", "H-005", "H-014", "H-027"}
+POST_H027_ACTIVE_IDS = {"H-001", "H-005", "H-014"}
 ROUND_REJECTED = {"H-028", "H-029", "H-030", "H-031", "H-032"}
 HYPOTHESIS_KEYS = {
     "hypothesis_id",
@@ -95,7 +96,10 @@ def main() -> None:
         if int(row["total_score"]) < 70 or int(row["falsifiability_score"]) < 12 or int(row["difference_score"]) < 10:
             errors.append("H-027 does not satisfy screening thresholds")
 
-    card_paths = [ROOT / "05_hypotheses/active/H-027.yaml"] + [
+    h027_active = ROOT / "05_hypotheses/active/H-027.yaml"
+    h027_rejected = ROOT / "05_hypotheses/rejected/H-027.yaml"
+    h027_card = h027_active if h027_active.is_file() else h027_rejected
+    card_paths = [h027_card] + [
         ROOT / f"05_hypotheses/rejected/{hypothesis_id}.yaml" for hypothesis_id in sorted(ROUND_REJECTED)
     ]
     for path in card_paths:
@@ -107,8 +111,9 @@ def main() -> None:
             errors.append(f"{path.name} lacks hypothesis keys: {sorted(missing)}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
-    if active_ids != ACTIVE_IDS:
-        errors.append(f"active portfolio is {sorted(active_ids)} instead of {sorted(ACTIVE_IDS)}")
+    expected_active = POST_H027_ACTIVE_IDS if h027_rejected.is_file() else ACTIVE_IDS
+    if active_ids != expected_active:
+        errors.append(f"active portfolio is {sorted(active_ids)} instead of {sorted(expected_active)}")
     lineage = json.loads((ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8"))
     nodes = lineage.get("nodes", [])
     node_ids = {node["id"] for node in nodes}
@@ -153,12 +158,13 @@ def main() -> None:
             errors.append(f"missing or short round-2 report: {relative}")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != ACTIVE_IDS:
-        errors.append("research_state active portfolio is not the restored four branches")
-    if state.get("budget", {}).get("used_units") != 60:
-        errors.append("research_state budget is not 60")
-    if state.get("blockers"):
-        errors.append("research_state still reports a portfolio blocker")
+    if set(state.get("branches", {}).get("active", [])) != expected_active:
+        errors.append("research_state active portfolio is inconsistent with the H-027 lifecycle")
+    expected_budget = 61 if h027_rejected.is_file() else 60
+    if state.get("budget", {}).get("used_units") != expected_budget:
+        errors.append(f"research_state budget is not {expected_budget}")
+    if not h027_rejected.is_file() and state.get("blockers"):
+        errors.append("research_state reports a portfolio blocker before H-027 completion")
     if state.get("latest_decision", {}).get("decision_id") not in {"D-0014", "D-0015", "D-0016", "D-0017"}:
         errors.append("research_state latest decision is outside the H-027 lifecycle")
 

@@ -163,3 +163,14 @@
 - 反事实判断：若尚未投入时间，仍会先做精确提交绑定，因为它禁止根据正式结果调整区间映射、强识别定义、标量基线或 abstention 规则。
 - 边界：完整网格只执行一次；不得删除 misspecified、wide-interval 或负结果，不得在运行后改阈值或静默重跑。
 - 下一项允许任务：从绑定实现一次性执行 `E0-H027-AUDIT-IDENTIFIED-GRADIENT-SET`，保存全部原始行并按原预注册阈值审查。
+
+## D-0017 — 2026-08-02
+
+- 阶段：P7 / G6
+- 动作：`REJECT_H027_NO_INCREMENTAL_GAIN`
+- 决定：H-027 记为 `REJECTED_NO_INCREMENTAL_GAIN_AND_DOMINATED`，不做局部修复；活跃分支回到 H-001、H-005、H-014 三条。
+- 依据：400 个 valid-coverage 行的 false-positive direction rate 最大为 0，64 个 strong cell 的最小 cosine 为 0.995153；但 45 个目标 cell 中 0 个达到 0.05 gain，最大仅 0.011294，H-001 midpoint 赢 332/400 次。
+- 预算影响：1 单位，累计 61/100；完整保留 400 个正式行、30 个控制行和 80-cell 汇总。
+- 反事实判断：若尚未投入时间，仍会执行这项 E0，因为它证明 set-valued 安全性不自动构成超过 point correction 的算法收益；不会删基线、降低阈值或事后增加非线性集合。
+- G6：`NOT_YET_PASS`。活跃组合再次低于并行下限 4，未获得 E1 或语言模型训练权限。
+- 下一项允许任务：从当前语料的未覆盖机制族开展第三轮定向再生成；不得把 H-021 或 H-027 改名复活。
