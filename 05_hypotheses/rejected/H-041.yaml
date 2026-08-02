@@ -1,0 +1,12 @@
+hypothesis_id: H-041
+name: Reward-Uncertainty Action Portfolio
+target_problem: Q-001
+causal_claim: preserving a set of actions across reward uncertainty prevents premature commitment to verifier exploits
+mechanism: nonlinear objective over action sets under a distribution of reward functions
+falsifiable_predictions: [diverse_high_true_reward_actions]
+cheapest_falsification_test: contextual-bandit reward-distribution sweep
+failure_threshold: behavioral equivalence to the published reward-uncertainty action-set objective
+estimated_budget: 3
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+rejection_reason: arXiv:2606.03962 directly proposes the same mathematical object and gradient estimator

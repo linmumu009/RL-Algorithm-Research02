@@ -1,0 +1,22 @@
+experiment_id: E0-H039-CHANNEL-SET-ADVANTAGE-SIGN-CERTIFICATE
+hypothesis_id: H-039
+question: Does per-completion audit-channel-set sign certification reduce harmful sign-flipped updates and improve the aggregate clean-gradient direction beyond H-001 H-027 H-010 SignCert-PO scalar pessimism and matched-acceptance filtering?
+prediction: Under valid channel coverage H-039 keeps false-certified signs at or below 0.05; in strong cells it reaches clean-gradient cosine at least 0.90 harmful sample update rate at most 0.05 and certified mass at least 0.50; in at least three heterogeneous non-collinear cells it gains at least 0.05 cosine or reduces harmful updates by at least 0.10 relative to both H-001 and the best exact non-oracle baseline after matching acceptance rate.
+null_result_interpretation: Channel-set advantage sign certification is a coordinate change of SignCert-PO or H-027, or its apparent safety comes only from abstention rather than audit-channel identification.
+negative_result_interpretation: Reject H-039 if coverage does not control false certificates, if it has zero qualifying gain cells, if matched acceptance removes the gain, or if SignCert-PO H-027 or H-001 matches its behavior.
+dataset: seeded contextual binary verifier channel with mixed positive negative and near-zero clean advantages sparse independent audits valid and misspecified FP/FN intervals and declared shared group baselines
+model: analytic synthetic channel-corner clean-advantage intervals and sign-certified policy contributions; no language-model training
+baseline: [observed_verifier_advantage, H001_point_channel_correction, H010_uncertainty_mask, H027_global_gradient_set_direction, SignCertPO_matched_parameter_radius, scalar_lower_bound_pessimism, matched_acceptance_random_filter, oracle_clean_advantage]
+controls: [point_identified_channel, symmetric_homogeneous_channel, mixed_sign_cancellation, channel_interval_misspecification, matched_parameter_vs_channel_radius, equal_acceptance_rate, zero_certified_mass, equal_audit_and_compute]
+metrics: [false_certified_sign_rate, harmful_sample_update_rate, clean_gradient_cosine, certified_mass, cosine_gain_over_best_nonoracle, harmful_rate_reduction, point_limit_difference]
+primary_metric: false_certified_sign_rate
+secondary_metrics: [harmful_sample_update_rate, clean_gradient_cosine, certified_mass, cosine_gain_over_best_nonoracle]
+fixed_hyperparameters: contexts [2, 4]; audit sizes [64, 128, 256]; channel interval half widths [0.02, 0.05, 0.10, 0.20]; channel heterogeneity [0.00, 0.15, 0.30]; score-gradient noncollinearity angles [0, 45, 90]; 216 aggregated valid-coverage cells and 1080 seed cells
+allowed_tuning: none after code snapshot; channel interval construction shared group centering corner enumeration sign rule margin weighting baseline radius matching and acceptance matching are frozen before formal execution
+seed_policy: five fixed seeds [11, 23, 47, 89, 131]
+budget_limit: 1
+stop_condition: stop after the complete declared grid and every control; do not remove wide intervals zero-certificate cells channel misspecification or matched-acceptance comparisons
+success_threshold: "valid-coverage false-certified sign rate <= 0.05; strong-cell clean-gradient cosine >= 0.90 harmful sample update rate <= 0.05 and certified mass >= 0.50; at least three heterogeneous non-collinear cells with cosine gain >= 0.05 or harmful-rate reduction >= 0.10 over both H-001 and the best exact non-oracle baseline after matched acceptance; point-limit direction difference <= 0.01"
+failure_threshold: "false-certified sign rate > 0.05 under valid coverage, zero qualifying gain cells, behavior equivalent to SignCert-PO or H-027, gain disappears after matched acceptance, certified mass collapses in all target cells, or benefit requires omitting misspecification or wide-interval controls"
+code_commit: TO_BE_SET
+status: PREREGISTERED_NOT_RUN

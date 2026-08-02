@@ -38,7 +38,13 @@
     {"id":"H-035","name":"Counterfactual-Invariant Reward Head","family":"causal_reward_representation","references":["2501.09620","2601.21350"],"parent":"H-005","modification":"factor causal and noncausal reward representations with counterfactual invariance","status":"REJECTED_NOT_NOVEL","rejection_reason":"two direct causal reward-modeling methods already instantiate the object","renamed_old_candidate":true},
     {"id":"H-036","name":"Trusted Update Subspace","family":"clean_direction_projection","references":["2605.25189"],"parent":"H-005","modification":"project policy gradients into a clean reference update subspace","status":"REJECTED_NOT_NOVEL","rejection_reason":"Directional Alignment directly proposes trusted-direction projection","renamed_old_candidate":true},
     {"id":"H-037","name":"Adversarial Hacker-Auditor Gate","family":"adversarial_auditing","references":["2602.01750"],"parent":"H-024","modification":"learn a hacker and latent auditor then gate reward","status":"REJECTED_NOT_NOVEL","rejection_reason":"ARA directly implements the same two-stage game and gate","renamed_old_candidate":true},
-    {"id":"H-038","name":"Real-Time Policy-Feedback Reward Adapter","family":"dynamic_reward_modeling","references":["2601.22664","2505.18126"],"parent":null,"modification":"adapt reward prediction using current policy hidden states","status":"REJECTED_NOT_NOVEL","rejection_reason":"R2M directly proposes policy-feedback reward adaptation","renamed_old_candidate":true}
+    {"id":"H-038","name":"Real-Time Policy-Feedback Reward Adapter","family":"dynamic_reward_modeling","references":["2601.22664","2505.18126"],"parent":null,"modification":"adapt reward prediction using current policy hidden states","status":"REJECTED_NOT_NOVEL","rejection_reason":"R2M directly proposes policy-feedback reward adaptation","renamed_old_candidate":true},
+    {"id":"H-039","name":"Channel-Set Advantage Sign Certificate","family":"audit_calibrated_sign_identification","references":["2604.02986","2510.00915"],"parent":null,"modification":"map an audit-compatible contextual verifier-channel set into per-completion clean-advantage intervals and update only on an identified sign","status":"PREREGISTERED","rejection_reason":null,"renamed_old_candidate":false},
+    {"id":"H-040","name":"Correlation-Adversarial Proxy Occupancy","family":"correlated_proxy_dro","references":["2604.12086"],"parent":null,"modification":"optimize worst-case occupancy over correlated proxy rewards","status":"REJECTED_NOT_NOVEL","rejection_reason":"directly proposed by arXiv:2604.12086","renamed_old_candidate":true},
+    {"id":"H-041","name":"Reward-Uncertainty Action Portfolio","family":"reward_uncertainty_action_set","references":["2606.03962"],"parent":null,"modification":"replace scalar reward with a reward distribution and action-set objective","status":"REJECTED_NOT_NOVEL","rejection_reason":"directly proposed by arXiv:2606.03962","renamed_old_candidate":true},
+    {"id":"H-042","name":"Non-Hackable Confidence Utility","family":"confidence_reward_design","references":["2607.04332"],"parent":null,"modification":"use a non-hackable confidence reward family","status":"REJECTED_NOT_NOVEL","rejection_reason":"directly characterized and evaluated by arXiv:2607.04332","renamed_old_candidate":true},
+    {"id":"H-043","name":"Current-RF Tamper-Insensitive Update","family":"causal_reward_tampering","references":["1908.04734"],"parent":null,"modification":"optimize the current reward function while blocking causal tampering incentives","status":"REJECTED_NOT_NOVEL","rejection_reason":"current-RF and causal influence principles are directly proposed by arXiv:1908.04734","renamed_old_candidate":true},
+    {"id":"H-044","name":"Policy-Class Unhackable Proxy Simplification","family":"reward_order_geometry","references":["2209.13085"],"parent":null,"modification":"restrict the policy class until proxy and true reward orderings are compatible","status":"REJECTED_NO_MECHANISM","rejection_reason":"the necessary and sufficient restricted-policy characterization already exists and checking it is not a new update","renamed_old_candidate":true}
   ],
   "edges": [
     {"from":"H-001","to":"H-002","relation":"specialization"},
@@ -60,6 +66,9 @@
     {"from":"H-001","to":"H-034","relation":"modewise_channel_gate_reparameterization"},
     {"from":"H-005","to":"H-035","relation":"published_causal_representation_variant"},
     {"from":"H-005","to":"H-036","relation":"published_projection_variant"},
-    {"from":"H-024","to":"H-037","relation":"published_adversarial_gate_variant"}
+    {"from":"H-024","to":"H-037","relation":"published_adversarial_gate_variant"},
+    {"from":"H-001","to":"H-039","relation":"set_valued_completion_sign_extension"},
+    {"from":"H-010","to":"H-039","relation":"identified_sign_instead_of_uncertainty_mask"},
+    {"from":"H-027","to":"H-039","relation":"completionwise_certificate_instead_of_global_set_direction"}
   ]
 }

@@ -1,0 +1,12 @@
+hypothesis_id: H-042
+name: Non-Hackable Confidence Utility
+target_problem: Q-001
+causal_claim: choosing a confidence reward curve whose optimum preserves correctness prevents confidence reward hacking
+mechanism: replace static confidence bonus with a member of a non-hackable reward-function family
+falsifiable_predictions: [confidence_calibration_without_accuracy_loss]
+cheapest_falsification_test: finite correctness-confidence utility enumeration
+failure_threshold: equivalence to published non-hackable confidence rewards
+estimated_budget: 2
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+rejection_reason: arXiv:2607.04332 directly defines the family and demonstrates selective confidence reward hacking

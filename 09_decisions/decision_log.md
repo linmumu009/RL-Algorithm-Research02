@@ -220,3 +220,15 @@
 - 反事实判断：若尚未投入本轮时间，仍会执行该 E0 以区分“DP 接口正确”和“clean-gradient 算法有效”；不会删除低 rho/高维/漂移 cell、结果后重分配 rho 或降低 gain 阈值。
 - G6：`NOT_YET_PASS`。活跃组合再次低于并行下限 4，未获得 E1 或语言模型训练权限。
 - 下一项允许任务：从尚未覆盖且不等价于 H-001/H-005/H-014/H-021/H-027/H-033 的机制族开展第四轮定向再生成。
+
+## D-0022 — 2026-08-02
+
+- 阶段：P7 / G6（第四轮定向组合修复）
+- 动作：`PASS_REGENERATION_ROUND_4_RETAIN_H039`
+- 决定：H-039–H-044 六个候选中，仅条件性保留 H-039 `Channel-Set Advantage Sign Certificate`；其余五个因直接已有或缺少新更新机制淘汰，活跃组合恢复为 H-001、H-005、H-014、H-039 四条。
+- 依据：新增 6 篇官方 arXiv 直接近邻并经 MinerU `vlm` 全量解析，唯一语料达到 237 篇；完成第四轮新颖性、等价性、理论风险审查和 H-039 E0 预注册。
+- 增量判断：H-039 将 audit-compatible contextual verifier channel 映射为逐 completion clean-advantage interval，在聚合前认证符号；E0 强制与 H-001、H-027、H-010、SignCert-PO、scalar pessimism 和 matched-acceptance filtering 比较。
+- 预算影响：4 单位，累计 70/100；恰好保留 30 单位探索/重启储备，H-039 正式 E0 的 1 单位尚未消耗。
+- 反事实判断：若尚未投入时间，仍只暂留 H-039，因为它改变识别粒度且有明确等价性反例；不会保留已直接发表的 correlated-proxy DRO、reward uncertainty portfolio、confidence reward 或 causal tampering 方案。
+- 边界：H-039 只获得解析/合成 E0 权限；不得开始 E1 或语言模型训练，不得以降低接受率替代算法增益。
+- 下一项允许任务：实现并冻结 H-039 E0，提交不可变代码快照、绑定精确提交后只执行一次正式网格。

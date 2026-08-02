@@ -1,0 +1,7 @@
+hypothesis_id,name,mechanism_family,total_score,falsifiability_score,difference_score,status,rejection_reason
+H-039,Channel-Set Advantage Sign Certificate,audit_calibrated_sign_identification,89,15,10,PREREGISTERED,
+H-040,Correlation-Adversarial Proxy Occupancy,correlated_proxy_dro,88,14,2,REJECTED_NOT_NOVEL,"arXiv:2604.12086 directly optimizes worst-case return over an r-correlated proxy-reward family"
+H-041,Reward-Uncertainty Action Portfolio,reward_uncertainty_action_set,87,14,2,REJECTED_NOT_NOVEL,"arXiv:2606.03962 directly replaces scalar reward with a reward distribution and nonlinear action-set objective"
+H-042,Non-Hackable Confidence Utility,confidence_reward_design,85,14,1,REJECTED_NOT_NOVEL,"arXiv:2607.04332 directly characterizes and evaluates non-hackable confidence reward families"
+H-043,Current-RF Tamper-Insensitive Update,causal_reward_tampering,86,13,2,REJECTED_NOT_NOVEL,"arXiv:1908.04734 directly gives current-RF and causal-influence design principles for reward-process tampering"
+H-044,Policy-Class Unhackable Proxy Simplification,reward_order_geometry,82,13,1,REJECTED_NO_MECHANISM,"arXiv:2209.13085 gives the necessary and sufficient restricted-policy characterization; checking it is not a new learning update"

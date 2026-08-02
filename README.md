@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：H-033 正式 E0 已完成并因隐私—效用与无增量收益失败而淘汰；活跃组合回到 3 条，需第四轮定向补充。
-- 本地语料：231 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
+- 状态：第四轮定向再生成与筛选已完成；H-039 已预注册，活跃组合恢复为 4 条，等待实现与冻结 E0。
+- 本地语料：237 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）；H-033 已淘汰。
-- 当前边界：只允许从未覆盖、且不等价于 H-001/H-005/H-014/H-021/H-027/H-033 的机制族开展第四轮定向再生成；G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）及 H-039（`PREREGISTERED`）。
+- 当前边界：只允许实现并冻结 H-039 解析/合成 E0，提交不可变代码并绑定精确提交后再唯一一次运行；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -68,6 +68,11 @@
 - H-033 结果卡：[`07_results/result_cards/R-E0-H033.yaml`](07_results/result_cards/R-E0-H033.yaml)
 - H-033 实验报告：[`10_deliverables/h033_e0_experimental_report.md`](10_deliverables/h033_e0_experimental_report.md)
 - H-033 本地审查：[`08_reviews/local_reviews/h033_e0_review.md`](08_reviews/local_reviews/h033_e0_review.md)
+- 第四轮替代筛选：[`10_deliverables/replacement_hypothesis_screening_round_4.md`](10_deliverables/replacement_hypothesis_screening_round_4.md)
+- 第四轮补证清单：[`02_literature/extended/p7_regeneration_round_4_supplement.csv`](02_literature/extended/p7_regeneration_round_4_supplement.csv)
+- 第四轮新颖性审查：[`05_hypotheses/novelty_checks/regeneration_round_4.md`](05_hypotheses/novelty_checks/regeneration_round_4.md)
+- 第四轮等价性审查：[`05_hypotheses/equivalence_checks/regeneration_round_4.md`](05_hypotheses/equivalence_checks/regeneration_round_4.md)
+- H-039 预注册：[`06_experiments/preregistrations/E0-H039.yaml`](06_experiments/preregistrations/E0-H039.yaml)
 
 ## 目录
 
@@ -78,6 +83,16 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.12.0 — 2026-08-02
+
+- 在 H-033 正式失败后完成第四轮定向再生成，生成并筛查 H-039–H-044 六个候选；未将 H-021、H-027、H-033 或旧 gate/DRO 机制换名复活。
+- 从官方 arXiv 补充 6 篇直接近邻并通过 MinerU `vlm` 批次全量解析，覆盖 advantage sign robustness、correlated proxy robustness、reward uncertainty、confidence reward、reward tampering 与 unhackability；唯一语料达到 237 篇。
+- 淘汰 H-040：correlated-proxy worst-case optimization 已直接发表；淘汰 H-041：reward-distribution action portfolio 已直接发表；淘汰 H-042：non-hackable confidence reward 已直接发表。
+- 淘汰 H-043：current-RF/causal tamper-resistance 已直接提出；淘汰 H-044：restricted-policy unhackability 已被完整刻画且候选无新更新机制。
+- 条件性保留 H-039 `Channel-Set Advantage Sign Certificate`：由 clean audit 的 contextual FP/FN 区间逐 completion 构造 clean-advantage interval，只对全区间同号的样本更新，并以最坏绝对 margin 加权。
+- 完成 H-039 的 1 单位 E0 预注册，强制比较 H-001、H-027、H-010、SignCert-PO、scalar pessimism、matched-acceptance filter 与 oracle；若行为等价、收益只来自 abstention 或有效覆盖下错误认证超标即淘汰。
+- 本轮筛选消耗 4 单位，累计预算 70/100，恰好保留 30 单位探索/重启储备；正式 H-039 E0 尚未执行，下一步仅实现并冻结其解析/合成实验。
 
 ### v0.11.3 — 2026-08-02
 

@@ -3676,5 +3676,83 @@
     "abstract": "Preference-based fine-tuning has become an important component in training large language models, and the data used at this stage may contain sensitive user information. A central question is how to design a differentially private pipeline that is well suited to the distinct structure of reinforcement learning from human feedback. We propose a privacy-preserving framework that imposes differential privacy only on reward learning and derives the final policy from the resulting private reward model. Theoretically, we study the suboptimality gap and show that privacy contributes an additional additive term beyond the usual non-private statistical error. We also establish a minimax lower bound and show that the dominant term changes with sample size and privacy level, which in turn characterizes regimes in which the upper bound is rate-optimal up to logarithmic factors. Empirically, synthetic experiments confirm the scaling predicted by the theory, and experiments on the Anthropic HH-RLHF dataset using the Gemma-2B-IT model show stronger private alignment performance than existing differentially private baseline methods across privacy budgets.",
     "published": "2026-03-23T20:45:17Z",
     "updated": "2026-03-23T20:45:17Z"
+  },
+  "2604.12086": {
+    "title": "Robust Optimization for Mitigating Reward Hacking with Correlated Proxies",
+    "authors": [
+      "Zixuan Liu",
+      "Xiaolin Sun",
+      "Zizhan Zheng"
+    ],
+    "abstract": "Designing robust reinforcement learning (RL) agents in the presence of imperfect reward signals remains a core challenge. In practice, agents are often trained with proxy rewards that only approximate the true objective, leaving them vulnerable to reward hacking, where high proxy returns arise from unintended or exploitative behaviors. Recent work formalizes this issue using r-correlation between proxy and true rewards, but existing methods like occupancy-regularized policy optimization (ORPO) optimize against a fixed proxy and do not provide strong guarantees against broader classes of correlated proxies. In this work, we formulate reward hacking as a robust policy optimization problem over the space of all r-correlated proxy rewards. We derive a tractable max-min formulation, where the agent maximizes performance under the worst-case proxy consistent with the correlation constraint. We further show that when the reward is a linear function of known features, our approach can be adapted to incorporate this prior knowledge, yielding both improved policies and interpretable worst-case rewards. Experiments across several environments show that our algorithms consistently outperform ORPO in worst-case returns, and offer improved robustness and stability across different levels of proxy-true reward correlation. These results show that our approach provides both robustness and transparency in settings where reward design is inherently uncertain. The code is available at https://github.com/ZixuanLiu4869/reward_hacking.",
+    "published": "2026-04-13T21:47:49Z",
+    "updated": "2026-04-13T21:47:49Z"
+  },
+  "2607.04332": {
+    "title": "On the effectiveness of reward functions in reinforcement learning for confidence calibration of large language models",
+    "authors": [
+      "Chee Heng Tan",
+      "Zhuoyi Lin",
+      "Mehul Motani",
+      "Wee Sun Lee"
+    ],
+    "abstract": "In this paper, we consider the setting where large language models (LLMs) are trained using reinforcement learning (RL) to simultaneously improve reasoning accuracy and verbalize its confidence. Our reward scheme uses two functions for rewarding confidence verbalized by the LLM: one when the LLM is correct and a different one when the LLM is incorrect. With a poorly designed reward scheme, the LLM may be incentivized to answer incorrectly so that it can be confident that its answer is indeed incorrect, a phenomenon that we call confidence reward hacking. We propose the concept of non-hackable confidence reward schemes and define a spectrum of such reward schemes for RL confidence calibration training in LLMs. We demonstrate that selective confidence reward hacking can occur in practical datasets with reward schemes that are not designed to be non-hackable. We also demonstrate that the reward scheme with the best calibration to accuracy tradeoff depends on the dataset and the application, and propose using the reward scheme as a hyperparameter to optimize the tradeoffs in accordance to what is important for the application. The code of our experiments is available in https://anonymous.4open.science/r/rl-confidence-calibration-9ED4/README.md.",
+    "published": "2026-07-05T14:29:18Z",
+    "updated": "2026-07-05T14:29:18Z"
+  },
+  "2604.02986": {
+    "title": "Mitigating Reward Hacking in RLHF via Advantage Sign Robustness",
+    "authors": [
+      "Shinnosuke Ono",
+      "Johannes Ackermann",
+      "Soichiro Nishimori",
+      "Takashi Ishida",
+      "Masashi Sugiyama"
+    ],
+    "abstract": "Reward models (RMs) used in reinforcement learning from human feedback (RLHF) are vulnerable to reward hacking: as the policy maximizes a learned proxy reward, true quality plateaus or degrades. We make the assumption that reward hacking is often caused by flipped advantage signs: instead of reducing the likelihood of a bad response, a flipped sign causes the update to increase it. By considering an adversarial perturbation in the RM parameter space, we can derive a certified sign-preservation radius, which is the smallest perturbation that can flip the advantage sign during policy optimization. Based on this formulation, we propose Sign-Certified Policy Optimization (SignCert-PO), down-weighting non-robust completions in the policy gradient update. Unlike prior approaches that require multiple RMs or access to the RM training data, SignCert-PO is lightweight and operates purely at the policy optimization stage using only the RM parameters and on-policy completions. On TL;DR summarization and AlpacaFarm benchmarks, SignCert-PO consistently achieves a better win rate than baselines and reduces reward hacking.",
+    "published": "2026-04-03T11:45:16Z",
+    "updated": "2026-04-03T11:45:16Z"
+  },
+  "2606.03962": {
+    "title": "Using Reward Uncertainty to Induce Diverse Behaviour in Reinforcement Learning",
+    "authors": [
+      "Anthony GX-Chen",
+      "Ankit Anand",
+      "Gheorghe Comanici",
+      "Zaheer Abbas",
+      "Eser Aygün",
+      "David Smalling",
+      "Shibl Mourad",
+      "Doina Precup",
+      "André Barreto",
+      "Mark Rowland"
+    ],
+    "abstract": "Classical reinforcement learning (RL) typically seeks a deterministic policy that maximizes the expected sum of a scalar reward. Yet, modern applications such as language model fine-tuning or scientific discovery demand diversity. Existing remedies such as entropy regularization or diversity bonuses often require fragile trade-offs that sacrifice performance for stochasticity or rely on heuristic metrics that can misalign policy rankings. We argue that diversity is more naturally understood as the rational response to uncertainty in the reward. When the reward function is not perfectly known--as is the case with ambiguous preferences or imperfect reward models--committing to a single action can be sub-optimal. Building on this, we propose a fundamental reformulation of the RL objective by replacing the scalar reward with a distribution over reward functions, and applying a non-linear objective over sets of actions. The result is a framework in which calibrated behavioural diversity emerges naturally, remains controllable through the reward function distribution, and is obtained without sacrificing expected reward. Focusing on the contextual bandit setting, we derive a principled gradient estimator for this objective and prove that our formulation naturally generalizes both vanilla policy gradient and more recently developed action-set approaches. Our empirical results demonstrate that this framework offers a robust and theoretically grounded alternative for complex RL tasks where the traditional formulation of the problem fails to induce the desired breadth of agent behaviour.",
+    "published": "2026-06-02T17:50:14Z",
+    "updated": "2026-06-02T17:50:14Z"
+  },
+  "2209.13085": {
+    "title": "Defining and Characterizing Reward Hacking",
+    "authors": [
+      "Joar Skalse",
+      "Nikolaus H. R. Howe",
+      "Dmitrii Krasheninnikov",
+      "David Krueger"
+    ],
+    "abstract": "We provide the first formal definition of reward hacking, a phenomenon where optimizing an imperfect proxy reward function leads to poor performance according to the true reward function. We say that a proxy is unhackable if increasing the expected proxy return can never decrease the expected true return. Intuitively, it might be possible to create an unhackable proxy by leaving some terms out of the reward function (making it \"narrower\") or overlooking fine-grained distinctions between roughly equivalent outcomes, but we show this is usually not the case. A key insight is that the linearity of reward (in state-action visit counts) makes unhackability a very strong condition. In particular, for the set of all stochastic policies, two reward functions can only be unhackable if one of them is constant. We thus turn our attention to deterministic policies and finite sets of stochastic policies, where non-trivial unhackable pairs always exist, and establish necessary and sufficient conditions for the existence of simplifications, an important special case of unhackability. Our results reveal a tension between using reward functions to specify narrow tasks and aligning AI systems with human values.",
+    "published": "2022-09-27T00:32:44Z",
+    "updated": "2025-03-05T21:08:30Z"
+  },
+  "1908.04734": {
+    "title": "Reward Tampering Problems and Solutions in Reinforcement Learning: A Causal Influence Diagram Perspective",
+    "authors": [
+      "Tom Everitt",
+      "Marcus Hutter",
+      "Ramana Kumar",
+      "Victoria Krakovna"
+    ],
+    "abstract": "Can humans get arbitrarily capable reinforcement learning (RL) agents to do their bidding? Or will sufficiently capable RL agents always find ways to bypass their intended objectives by shortcutting their reward signal? This question impacts how far RL can be scaled, and whether alternative paradigms must be developed in order to build safe artificial general intelligence. In this paper, we study when an RL agent has an instrumental goal to tamper with its reward process, and describe design principles that prevent instrumental goals for two different types of reward tampering (reward function tampering and RF-input tampering). Combined, the design principles can prevent both types of reward tampering from being instrumental goals. The analysis benefits from causal influence diagrams to provide intuitive yet precise formalizations.",
+    "published": "2019-08-13T16:50:00Z",
+    "updated": "2021-03-26T11:13:59Z"
   }
 }

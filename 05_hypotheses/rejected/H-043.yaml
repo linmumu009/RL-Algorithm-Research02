@@ -1,0 +1,12 @@
+hypothesis_id: H-043
+name: Current-RF Tamper-Insensitive Update
+target_problem: Q-001
+causal_claim: evaluating actions with the current uncompromised reward function removes incentives to influence future verifier inputs
+mechanism: causal influence-diagram current-RF optimization with decoupled reward-process inputs
+falsifiable_predictions: [no_instrumental_reward_process_tampering]
+cheapest_falsification_test: finite causal reward-tampering MDP
+failure_threshold: equivalence to current-RF and decoupled-feedback design principles
+estimated_budget: 3
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+rejection_reason: arXiv:1908.04734 directly develops these reward-function and RF-input tampering solutions

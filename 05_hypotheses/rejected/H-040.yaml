@@ -1,0 +1,12 @@
+hypothesis_id: H-040
+name: Correlation-Adversarial Proxy Occupancy
+target_problem: Q-001
+causal_claim: optimizing worst-case occupancy return over all audit-compatible correlated proxies prevents verifier exploitation
+mechanism: max-min policy optimization over an r-correlated proxy-reward family
+falsifiable_predictions: [higher_worst_case_true_return]
+cheapest_falsification_test: finite MDP correlated-proxy sweep
+failure_threshold: no gain over published correlated-proxy robust optimization
+estimated_budget: 4
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+rejection_reason: arXiv:2604.12086 directly derives and tests the same max-min correlated-proxy objective

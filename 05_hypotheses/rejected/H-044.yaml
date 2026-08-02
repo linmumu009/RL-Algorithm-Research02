@@ -1,0 +1,12 @@
+hypothesis_id: H-044
+name: Policy-Class Unhackable Proxy Simplification
+target_problem: Q-001
+causal_claim: restricting the policy class to an order-compatible subset makes a nonconstant verifier proxy unhackable
+mechanism: enforce the necessary reward-order inequalities over a finite declared policy class
+falsifiable_predictions: [proxy_improvement_never_reduces_true_return_inside_class]
+cheapest_falsification_test: finite-policy occupancy-order feasibility program
+failure_threshold: no constructive policy update beyond the published characterization
+estimated_budget: 2
+status: REJECTED_NO_MECHANISM
+repair_count: 0
+rejection_reason: arXiv:2209.13085 already characterizes unhackable proxies for finite policy sets and the feasibility check is not an independent learning mechanism

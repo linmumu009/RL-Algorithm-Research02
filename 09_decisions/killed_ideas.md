@@ -46,3 +46,18 @@
 - H-038：实时 policy hidden-state reward adapter 已由 arXiv:2601.22664 直接覆盖，iterated RM 也已有系统研究。
 
 以上候选不得作为 H-033 的组件计入新颖性。H-033 若不能超过 exact Reusable Holdout、Generic Holdout 或 once-trained private reward model，也必须按等价/无增量价值淘汰。
+
+## H-033 正式 E0 淘汰 — 2026-08-02
+
+- H-033：`REJECTED_FAILED_PREDICTION_AND_DOMINATED`。144 个 adaptive cell 中 118 个 bias 超标、127 个 cosine 不足、82 个方向错误率超标，且 qualifying gain cell 为 0。
+- 不允许删除低 rho、高维或 drift cell，不允许重分配 privacy budget 后换名复活；DP accountant 正确不等于 reward robustness 成功。
+
+## 第四轮定向再生成淘汰 — 2026-08-02
+
+- H-040：correlated-proxy worst-case optimization 已由 arXiv:2604.12086 直接提出。
+- H-041：reward uncertainty distribution 与 action-set objective 已由 arXiv:2606.03962 直接提出。
+- H-042：non-hackable confidence reward family 已由 arXiv:2607.04332 直接刻画和评估。
+- H-043：current-RF optimization 与 causal tamper-resistance 原则已由 arXiv:1908.04734 直接提出。
+- H-044：restricted policy class 上 unhackability 的必要充分条件已由 arXiv:2209.13085 给出；条件检查不是新的学习机制。
+
+以上候选不得作为 H-039 的组件重新计算新颖性。H-039 若与 SignCert-PO/H-027 行为等价，或收益只来自更低接受率，也必须淘汰。
