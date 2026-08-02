@@ -1,0 +1,26 @@
+result_id: R-E0-H021
+experiment_id: E0-H021-NEGATIVE-CONTROL-BRIDGE
+hypothesis_id: H-021
+code_commit: 8b167359c3c114412af397ab69d30875d3fa1bdf
+raw_artifacts: [07_results/raw/e0_h021_results.json, 07_results/raw/e0_h021_results.sha256, 07_results/tables/e0_h021_summary.csv]
+primary_metric:
+  name: gradient_bias_norm
+  outcome: FAIL
+  strong_proxy_range: [0.005995, 0.026519]
+key_results:
+  strong_proxy_bias_pass: true
+  strong_latent_gain_cells: 0
+  strong_latent_cosine_gain_mean: -0.004589
+  strong_latent_bridge_cosine_mean: 0.994602
+  strong_latent_best_nonoracle_cosine_mean: 0.999191
+  direct_proxy_regression_wins_in_strong_latent_runs: 28
+  total_strong_latent_runs: 30
+  revealed_latent_oracle_control_pass: true
+  condition_degradation_pass: true
+  strong_condition_median: 3.196831
+  weak_condition_median: 678.122519
+  invalid_exclusion_bias_mean: 0.011224
+  matched_valid_bias_mean: 0.007693
+decision_relevance: The bridge identifies a low-bias moment under strong proxies but adds no clean-gradient direction value over direct audit regression; every preregistered strong latent-exploit gain cell is nonpositive, so the mechanism is rejected without repair.
+decision: REJECTED_FAILED_PREDICTION_AND_DOMINATED
+created_at: "2026-08-02T11:52:43+08:00"

@@ -24,3 +24,7 @@ H-021 针对的是 observed strata 与 declared nuisance 都无法表示的 late
 - 定向再生成：`PASS_RETAIN_ONE`。
 - 活跃分支数：4，恢复施工方案下限。
 - 下一项唯一允许任务：实现并冻结 H-021 的离散 bridge E0，绑定代码提交后一次性运行。
+
+## 后续 E0 结论（2026-08-02）
+
+H-021 已按冻结提交一次性运行并触发原失败阈值：强代理 bias 与 oracle 对照通过，但 6 个强代理 latent-exploit cell 的 cosine gain 全部为负，direct proxy regression 在 30 次强条件比较中赢 28 次。H-021 因无增量价值移入淘汰目录，不做结果后修补。活跃组合重新降至 3 条，必须进行第二轮定向再生成。

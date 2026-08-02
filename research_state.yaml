@@ -1,12 +1,12 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: h021_e0_code_bound_ready_for_single_execution
+phase_status: h021_e0_failed_portfolio_below_minimum
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
   total_units: 100
-  used_units: 55
+  used_units: 56
   infrastructure_cap: 10
   exploration_reserve: 30
   scale_up_reserve: 30
@@ -16,7 +16,6 @@ branches:
     - H-001
     - H-005
     - H-014
-    - H-021
   paused: []
   rejected:
     - H-002
@@ -36,6 +35,7 @@ branches:
     - H-018
     - H-019
     - H-020
+    - H-021
     - H-022
     - H-023
     - H-024
@@ -53,12 +53,13 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0012
-  action: BIND_H021_E0_CODE_SNAPSHOT
-  rationale: E0-H021 is bound to pushed immutable commit 8b167359c3c114412af397ab69d30875d3fa1bdf; no formal result existed at binding time.
+  decision_id: D-0013
+  action: REJECT_H021_NO_INCREMENTAL_GAIN
+  rationale: H-021 passed strong-proxy bias oracle and weak-rank controls but produced zero qualifying gain cells; direct proxy regression won 28 of 30 strong latent-exploit comparisons.
 
-blockers: []
-next_allowed_task: Execute E0-H021-NEGATIVE-CONTROL-BRIDGE exactly once from commit 8b167359c3c114412af397ab69d30875d3fa1bdf, preserve every cell, and review without tuning; no E1 or language-model training.
+blockers:
+  - active_branch_count_below_minimum_4
+next_allowed_task: Run a second targeted regeneration round from mechanism families not represented by H-001 H-005 or H-014; do not rename H-021 or enter E1 or language-model training until at least four non-equivalent branches are active.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

@@ -11,8 +11,8 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 ROUND_IDS = {"H-021", "H-022", "H-023", "H-024", "H-025", "H-026"}
-ACTIVE_IDS = {"H-001", "H-005", "H-014", "H-021"}
-ROUND_REJECTED = {"H-022", "H-023", "H-024", "H-025", "H-026"}
+ACTIVE_IDS = {"H-001", "H-005", "H-014"}
+ROUND_REJECTED = {"H-021", "H-022", "H-023", "H-024", "H-025", "H-026"}
 HYPOTHESIS_KEYS = {
     "hypothesis_id",
     "target_problem",
@@ -89,7 +89,7 @@ def main() -> None:
         if int(row["total_score"]) < 70 or int(row["falsifiability_score"]) < 12 or int(row["difference_score"]) < 10:
             errors.append("H-021 does not satisfy screening thresholds")
 
-    card_paths = [ROOT / "05_hypotheses/active/H-021.yaml"] + [ROOT / f"05_hypotheses/rejected/{hid}.yaml" for hid in sorted(ROUND_REJECTED)]
+    card_paths = [ROOT / f"05_hypotheses/rejected/{hid}.yaml" for hid in sorted(ROUND_REJECTED)]
     for path in card_paths:
         if not path.is_file():
             errors.append(f"missing regeneration card: {path.name}")
@@ -116,8 +116,8 @@ def main() -> None:
         if missing:
             errors.append(f"H-021 preregistration lacks keys: {sorted(missing)}")
         text = prereg.read_text(encoding="utf-8")
-        if "code_commit: TO_BE_SET_BEFORE_EXECUTION" not in text or "budget_limit: 1" not in text:
-            errors.append("H-021 preregistration is not in the frozen-before-execution state")
+        if "code_commit: 8b167359c3c114412af397ab69d30875d3fa1bdf" not in text or "status: COMPLETED_FAIL" not in text or "budget_limit: 1" not in text:
+            errors.append("H-021 preregistration is not bound to the frozen completed-fail record")
 
     required_reports = [
         "01_corpus/metadata/p7_regeneration_acquisition_report.md",
@@ -133,11 +133,11 @@ def main() -> None:
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
     if set(state.get("branches", {}).get("active", [])) != ACTIVE_IDS:
-        errors.append("research_state active portfolio does not contain the restored four branches")
-    if state.get("budget", {}).get("used_units") != 55:
-        errors.append("research_state budget is not 55")
-    if state.get("blockers"):
-        errors.append("research_state still reports a portfolio blocker")
+        errors.append("research_state active portfolio does not contain the three post-H021 branches")
+    if state.get("budget", {}).get("used_units") != 56:
+        errors.append("research_state budget is not 56")
+    if state.get("blockers") != ["active_branch_count_below_minimum_4"]:
+        errors.append("research_state does not report the post-H021 portfolio blocker")
 
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if "D-0010" not in decision_log or "PASS_TARGETED_REGENERATION_RETAIN_H021" not in decision_log:
@@ -149,7 +149,8 @@ def main() -> None:
         "replacement_candidates": len(candidates),
         "retained": len(retained),
         "screened_out": len(rejected),
-        "active_portfolio": len(active_ids),
+        "historically_retained_for_e0": len(retained),
+        "active_portfolio_after_h021_e0": len(active_ids),
         "lineage_nodes": len(nodes),
         "errors": errors,
     }

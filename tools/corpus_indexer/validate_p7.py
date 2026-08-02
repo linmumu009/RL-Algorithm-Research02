@@ -94,7 +94,12 @@ def main() -> None:
         if match is None or match.group(1) != CODE_COMMIT:
             errors.append(f"{path.name} is not bound to the frozen code commit")
 
-    cards = sorted((ROOT / "07_results/result_cards").glob("R-E0-H*.yaml"))
+    all_cards = sorted((ROOT / "07_results/result_cards").glob("R-E0-H*.yaml"))
+    cards = [
+        path
+        for path in all_cards
+        if yaml.safe_load(path.read_text(encoding="utf-8")).get("hypothesis_id") in EXPECTED_IDS
+    ]
     if len(cards) != 6:
         errors.append(f"result card count is {len(cards)} instead of 6")
     for path in cards:
@@ -142,7 +147,8 @@ def main() -> None:
         "final_survivors": len(SURVIVORS),
         "failed_predictions": 2,
         "equivalent_rejections": 1,
-        "result_cards": len(cards),
+        "historical_suite_result_cards": len(cards),
+        "all_e0_result_cards": len(all_cards),
         "errors": errors,
     }
     print(json.dumps(summary, ensure_ascii=False, indent=2))

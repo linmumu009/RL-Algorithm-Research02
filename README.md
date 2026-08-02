@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：H-021 的 E0 已绑定已推送不可变提交 `8b16735`；正式结果尚未生成，等待一次性执行。
+- 状态：H-021 E0 已按冻结提交一次性完成并触发失败阈值；该分支已淘汰，活跃组合再次降至 3 条。
 - 本地语料：212 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（`E0_VALIDATED`）与 H-021（`E0_CODE_BOUND_READY_TO_RUN`）。
-- 当前边界：只允许按提交 `8b16735` 一次性执行 H-021 的 1 单位解析/合成 E0；G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）；H-021 已记为 `REJECTED_FAILED_PREDICTION_AND_DOMINATED`。
+- 当前边界：活跃分支数 3，低于并行下限 4；只允许开展第二轮机制不同的定向再生成，G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -43,6 +43,10 @@
 - H-021 冻结配置：[`06_experiments/configs/e0_h021.yaml`](06_experiments/configs/e0_h021.yaml)
 - H-021 冻结实现：[`06_experiments/code/h021_bridge_e0.py`](06_experiments/code/h021_bridge_e0.py)
 - H-021 数学测试：[`06_experiments/unit_tests/test_h021_bridge_e0.py`](06_experiments/unit_tests/test_h021_bridge_e0.py)
+- H-021 原始结果：[`07_results/raw/e0_h021_results.json`](07_results/raw/e0_h021_results.json)
+- H-021 结果卡：[`07_results/result_cards/R-E0-H021.yaml`](07_results/result_cards/R-E0-H021.yaml)
+- H-021 实验报告：[`10_deliverables/h021_e0_experimental_report.md`](10_deliverables/h021_e0_experimental_report.md)
+- H-021 本地审查：[`08_reviews/local_reviews/h021_e0_review.md`](08_reviews/local_reviews/h021_e0_review.md)
 - P7 补证清单：[`02_literature/extended/p7_regeneration_supplement.csv`](02_literature/extended/p7_regeneration_supplement.csv)
 
 ## 目录
@@ -54,6 +58,15 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.8.0 — 2026-08-02
+
+- 按绑定提交 `8b167359c3c114412af397ab69d30875d3fa1bdf` 唯一一次执行 H-021 E0，完整保留 90 个有效运行行、5 个 invalid-exclusion 行和 18-cell 汇总；未重跑、未调网格。
+- H-021 在全部强代理 cell 中 bias 为 0.005995–0.026519，低于 0.05；与 revealed-latent oracle 的最大 cosine 差为 0.014793，控制项通过。
+- 弱代理条件数中位数由强区间的 3.20 恶化至 678.12，确认 completeness/rank 风险，但这不构成主效应成功。
+- 核心增益预测失败：6 个强代理 latent-exploit cell 中 0 个达到 0.05，平均 cosine gain 为 -0.004589；direct proxy regression 在 30 次强条件比较中赢 28 次。
+- H-021 因“可识别但无增量价值”记为 `REJECTED_FAILED_PREDICTION_AND_DOMINATED`，不做结果后局部修补。
+- 本轮消耗 1 单位，累计 56/100；活跃分支回到 H-001、H-005、H-014 三条，G6 未通过，下一步只能开展第二轮机制不同的定向再生成。
 
 ### v0.7.2 — 2026-08-02
 

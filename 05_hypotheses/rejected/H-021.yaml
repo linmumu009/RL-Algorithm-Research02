@@ -12,8 +12,8 @@ cheapest_falsification_test: solve a discrete latent-class bridge on a fixed pro
 failure_threshold: "gradient bias >= 0.05 in any strong valid-proxy cell, cosine gain <= 0.02 in all latent-exploit cells, or no conditioning degradation in the weak-proxy stress"
 estimated_budget: 4
 score_total: 87
-status: PREREGISTERED
+status: REJECTED_FAILED_PREDICTION_AND_DOMINATED
 repair_count: 0
 closest_prior_work: [P-ARXIV-201210315, P-ARXIV-211015332, P-ARXIV-170508417, H-001, H-005]
 lineage_parent: null
-rejection_reason: null
+rejection_reason: The bridge met strong-proxy bias and oracle controls but achieved zero preregistered gain cells; mean strong latent-exploit cosine gain over the best non-oracle was -0.00459 and direct proxy regression won 28 of 30 comparisons.
