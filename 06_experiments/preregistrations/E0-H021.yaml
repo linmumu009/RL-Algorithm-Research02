@@ -22,4 +22,4 @@ code_commit: 8b167359c3c114412af397ab69d30875d3fa1bdf
 status: COMPLETED_FAIL
 executed_at: "2026-08-02T11:52:43+08:00"
 result_artifacts: [07_results/raw/e0_h021_results.json, 07_results/tables/e0_h021_summary.csv, 07_results/result_cards/R-E0-H021.yaml]
-result_sha256: 9aeaef5e30e286392fe8082e2ecb8a73af35190ef11b4023da0281956bdc5677
+result_sha256_lf_normalized: cba8540ab7570e874e99b9adb50ddc6b85a47ae78e5b0d217d6724014105896b

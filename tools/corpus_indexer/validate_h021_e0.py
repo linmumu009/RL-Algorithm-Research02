@@ -9,7 +9,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[2]
-EXPECTED_HASH = "9aeaef5e30e286392fe8082e2ecb8a73af35190ef11b4023da0281956bdc5677"
+EXPECTED_HASH = "cba8540ab7570e874e99b9adb50ddc6b85a47ae78e5b0d217d6724014105896b"
 EXPECTED_SEEDS = [11, 23, 47, 89, 131]
 
 
@@ -21,7 +21,8 @@ def main() -> None:
     prereg_path = ROOT / "06_experiments/preregistrations/E0-H021.yaml"
 
     raw_bytes = raw_path.read_bytes()
-    actual_hash = hashlib.sha256(raw_bytes).hexdigest()
+    canonical_bytes = raw_bytes.replace(b"\r\n", b"\n")
+    actual_hash = hashlib.sha256(canonical_bytes).hexdigest()
     if actual_hash != EXPECTED_HASH:
         errors.append(f"raw result hash is {actual_hash} instead of {EXPECTED_HASH}")
     payload = json.loads(raw_bytes)
