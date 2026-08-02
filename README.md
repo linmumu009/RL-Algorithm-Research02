@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：H-033 E0 已绑定不可变冻结提交但尚未运行；下一步唯一一次执行正式网格。
+- 状态：H-033 正式 E0 已完成并因隐私—效用与无增量收益失败而淘汰；活跃组合回到 3 条，需第四轮定向补充。
 - 本地语料：231 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）与 H-033（`BOUND_NOT_RUN`）。
-- 当前边界：只允许从绑定提交 `90dbd2e` 唯一执行一次 H-033 正式网格；G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）；H-033 已淘汰。
+- 当前边界：只允许从未覆盖、且不等价于 H-001/H-005/H-014/H-021/H-027/H-033 的机制族开展第四轮定向再生成；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -64,6 +64,10 @@
 - H-033 冻结配置：[`06_experiments/configs/e0_h033.yaml`](06_experiments/configs/e0_h033.yaml)
 - H-033 冻结实现：[`06_experiments/code/h033_private_audit_e0.py`](06_experiments/code/h033_private_audit_e0.py)
 - H-033 一致性测试：[`06_experiments/unit_tests/test_h033_private_audit_e0.py`](06_experiments/unit_tests/test_h033_private_audit_e0.py)
+- H-033 原始结果：[`07_results/raw/e0_h033_results.json`](07_results/raw/e0_h033_results.json)
+- H-033 结果卡：[`07_results/result_cards/R-E0-H033.yaml`](07_results/result_cards/R-E0-H033.yaml)
+- H-033 实验报告：[`10_deliverables/h033_e0_experimental_report.md`](10_deliverables/h033_e0_experimental_report.md)
+- H-033 本地审查：[`08_reviews/local_reviews/h033_e0_review.md`](08_reviews/local_reviews/h033_e0_review.md)
 
 ## 目录
 
@@ -74,6 +78,15 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.11.3 — 2026-08-02
+
+- 从绑定提交 `90dbd2ea0db51d1a37adabb5678baab8e13bf24d` 唯一一次执行 H-033 E0，完整保留 5760 个 method-seed 行、35 个控制行和 1152 个汇总 cell；未调网格、阈值、rho 分配或重跑。
+- 正式结论为 `FAIL`：144 个 H-033 adaptive cell 中 118 个 bias 超标、127 个 cosine 不足、82 个方向错误率超标、24 个 usable-round ratio 不足，qualifying gain cell 为 0。
+- 最坏 `(audit=128, queries=250, rho=0.1, d=32)` cell 的 bias 为 3.091019、cosine 为 0.019939、方向错误率为 0.4488；低 rho、长查询和高维下 Gaussian utility 明显崩溃。
+- 相对 naive 和最佳 exact non-oracle 的最大 cosine gain 分别仅 0.000495 和 0.003427；H-001 single-query 与 Thresholdout 显著占优。
+- privacy-off 与 naive 完全一致，zCDP 会计和 clipping 控制通过；因此保留 DP 正确性证据，但淘汰 H-033 的 reward-robustness 与独立增量主张。
+- H-033 记为 `REJECTED_FAILED_PREDICTION_AND_DOMINATED`，消耗 1 单位，累计预算 66/100；活跃组合回到 H-001、H-005、H-014，下一步进行第四轮定向再生成。
 
 ### v0.11.2 — 2026-08-02
 

@@ -1,12 +1,12 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: h033_e0_bound_not_run
+phase_status: h033_e0_failed_portfolio_regeneration_required
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
   total_units: 100
-  used_units: 65
+  used_units: 66
   infrastructure_cap: 10
   exploration_reserve: 30
   scale_up_reserve: 30
@@ -16,7 +16,6 @@ branches:
     - H-001
     - H-005
     - H-014
-    - H-033
   paused: []
   rejected:
     - H-002
@@ -48,6 +47,7 @@ branches:
     - H-030
     - H-031
     - H-032
+    - H-033
     - H-034
     - H-035
     - H-036
@@ -65,12 +65,13 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0020
-  action: BIND_H033_E0_CODE_SNAPSHOT
-  rationale: The H-033 preregistration is bound to pushed immutable commit 90dbd2ea0db51d1a37adabb5678baab8e13bf24d while both formal result paths are absent.
+  decision_id: D-0021
+  action: REJECT_H033_PRIVACY_UTILITY_AND_INCREMENTAL_GAIN
+  rationale: H-033 failed safety in most adaptive cells, failed the round-efficiency condition in 24 cells, and produced zero qualifying gain cells while H-001 and Thresholdout dominated; the privacy accountant and implementation controls passed.
 
-blockers: []
-next_allowed_task: Execute E0-H033-PRIVACY-STABLE-REUSABLE-AUDIT-GRADIENT exactly once from bound commit 90dbd2ea0db51d1a37adabb5678baab8e13bf24d, preserve all rows and controls, then review against the original thresholds without rerunning or tuning.
+blockers:
+  - Active portfolio has only three non-equivalent E0 survivors after H-033 rejection; a fourth targeted regeneration round is required before G6 can advance.
+next_allowed_task: Run a fourth targeted regeneration only from mechanism families not equivalent to H-001 H-005 H-014 H-021 H-027 or H-033, restore at least four active branches, and do not start E1 or language-model training.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

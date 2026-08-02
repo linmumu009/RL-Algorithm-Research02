@@ -207,3 +207,16 @@
 - 反事实判断：若尚未投入本轮时间，仍会先绑定冻结提交，因为这禁止根据正式结果调整 DP calibration、adaptive query generator、Holdout 对照、聚合或成功阈值。
 - 边界：完整网格只能运行一次；必须保留低 rho、高维、population drift、nonadaptive 和 privacy-off 结果，不得静默重跑或结果后调参。
 - 下一项允许任务：从绑定提交唯一一次执行 `E0-H033-PRIVACY-STABLE-REUSABLE-AUDIT-GRADIENT`，保存全部原始行并按原预注册门槛审查。
+
+## D-0021 — 2026-08-02
+
+- 阶段：P7 / G6
+- 动作：`REJECT_H033_PRIVACY_UTILITY_AND_INCREMENTAL_GAIN`
+- 决定：H-033 记为 `REJECTED_FAILED_PREDICTION_AND_DOMINATED`，不做局部修复；活跃分支回到 H-001、H-005、H-014 三条。
+- 依据：唯一正式运行完整保留 5760 个 method-seed 行、35 个控制行和 1152 个汇总 cell；118/144 个 H-033 cell bias 超标、127/144 cosine 不足、82/144 方向错误率超标、24/144 round ratio 不足，qualifying gain cell 为 0。
+- 增量判断：相对 naive 和最佳 exact non-oracle 的最大 cosine gain 分别只有 0.000495 和 0.003427；H-001 与 Thresholdout 显著更稳，无法支持新算法价值。
+- 实现判断：privacy-off 与 naive 完全一致，rho 会计最大浮点误差 `4.884981e-15`，clipping 控制通过；失败来自预注册的隐私—效用与增量主张，而非执行错误。
+- 预算影响：1 单位，累计 66/100；完整保留负结果，不重跑、不调参。
+- 反事实判断：若尚未投入本轮时间，仍会执行该 E0 以区分“DP 接口正确”和“clean-gradient 算法有效”；不会删除低 rho/高维/漂移 cell、结果后重分配 rho 或降低 gain 阈值。
+- G6：`NOT_YET_PASS`。活跃组合再次低于并行下限 4，未获得 E1 或语言模型训练权限。
+- 下一项允许任务：从尚未覆盖且不等价于 H-001/H-005/H-014/H-021/H-027/H-033 的机制族开展第四轮定向再生成。

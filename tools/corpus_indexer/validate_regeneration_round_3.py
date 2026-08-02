@@ -11,7 +11,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 ROUND_IDS = {"H-033", "H-034", "H-035", "H-036", "H-037", "H-038"}
-ACTIVE_IDS = {"H-001", "H-005", "H-014", "H-033"}
+BASE_SURVIVORS = {"H-001", "H-005", "H-014"}
 ROUND_REJECTED = {"H-034", "H-035", "H-036", "H-037", "H-038"}
 HYPOTHESIS_KEYS = {
     "hypothesis_id",
@@ -69,8 +69,8 @@ def main() -> None:
     candidates = read_csv("05_hypotheses/regeneration_round_3.csv")
     inventory_ids = {row["arxiv_id"] for row in inventory}
 
-    if len(inventory) != 231 or len(inventory_ids) != 231:
-        errors.append("inventory does not contain exactly 231 unique arXiv papers")
+    if len(inventory) < 231 or len(inventory_ids) != len(inventory):
+        errors.append("inventory does not preserve at least 231 unique arXiv papers")
     if any(row["readable"] != "true" for row in inventory):
         errors.append("inventory contains unreadable PDFs")
     if any(not row["abstract"] for row in inventory):
@@ -108,7 +108,10 @@ def main() -> None:
         if int(row["total_score"]) < 70 or int(row["falsifiability_score"]) < 12 or int(row["difference_score"]) < 10:
             errors.append("H-033 does not satisfy screening thresholds")
 
-    card_paths = [ROOT / "05_hypotheses/active/H-033.yaml"] + [
+    h033_active = ROOT / "05_hypotheses/active/H-033.yaml"
+    h033_rejected = ROOT / "05_hypotheses/rejected/H-033.yaml"
+    h033_card = h033_active if h033_active.is_file() else h033_rejected
+    card_paths = [h033_card] + [
         ROOT / f"05_hypotheses/rejected/{hypothesis_id}.yaml" for hypothesis_id in sorted(ROUND_REJECTED)
     ]
     for path in card_paths:
@@ -120,13 +123,13 @@ def main() -> None:
             errors.append(f"{path.name} lacks hypothesis keys: {sorted(missing)}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
-    if active_ids != ACTIVE_IDS:
-        errors.append(f"active portfolio is {sorted(active_ids)} instead of {sorted(ACTIVE_IDS)}")
+    if not BASE_SURVIVORS <= active_ids or (h033_rejected.is_file() and "H-033" in active_ids):
+        errors.append("current portfolio does not preserve the round-3 survivors and H-033 lifecycle")
     lineage = json.loads((ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8"))
     nodes = lineage.get("nodes", [])
     node_ids = {node["id"] for node in nodes}
-    if len(nodes) != 38 or len(node_ids) != 38 or not ROUND_IDS <= node_ids:
-        errors.append("lineage graph does not contain 38 unique hypotheses including round 3")
+    if len(nodes) < 38 or len(node_ids) != len(nodes) or not ROUND_IDS <= node_ids:
+        errors.append("lineage graph does not preserve round 3 inside the current unique hypothesis set")
 
     prereg = ROOT / "06_experiments/preregistrations/E0-H033.yaml"
     if not prereg.is_file():
@@ -168,16 +171,17 @@ def main() -> None:
             errors.append(f"missing or short round-3 report: {relative}")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != ACTIVE_IDS:
+    if set(state.get("branches", {}).get("active", [])) != active_ids:
         errors.append("research_state active portfolio is inconsistent")
-    if state.get("budget", {}).get("used_units", 0) < 65:
-        errors.append("research_state budget lost completed round-3 screening cost")
+    expected_budget_floor = 66 if h033_rejected.is_file() else 65
+    if state.get("budget", {}).get("used_units", 0) < expected_budget_floor:
+        errors.append(f"research_state budget is below {expected_budget_floor}")
     latest_decision = str(state.get("latest_decision", {}).get("decision_id", ""))
     match = re.fullmatch(r"D-(\d{4})", latest_decision)
     if match is None or int(match.group(1)) < 18:
         errors.append("research_state latest decision is outside the H-033 lifecycle")
-    if state.get("blockers"):
-        errors.append("research_state retains a blocker after restoring four active branches")
+    if len(active_ids) < 4 and not state.get("blockers"):
+        errors.append("research_state omits the current undersized-portfolio blocker")
 
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if "D-0018" not in decision_log or "PASS_REGENERATION_ROUND_3_RETAIN_H033" not in decision_log:

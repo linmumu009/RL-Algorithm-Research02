@@ -19,4 +19,4 @@ stop_condition: stop after all declared adaptive and nonadaptive grids plus ever
 success_threshold: "population gradient bias <= 0.05, false-positive direction rate <= 0.05, and clean-gradient cosine >= 0.90 before privacy exhaustion; usable rounds >= 2x disjoint splitting; >= 0.05 cosine or >= 0.10 false-positive-rate gain over the best exact non-oracle baseline in at least three adaptive cells; and no positive gain claim in nonadaptive controls"
 failure_threshold: "bias > 0.05 or false-positive direction rate > 0.05 before exhaustion, zero qualifying adaptive gain cells, usable rounds < 2x disjoint splitting, exact Reusable Holdout/private reward model behavioral equivalence, or any apparent benefit that requires omitting low-rho high-dimension or drift controls"
 code_commit: 90dbd2ea0db51d1a37adabb5678baab8e13bf24d
-status: BOUND_NOT_RUN
+status: COMPLETED_FAIL
