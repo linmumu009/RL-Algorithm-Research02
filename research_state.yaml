@@ -1,7 +1,7 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: h021_e0_implementation_frozen_pending_commit_binding
+phase_status: h021_e0_code_bound_ready_for_single_execution
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
@@ -53,12 +53,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0011
-  action: FREEZE_H021_E0_IMPLEMENTATION
-  rationale: The categorical bridge, strong and weak proxy grid, invalid-exclusion stress, revealed-latent oracle and four non-oracle baselines are frozen; ten mathematical consistency tests pass and no formal H-021 result exists.
+  decision_id: D-0012
+  action: BIND_H021_E0_CODE_SNAPSHOT
+  rationale: E0-H021 is bound to pushed immutable commit 8b167359c3c114412af397ab69d30875d3fa1bdf; no formal result existed at binding time.
 
 blockers: []
-next_allowed_task: Commit and push the frozen H-021 E0 implementation, bind that immutable commit to E0-H021.yaml, then execute the complete grid exactly once; no E1 or language-model training before review.
+next_allowed_task: Execute E0-H021-NEGATIVE-CONTROL-BRIDGE exactly once from commit 8b167359c3c114412af397ab69d30875d3fa1bdf, preserve every cell, and review without tuning; no E1 or language-model training.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2
