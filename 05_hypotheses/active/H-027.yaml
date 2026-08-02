@@ -12,7 +12,7 @@ cheapest_falsification_test: enumerate two-dimensional gradient sets induced by 
 failure_threshold: "false-positive direction rate > 0.05 under valid intervals, no >= 0.05 cosine gain over the best scalar baseline in any three asymmetric identified cells, incorrect abstention when zero is feasible, or failure to collapse to point correction"
 estimated_budget: 3
 score_total: 90
-status: PREREGISTERED
+status: IMPLEMENTATION_FROZEN
 repair_count: 0
 closest_prior_work: [P-ARXIV-250720550, P-ARXIV-260609073, P-ARXIV-251000915, H-001, H-018]
 lineage_parent: null

@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：第二轮定向再生成完成；H-027 暂保留并完成 E0 预注册，活跃组合恢复至 4 条。
+- 状态：H-027 二维 E0 实现已冻结、尚未正式运行；活跃组合为 4 条。
 - 本地语料：219 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）与 H-027（`PREREGISTERED`）。
-- 当前边界：只允许实现、冻结并执行 H-027 的 1 单位二维解析/合成 E0；G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）与 H-027（`IMPLEMENTATION_FROZEN`）。
+- 当前边界：只允许绑定并一次性执行 H-027 的 1 单位二维解析/合成 E0；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -51,6 +51,9 @@
 - 第二轮替代筛选：[`10_deliverables/replacement_hypothesis_screening_round_2.md`](10_deliverables/replacement_hypothesis_screening_round_2.md)
 - 第二轮补证清单：[`02_literature/extended/p7_regeneration_round_2_supplement.csv`](02_literature/extended/p7_regeneration_round_2_supplement.csv)
 - H-027 预注册：[`06_experiments/preregistrations/E0-H027.yaml`](06_experiments/preregistrations/E0-H027.yaml)
+- H-027 冻结配置：[`06_experiments/configs/e0_h027.yaml`](06_experiments/configs/e0_h027.yaml)
+- H-027 冻结实现：[`06_experiments/code/h027_gradient_set_e0.py`](06_experiments/code/h027_gradient_set_e0.py)
+- H-027 数学测试：[`06_experiments/unit_tests/test_h027_gradient_set_e0.py`](06_experiments/unit_tests/test_h027_gradient_set_e0.py)
 
 ## 目录
 
@@ -61,6 +64,15 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.9.1 — 2026-08-02
+
+- 冻结 H-027 二维 audit-identified gradient-set E0：由 FP/FN 审计区间精确枚举四个可行 clean-gradient vertex，并以凸包到原点的最小范数点构造 maximin 分离方向。
+- 固定 5 个种子、5 档区间半宽、4 档通道非对称和 4 档 score-gradient 夹角，共 400 个 valid-coverage 运行行与 80 个汇总 cell。
+- 冻结 H-001 midpoint correction、H-018 scalar lower bound、KL-DRO scalar pessimism、norm-matched shrinkage 和 oracle 比较，并保证所有非 oracle 方法使用相同审计集合。
+- 显式保留 point-identification、symmetric-zero-bias、zero-in-set、misspecified-interval、wide-interval 和 equal-compute 六类控制，不允许结果后删除 abstention 或覆盖失效反例。
+- 新增 6 项凸几何与配置一致性测试；连同既有测试共 16 项全部通过，正式 H-027 结果文件仍不存在，本轮预算消耗为 0。
+- 下一步先提交并推送不可变实现，将精确提交哈希绑定到预注册，再仅执行一次完整网格。
 
 ### v0.9.0 — 2026-08-02
 

@@ -6,6 +6,7 @@ null_result_interpretation: Set-valued geometry adds no decision value beyond po
 negative_result_interpretation: Reject H-027 if it selects a harmful direction despite valid interval coverage, mainly abstains, or is behaviorally matched by a scalar robust baseline.
 dataset: analytic and seeded synthetic two-dimensional score moments with binary clean rewards cellwise verifier confusion channels exact feasible vertices and fixed finite-audit interval widths
 model: convex-hull minimum-norm projection and normalized separating direction; no language-model training
+config_path: 06_experiments/configs/e0_h027.yaml
 baseline: [H001_midpoint_channel_correction, H018_scalar_lower_bound_reward, kl_dro_scalar_pessimism, norm_matched_gradient_shrinkage, oracle_clean_gradient]
 controls: [point_identified_channel, symmetric_zero_bias, zero_in_identified_set, misspecified_interval_excludes_truth, wide_interval_abstention, equal_compute_and_audit_count]
 metrics: [worst_case_alignment_margin, clean_gradient_cosine, cosine_gain_over_best_nonoracle, false_positive_direction_rate, abstention_rate, oracle_regret, identified_set_diameter]
@@ -19,4 +20,4 @@ stop_condition: stop after every declared interval width by asymmetry by angle c
 success_threshold: "false-positive direction rate <= 0.05 in all valid-coverage cells, clean-gradient cosine >= 0.90 in every strong identified cell, cosine gain >= 0.05 in at least three asymmetric non-collinear cells, zero-in-set abstention >= 0.90, and point-limit direction difference <= 0.01"
 failure_threshold: "false-positive direction rate > 0.05 under valid coverage, zero qualifying gain cells, zero-in-set abstention < 0.90, or point-limit direction difference > 0.01"
 code_commit: TO_BE_SET_BEFORE_EXECUTION
-status: PREREGISTERED_NOT_RUN
+status: IMPLEMENTATION_FROZEN_NOT_RUN

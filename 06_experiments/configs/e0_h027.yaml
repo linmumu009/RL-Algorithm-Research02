@@ -1,0 +1,23 @@
+experiment_id: E0-H027-AUDIT-IDENTIFIED-GRADIENT-SET
+seeds: [11, 23, 47, 89, 131]
+interval_half_width_grid: [0.00, 0.02, 0.05, 0.10, 0.20]
+channel_asymmetry_grid: [0.00, 0.08, 0.16, 0.24]
+score_gradient_angle_grid: [0, 30, 60, 90]
+maximum_asymmetry: 0.24
+strong_identification_width_max: 0.10
+clean_gradient_magnitude: 1.0
+clean_gradient_base_angle_degrees: 11.3
+seed_angle_jitter_degrees: 2.0
+seed_magnitude_jitter: 0.04
+false_positive_axis_scale: 1.50
+false_negative_axis_scale: 0.90
+observed_bias_scale: 1.35
+wide_interval_half_width: 1.50
+geometry_tolerance: 1.0e-12
+success_thresholds:
+  valid_cell_false_positive_direction_rate_max: 0.05
+  strong_identified_clean_gradient_cosine_min: 0.90
+  cosine_gain_min: 0.05
+  minimum_asymmetric_noncollinear_gain_cells: 3
+  zero_in_set_abstention_rate_min: 0.90
+  point_limit_direction_difference_max: 0.01

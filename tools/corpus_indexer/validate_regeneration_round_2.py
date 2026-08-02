@@ -122,9 +122,23 @@ def main() -> None:
         missing = EXPERIMENT_KEYS - top_level_keys(prereg)
         if missing:
             errors.append(f"H-027 preregistration lacks keys: {sorted(missing)}")
-        text = prereg.read_text(encoding="utf-8")
-        if "code_commit: TO_BE_SET_BEFORE_EXECUTION" not in text or "status: PREREGISTERED_NOT_RUN" not in text or "budget_limit: 1" not in text:
-            errors.append("H-027 preregistration is not frozen-before-execution")
+        prereg_data = yaml.safe_load(prereg.read_text(encoding="utf-8"))
+        lifecycle = prereg_data.get("status")
+        code_commit = str(prereg_data.get("code_commit", ""))
+        allowed_lifecycle = {
+            "PREREGISTERED_NOT_RUN",
+            "IMPLEMENTATION_FROZEN_NOT_RUN",
+            "BOUND_NOT_RUN",
+            "COMPLETED_PASS",
+            "COMPLETED_FAIL",
+        }
+        if lifecycle not in allowed_lifecycle or prereg_data.get("budget_limit") != 1:
+            errors.append("H-027 preregistration lifecycle or budget is invalid")
+        if lifecycle in {"PREREGISTERED_NOT_RUN", "IMPLEMENTATION_FROZEN_NOT_RUN"}:
+            if code_commit != "TO_BE_SET_BEFORE_EXECUTION":
+                errors.append("unbound H-027 preregistration already contains a code commit")
+        elif not re.fullmatch(r"[0-9a-f]{40}", code_commit):
+            errors.append("bound or completed H-027 preregistration lacks an immutable commit")
 
     required_reports = [
         "01_corpus/metadata/p7_regeneration_round_2_acquisition_report.md",
@@ -145,8 +159,8 @@ def main() -> None:
         errors.append("research_state budget is not 60")
     if state.get("blockers"):
         errors.append("research_state still reports a portfolio blocker")
-    if state.get("latest_decision", {}).get("decision_id") != "D-0014":
-        errors.append("research_state latest decision is not D-0014")
+    if state.get("latest_decision", {}).get("decision_id") not in {"D-0014", "D-0015", "D-0016", "D-0017"}:
+        errors.append("research_state latest decision is outside the H-027 lifecycle")
 
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if "D-0014" not in decision_log or "PASS_REGENERATION_ROUND_2_RETAIN_H027" not in decision_log:

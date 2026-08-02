@@ -141,3 +141,14 @@
 - 反事实判断：若尚未投入时间，仍只保留 H-027，因为它直接把 clean-gradient 变成 set-valued estimand，并允许在 1 单位 E0 中用 scalar DRO、point correction 和 abstention 反例否定；不会保留已直接发表的 uncertainty、confidence-sequence、ensemble、commit-first 或 onset-reset 方案。
 - 边界：H-027 只获得二维解析/合成 E0 权限；不得进入 E1 或语言模型训练。
 - 下一项允许任务：实现并冻结 H-027 gradient-set E0，提交代码快照、绑定预注册后一次性执行。
+
+## D-0015 — 2026-08-02
+
+- 阶段：P7 / G6
+- 动作：`FREEZE_H027_E0_IMPLEMENTATION`
+- 决定：冻结 H-027 的二维 audit-identified gradient-set 实现、五个随机种子、80 个参数 cell、六类控制、四个非 oracle 基线和成功/失败阈值；正式结果尚未生成。
+- 依据：精确枚举两类通道区间的四个 gradient vertex，计算凸包到原点的最小范数点；新增 6 项几何一致性测试，与既有测试合计 16 项全部通过。
+- 预算影响：0（尚未执行预注册实验）。
+- 反事实判断：若尚未投入本轮时间，仍会保留 point-limit、zero-in-set、wide interval、misspecified interval 和 scalar-equivalence 控制，因为它们分别约束退化、安全、过度 abstention、覆盖失效和伪创新风险。
+- 边界：必须先提交并推送不可变实现，再把精确提交哈希写入预注册；不得在看到正式结果后更改网格、强识别定义、基线、控制或阈值。
+- 下一项允许任务：提交并推送冻结实现，绑定其精确提交哈希，然后一次性执行 `E0-H027-AUDIT-IDENTIFIED-GRADIENT-SET`。
