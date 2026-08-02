@@ -163,7 +163,9 @@ def main() -> None:
         errors.append(f"research_state budget is below {expected_budget_floor}")
     if len(active_ids) < 4 and not state.get("blockers"):
         errors.append("research_state omits the current undersized-portfolio blocker")
-    if state.get("latest_decision", {}).get("decision_id") not in {"D-0014", "D-0015", "D-0016", "D-0017", "D-0018"}:
+    latest_decision = str(state.get("latest_decision", {}).get("decision_id", ""))
+    match = re.fullmatch(r"D-(\d{4})", latest_decision)
+    if match is None or int(match.group(1)) < 14:
         errors.append("research_state latest decision is outside the H-027 lifecycle")
 
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")

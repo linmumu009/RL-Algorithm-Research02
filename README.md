@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：第三轮定向再生成完成；H-033 暂留并完成 E0 预注册，活跃组合恢复至 4 条。
+- 状态：H-033 E0 实现已冻结但未运行；等待把已推送的不可变提交哈希绑定到预注册。
 - 本地语料：231 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）与 H-033（`PREREGISTERED`）。
-- 当前边界：只允许实现、冻结并执行 H-033 的 1 单位 adaptive audit-query E0；G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）与 H-033（`IMPLEMENTATION_FROZEN_NOT_RUN`）。
+- 当前边界：只允许提交并推送 H-033 冻结实现、绑定精确提交哈希后唯一执行一次；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -61,6 +61,9 @@
 - 第三轮替代筛选：[`10_deliverables/replacement_hypothesis_screening_round_3.md`](10_deliverables/replacement_hypothesis_screening_round_3.md)
 - 第三轮补证清单：[`02_literature/extended/p7_regeneration_round_3_supplement.csv`](02_literature/extended/p7_regeneration_round_3_supplement.csv)
 - H-033 预注册：[`06_experiments/preregistrations/E0-H033.yaml`](06_experiments/preregistrations/E0-H033.yaml)
+- H-033 冻结配置：[`06_experiments/configs/e0_h033.yaml`](06_experiments/configs/e0_h033.yaml)
+- H-033 冻结实现：[`06_experiments/code/h033_private_audit_e0.py`](06_experiments/code/h033_private_audit_e0.py)
+- H-033 一致性测试：[`06_experiments/unit_tests/test_h033_private_audit_e0.py`](06_experiments/unit_tests/test_h033_private_audit_e0.py)
 
 ## 目录
 
@@ -71,6 +74,15 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.11.1 — 2026-08-02
+
+- 冻结 H-033 binary clean-audit adaptive-query E0：固定审计表只通过 contribution-clipped vector query 接口访问，每次 Gaussian release 使用 zCDP 组合并在预算耗尽时停止。
+- 固定 5 个种子、3 档审计量、4 档自适应查询轮数、4 档 rho 预算、3 档 score 维度，共 144 个参数 cell；不训练语言模型。
+- 同时冻结 naive reuse、fresh-audit oracle、disjoint split、Reusable Holdout/Thresholdout、Generic Holdout binary release、once-trained private reward lookup 和 H-001 single-query correction 七个对照。
+- 保留 nonadaptive、privacy-off、zero-gradient、permuted-label、clip-violation、population-drift 和 equal-resource 七类控制；DP 会计正确不自动计为 reward robustness 成功。
+- 新增 9 项 H-033 数学、隐私会计与小型装配测试，连同既有测试共 25 项全部通过；正式 H-033 结果文件仍不存在，本轮预算消耗为 0。
+- 下一步先提交并推送不可变实现，再将精确提交哈希绑定到预注册，随后仅执行一次完整网格。
 
 ### v0.11.0 — 2026-08-02
 

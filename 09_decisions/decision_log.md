@@ -185,3 +185,14 @@
 - 反事实判断：若尚未投入时间，仍只暂留 H-033，因为它把 adaptive leakage from reusable audits 设为独立失败对象，并强制与 Reusable/Generic Holdout 和 private reward model 正面对比；不会保留已有 causal reward、trusted projection、ARA 或 R2M 的换名。
 - 边界：H-033 只获得解析/合成 E0 权限；不得把 DP 隐私保证当作 reward robustness 结果，也不得开始 E1 或语言模型训练。
 - 下一项允许任务：实现并冻结 H-033 adaptive audit-query E0，提交代码快照、绑定预注册后一次性执行。
+
+## D-0019 — 2026-08-02
+
+- 阶段：P7 / G6
+- 动作：`FREEZE_H033_E0_IMPLEMENTATION`
+- 决定：冻结 H-033 的 binary clean-audit adaptive-query 实现、5 个随机种子、144 个参数 cell、7 个对照方法、7 类控制、zCDP accountant、隐私过滤器和结果聚合规则；正式结果尚未生成。
+- 依据：每条向量查询先做 contribution L2 clipping，再按 `sigma = sensitivity / sqrt(2 rho_per_query)` 校准 Gaussian release；新增 9 项一致性测试，与既有 16 项测试合计 25 项全部通过。
+- 反事实判断：若尚未投入本轮时间，仍会保留 Reusable Holdout、Generic Holdout、once-trained private reward model、H-001 single query、privacy-off、nonadaptive、clip-violation 与 population-drift 对照，因为缺少任一项都可能把普通 DP/holdout 搬用误判为新算法收益。
+- 预算影响：0（尚未执行预注册网格，累计仍为 65/100）。
+- 边界：必须先提交并推送不可变实现，再把精确提交哈希写入预注册；不得在看到正式结果后更改数据生成、网格、基线、控制、聚合或阈值。
+- 下一项允许任务：提交并推送冻结实现，绑定其精确提交哈希，然后唯一一次执行 `E0-H033-PRIVACY-STABLE-REUSABLE-AUDIT-GRADIENT`。

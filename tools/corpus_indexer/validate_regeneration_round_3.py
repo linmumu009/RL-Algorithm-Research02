@@ -136,10 +136,22 @@ def main() -> None:
         if missing:
             errors.append(f"H-033 preregistration lacks keys: {sorted(missing)}")
         prereg_data = yaml.safe_load(prereg.read_text(encoding="utf-8"))
-        if prereg_data.get("status") != "PREREGISTERED_NOT_RUN":
-            errors.append("H-033 preregistration is not in the pre-implementation lifecycle")
-        if prereg_data.get("code_commit") != "TO_BE_SET_BEFORE_EXECUTION":
-            errors.append("H-033 preregistration is prematurely bound")
+        lifecycle = prereg_data.get("status")
+        code_commit = str(prereg_data.get("code_commit", ""))
+        allowed_lifecycle = {
+            "PREREGISTERED_NOT_RUN",
+            "IMPLEMENTATION_FROZEN_NOT_RUN",
+            "BOUND_NOT_RUN",
+            "COMPLETED_PASS",
+            "COMPLETED_FAIL",
+        }
+        if lifecycle not in allowed_lifecycle:
+            errors.append("H-033 preregistration lifecycle is invalid")
+        if lifecycle in {"PREREGISTERED_NOT_RUN", "IMPLEMENTATION_FROZEN_NOT_RUN"}:
+            if code_commit != "TO_BE_SET_BEFORE_EXECUTION":
+                errors.append("unbound H-033 preregistration already contains a code commit")
+        elif not re.fullmatch(r"[0-9a-f]{40}", code_commit):
+            errors.append("bound or completed H-033 preregistration lacks an immutable commit")
         if prereg_data.get("budget_limit") != 1:
             errors.append("H-033 preregistration budget is not one unit")
 
@@ -158,10 +170,12 @@ def main() -> None:
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
     if set(state.get("branches", {}).get("active", [])) != ACTIVE_IDS:
         errors.append("research_state active portfolio is inconsistent")
-    if state.get("budget", {}).get("used_units") != 65:
-        errors.append("research_state budget is not 65")
-    if state.get("latest_decision", {}).get("decision_id") != "D-0018":
-        errors.append("research_state latest decision is not D-0018")
+    if state.get("budget", {}).get("used_units", 0) < 65:
+        errors.append("research_state budget lost completed round-3 screening cost")
+    latest_decision = str(state.get("latest_decision", {}).get("decision_id", ""))
+    match = re.fullmatch(r"D-(\d{4})", latest_decision)
+    if match is None or int(match.group(1)) < 18:
+        errors.append("research_state latest decision is outside the H-033 lifecycle")
     if state.get("blockers"):
         errors.append("research_state retains a blocker after restoring four active branches")
 

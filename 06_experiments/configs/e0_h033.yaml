@@ -1,0 +1,48 @@
+experiment_id: E0-H033-PRIVACY-STABLE-REUSABLE-AUDIT-GRADIENT
+seeds: [11, 23, 47, 89, 131]
+audit_size_grid: [128, 256, 512]
+adaptive_query_count_grid: [10, 50, 100, 250]
+zcdp_rho_budget_grid: [0.10, 0.30, 1.00, 3.00]
+score_dimension_grid: [2, 8, 32]
+contribution_l2_clip: 1.0
+query_candidate_count: 64
+population_size: 4096
+signal_magnitude: 0.08
+operator_scale: 0.55
+adaptation_rate: 1.0
+disjoint_min_partition_size: 32
+thresholdout_holdout_fraction: 0.50
+thresholdout_discrepancy_threshold: 0.04
+thresholdout_noise_std: 0.02
+thresholdout_max_overrides: 10
+generic_holdout_discrepancy_threshold: 0.04
+control_audit_size: 256
+control_query_count: 50
+control_rho_budget: 1.0
+control_score_dimension: 8
+clip_violation_operator_scale: 2.0
+privacy_tolerance: 1.0e-12
+baselines:
+  - naive_exact_audit_reuse
+  - fresh_audit_oracle
+  - disjoint_sample_splitting
+  - reusable_holdout_thresholdout
+  - generic_holdout_binary_release
+  - once_trained_private_reward_model
+  - H001_single_query_correction
+controls:
+  - nonadaptive_query_sequence
+  - privacy_off_limit
+  - zero_population_gradient
+  - permuted_audit_labels
+  - contribution_clip_violation
+  - population_drift_after_audit
+  - equal_audit_rows_and_query_candidates
+success_thresholds:
+  population_gradient_bias_max: 0.05
+  false_positive_direction_rate_max: 0.05
+  clean_gradient_cosine_min: 0.90
+  usable_round_ratio_over_disjoint_min: 2.0
+  cosine_gain_min: 0.05
+  false_positive_rate_reduction_min: 0.10
+  minimum_adaptive_gain_cells: 3
