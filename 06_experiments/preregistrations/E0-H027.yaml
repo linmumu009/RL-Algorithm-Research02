@@ -19,5 +19,5 @@ budget_limit: 1
 stop_condition: stop after every declared interval width by asymmetry by angle cell and all controls; do not remove abstention or misspecified-interval cells
 success_threshold: "false-positive direction rate <= 0.05 in all valid-coverage cells, clean-gradient cosine >= 0.90 in every strong identified cell, cosine gain >= 0.05 in at least three asymmetric non-collinear cells, zero-in-set abstention >= 0.90, and point-limit direction difference <= 0.01"
 failure_threshold: "false-positive direction rate > 0.05 under valid coverage, zero qualifying gain cells, zero-in-set abstention < 0.90, or point-limit direction difference > 0.01"
-code_commit: TO_BE_SET_BEFORE_EXECUTION
-status: IMPLEMENTATION_FROZEN_NOT_RUN
+code_commit: b2778d683b22d8f7a24f60e3d3443abb2671aed2
+status: BOUND_NOT_RUN
