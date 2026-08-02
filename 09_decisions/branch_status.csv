@@ -28,7 +28,7 @@ H-035,REJECTED_NOT_NOVEL,P7,0,D-0018,05_hypotheses/rejected/H-035.yaml
 H-036,REJECTED_NOT_NOVEL,P7,0,D-0018,05_hypotheses/rejected/H-036.yaml
 H-037,REJECTED_NOT_NOVEL,P7,0,D-0018,05_hypotheses/rejected/H-037.yaml
 H-038,REJECTED_NOT_NOVEL,P7,0,D-0018,05_hypotheses/rejected/H-038.yaml
-H-039,PREREGISTERED,P7,0,D-0022,06_experiments/preregistrations/E0-H039.yaml
+H-039,IMPLEMENTATION_FROZEN_NOT_RUN,P7,0,D-0023,06_experiments/configs/e0_h039.yaml
 H-040,REJECTED_NOT_NOVEL,P7,0,D-0022,05_hypotheses/rejected/H-040.yaml
 H-041,REJECTED_NOT_NOVEL,P7,0,D-0022,05_hypotheses/rejected/H-041.yaml
 H-042,REJECTED_NOT_NOVEL,P7,0,D-0022,05_hypotheses/rejected/H-042.yaml

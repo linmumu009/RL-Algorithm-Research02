@@ -232,3 +232,17 @@
 - 反事实判断：若尚未投入时间，仍只暂留 H-039，因为它改变识别粒度且有明确等价性反例；不会保留已直接发表的 correlated-proxy DRO、reward uncertainty portfolio、confidence reward 或 causal tampering 方案。
 - 边界：H-039 只获得解析/合成 E0 权限；不得开始 E1 或语言模型训练，不得以降低接受率替代算法增益。
 - 下一项允许任务：实现并冻结 H-039 E0，提交不可变代码快照、绑定精确提交后只执行一次正式网格。
+
+## D-0023 — 2026-08-02
+
+- 阶段：P7 / G6
+- 动作：`FREEZE_H039_E0_IMPLEMENTATION`
+- 决定：冻结 H-039 的解析/合成实现、5 个固定种子、216 个聚合 cell/1080 个 seed cell、8 个强对照、8 类控制、共享组中心规则、判定阈值和输出结构；正式结果尚未生成。
+- 识别实现：每个 context 的 FP/FN 置信矩形联合枚举四角，所有 completion 在同一角点配置下共同完成 group centering；不得混合不可同时实现的逐样本角点。只有 clean-advantage interval 全正或全负时才以最坏绝对 margin 更新。
+- 等价性实现：H-010 uncertainty mask 与 matched-random filter 严格匹配 H-039 接受数；SignCert-PO 匹配平均 parameter/channel radius；H-027 使用同一组 channel-corner gradient set；所有方法共享 audit、completion 和 score。
+- 安全实现：命令行必须同时提供显式正式执行开关与冻结 token，且结果文件已存在时拒绝覆盖或重跑；import 和测试均不写正式结果。
+- 验证：新增 9 项通道反演、联合角点、共享中心、最坏 margin、point-limit、matched acceptance/radius、zero-mass 和装配测试；与既有 25 项合计 34 项通过。
+- 预算影响：0（正式 E0 尚未运行，累计仍为 70/100）。
+- 反事实判断：若尚未投入本轮时间，仍会保留逐 context 联合枚举、共享 group baseline、SignCert-PO/H-027 强对照和等接受率控制，因为缺少任一项都可能制造虚假符号证书收益。
+- 边界：必须先提交并推送不可变实现，再将精确提交哈希绑定到预注册；不得根据正式结果调整数据、角点映射、强识别定义、基线、控制或阈值。
+- 下一项允许任务：提交并推送冻结实现，绑定其精确提交哈希，然后唯一一次执行 `E0-H039-CHANNEL-SET-ADVANTAGE-SIGN-CERTIFICATE`。

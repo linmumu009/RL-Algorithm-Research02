@@ -1,7 +1,7 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: replacement_round_4_preregistered_ready_for_e0
+phase_status: h039_e0_implementation_frozen_awaiting_commit_binding
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
@@ -71,12 +71,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0022
-  action: PASS_REGENERATION_ROUND_4_RETAIN_H039
-  rationale: Six new direct-neighbor papers eliminated five candidate families; H-039 alone changes the information structure to per-completion clean-advantage sign identification from an audit-calibrated verifier-channel set and has a one-unit exact-equivalence E0 path.
+  decision_id: D-0023
+  action: FREEZE_H039_E0_IMPLEMENTATION
+  rationale: The joint-context channel-corner implementation shared-group centering eight comparators eight controls 216-cell grid five seeds thresholds output schema and single-execution guard are frozen; formal H-039 results do not exist.
 
 blockers: []
-next_allowed_task: Implement and freeze only the preregistered H-039 analytic synthetic E0, commit the immutable code snapshot, bind its exact commit, and then run the formal grid once; do not start E1 or language-model training.
+next_allowed_task: Commit and push the immutable H-039 implementation snapshot, bind its exact commit in the preregistration, and only then run the formal grid once; do not start E1 or language-model training.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

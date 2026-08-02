@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：第四轮定向再生成与筛选已完成；H-039 已预注册，活跃组合恢复为 4 条，等待实现与冻结 E0。
+- 状态：H-039 解析/合成 E0 已实现并冻结，正式结果尚不存在；等待提交绑定后唯一一次执行。
 - 本地语料：237 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）及 H-039（`PREREGISTERED`）。
-- 当前边界：只允许实现并冻结 H-039 解析/合成 E0，提交不可变代码并绑定精确提交后再唯一一次运行；G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）及 H-039（`IMPLEMENTATION_FROZEN_NOT_RUN`）。
+- 当前边界：先提交并推送 H-039 不可变实现，再绑定精确提交，随后才可唯一一次运行正式网格；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -73,6 +73,9 @@
 - 第四轮新颖性审查：[`05_hypotheses/novelty_checks/regeneration_round_4.md`](05_hypotheses/novelty_checks/regeneration_round_4.md)
 - 第四轮等价性审查：[`05_hypotheses/equivalence_checks/regeneration_round_4.md`](05_hypotheses/equivalence_checks/regeneration_round_4.md)
 - H-039 预注册：[`06_experiments/preregistrations/E0-H039.yaml`](06_experiments/preregistrations/E0-H039.yaml)
+- H-039 冻结配置：[`06_experiments/configs/e0_h039.yaml`](06_experiments/configs/e0_h039.yaml)
+- H-039 冻结实现：[`06_experiments/code/h039_sign_certificate_e0.py`](06_experiments/code/h039_sign_certificate_e0.py)
+- H-039 数学与装配测试：[`06_experiments/unit_tests/test_h039_sign_certificate_e0.py`](06_experiments/unit_tests/test_h039_sign_certificate_e0.py)
 
 ## 目录
 
@@ -83,6 +86,16 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.12.1 — 2026-08-02
+
+- 冻结 H-039 解析/合成 E0：每个 context 的 FP/FN 置信矩形联合枚举四角，并在同一角点配置内共享 group centering，禁止组合不可同时实现的逐样本角点。
+- clean-advantage interval 只有在全正或全负时才产生更新，贡献权重固定为最坏绝对 margin；point-identified limit 必须与 H-001 完全一致。
+- 固定 5 个种子、2 档 context 数、3 档审计量、4 档区间宽度、3 档通道异质性和 3 档 score-gradient 角度，共 216 个聚合 cell、1080 个 seed cell。
+- 冻结 observed advantage、H-001、H-010、H-027、SignCert-PO、scalar pessimism、matched-acceptance random filter 与 oracle 八个对照，以及八类预注册控制。
+- H-010 与随机过滤严格匹配 H-039 接受数，SignCert-PO 匹配平均 parameter/channel radius；正式执行需要显式开关和冻结 token，且拒绝覆盖已有结果。
+- 新增 9 项数学与装配测试，连同既有测试共 34 项全部通过；`e0_h039_results.json` 与汇总表均不存在，预算保持 70/100。
+- 下一步先推送本次不可变实现，将精确提交哈希绑定到预注册，然后才允许唯一一次执行正式 H-039 网格。
 
 ### v0.12.0 — 2026-08-02
 

@@ -138,10 +138,24 @@ def main() -> None:
         if missing:
             errors.append(f"H-039 preregistration lacks keys: {sorted(missing)}")
         prereg_data = yaml.safe_load(prereg.read_text(encoding="utf-8"))
-        if prereg_data.get("status") != "PREREGISTERED_NOT_RUN":
-            errors.append("H-039 preregistration is not in the not-run state")
-        if prereg_data.get("code_commit") != "TO_BE_SET":
-            errors.append("H-039 preregistration is already bound or has an unexpected placeholder")
+        lifecycle = prereg_data.get("status")
+        if lifecycle not in {
+            "PREREGISTERED_NOT_RUN",
+            "IMPLEMENTATION_FROZEN_NOT_RUN",
+            "BOUND_NOT_RUN",
+            "COMPLETED_PASS",
+            "COMPLETED_FAIL",
+        }:
+            errors.append("H-039 preregistration lifecycle is invalid")
+        code_commit = str(prereg_data.get("code_commit", ""))
+        if lifecycle == "PREREGISTERED_NOT_RUN" and code_commit != "TO_BE_SET":
+            errors.append("new H-039 preregistration has an unexpected commit placeholder")
+        elif lifecycle == "IMPLEMENTATION_FROZEN_NOT_RUN" and code_commit != "TO_BE_SET_BEFORE_EXECUTION":
+            errors.append("frozen H-039 preregistration has an unexpected commit placeholder")
+        elif lifecycle in {"BOUND_NOT_RUN", "COMPLETED_PASS", "COMPLETED_FAIL"} and not re.fullmatch(
+            r"[0-9a-f]{40}", code_commit
+        ):
+            errors.append("bound or completed H-039 preregistration lacks an immutable commit")
         if prereg_data.get("budget_limit") != 1:
             errors.append("H-039 preregistration budget is not one unit")
 
@@ -162,8 +176,10 @@ def main() -> None:
         errors.append("research_state active portfolio is inconsistent")
     if state.get("budget", {}).get("used_units") != 70:
         errors.append("research_state budget is not 70 units")
-    if state.get("latest_decision", {}).get("decision_id") != "D-0022":
-        errors.append("research_state latest decision is not D-0022")
+    latest_decision = str(state.get("latest_decision", {}).get("decision_id", ""))
+    match = re.fullmatch(r"D-(\d{4})", latest_decision)
+    if match is None or int(match.group(1)) < 22:
+        errors.append("research_state latest decision predates D-0022")
     if state.get("blockers"):
         errors.append("research_state still reports a blocker after restoring four active branches")
 

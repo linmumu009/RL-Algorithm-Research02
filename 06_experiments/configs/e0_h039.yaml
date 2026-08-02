@@ -1,0 +1,49 @@
+experiment_id: E0-H039-CHANNEL-SET-ADVANTAGE-SIGN-CERTIFICATE
+seeds: [11, 23, 47, 89, 131]
+context_count_grid: [2, 4]
+audit_size_grid: [64, 128, 256]
+channel_interval_half_width_grid: [0.02, 0.05, 0.10, 0.20]
+channel_heterogeneity_grid: [0.00, 0.15, 0.30]
+score_gradient_noncollinearity_angle_grid: [0, 45, 90]
+group_count: 2
+completions_per_context_per_group: 3
+clean_probability_center: 0.50
+clean_advantage_amplitude: 0.22
+context_clean_shift: 0.03
+base_false_positive_rate: 0.12
+base_false_negative_rate: 0.18
+maximum_channel_rate: 0.45
+audit_midpoint_offset_fraction: 0.75
+score_magnitude_step: 0.20
+score_angle_jitter_degrees: 2.0
+geometry_tolerance: 1.0e-12
+strong_identification_interval_max: 0.05
+strong_identification_audit_min: 128
+baselines:
+  - observed_verifier_advantage
+  - H001_point_channel_correction
+  - H010_uncertainty_mask
+  - H027_global_gradient_set_direction
+  - SignCertPO_matched_parameter_radius
+  - scalar_lower_bound_pessimism
+  - matched_acceptance_random_filter
+  - oracle_clean_advantage
+controls:
+  - point_identified_channel
+  - symmetric_homogeneous_channel
+  - mixed_sign_cancellation
+  - channel_interval_misspecification
+  - matched_parameter_vs_channel_radius
+  - equal_acceptance_rate
+  - zero_certified_mass
+  - equal_audit_and_compute
+success_thresholds:
+  valid_coverage_false_certified_sign_rate_max: 0.05
+  strong_cell_clean_gradient_cosine_min: 0.90
+  strong_cell_harmful_sample_update_rate_max: 0.05
+  strong_cell_certified_mass_min: 0.50
+  cosine_gain_min: 0.05
+  harmful_rate_reduction_min: 0.10
+  minimum_heterogeneous_noncollinear_gain_cells: 3
+  point_limit_direction_difference_max: 0.01
+formal_execution_confirmation_token: H039_FROZEN_GRID_SINGLE_EXECUTION
