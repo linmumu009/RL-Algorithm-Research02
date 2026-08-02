@@ -1,0 +1,19 @@
+hypothesis_id: H-032
+name: Hacking-Onset Sentinel Reset
+target_problem: Q-001
+mechanism_family: diagnostic_schedule
+observed_failure: verifier reward divergence may become visible only after policy exploitation begins
+causal_claim: detecting the onset and resetting to a pre-onset checkpoint prevents further proxy exploitation
+changed_mathematical_quantity: "continuous training schedule -> detector-triggered rollback schedule"
+mechanism: monitor rollout traces for shortcut prevalence and proxy-clean divergence then roll back and refresh the verifier
+difference_from_existing_methods: combines an existing onset detector with schedule reset
+falsifiable_predictions: [rollback_limits_post_onset_hacking]
+cheapest_falsification_test: replay a controlled CHERRL reward trace through reset policies
+failure_threshold: "no lower post-onset false-positive mass"
+estimated_budget: 1
+score_total: 75
+status: REJECTED_NO_MECHANISM
+repair_count: 0
+closest_prior_work: [P-ARXIV-260604923, H-020]
+lineage_parent: H-020
+rejection_reason: CHERRL directly detects onset and reset-after-alert is schedule control without clean-gradient identification

@@ -1,12 +1,12 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: h021_e0_failed_portfolio_below_minimum
+phase_status: replacement_round_2_preregistered_ready_for_e0
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
   total_units: 100
-  used_units: 56
+  used_units: 60
   infrastructure_cap: 10
   exploration_reserve: 30
   scale_up_reserve: 30
@@ -16,6 +16,7 @@ branches:
     - H-001
     - H-005
     - H-014
+    - H-027
   paused: []
   rejected:
     - H-002
@@ -41,6 +42,11 @@ branches:
     - H-024
     - H-025
     - H-026
+    - H-028
+    - H-029
+    - H-030
+    - H-031
+    - H-032
 
 core15:
   status: approved_with_replacements
@@ -53,13 +59,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0013
-  action: REJECT_H021_NO_INCREMENTAL_GAIN
-  rationale: H-021 passed strong-proxy bias oracle and weak-rank controls but produced zero qualifying gain cells; direct proxy regression won 28 of 30 strong latent-exploit comparisons.
+  decision_id: D-0014
+  action: PASS_REGENERATION_ROUND_2_RETAIN_H027
+  rationale: Seven direct-neighbor papers and six candidates were screened; H-027 alone changes the point clean-gradient estimate into an audit-compatible identified set with a one-unit scalar-equivalence falsification path.
 
-blockers:
-  - active_branch_count_below_minimum_4
-next_allowed_task: Run a second targeted regeneration round from mechanism families not represented by H-001 H-005 or H-014; do not rename H-021 or enter E1 or language-model training until at least four non-equivalent branches are active.
+blockers: []
+next_allowed_task: Implement and freeze only the preregistered H-027 two-dimensional audit-identified gradient-set E0, bind its immutable code commit, and execute once; no E1 or language-model training before H-027 review.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

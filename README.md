@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：H-021 E0 已按冻结提交一次性完成并触发失败阈值；该分支已淘汰，活跃组合再次降至 3 条。
-- 本地语料：212 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
+- 状态：第二轮定向再生成完成；H-027 暂保留并完成 E0 预注册，活跃组合恢复至 4 条。
+- 本地语料：219 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）；H-021 已记为 `REJECTED_FAILED_PREDICTION_AND_DOMINATED`。
-- 当前边界：活跃分支数 3，低于并行下限 4；只允许开展第二轮机制不同的定向再生成，G6 前不进行 E1、语言模型训练或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）与 H-027（`PREREGISTERED`）。
+- 当前边界：只允许实现、冻结并执行 H-027 的 1 单位二维解析/合成 E0；G6 前不进行 E1、语言模型训练或扩大验证。
 
 ## 关键入口
 
@@ -48,6 +48,9 @@
 - H-021 实验报告：[`10_deliverables/h021_e0_experimental_report.md`](10_deliverables/h021_e0_experimental_report.md)
 - H-021 本地审查：[`08_reviews/local_reviews/h021_e0_review.md`](08_reviews/local_reviews/h021_e0_review.md)
 - P7 补证清单：[`02_literature/extended/p7_regeneration_supplement.csv`](02_literature/extended/p7_regeneration_supplement.csv)
+- 第二轮替代筛选：[`10_deliverables/replacement_hypothesis_screening_round_2.md`](10_deliverables/replacement_hypothesis_screening_round_2.md)
+- 第二轮补证清单：[`02_literature/extended/p7_regeneration_round_2_supplement.csv`](02_literature/extended/p7_regeneration_round_2_supplement.csv)
+- H-027 预注册：[`06_experiments/preregistrations/E0-H027.yaml`](06_experiments/preregistrations/E0-H027.yaml)
 
 ## 目录
 
@@ -58,6 +61,16 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.9.0 — 2026-08-02
+
+- 在 H-021 失败后完成第二轮定向再生成，生成并筛查 H-027–H-032 六个候选；未把 H-021、H-018、H-009 或 H-020 换名复活。
+- 从官方 arXiv 补充 7 篇最新直接近邻并由 MinerU 全部解析，覆盖 partial identification、distributional reward uncertainty、anytime-valid inference、ensemble shared errors、commit-first judging 和 hacking-onset detection；语料达到 219 篇。
+- 淘汰 H-028：distributional entropic/KL-DRO reward 已直接覆盖；淘汰 H-029：anytime-valid confidence sequence 已有且 release gate 非独立；淘汰 H-030：ensemble 已有且共同错误不消失。
+- 淘汰 H-031：commit-first blind solver 已直接作为训练 reward 提出；淘汰 H-032：CHERRL detector 加 rollback 只是 schedule control。
+- 保留 H-027 `Audit-Identified Gradient Set Direction`：将 audit-compatible verifier channel 映射为 clean-gradient identified set，只在集合与零可分时选择对全部可行梯度均有正最坏内积的方向。
+- 完成 H-027 的 1 单位 E0 预注册，锁定 point correction、scalar lower bound、KL-DRO scalar pessimism、norm-matched shrinkage 和 oracle 强基线，以及 point-limit、zero-in-set、wide interval 和 interval misspecification 控制。
+- 补记 H-021 E0 的 1 单位并登记本轮 4 单位筛选成本，累计预算 60/100；活跃组合恢复为 H-001、H-005、H-014、H-027，G6 仍未通过。
 
 ### v0.8.0 — 2026-08-02
 

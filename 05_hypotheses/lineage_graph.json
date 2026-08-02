@@ -26,7 +26,13 @@
     {"id":"H-023","name":"Gradient-Flat Verifier Trust Region","family":"gradient_regularization","references":["2602.18037"],"parent":null,"modification":"penalize reward-gradient sharpness","status":"REJECTED_NOT_NOVEL","rejection_reason":"directly proposed for RLHF and RLVR reward hacking","renamed_old_candidate":true},
     {"id":"H-024","name":"Self-Internalization Gradient Gate","family":"diagnostic_gating","references":["2605.12474"],"parent":"H-010","modification":"gate verifier-positive updates using a policy internalization diagnostic","status":"REJECTED_NO_MECHANISM","rejection_reason":"detector plus masking does not identify clean correctness","renamed_old_candidate":true},
     {"id":"H-025","name":"Hidden Verifier-View Randomization","family":"verifier_randomization","references":["1705.08417"],"parent":"H-021","modification":"sample a hidden verifier view after response generation","status":"REJECTED_EQUIVALENT","rejection_reason":"auxiliary proxy construction or hybrid verification rather than an independent estimand","renamed_old_candidate":false},
-    {"id":"H-026","name":"Quantile-Randomized Reward Update","family":"reward_quantilisation","references":["1705.08417"],"parent":null,"modification":"randomize updates within a top observed-reward quantile","status":"REJECTED_NOT_NOVEL","rejection_reason":"direct specialization of corrupted-reward quantilisation","renamed_old_candidate":true}
+    {"id":"H-026","name":"Quantile-Randomized Reward Update","family":"reward_quantilisation","references":["1705.08417"],"parent":null,"modification":"randomize updates within a top observed-reward quantile","status":"REJECTED_NOT_NOVEL","rejection_reason":"direct specialization of corrupted-reward quantilisation","renamed_old_candidate":true},
+    {"id":"H-027","name":"Audit-Identified Gradient Set Direction","family":"set_valued_gradient_robustness","references":["2507.20550","2606.09073","2510.00915"],"parent":null,"modification":"replace one corrected gradient with the full audit-compatible clean-gradient identified set and select a maximin separating direction","status":"PREREGISTERED","rejection_reason":null,"renamed_old_candidate":false},
+    {"id":"H-028","name":"Distributional Entropic Clean Reward","family":"distributional_reward_pessimism","references":["2606.09073","2606.19818","2505.20556"],"parent":"H-018","modification":"use a negative-temperature log moment generating reward","status":"REJECTED_NOT_NOVEL","rejection_reason":"distributional KL-DRO effective reward and uncertainty-aware pessimism already cover the object","renamed_old_candidate":true},
+    {"id":"H-029","name":"Anytime-Valid Audit Release","family":"confidence_sequence_gating","references":["2210.10768"],"parent":"H-018","modification":"release updates using an anytime-valid audit confidence sequence","status":"REJECTED_NOT_NOVEL","rejection_reason":"adaptive-policy confidence sequences already exist and release gating is auxiliary","renamed_old_candidate":true},
+    {"id":"H-030","name":"Cross-Judge Consensus Gradient","family":"verifier_ensemble","references":["2312.09244","2607.05904"],"parent":"H-009","modification":"aggregate multiple verifier gradient directions by a robust center","status":"REJECTED_NOT_NOVEL","rejection_reason":"reward ensembles already cover aggregation and shared judge errors survive consensus","renamed_old_candidate":true},
+    {"id":"H-031","name":"Commit-First De-Anchored Reward","family":"verifier_architecture","references":["2607.05904"],"parent":null,"modification":"make the judge solve and commit before candidate exposure","status":"REJECTED_NOT_NOVEL","rejection_reason":"directly proposed as the effective training reward intervention","renamed_old_candidate":true},
+    {"id":"H-032","name":"Hacking-Onset Sentinel Reset","family":"diagnostic_schedule","references":["2606.04923"],"parent":"H-020","modification":"roll back training after an onset detector alert","status":"REJECTED_NO_MECHANISM","rejection_reason":"existing onset detection plus a schedule reset does not identify clean gradient","renamed_old_candidate":true}
   ],
   "edges": [
     {"from":"H-001","to":"H-002","relation":"specialization"},
@@ -40,6 +46,10 @@
     {"from":"H-001","to":"H-020","relation":"schedule_change"},
     {"from":"H-001","to":"H-022","relation":"distribution_transport_extension"},
     {"from":"H-010","to":"H-024","relation":"diagnostic_gate_revival"},
-    {"from":"H-021","to":"H-025","relation":"proxy_acquisition_variant"}
+    {"from":"H-021","to":"H-025","relation":"proxy_acquisition_variant"},
+    {"from":"H-018","to":"H-028","relation":"distributional_pessimism_revival"},
+    {"from":"H-018","to":"H-029","relation":"anytime_valid_bound_revival"},
+    {"from":"H-009","to":"H-030","relation":"ensemble_gradient_revival"},
+    {"from":"H-020","to":"H-032","relation":"detector_triggered_schedule_revival"}
   ]
 }

@@ -1,0 +1,19 @@
+hypothesis_id: H-029
+name: Anytime-Valid Audit Release
+target_problem: Q-001
+mechanism_family: confidence_sequence_gating
+observed_failure: repeated monitoring of adaptive verifier audits invalidates fixed-time confidence bounds
+causal_claim: an e-process releases an update only after time-uniform evidence shows positive clean advantage
+changed_mathematical_quantity: "fixed-time audit lower bound -> confidence sequence valid at arbitrary stopping times"
+mechanism: maintain a test supermartingale on adaptively collected clean audits and gate updates by its lower confidence sequence
+difference_from_existing_methods: direct application of anytime-valid off-policy inference plus an update gate
+falsifiable_predictions: [false_release_control_under_optional_stopping]
+cheapest_falsification_test: optional-stopping Bernoulli stream simulation
+failure_threshold: "false release rate exceeds alpha"
+estimated_budget: 1
+score_total: 83
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+closest_prior_work: [P-ARXIV-221010768, H-014, H-018]
+lineage_parent: H-018
+rejection_reason: arXiv:2210.10768 already gives anytime-valid adaptive-policy confidence sequences and release gating is an auxiliary decision rule rather than a new clean-gradient estimand

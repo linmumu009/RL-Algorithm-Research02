@@ -1,0 +1,19 @@
+hypothesis_id: H-028
+name: Distributional Entropic Clean Reward
+target_problem: Q-001
+mechanism_family: distributional_reward_pessimism
+observed_failure: scalar verifier rewards do not expose uncertainty under policy overoptimization
+causal_claim: a lower entropic transform of a distributional reward model prevents updates in uncertain regions
+changed_mathematical_quantity: "point reward -> negative-temperature log moment generating effective reward"
+mechanism: learn a reward distribution and use its KL-DRO pessimistic effective reward in policy optimization
+difference_from_existing_methods: none after direct-neighbor review
+falsifiable_predictions: [lower_hacking_under_reward_uncertainty]
+cheapest_falsification_test: synthetic calibrated reward-distribution comparison
+failure_threshold: "no reduction in false-positive updates"
+estimated_budget: 2
+score_total: 86
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+closest_prior_work: [P-ARXIV-260609073, P-ARXIV-260619818, P-ARXIV-250520556]
+lineage_parent: H-018
+rejection_reason: arXiv:2606.09073 derives the same Bayesian/KL-DRO effective reward and UARM/PET already instantiate pessimistic reward learning

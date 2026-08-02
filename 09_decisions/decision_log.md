@@ -130,3 +130,14 @@
 - 反事实判断：若尚未投入时间，仍会执行这项 E0 以低成本排除伪创新；不会删掉 direct proxy regression、缩小 gain 阈值或把低偏差重新包装成成功。
 - G6：`NOT_YET_PASS`。活跃组合再次低于并行下限 4，未获得 E1 或语言模型训练权限。
 - 下一项允许任务：从 H-001/H-005/H-014 未覆盖的机制族做第二轮定向再生成；不得把 H-021 改名复活。
+
+## D-0014 — 2026-08-02
+
+- 阶段：P7 / G6（第二轮定向组合修复）
+- 动作：`PASS_REGENERATION_ROUND_2_RETAIN_H027`
+- 决定：H-027–H-032 六个候选中，仅保留 H-027 `Audit-Identified Gradient Set Direction`；其余五个按直接已有、ensemble 复活或诊断/调度无独立机制淘汰，活跃组合恢复为 4 条。
+- 依据：新增 7 篇官方 arXiv/MinerU 直接近邻，语料达到 219 篇；第二轮新颖性、等价性、理论风险审查和 H-027 E0 预注册。
+- 预算影响：4 单位，累计 60/100；其中同步补记 H-021 E0 的 1 单位后，预算台账与状态一致。
+- 反事实判断：若尚未投入时间，仍只保留 H-027，因为它直接把 clean-gradient 变成 set-valued estimand，并允许在 1 单位 E0 中用 scalar DRO、point correction 和 abstention 反例否定；不会保留已直接发表的 uncertainty、confidence-sequence、ensemble、commit-first 或 onset-reset 方案。
+- 边界：H-027 只获得二维解析/合成 E0 权限；不得进入 E1 或语言模型训练。
+- 下一项允许任务：实现并冻结 H-027 gradient-set E0，提交代码快照、绑定预注册后一次性执行。

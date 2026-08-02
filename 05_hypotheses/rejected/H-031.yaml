@@ -1,0 +1,19 @@
+hypothesis_id: H-031
+name: Commit-First De-Anchored Reward
+target_problem: Q-001
+mechanism_family: verifier_architecture
+observed_failure: a reference-free judge anchors on a shown candidate and scores plausibility rather than correctness
+causal_claim: making the judge solve and commit before seeing the candidate removes the anchoring false-positive basin
+changed_mathematical_quantity: "candidate-conditioned verdict -> blind committed answer followed by comparison"
+mechanism: run an independent solve before candidate exposure and use de-anchored comparison as reward
+difference_from_existing_methods: none after direct-neighbor review
+falsifiable_predictions: [false_positive_basin_collapses_under_commit_first_judging]
+cheapest_falsification_test: fixed GSM8K candidate audit with and without candidate exposure
+failure_threshold: "commit-first does not reduce false positives"
+estimated_budget: 1
+score_total: 88
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+closest_prior_work: [P-ARXIV-260705904]
+lineage_parent: null
+rejection_reason: arXiv:2607.05904 directly uses commit-first blind solving as the training reward intervention

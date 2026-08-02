@@ -1,0 +1,19 @@
+hypothesis_id: H-027
+name: Audit-Identified Gradient Set Direction
+target_problem: Q-001
+mechanism_family: set_valued_gradient_robustness
+observed_failure: finite clean audits leave instance-dependent verifier FP/FN channels only partially identified, while plug-in correction commits to one channel and can select a clean-gradient direction that is wrong for another audit-compatible channel
+causal_claim: mapping every audit-compatible verifier channel to its implied score-weighted clean gradient and updating along the direction with maximum worst-case inner product prevents harmful updates whenever the identified gradient set is separated from zero
+changed_mathematical_quantity: "point corrected gradient g(T_hat) -> identified set G={g(T): T in audit confidence set} and direction d*=argmax_{||d||<=1} min_{g in G}<d,g>"
+mechanism: construct cellwise FP/FN intervals from sparse audits, enumerate the induced clean-gradient vertices, take their convex hull, project zero onto that hull, and update along the normalized separating vector only when its worst-case margin is positive
+difference_from_existing_methods: H-001 plugs in one contextual channel, H-018 bounds scalar correctness, scalar DRO minimizes a reward functional, and robust policy learning maximizes worst-case welfare; H-027 instead makes the score-weighted gradient vector itself set-valued and asks whether one direction improves every audit-compatible clean objective
+falsifiable_predictions: [no_false_positive_direction_when_true_channel_is_covered, oracle_alignment_when_identified_set_is_separated, abstention_when_zero_is_in_convex_hull, exact_collapse_to_point_correction_at_zero_interval_width, failure_when_interval_excludes_true_channel]
+cheapest_falsification_test: enumerate two-dimensional gradient sets induced by fixed binary channel intervals and compare maximin directions to point correction scalar pessimism norm shrinkage and oracle clean gradients
+failure_threshold: "false-positive direction rate > 0.05 under valid intervals, no >= 0.05 cosine gain over the best scalar baseline in any three asymmetric identified cells, incorrect abstention when zero is feasible, or failure to collapse to point correction"
+estimated_budget: 3
+score_total: 90
+status: PREREGISTERED
+repair_count: 0
+closest_prior_work: [P-ARXIV-250720550, P-ARXIV-260609073, P-ARXIV-251000915, H-001, H-018]
+lineage_parent: null
+rejection_reason: null

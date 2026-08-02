@@ -11,7 +11,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 ROUND_IDS = {"H-021", "H-022", "H-023", "H-024", "H-025", "H-026"}
-ACTIVE_IDS = {"H-001", "H-005", "H-014"}
+ACTIVE_IDS = {"H-001", "H-005", "H-014", "H-027"}
 ROUND_REJECTED = {"H-021", "H-022", "H-023", "H-024", "H-025", "H-026"}
 HYPOTHESIS_KEYS = {
     "hypothesis_id",
@@ -59,9 +59,9 @@ def main() -> None:
     supplement = read_csv("02_literature/extended/p7_regeneration_supplement.csv")
     candidates = read_csv("05_hypotheses/regeneration_round_1.csv")
 
-    if len(inventory) != 212:
-        errors.append(f"inventory count is {len(inventory)} instead of 212")
-    if len({row["arxiv_id"] for row in inventory}) != 212:
+    if len(inventory) < 219:
+        errors.append(f"inventory count is {len(inventory)} instead of at least 219")
+    if len({row["arxiv_id"] for row in inventory}) != len(inventory):
         errors.append("inventory arXiv IDs are not unique")
     if any(row["readable"] != "true" for row in inventory):
         errors.append("inventory contains unreadable PDFs")
@@ -105,8 +105,8 @@ def main() -> None:
     lineage = json.loads((ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8"))
     nodes = lineage.get("nodes", [])
     node_ids = {node["id"] for node in nodes}
-    if len(nodes) != 26 or len(node_ids) != 26 or not ROUND_IDS <= node_ids:
-        errors.append("lineage graph does not contain 26 unique hypotheses including regeneration round")
+    if len(nodes) < 32 or len(node_ids) != len(nodes) or not ROUND_IDS <= node_ids:
+        errors.append("lineage graph does not preserve the first regeneration round inside the current unique hypothesis set")
 
     prereg = ROOT / "06_experiments/preregistrations/E0-H021.yaml"
     if not prereg.is_file():
@@ -133,11 +133,11 @@ def main() -> None:
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
     if set(state.get("branches", {}).get("active", [])) != ACTIVE_IDS:
-        errors.append("research_state active portfolio does not contain the three post-H021 branches")
-    if state.get("budget", {}).get("used_units") != 56:
-        errors.append("research_state budget is not 56")
-    if state.get("blockers") != ["active_branch_count_below_minimum_4"]:
-        errors.append("research_state does not report the post-H021 portfolio blocker")
+        errors.append("research_state active portfolio does not contain the four round-2 branches")
+    if state.get("budget", {}).get("used_units") != 60:
+        errors.append("research_state budget is not 60")
+    if state.get("blockers"):
+        errors.append("research_state still reports a portfolio blocker after round 2")
 
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if "D-0010" not in decision_log or "PASS_TARGETED_REGENERATION_RETAIN_H021" not in decision_log:
@@ -150,7 +150,7 @@ def main() -> None:
         "retained": len(retained),
         "screened_out": len(rejected),
         "historically_retained_for_e0": len(retained),
-        "active_portfolio_after_h021_e0": len(active_ids),
+        "active_portfolio_after_round_2": len(active_ids),
         "lineage_nodes": len(nodes),
         "errors": errors,
     }

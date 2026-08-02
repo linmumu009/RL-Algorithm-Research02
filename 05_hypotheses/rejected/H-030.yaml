@@ -1,0 +1,19 @@
+hypothesis_id: H-030
+name: Cross-Judge Consensus Gradient
+target_problem: Q-001
+mechanism_family: verifier_ensemble
+observed_failure: one verifier can be exploited by policy-generated plausibility cues
+causal_claim: aggregating gradient directions from diverse judges removes idiosyncratic verifier errors
+changed_mathematical_quantity: "single verifier gradient -> robust center of multiple verifier gradients"
+mechanism: compute per-judge score-function gradients and use their geometric median or consensus cone
+difference_from_existing_methods: none after ensemble and shared-error review
+falsifiable_predictions: [consensus_reduces_independent_judge_bias]
+cheapest_falsification_test: correlated-error multi-judge simulation
+failure_threshold: "no benefit under shared error or equivalence to reward averaging"
+estimated_budget: 2
+score_total: 78
+status: REJECTED_NOT_NOVEL
+repair_count: 0
+closest_prior_work: [P-ARXIV-231209244, P-ARXIV-260705904, H-009]
+lineage_parent: H-009
+rejection_reason: reward ensembles are established and shared plausibility errors survive strict multi-judge consensus

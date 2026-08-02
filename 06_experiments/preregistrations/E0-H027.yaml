@@ -1,0 +1,22 @@
+experiment_id: E0-H027-AUDIT-IDENTIFIED-GRADIENT-SET
+hypothesis_id: H-027
+question: Does optimizing a direction against the full audit-compatible clean-gradient set prevent harmful verifier-driven updates while retaining useful direction when the set is separated from zero?
+prediction: Under valid channel intervals the maximin direction has false-positive direction rate at most 0.05, clean-gradient cosine at least 0.90 in every strongly identified cell, and at least 0.05 cosine gain over the best scalar non-oracle baseline in three asymmetric non-collinear cells; it abstains when zero is feasible and collapses to point correction at zero width.
+null_result_interpretation: Set-valued geometry adds no decision value beyond point channel correction scalar pessimism or norm shrinkage.
+negative_result_interpretation: Reject H-027 if it selects a harmful direction despite valid interval coverage, mainly abstains, or is behaviorally matched by a scalar robust baseline.
+dataset: analytic and seeded synthetic two-dimensional score moments with binary clean rewards cellwise verifier confusion channels exact feasible vertices and fixed finite-audit interval widths
+model: convex-hull minimum-norm projection and normalized separating direction; no language-model training
+baseline: [H001_midpoint_channel_correction, H018_scalar_lower_bound_reward, kl_dro_scalar_pessimism, norm_matched_gradient_shrinkage, oracle_clean_gradient]
+controls: [point_identified_channel, symmetric_zero_bias, zero_in_identified_set, misspecified_interval_excludes_truth, wide_interval_abstention, equal_compute_and_audit_count]
+metrics: [worst_case_alignment_margin, clean_gradient_cosine, cosine_gain_over_best_nonoracle, false_positive_direction_rate, abstention_rate, oracle_regret, identified_set_diameter]
+primary_metric: false_positive_direction_rate
+secondary_metrics: [clean_gradient_cosine, worst_case_alignment_margin, abstention_rate, identified_set_diameter]
+fixed_hyperparameters: interval half-width grid [0.00, 0.02, 0.05, 0.10, 0.20]; channel asymmetry grid [0.00, 0.08, 0.16, 0.24]; score-gradient angle grid [0, 30, 60, 90] degrees; exact vertex enumeration in two dimensions
+allowed_tuning: none after code snapshot; convex projection tolerance is fixed before execution and cannot change cell inclusion
+seed_policy: five fixed seeds [11, 23, 47, 89, 131]
+budget_limit: 1
+stop_condition: stop after every declared interval width by asymmetry by angle cell and all controls; do not remove abstention or misspecified-interval cells
+success_threshold: "false-positive direction rate <= 0.05 in all valid-coverage cells, clean-gradient cosine >= 0.90 in every strong identified cell, cosine gain >= 0.05 in at least three asymmetric non-collinear cells, zero-in-set abstention >= 0.90, and point-limit direction difference <= 0.01"
+failure_threshold: "false-positive direction rate > 0.05 under valid coverage, zero qualifying gain cells, zero-in-set abstention < 0.90, or point-limit direction difference > 0.01"
+code_commit: TO_BE_SET_BEFORE_EXECUTION
+status: PREREGISTERED_NOT_RUN

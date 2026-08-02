@@ -15,3 +15,19 @@
 - H-024：self-internalization 只提供诊断，sample gate 复活 H-010 filtering。
 - H-025：随机 verifier view 是 H-021 proxy 采集步骤或 hybrid verification。
 - H-026：arXiv:1705.08417 已提出 corrupted-reward quantilisation。
+
+## H-021 正式 E0 淘汰 — 2026-08-02
+
+- H-021：`REJECTED_FAILED_PREDICTION_AND_DOMINATED`。强代理 bias 与 oracle 对照通过，但 6 个 gain cell 全部失败；direct proxy regression 在 30 次强条件比较中赢 28 次。
+
+不得删除 direct proxy regression、缩小 gain 阈值或把“低偏差”改名为成功后复活。
+
+## 第二轮定向再生成淘汰 — 2026-08-02
+
+- H-028：distributional entropic/KL-DRO reward 已由 arXiv:2606.09073 直接给出，UARM/PET 也覆盖悲观 reward。
+- H-029：arXiv:2210.10768 已覆盖适应性策略与任意停止 confidence sequence；release gate 非独立。
+- H-030：复活 H-009 ensemble，且跨 judge 共同 plausibility 错误已被实证证明。
+- H-031：arXiv:2607.05904 已直接使用 commit-first blind solver 作为训练 reward。
+- H-032：CHERRL onset detector 加 rollback 只是 H-020 schedule reset。
+
+这些候选不得作为 H-027 的组件计入新颖性，也不得在 H-027 失败后换名补足分支数。

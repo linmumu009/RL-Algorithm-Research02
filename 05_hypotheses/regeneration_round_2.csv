@@ -1,0 +1,7 @@
+hypothesis_id,name,mechanism_family,total_score,falsifiability_score,difference_score,status,rejection_reason
+H-027,Audit-Identified Gradient Set Direction,set_valued_gradient_robustness,90,15,13,PREREGISTERED,
+H-028,Distributional Entropic Clean Reward,distributional_reward_pessimism,86,14,4,REJECTED_NOT_NOVEL,"arXiv:2606.09073 derives the same Bayesian/KL-DRO effective reward and UARM/PET already instantiate pessimistic reward learning"
+H-029,Anytime-Valid Audit Release,confidence_sequence_gating,83,15,5,REJECTED_NOT_NOVEL,"arXiv:2210.10768 already gives anytime-valid adaptive-policy confidence sequences; release gating is an auxiliary decision rule"
+H-030,Cross-Judge Consensus Gradient,verifier_ensemble,78,13,4,REJECTED_NOT_NOVEL,"reward ensembles are established and shared plausibility errors survive strict multi-judge consensus"
+H-031,Commit-First De-Anchored Reward,verifier_architecture,88,15,2,REJECTED_NOT_NOVEL,"arXiv:2607.05904 directly uses commit-first blind solving as the training reward intervention"
+H-032,Hacking-Onset Sentinel Reset,diagnostic_schedule,75,13,3,REJECTED_NO_MECHANISM,"CHERRL directly detects onset and reset-after-alert is schedule control without clean-gradient identification"

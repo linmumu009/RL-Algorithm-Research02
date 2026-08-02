@@ -10,9 +10,15 @@ H-005,E0_VALIDATED,P7,1,D-0009,07_results/result_cards/R-E0-H005.yaml
 H-008,REJECTED_EQUIVALENT,P7,1,D-0009,07_results/result_cards/R-E0-H008.yaml
 H-014,E0_VALIDATED,P7,1,D-0009,07_results/result_cards/R-E0-H014.yaml
 H-018,REJECTED_FAILED_PREDICTION,P7,1,D-0009,07_results/result_cards/R-E0-H018.yaml
-H-021,PREREGISTERED,P7,0,D-0010,06_experiments/preregistrations/E0-H021.yaml
+H-021,REJECTED_FAILED_PREDICTION_AND_DOMINATED,P7,1,D-0013,07_results/result_cards/R-E0-H021.yaml
 H-022,REJECTED_NOT_NOVEL,P7,0,D-0010,05_hypotheses/rejected/H-022.yaml
 H-023,REJECTED_NOT_NOVEL,P7,0,D-0010,05_hypotheses/rejected/H-023.yaml
 H-024,REJECTED_NO_MECHANISM,P7,0,D-0010,05_hypotheses/rejected/H-024.yaml
 H-025,REJECTED_EQUIVALENT,P7,0,D-0010,05_hypotheses/rejected/H-025.yaml
 H-026,REJECTED_NOT_NOVEL,P7,0,D-0010,05_hypotheses/rejected/H-026.yaml
+H-027,PREREGISTERED,P7,0,D-0014,06_experiments/preregistrations/E0-H027.yaml
+H-028,REJECTED_NOT_NOVEL,P7,0,D-0014,05_hypotheses/rejected/H-028.yaml
+H-029,REJECTED_NOT_NOVEL,P7,0,D-0014,05_hypotheses/rejected/H-029.yaml
+H-030,REJECTED_NOT_NOVEL,P7,0,D-0014,05_hypotheses/rejected/H-030.yaml
+H-031,REJECTED_NOT_NOVEL,P7,0,D-0014,05_hypotheses/rejected/H-031.yaml
+H-032,REJECTED_NO_MECHANISM,P7,0,D-0014,05_hypotheses/rejected/H-032.yaml

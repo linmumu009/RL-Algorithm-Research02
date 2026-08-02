@@ -3411,5 +3411,103 @@
     "abstract": "Reinforcement Learning from Human Feedback (RLHF) or Verifiable Rewards (RLVR) are two key steps in the post-training of modern Language Models (LMs). A common problem is reward hacking, where the policy may exploit inaccuracies of the reward and learn an unintended behavior. Most previous works address this by limiting the policy update with a Kullback-Leibler (KL) penalty towards a reference model. We propose a different framing: Train the LM in a way that biases policy updates towards regions in which the reward is more accurate. First, we derive a theoretical connection between the accuracy of a reward model and the flatness of an optimum at convergence. Gradient regularization (GR) can then be used to bias training to flatter regions and thereby maintain reward model accuracy. We confirm these results by showing that the gradient norm and reward accuracy are empirically correlated in RLHF. We then empirically show that Reference Resets of the KL penalty find flatter regions with a higher reward accuracy. We further improve on this by proposing to use explicit GR with an efficient finite-difference estimate. Empirically, GR performs better than a KL penalty across a diverse set of RL experiments with LMs. GR achieves a higher GPT-judged win-rate in RLHF, avoids overly focusing on the format in rule-based math rewards, and prevents hacking the judge in LLM-as-a-Judge math tasks.",
     "published": "2026-02-20T07:32:22Z",
     "updated": "2026-07-03T01:59:26Z"
+  },
+  "2312.09244": {
+    "title": "Helping or Herding? Reward Model Ensembles Mitigate but do not Eliminate Reward Hacking",
+    "authors": [
+      "Jacob Eisenstein",
+      "Chirag Nagpal",
+      "Alekh Agarwal",
+      "Ahmad Beirami",
+      "Alex D'Amour",
+      "DJ Dvijotham",
+      "Adam Fisch",
+      "Katherine Heller",
+      "Stephen Pfohl",
+      "Deepak Ramachandran",
+      "Peter Shaw",
+      "Jonathan Berant"
+    ],
+    "abstract": "Reward models play a key role in aligning language model applications towards human preferences. However, this setup creates an incentive for the language model to exploit errors in the reward model to achieve high estimated reward, a phenomenon often termed \\emph{reward hacking}. A natural mitigation is to train an ensemble of reward models, aggregating over model outputs to obtain a more robust reward estimate. We explore the application of reward ensembles to alignment at both training time (through reinforcement learning) and inference time (through reranking). First, we show that reward models are \\emph{underspecified}: reward models that perform similarly in-distribution can yield very different rewards when used in alignment, due to distribution shift. Second, underspecification results in overoptimization, where alignment to one reward model does not improve reward as measured by another reward model trained on the same data. Third, overoptimization is mitigated by the use of reward ensembles, and ensembles that vary by their \\emph{pretraining} seeds lead to better generalization than ensembles that differ only by their \\emph{fine-tuning} seeds, with both outperforming individual reward models. However, even pretrain reward ensembles do not eliminate reward hacking: we show several qualitative reward hacking phenomena that are not mitigated by ensembling because all reward models in the ensemble exhibit similar error patterns.",
+    "published": "2023-12-14T18:59:04Z",
+    "updated": "2024-08-16T23:59:29Z"
+  },
+  "2606.19818": {
+    "title": "Uncertainty-Aware Reward Modeling for Stable RLHF",
+    "authors": [
+      "Licheng Pan",
+      "Haocheng Yang",
+      "Haoxuan Li",
+      "Yichen Sun",
+      "Yunsheng Lu",
+      "Shijian Wang",
+      "Lei Shen",
+      "Yuan Lu",
+      "Zhixuan Chu",
+      "Hao Wang"
+    ],
+    "abstract": "Reinforcement learning from human feedback (RLHF) aligns large language models by training reward models on preference data and optimizing policies to maximize predicted rewards. However, this pipeline faces two fundamental challenges: (1) reward models cannot signal when their predictions are unreliable, since they usually act as deterministic point estimators; and (2) modern group-based policy optimization can amplify unreliable reward signals, as exemplified by GRPO's uniform treatment of rewards during advantage computation. As policies explore increasingly diverse responses, these two limitations create a critical vulnerability: unreliable reward estimates may be granted disproportionate influence, triggering severe reward hacking. We propose Uncertainty-Aware Reward Modeling (UARM), which equips reward models with calibrated uncertainty via quantile-based conformal prediction and reweights GRPO advantages through heteroscedastic variance decomposition. Experiments across HelpSteer, UltraFeedback, and PKU-SafeRLHF demonstrate that UARM significantly improves reward model calibration, reduces reward hacking, and enhances downstream alignment quality compared to standard GRPO and uncertainty-agnostic baselines.",
+    "published": "2026-06-18T05:46:32Z",
+    "updated": "2026-06-18T05:46:32Z"
+  },
+  "2606.04923": {
+    "title": "Reproducing, Analyzing, and Detecting Reward Hacking in Rubric-Based Reinforcement Learning",
+    "authors": [
+      "Xuekang Wang",
+      "Zhuoyuan Hao",
+      "Shuo Hou",
+      "Hao Peng",
+      "Juanzi Li",
+      "Xiaozhi Wang"
+    ],
+    "abstract": "Rubric-based reinforcement learning (RL) uses an LLM-as-a-Judge (LaaJ) to score model outputs according to rubrics as rewards. However, policy models may exploit latent biases in the judge, leading to reward hacking and ineffective or unsafe training outcomes. In real-world rubric-based RL, such hacking behaviors are often subtle and entangled with multiple judge biases, making them difficult to analyze, detect, and mitigate. In this paper, we introduce CHERRL, a controllable hacking environment for rubric-based RL. By injecting known biases into LaaJ, CHERRL enables stable reproduction of reward hacking, explicit observation of reward divergence, and precise identification of hacking onset. This provides a clean experimental testbed for studying the mechanisms and mitigations of reward hacking in rubric-based RL. To demonstrate its utility, we analyze different judge biases from the perspectives of discoverability and exploitability, and explore an agent-based system for automatically detecting reward hacking onset from training logs. The code and environment are publicly available at https://github.com/THUAIS-Lab/CHERRL.",
+    "published": "2026-06-03T14:18:23Z",
+    "updated": "2026-06-03T14:18:23Z"
+  },
+  "2210.10768": {
+    "title": "Anytime-valid off-policy inference for contextual bandits",
+    "authors": [
+      "Ian Waudby-Smith",
+      "Lili Wu",
+      "Aaditya Ramdas",
+      "Nikos Karampatziakis",
+      "Paul Mineiro"
+    ],
+    "abstract": "Contextual bandit algorithms are ubiquitous tools for active sequential experimentation in healthcare and the tech industry. They involve online learning algorithms that adaptively learn policies over time to map observed contexts $X_t$ to actions $A_t$ in an attempt to maximize stochastic rewards $R_t$. This adaptivity raises interesting but hard statistical inference questions, especially counterfactual ones: for example, it is often of interest to estimate the properties of a hypothetical policy that is different from the logging policy that was used to collect the data -- a problem known as ``off-policy evaluation'' (OPE). Using modern martingale techniques, we present a comprehensive framework for OPE inference that relax unnecessary conditions made in some past works, significantly improving on them both theoretically and empirically. Importantly, our methods can be employed while the original experiment is still running (that is, not necessarily post-hoc), when the logging policy may be itself changing (due to learning), and even if the context distributions are a highly dependent time-series (such as if they are drifting over time). More concretely, we derive confidence sequences for various functionals of interest in OPE. These include doubly robust ones for time-varying off-policy mean reward values, but also confidence bands for the entire cumulative distribution function of the off-policy reward distribution. All of our methods (a) are valid at arbitrary stopping times (b) only make nonparametric assumptions, (c) do not require importance weights to be uniformly bounded and if they are, we do not need to know these bounds, and (d) adapt to the empirical variance of our estimators. In summary, our methods enable anytime-valid off-policy inference using adaptively collected contextual bandit data.",
+    "published": "2022-10-19T17:57:53Z",
+    "updated": "2024-08-15T20:06:32Z"
+  },
+  "2606.09073": {
+    "title": "A Unifying Lens on Reward Uncertainty in RLHF",
+    "authors": [
+      "Ely Hahami",
+      "Yoel Zimmermann",
+      "Ray Zhou",
+      "Jack Benarroch Jedlicki"
+    ],
+    "abstract": "Reinforcement learning from human feedback (RLHF) is bottlenecked by reward hacking, where the policy exploits errors in a proxy reward model (RM) and produces high RM scores without genuine quality gains. A natural mitigation is pessimism: lowering rewards in regions where the RM is uncertain. However, standard scalar RMs provide no principled notion of uncertainty. We argue that the right object is a distributional reward model $p(r\\mid x,y)$. Under either a Bayesian inference or a KL-distributionally robust optimization (KL-DRO) lens, the KL-regularized RLHF objective admits a closed-form effective reward $\\tilde r(x,y) = \\pmβ\\log\\mathbb{E}_p[e^{\\pm r/β}]$. The pessimistic branch unifies the prior heuristics for RM ensemble aggregation: mean aggregation, worst-case optimization (WCO), and uncertainty-weighted optimization (UWO) all emerge as limits or truncations of this single expression. This also clarifies the implicit assumptions of each existing rule.",
+    "published": "2026-06-08T06:15:30Z",
+    "updated": "2026-06-10T20:16:58Z"
+  },
+  "2607.05904": {
+    "title": "More Convincing, Not More Correct: Self-Play Reward Hacking of Reference-Free LLM Judges",
+    "authors": [
+      "Chenyu Zhou"
+    ],
+    "abstract": "Training a language model against its own reference-free judgments (the premise of self-rewarding, self-play, and LLM-as-a-judge pipelines) assumes a model's verdict on a shown answer tracks correctness. We show it fails structurally: conditioned on a candidate, a judge scores plausibility, not correctness, leaving false-positive basins a policy learns to exploit. We measure this with a hidden-anchor audit: a held-out, cross-source exact-match check the judge never sees. On GSM8K with Qwen3 policies, self-play drives the judge's pass rate from 0.72 to 0.94 while true accuracy stays at 0.20 (three seeds). This reward hacking is not white-box gaming: the errors transfer across judge families (Qwen, Llama, Gemma) and scales, a strict three-judge ensemble still accepts 55% of them, and no plausibility-scoring defense closes the basin. The decisive variable is whether the judge commits an answer of its own before using the candidate: committing first drops the false-positive rate from 0.719 to 0.012, blind solving lifts discrimination to 0.96, and used as the training reward the de-anchored channel keeps false positives at zero, preventing the basin rather than only detecting it. A falsifiable bound (the gap is at most 1 - accuracy) predicts which regimes are exposed. The full arc replicates without training under best-of-N selection in code and competition math, and with a Gemma policy.",
+    "published": "2026-07-07T06:59:30Z",
+    "updated": "2026-07-07T06:59:30Z"
+  },
+  "2507.20550": {
+    "title": "Policy Learning under Unobserved Confounding: A Robust and Efficient Approach",
+    "authors": [
+      "Zequn Jin",
+      "Gaoqian Xu",
+      "Xi Zheng",
+      "Yahong Zhou"
+    ],
+    "abstract": "This paper develops a robust and efficient method for policy learning from observational data in the presence of unobserved confounding, complementing existing instrumental variable (IV) based approaches. We employ the marginal sensitivity model (MSM) to relax the commonly used yet restrictive unconfoundedness assumption by introducing a sensitivity parameter that captures the extent of selection bias induced by unobserved confounders. Building on this framework, we consider two distributionally robust welfare criteria, defined as the worst-case welfare and policy improvement functions, evaluated over an uncertainty set of counterfactual distributions characterized by the MSM. Closed-form expressions for both welfare criteria are derived. Leveraging these identification results, we construct doubly robust scores and estimate the robust policies by maximizing the proposed criteria. Our approach accommodates flexible machine learning methods for estimating nuisance components, even when these converge at moderately slow rates. We establish asymptotic regret bounds for the resulting policies, providing a robust guarantee against the most adversarial confounding scenario. The proposed method is evaluated through extensive simulation studies and empirical applications to the JTPA study and Head Start program.",
+    "published": "2025-07-28T06:29:49Z",
+    "updated": "2026-07-08T04:44:18Z"
   }
 }
