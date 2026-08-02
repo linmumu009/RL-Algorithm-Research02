@@ -3,3 +3,4 @@
 {"timestamp":"2026-08-01T23:00:00+08:00","phase":"P5_P6","drift_detected":false,"check":"Q-001 was approved before hypothesis generation; no experiment or language-model training was executed before G5 and preregistration."}
 {"timestamp":"2026-08-02T00:30:00+08:00","phase":"P7","drift_detected":false,"check":"E0 code and fixed grids were frozen before result generation; no language-model training was introduced."}
 {"timestamp":"2026-08-02T00:45:00+08:00","phase":"P7","drift_detected":false,"check":"All preregistrations were bound to pushed commit 34fea81 before the first formal E0 run."}
+{"timestamp":"2026-08-02T01:00:00+08:00","phase":"P7","drift_detected":false,"check":"Formal E0 ran once with all frozen seeds and controls; failed and equivalent branches were preserved and rejected without post-result tuning."}

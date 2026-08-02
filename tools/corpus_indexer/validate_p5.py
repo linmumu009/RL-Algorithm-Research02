@@ -37,7 +37,7 @@ EXPERIMENT_KEYS = {
     "failure_threshold",
     "code_commit",
 }
-ACTIVE_IDS = {"H-001", "H-004", "H-005", "H-008", "H-014", "H-018"}
+G5_APPROVED_IDS = {"H-001", "H-004", "H-005", "H-008", "H-014", "H-018"}
 
 
 def read_csv(relative: str) -> list[dict[str, str]]:
@@ -92,16 +92,15 @@ def main() -> None:
     initial_ids = {row["hypothesis_id"] for row in initial}
     if len(initial_ids) != 20:
         errors.append("hypothesis IDs are not unique")
-    prereg_rows = [row for row in initial if row["status"] == "PREREGISTERED"]
-    rejected_rows = [row for row in initial if row["status"].startswith("REJECTED_")]
-    if {row["hypothesis_id"] for row in prereg_rows} != ACTIVE_IDS:
-        errors.append("preregistered hypothesis IDs differ from the approved six")
-    if len(rejected_rows) != 14:
-        errors.append(f"rejected hypothesis count is {len(rejected_rows)} instead of 14")
-    families = {row["mechanism_family"] for row in prereg_rows}
+    approved_rows = [row for row in initial if row["hypothesis_id"] in G5_APPROVED_IDS]
+    if len(approved_rows) != 6:
+        errors.append("G5-approved hypothesis IDs are incomplete")
+    if len(initial) - len(approved_rows) != 14:
+        errors.append("G5 did not screen exactly 14 candidates out")
+    families = {row["mechanism_family"] for row in approved_rows}
     if len(families) < 3:
         errors.append(f"only {len(families)} active mechanism families")
-    for row in prereg_rows:
+    for row in approved_rows:
         if int(row["total_score"]) < 70:
             errors.append(f"active score below 70: {row['hypothesis_id']}")
         if int(row["falsifiability_score"]) < 12:
@@ -109,10 +108,9 @@ def main() -> None:
         if int(row["difference_score"]) < 10:
             errors.append(f"active difference below 10: {row['hypothesis_id']}")
 
-    if len(active_cards) != 6 or len(rejected_cards) != 14:
-        errors.append(
-            f"card split is active={len(active_cards)}, rejected={len(rejected_cards)}"
-        )
+    card_ids = {card.stem for card in active_cards + rejected_cards}
+    if len(card_ids) != 20 or card_ids != initial_ids:
+        errors.append("current active/rejected card files do not cover all 20 hypotheses")
     for card in active_cards + rejected_cards:
         missing = HYPOTHESIS_KEYS - yaml_keys(card)
         if missing:
@@ -124,8 +122,6 @@ def main() -> None:
     nodes = lineage.get("nodes", [])
     if len(nodes) != 20 or {node["id"] for node in nodes} != initial_ids:
         errors.append("lineage graph does not contain the same 20 hypotheses")
-    if {node["id"] for node in nodes if node["status"] == "PREREGISTERED"} != ACTIVE_IDS:
-        errors.append("lineage active statuses differ from approved six")
 
     if len(preregistrations) != 6:
         errors.append(f"E0 preregistration count is {len(preregistrations)} instead of 6")
@@ -138,7 +134,7 @@ def main() -> None:
         match = re.search(r"(?m)^hypothesis_id:\s*(H-\d+)", text)
         if match:
             prereg_ids.add(match.group(1))
-    if prereg_ids != ACTIVE_IDS:
+    if prereg_ids != G5_APPROVED_IDS:
         errors.append("E0 preregistrations do not cover the approved six")
 
     required_reports = [
@@ -159,9 +155,10 @@ def main() -> None:
     summary = {
         "inventory_records": len(inventory),
         "initial_hypotheses": len(initial),
-        "active_hypotheses": len(active_cards),
-        "rejected_hypotheses": len(rejected_cards),
-        "active_mechanism_families": len(families),
+        "g5_approved_hypotheses": len(approved_rows),
+        "g5_screened_out_hypotheses": len(initial) - len(approved_rows),
+        "g5_mechanism_families": len(families),
+        "current_active_hypotheses": len(active_cards),
         "e0_preregistrations": len(preregistrations),
         "errors": errors,
     }

@@ -12,7 +12,7 @@ cheapest_falsification_test: inject equal-marginal but stratum-dependent FP/FN i
 failure_threshold: "mean cosine improvement <= 0.02 or 95% CI includes zero across all heterogeneous settings"
 estimated_budget: 3
 score_total: 95
-status: PREREGISTERED
+status: E0_VALIDATED
 repair_count: 0
 closest_prior_work: [P-ARXIV-251000915, P-ARXIV-240100243, P-ARXIV-260415149]
 lineage_parent: null

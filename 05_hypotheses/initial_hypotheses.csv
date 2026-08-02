@@ -1,21 +1,21 @@
 hypothesis_id,name,mechanism_family,total_score,falsifiability_score,difference_score,status,rejection_reason
-H-001,Contextual Confusion Correction,reward_channel_model,95,15,13,PREREGISTERED,
+H-001,Contextual Confusion Correction,reward_channel_model,95,15,13,E0_VALIDATED,
 H-002,Policy-Divergence Noise Tracker,training_time_channel,82,13,8,REJECTED_EQUIVALENT,"context features are a special case of H-001 plus a schedule"
 H-003,Online Negative Appeal,active_verifier,75,12,4,REJECTED_NOT_NOVEL,"already covered by the appeal mechanism in NoisyVerifierRL"
-H-004,Doubly Robust Audit Gradient,gradient_estimator,87,14,11,PREREGISTERED,
-H-005,Nuisance-Orthogonal Reward,nuisance_constraint,85,14,11,PREREGISTERED,
+H-004,Doubly Robust Audit Gradient,gradient_estimator,87,14,11,REJECTED_FAILED_PREDICTION,"algebraically channel-only; bias 0.191 when only regression is correct"
+H-005,Nuisance-Orthogonal Reward,nuisance_constraint,85,14,11,E0_VALIDATED,
 H-006,Stratified Worst-Case Confusion DRO,robust_optimization,75,12,7,REJECTED_NOT_NOVEL,"generic DRO or constrained proxy optimization without a distinct verifier-noise prediction"
 H-007,Latent Failure-Mode Mixture,mixture_channel_model,68,12,6,REJECTED_EQUIVALENT,"overparameterized form of H-001"
-H-008,Counterfactual Pair Control Variate,counterfactual_estimator,89,15,12,PREREGISTERED,
+H-008,Counterfactual Pair Control Variate,counterfactual_estimator,89,15,12,REJECTED_EQUIVALENT,"passes primary prediction but has -0.00016 cosine advantage over direct pair averaging"
 H-009,Dual-Verifier Disagreement Weighting,verifier_ensemble,70,12,5,REJECTED_NOT_NOVEL,"reward ensembles and hybrid verification already cover the mechanism"
 H-010,Selective Abstention Gradient,gradient_filtering,73,13,5,REJECTED_NO_MECHANISM,"confidence filtering masks evidence rather than correcting the claimed causal error"
 H-011,Posterior Clean-Reward Gradient,posterior_reweighting,85,14,7,REJECTED_EQUIVALENT,"reduces to forward noise correction under a fixed confusion model"
 H-012,Group Advantage Decontamination,advantage_correction,82,14,7,REJECTED_EQUIVALENT,"contextual reward correction followed by group centering is H-001 in GRPO notation"
 H-013,Baseline-Only Noise Control Variate,baseline_correction,74,13,10,REJECTED_NO_MECHANISM,"cannot remove action-correlated verifier bias from the reward term"
-H-014,Clean-Gradient Leverage Auditing,active_audit_sampling,88,15,11,PREREGISTERED,
+H-014,Clean-Gradient Leverage Auditing,active_audit_sampling,88,15,11,E0_VALIDATED,
 H-015,Verifier-Adversarial Curriculum,verifier_training,65,12,5,REJECTED_NOT_NOVEL,"standard adversarial verifier training and outside the selected policy-gradient mechanism"
 H-016,Two-Timescale Channel Game,training_schedule,69,12,5,REJECTED_NO_MECHANISM,"changes update frequency without a new estimand or behavior prediction"
 H-017,Audit-Propensity Corrected Channel,selection_bias_correction,84,14,10,REJECTED_EQUIVALENT,"necessary auxiliary correction for H-014 but not an independent branch"
-H-018,Conformal Lower Clean-Reward Bound,uncertainty_constraint,86,14,11,PREREGISTERED,
+H-018,Conformal Lower Clean-Reward Bound,uncertainty_constraint,86,14,11,REJECTED_FAILED_PREDICTION,"downward-shift undercoverage 0.143-0.992 violates every stress-cell threshold"
 H-019,Hierarchical Shrinkage Confusion Strata,hierarchical_estimation,71,12,5,REJECTED_EQUIVALENT,"estimation parameterization of H-001"
 H-020,Change-Point Correction Reset,training_schedule,81,14,8,REJECTED_NO_MECHANISM,"adaptive reset rule changes scheduling only and is subsumed by H-001 diagnostics"

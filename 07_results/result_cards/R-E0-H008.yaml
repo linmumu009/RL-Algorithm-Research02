@@ -1,0 +1,15 @@
+result_id: R-E0-H008
+experiment_id: E0-H008-COUNTERFACTUAL-CV
+hypothesis_id: H-008
+raw_artifacts: [07_results/raw/e0_suite_results.json, 07_results/tables/e0_summary.csv]
+primary_metric:
+  name: clean_gradient_cosine
+  outcome: PASS
+  sensitive_cosine_gain: 0.6895
+key_results:
+  exploit_variance_explained: 0.6378
+  invariant_gain: 0.0
+  cosine_advantage_over_direct_pair_average: -0.00016
+decision_relevance: The behavioral prediction holds, but the estimator is indistinguishable from the predeclared direct-pair-average baseline; reject as equivalent rather than label it a new mechanism.
+decision: REJECTED_EQUIVALENT
+created_at: "2026-08-02T01:00:00+08:00"

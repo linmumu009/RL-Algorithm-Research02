@@ -1,0 +1,15 @@
+result_id: R-E0-H014
+experiment_id: E0-H014-GRADIENT-LEVERAGE-AUDIT
+hypothesis_id: H-014
+raw_artifacts: [07_results/raw/e0_suite_results.json, 07_results/tables/e0_summary.csv]
+primary_metric:
+  name: clean_gradient_mse_per_audit
+  outcome: PASS
+  mse_reduction_over_best_baseline: 0.1075
+key_results:
+  passing_budgets: 4
+  minimum_effective_sample_size_ratio: 0.5859
+  equal_norm_control_difference: 0.0
+decision_relevance: Gradient leverage improves analytic finite-population audit efficiency beyond entropy, gradient norm, uniform, and D-optimal proxy controls without propensity collapse; retain for E1.
+decision: E0_VALIDATED
+created_at: "2026-08-02T01:00:00+08:00"

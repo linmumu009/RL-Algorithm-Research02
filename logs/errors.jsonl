@@ -1,3 +1,6 @@
 {"timestamp":"2026-08-01T20:00:00+08:00","phase":"P1","errors":0,"note":"All 180 PDFs readable; no corpus integrity errors."}
 {"timestamp":"2026-08-01T22:00:00+08:00","phase":"P3","errors":0,"note":"All 200 PDFs readable; P0-P3 validators passed without errors."}
 {"timestamp":"2026-08-01T23:00:00+08:00","phase":"P5_P6","errors":0,"note":"All 206 PDFs readable; 20 hypotheses, 6 active branches, 14 rejections, lineage and E0 preregistrations validated."}
+{"timestamp":"2026-08-02T01:00:00+08:00","phase":"P7","errors":0,"note":"Q001-E0-v1 completed once without runtime errors; two failed predictions and one equivalence rejection are research outcomes, not hidden execution errors."}
+{"timestamp":"2026-08-02T01:10:00+08:00","phase":"P7_VALIDATION","errors":1,"note":"Initial P7 validator tried to YAML-parse an immutable legacy preregistration containing an unquoted >= threshold. No experiment was rerun and no preregistration was changed; validator switched to exact text-field verification."}
+{"timestamp":"2026-08-02T01:12:00+08:00","phase":"P7_VALIDATION","errors":0,"note":"Compatibility fix validated; all P0-P7 checks pass and the formal raw E0 artifact is pinned by SHA-256."}

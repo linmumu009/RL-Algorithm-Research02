@@ -3,3 +3,4 @@
 {"timestamp":"2026-08-01T23:00:00+08:00","phase":"P4-P6","action":"approve_q001_generate_20_screen_to_6_and_preregister_e0","decision_id":"D-0006"}
 {"timestamp":"2026-08-02T00:30:00+08:00","phase":"P7","action":"freeze_six_branch_e0_implementation_before_results","decision_id":"D-0007"}
 {"timestamp":"2026-08-02T00:45:00+08:00","phase":"P7","action":"bind_all_e0_preregistrations_to_immutable_commit_34fea81","decision_id":"D-0008"}
+{"timestamp":"2026-08-02T01:00:00+08:00","phase":"P7","action":"execute_once_review_and_decide_q001_e0_v1","decision_id":"D-0009","survivors":["H-001","H-005","H-014"]}

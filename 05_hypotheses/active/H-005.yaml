@@ -12,7 +12,7 @@ cheapest_falsification_test: synthetic rewards with separately controlled causal
 failure_threshold: "spurious gradient reduction < 50% or clean-gradient cosine drops by > 0.05 when nuisance is noncausal"
 estimated_budget: 3
 score_total: 85
-status: PREREGISTERED
+status: E0_VALIDATED
 repair_count: 0
 closest_prior_work: [P-ARXIV-260415149, P-ARXIV-240419409, P-ARXIV-250512763]
 lineage_parent: null

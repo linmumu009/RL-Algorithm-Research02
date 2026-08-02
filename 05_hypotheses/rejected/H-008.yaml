@@ -12,8 +12,8 @@ cheapest_falsification_test: fixed responses with known invariant transformation
 failure_threshold: "paired term explains < 10% exploit-gradient variance or cosine improvement <= 0.02"
 estimated_budget: 4
 score_total: 89
-status: PREREGISTERED
+status: REJECTED_EQUIVALENT
 repair_count: 0
 closest_prior_work: [P-ARXIV-260415149, P-ARXIV-251001367]
 lineage_parent: null
-rejection_reason: null
+rejection_reason: The primary synthetic prediction passes, but the candidate has -0.00016 mean cosine advantage over direct pair averaging and is behaviorally equivalent in the declared setting.

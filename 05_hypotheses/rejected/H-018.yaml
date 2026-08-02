@@ -12,8 +12,8 @@ cheapest_falsification_test: exchangeable stratified binary data with distributi
 failure_threshold: "undercoverage exceeds alpha + 0.03 or false-positive update rate is not reduced at matched clean-gradient norm"
 estimated_budget: 4
 score_total: 86
-status: PREREGISTERED
+status: REJECTED_FAILED_PREDICTION
 repair_count: 0
 closest_prior_work: [P-ARXIV-240100243, P-ARXIV-231004373, P-ARXIV-251000915]
 lineage_parent: null
-rejection_reason: null
+rejection_reason: Exchangeable coverage passes, but downward-shift undercoverage ranges from 0.143 to 0.992 and violates alpha plus 0.03 in every stress cell.

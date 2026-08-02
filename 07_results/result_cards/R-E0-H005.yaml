@@ -1,0 +1,14 @@
+result_id: R-E0-H005
+experiment_id: E0-H005-NUISANCE-ORTHOGONAL
+hypothesis_id: H-005
+raw_artifacts: [07_results/raw/e0_suite_results.json, 07_results/tables/e0_summary.csv]
+primary_metric:
+  name: spurious_gradient_mass
+  outcome: PASS
+  noncausal_reduction: 0.9968
+key_results:
+  worst_noncausal_clean_cosine_drop: -0.5833
+  causal_stress_signal_retention: 0.7336
+decision_relevance: Orthogonalization removes the injected exploitable direction without deleting noncausal clean signal, while the causal stress exposes the expected protection risk; retain for E1.
+decision: E0_VALIDATED
+created_at: "2026-08-02T01:00:00+08:00"

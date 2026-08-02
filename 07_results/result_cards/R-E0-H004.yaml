@@ -1,0 +1,15 @@
+result_id: R-E0-H004
+experiment_id: E0-H004-DOUBLY-ROBUST
+hypothesis_id: H-004
+raw_artifacts: [07_results/raw/e0_suite_results.json, 07_results/tables/e0_summary.csv]
+primary_metric:
+  name: gradient_bias_norm
+  outcome: FAIL
+  regression_only_correct_bias: 0.1910
+  threshold: 0.05
+key_results:
+  algebraically_channel_only: true
+  mse_dominance_pass: false
+decision_relevance: The declared augmentation cancels to channel-only correction, so the claimed second robustness route does not exist; reject without repair.
+decision: REJECTED_FAILED_PREDICTION
+created_at: "2026-08-02T01:00:00+08:00"

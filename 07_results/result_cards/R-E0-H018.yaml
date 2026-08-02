@@ -1,0 +1,16 @@
+result_id: R-E0-H018
+experiment_id: E0-H018-CONFORMAL-LOWER-BOUND
+hypothesis_id: H-018
+raw_artifacts: [07_results/raw/e0_suite_results.json, 07_results/tables/e0_summary.csv]
+primary_metric:
+  name: empirical_undercoverage
+  outcome: FAIL
+  exchangeable_range: [0.0047, 0.0149]
+  downward_shift_range: [0.1432, 0.9921]
+key_results:
+  exchangeable_coverage_pass: true
+  shifted_coverage_pass: false
+  exchangeable_false_positive_reduction_range: [0.9784, 0.9990]
+decision_relevance: The bound is useful only under exchangeability; failure worsens with audit size under the selected adaptive/shifted problem, so the original claim is rejected rather than narrowed after the fact.
+decision: REJECTED_FAILED_PREDICTION
+created_at: "2026-08-02T01:00:00+08:00"

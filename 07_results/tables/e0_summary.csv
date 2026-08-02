@@ -1,0 +1,7 @@
+hypothesis_id,primary_metric,preregistered_outcome,equivalence_flag
+H-001,clean_gradient_cosine,PASS,False
+H-004,gradient_bias_norm,FAIL,False
+H-005,spurious_gradient_mass,PASS,False
+H-008,clean_gradient_cosine,PASS,True
+H-014,clean_gradient_mse_per_audit,PASS,False
+H-018,empirical_undercoverage,FAIL,False

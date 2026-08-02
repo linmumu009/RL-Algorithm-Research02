@@ -1,12 +1,12 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: e0_preregistration_bound_pending_execution
+phase_status: e0_review_complete_portfolio_repair_required
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
   total_units: 100
-  used_units: 45
+  used_units: 51
   infrastructure_cap: 10
   exploration_reserve: 30
   scale_up_reserve: 30
@@ -14,17 +14,16 @@ budget:
 branches:
   active:
     - H-001
-    - H-004
     - H-005
-    - H-008
     - H-014
-    - H-018
   paused: []
   rejected:
     - H-002
     - H-003
+    - H-004
     - H-006
     - H-007
+    - H-008
     - H-009
     - H-010
     - H-011
@@ -33,6 +32,7 @@ branches:
     - H-015
     - H-016
     - H-017
+    - H-018
     - H-019
     - H-020
 
@@ -47,12 +47,13 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0008
-  action: BIND_E0_CODE_SNAPSHOT
-  rationale: All six preregistrations are bound to immutable implementation commit 34fea81eb28bdba546580ba91e68d1cca5065805 before execution.
+  decision_id: D-0009
+  action: E0_REVIEW_RETAIN_THREE
+  rationale: H-001, H-005, and H-014 passed mechanism-relevant E0 controls; H-004 and H-018 failed frozen predictions, while H-008 was behaviorally equivalent to direct pair averaging.
 
-blockers: []
-next_allowed_task: Execute Q001-E0-v1 exactly once from commit 34fea81 using the frozen configuration, preserve every result, and make branch decisions without post-result tuning.
+blockers:
+  - active_portfolio_below_minimum_4_after_E0
+next_allowed_task: Generate and fully screen at least one mechanism-distinct replacement branch to restore the four-branch minimum before E1; do not resurrect H-004, H-008, or H-018 by renaming or narrowing claims.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

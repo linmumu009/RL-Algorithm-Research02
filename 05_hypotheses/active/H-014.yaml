@@ -12,7 +12,7 @@ cheapest_falsification_test: fixed score-function vectors with hidden clean labe
 failure_threshold: "< 10% MSE reduction over entropy sampling at equal audits or no predicted equal-norm collapse"
 estimated_budget: 4
 score_total: 88
-status: PREREGISTERED
+status: E0_VALIDATED
 repair_count: 0
 closest_prior_work: [P-ARXIV-241017055, P-ARXIV-250301076, P-ARXIV-250322137]
 lineage_parent: null

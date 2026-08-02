@@ -6,13 +6,14 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：Q-001 已通过 G4；6 个分支通过 G5，E0 实现与固定配置已绑定不可变提交 `34fea81`，等待一次性执行。
+- 状态：`Q001-E0-v1` 已按冻结提交一次性完成；3 个分支保留，2 个失败预测、1 个行为等价被淘汰，G6 尚未通过。
 - 本地语料：206 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-004、H-005、H-008、H-014、H-018。
-- 当前边界：只允许执行已预注册的数学/合成 E0；E0 评审前不进行语言模型训练。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）。
+- 当前阻塞：活跃分支为 3，低于施工方案下限 4；必须先补充并完整筛选至少一个非等价分支。
+- 当前边界：G6 尚未通过，不进行语言模型训练或扩大验证；不得复活 H-004、H-008、H-018 的原主张。
 
 ## 关键入口
 
@@ -34,16 +35,31 @@
 - E0 冻结配置：[`06_experiments/configs/e0_suite.yaml`](06_experiments/configs/e0_suite.yaml)
 - E0 实现：[`06_experiments/code/e0_suite.py`](06_experiments/code/e0_suite.py)
 - E0 数学一致性测试：[`06_experiments/unit_tests/test_e0_suite.py`](06_experiments/unit_tests/test_e0_suite.py)
+- E0 原始结果：[`07_results/raw/e0_suite_results.json`](07_results/raw/e0_suite_results.json)
+- E0 结果卡：[`07_results/result_cards/`](07_results/result_cards/)
+- E0 实验报告：[`10_deliverables/e0_experimental_report.md`](10_deliverables/e0_experimental_report.md)
+- E0 本地审查：[`08_reviews/local_reviews/e0_review.md`](08_reviews/local_reviews/e0_review.md)
 
 ## 目录
 
-项目按施工方案分为治理、语料、文献、分类体系、问题、假设、实验、结果、评审、决策和交付物目录。当前已完成 P0–P6，进入 P7 的 E0 准备阶段；尚未进行语言模型训练。
+项目按施工方案分为治理、语料、文献、分类体系、问题、假设、实验、结果、评审、决策和交付物目录。当前已完成 P0–P6 和 P7/E0，正在恢复最少四分支组合；尚未进行语言模型训练。
 
 ## 更新约定
 
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.6.0 — 2026-08-02
+
+- 按已推送的冻结实现提交 `34fea81` 和统一预注册，一次性完成 `Q001-E0-v1`；五个种子全部保留，未调网格、未换指标、未训练语言模型。
+- H-001 通过：4/4 个异质噪声 cell 的 clean-gradient cosine 增益达到阈值且置信区间下界大于 0，同通道控制增益为 0。
+- H-005 通过：非因果场景的伪梯度质量平均减少 99.68%，clean-gradient cosine 未下降；同时记录 causal stress 的信号保留风险。
+- H-014 通过：四个审计预算均比最佳强基线降低 MSE 10.75%，最小 ESS 比为 58.59%，等范数控制精确退化为随机抽样。
+- H-004 淘汰：增强式代数上精确等于 channel-only correction；在仅 regression 正确时 bias=0.191，超过 0.05 失败阈值。
+- H-008 淘汰：主预测虽通过，但相对 direct pair average 的 cosine 优势为 -0.00016，判定为行为等价而非新机制。
+- H-018 淘汰：可交换数据下覆盖成立，但下移漂移 undercoverage 为 14.32%–99.21%，触发预注册失败阈值。
+- 本轮消耗 6 单位，累计 51/100；G6 仍未通过。活跃组合剩 3 条，下一步必须先补足至少一个非等价分支，再进入 E1。
 
 ### v0.5.2 — 2026-08-02
 

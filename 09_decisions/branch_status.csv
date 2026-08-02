@@ -4,9 +4,9 @@ core15_audit,COMPLETED,P2,5,D-0003,10_deliverables/core15_audit.md
 knowledge_map,COMPLETED,P3,10,D-0004,10_deliverables/knowledge_map.md
 problem_selection,COMPLETED,P4,10,D-0005,04_problems/selected_problem.md
 hypothesis_screening,COMPLETED,P5_P6,15,D-0006,10_deliverables/hypothesis_screening.md
-H-001,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H001.yaml
-H-004,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H004.yaml
-H-005,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H005.yaml
-H-008,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H008.yaml
-H-014,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H014.yaml
-H-018,PREREGISTERED,P7,0,D-0006,06_experiments/preregistrations/E0-H018.yaml
+H-001,E0_VALIDATED,P7,1,D-0009,07_results/result_cards/R-E0-H001.yaml
+H-004,REJECTED_FAILED_PREDICTION,P7,1,D-0009,07_results/result_cards/R-E0-H004.yaml
+H-005,E0_VALIDATED,P7,1,D-0009,07_results/result_cards/R-E0-H005.yaml
+H-008,REJECTED_EQUIVALENT,P7,1,D-0009,07_results/result_cards/R-E0-H008.yaml
+H-014,E0_VALIDATED,P7,1,D-0009,07_results/result_cards/R-E0-H014.yaml
+H-018,REJECTED_FAILED_PREDICTION,P7,1,D-0009,07_results/result_cards/R-E0-H018.yaml

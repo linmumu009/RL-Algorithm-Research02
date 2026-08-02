@@ -1,0 +1,15 @@
+result_id: R-E0-H001
+experiment_id: E0-H001-CONTEXTUAL-CHANNEL
+hypothesis_id: H-001
+raw_artifacts: [07_results/raw/e0_suite_results.json, 07_results/tables/e0_summary.csv]
+primary_metric:
+  name: clean_gradient_cosine
+  outcome: PASS
+  passing_heterogeneous_cells: 4
+  equal_channel_control_gain: 0.0
+key_results:
+  cosine_gain_by_heterogeneity: {0.04: 0.0609, 0.08: 0.2533, 0.12: 0.5021, 0.16: 0.7151}
+  all_heterogeneous_ci_lower_above_zero: true
+decision_relevance: Context-specific correction recovers the clean-gradient direction and collapses exactly to the global baseline when channels are equal; retain for E1.
+decision: E0_VALIDATED
+created_at: "2026-08-02T01:00:00+08:00"
