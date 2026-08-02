@@ -1,7 +1,7 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: h033_e0_implementation_frozen_not_run
+phase_status: h033_e0_bound_not_run
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
@@ -65,12 +65,12 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0019
-  action: FREEZE_H033_E0_IMPLEMENTATION
-  rationale: The adaptive audit-query simulator, seven comparators, seven controls, zCDP accountant, fixed grids, output contract, and eight mathematical consistency tests are frozen before any formal result exists.
+  decision_id: D-0020
+  action: BIND_H033_E0_CODE_SNAPSHOT
+  rationale: The H-033 preregistration is bound to pushed immutable commit 90dbd2ea0db51d1a37adabb5678baab8e13bf24d while both formal result paths are absent.
 
 blockers: []
-next_allowed_task: Commit and push the frozen H-033 implementation, bind that exact immutable commit in E0-H033.yaml, then execute the full grid once; no grid threshold metric or control changes and no E1 or language-model training.
+next_allowed_task: Execute E0-H033-PRIVACY-STABLE-REUSABLE-AUDIT-GRADIENT exactly once from bound commit 90dbd2ea0db51d1a37adabb5678baab8e13bf24d, preserve all rows and controls, then review against the original thresholds without rerunning or tuning.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2
