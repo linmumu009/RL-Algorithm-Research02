@@ -13,5 +13,5 @@ budget_limit: 1
 stop_condition: stop after invariant and sensitivity grids; transformation rules are frozen
 success_threshold: variance explained >= 0.10 and cosine gain >= 0.05 in sensitive cells with <= 0.01 gain in invariant cells
 failure_threshold: variance explained < 0.10 or cosine gain <= 0.02
-code_commit: TO_BE_SET_BEFORE_EXECUTION
+code_commit: 34fea81eb28bdba546580ba91e68d1cca5065805
 status: PREREGISTERED_NOT_RUN

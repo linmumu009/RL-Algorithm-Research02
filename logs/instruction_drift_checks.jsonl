@@ -2,3 +2,4 @@
 {"timestamp":"2026-08-01T22:00:00+08:00","phase":"P3","drift_detected":false,"check":"P3 produced mechanisms and problem candidates only; no formal algorithm hypothesis or training code was created before G4."}
 {"timestamp":"2026-08-01T23:00:00+08:00","phase":"P5_P6","drift_detected":false,"check":"Q-001 was approved before hypothesis generation; no experiment or language-model training was executed before G5 and preregistration."}
 {"timestamp":"2026-08-02T00:30:00+08:00","phase":"P7","drift_detected":false,"check":"E0 code and fixed grids were frozen before result generation; no language-model training was introduced."}
+{"timestamp":"2026-08-02T00:45:00+08:00","phase":"P7","drift_detected":false,"check":"All preregistrations were bound to pushed commit 34fea81 before the first formal E0 run."}

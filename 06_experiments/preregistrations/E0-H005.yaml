@@ -13,5 +13,5 @@ budget_limit: 1
 stop_condition: stop after the declared causal/spurious coefficient grid
 success_threshold: >= 50% spurious-mass reduction and cosine drop <= 0.05 in noncausal cells
 failure_threshold: spurious-mass reduction < 25% or clean cosine drops > 0.05 in noncausal cells
-code_commit: TO_BE_SET_BEFORE_EXECUTION
+code_commit: 34fea81eb28bdba546580ba91e68d1cca5065805
 status: PREREGISTERED_NOT_RUN

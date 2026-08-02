@@ -13,5 +13,5 @@ budget_limit: 1
 stop_condition: execute the predeclared 2x2 nuisance-correctness table once
 success_threshold: bias < 0.05 in each single-correct cell and MSE below both single estimators in at least one sparse-audit regime
 failure_threshold: bias >= 0.05 in either single-correct cell
-code_commit: TO_BE_SET_BEFORE_EXECUTION
+code_commit: 34fea81eb28bdba546580ba91e68d1cca5065805
 status: PREREGISTERED_NOT_RUN

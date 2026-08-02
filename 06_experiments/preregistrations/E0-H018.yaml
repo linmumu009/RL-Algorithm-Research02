@@ -13,5 +13,5 @@ budget_limit: 1
 stop_condition: fixed alpha values [0.05, 0.10] and audit sizes [50, 100, 200, 500]
 success_threshold: undercoverage <= alpha + 0.03 and false-positive update reduction >= 30% at matched clean-gradient norm
 failure_threshold: undercoverage > alpha + 0.03 or no false-positive reduction after norm matching
-code_commit: TO_BE_SET_BEFORE_EXECUTION
+code_commit: 34fea81eb28bdba546580ba91e68d1cca5065805
 status: PREREGISTERED_NOT_RUN

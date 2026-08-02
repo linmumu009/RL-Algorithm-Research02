@@ -13,5 +13,5 @@ budget_limit: 1
 stop_condition: stop after the declared heterogeneity grid and five seeds; no tuning on test cells
 success_threshold: mean cosine gain >= 0.05 with 95% CI above 0 in at least three heterogeneous cells
 failure_threshold: mean cosine gain <= 0.02 or no gain across all heterogeneous cells
-code_commit: TO_BE_SET_BEFORE_EXECUTION
+code_commit: 34fea81eb28bdba546580ba91e68d1cca5065805
 status: PREREGISTERED_NOT_RUN
