@@ -1,0 +1,40 @@
+result_id: R-E0-H039
+experiment_id: E0-H039-CHANNEL-SET-ADVANTAGE-SIGN-CERTIFICATE
+hypothesis_id: H-039
+code_commit: ddb66391e42bbaf5e63c85949df6c4fac8d32414
+raw_artifacts: [07_results/raw/e0_h039_results.json, 07_results/raw/e0_h039_results.sha256, 07_results/tables/e0_h039_summary.csv]
+primary_metric:
+  name: false_certified_sign_rate
+  outcome: PASS
+  maximum_valid_coverage_cell_mean: 0.0
+overall_preregistered_outcome: FAIL
+key_results:
+  seed_rows: 1080
+  control_rows: 40
+  summary_cells: 216
+  target_heterogeneous_noncollinear_cells: 96
+  strong_identified_cells: 72
+  qualifying_gain_cells: 0
+  valid_coverage_complete: true
+  false_certified_sign_rate_max: 0.0
+  harmful_sample_update_rate_max: 0.0
+  strong_clean_gradient_cosine_min: 0.999718
+  strong_certified_mass_min: 0.666667
+  point_limit_direction_difference_max: 0.0
+  cosine_gain_over_best_nonoracle_max_target: 0.000001279
+  cosine_gain_over_H001_max_target: 0.000124916
+  harmful_rate_reduction_over_best_nonoracle_max_target: 0.0
+  harmful_rate_reduction_over_H001_max_target: 0.083333
+  all_cell_clean_gradient_cosine_mean: 0.877656
+  all_cell_clean_gradient_cosine_min: -0.218434
+  all_cell_certified_mass_mean: 0.545139
+  zero_certified_mass_cells: 15
+  negative_cosine_cells: 4
+  H001_mean_cosine: 0.999887
+  H027_mean_cosine: 0.998942
+  SignCertPO_mean_cosine: 0.837188
+  matched_acceptance_failures: 0
+  matched_radius_absolute_error_max: 0.0
+decision_relevance: H-039 provides perfect sign safety under every valid-coverage cell and passes every strong-cell quality threshold, but produces zero preregistered incremental-gain cells; H-001 and H-027 dominate aggregate direction quality while wide intervals can eliminate all certified mass.
+decision: REJECTED_NO_INCREMENTAL_GAIN_AND_DOMINATED
+created_at: "2026-08-03T00:00:00+08:00"

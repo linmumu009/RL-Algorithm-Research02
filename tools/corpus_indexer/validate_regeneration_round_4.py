@@ -110,7 +110,10 @@ def main() -> None:
         if int(row["total_score"]) < 70 or int(row["falsifiability_score"]) < 12 or int(row["difference_score"]) < 10:
             errors.append("H-039 does not satisfy screening thresholds")
 
-    card_paths = [ROOT / "05_hypotheses/active/H-039.yaml"] + [
+    h039_active_card = ROOT / "05_hypotheses/active/H-039.yaml"
+    h039_rejected_card = ROOT / "05_hypotheses/rejected/H-039.yaml"
+    h039_card = h039_active_card if h039_active_card.is_file() else h039_rejected_card
+    card_paths = [h039_card] + [
         ROOT / f"05_hypotheses/rejected/{hypothesis_id}.yaml" for hypothesis_id in sorted(ROUND_REJECTED)
     ]
     for path in card_paths:
@@ -122,8 +125,9 @@ def main() -> None:
             errors.append(f"{path.name} lacks hypothesis keys: {sorted(missing)}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
-    if active_ids != ACTIVE_IDS:
-        errors.append(f"active portfolio is {sorted(active_ids)}, expected {sorted(ACTIVE_IDS)}")
+    h039_rejected = (ROOT / "05_hypotheses/rejected/H-039.yaml").is_file()
+    if not {"H-001", "H-005", "H-014"} <= active_ids or (h039_rejected and "H-039" in active_ids):
+        errors.append("active portfolio does not preserve the round-4 lifecycle")
     lineage = json.loads((ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8"))
     nodes = lineage.get("nodes", [])
     node_ids = {node["id"] for node in nodes}
@@ -172,16 +176,16 @@ def main() -> None:
             errors.append(f"missing or short round-4 report: {relative}")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != ACTIVE_IDS:
+    if set(state.get("branches", {}).get("active", [])) != active_ids:
         errors.append("research_state active portfolio is inconsistent")
-    if state.get("budget", {}).get("used_units") != 70:
-        errors.append("research_state budget is not 70 units")
+    if state.get("budget", {}).get("used_units", 0) < 70:
+        errors.append("research_state budget predates round 4")
     latest_decision = str(state.get("latest_decision", {}).get("decision_id", ""))
     match = re.fullmatch(r"D-(\d{4})", latest_decision)
     if match is None or int(match.group(1)) < 22:
         errors.append("research_state latest decision predates D-0022")
-    if state.get("blockers"):
-        errors.append("research_state still reports a blocker after restoring four active branches")
+    if len(active_ids) < 4 and not state.get("blockers"):
+        errors.append("research_state omits the undersized-portfolio blocker")
 
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if "D-0022" not in decision_log or "PASS_REGENERATION_ROUND_4_RETAIN_H039" not in decision_log:

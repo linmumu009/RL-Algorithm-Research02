@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
 - 当前验收门：`G6`
-- 状态：H-039 解析/合成 E0 已绑定到不可变提交 `ddb66391e42bbaf5e63c85949df6c4fac8d32414`；正式结果尚不存在，下一步唯一一次执行完整网格。
+- 状态：H-039 正式 E0 已唯一一次执行并因零增量收益淘汰；活跃组合剩 3 条，且预算储备约束已触发，等待零预算治理复核。
 - 本地语料：237 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）及 H-039（`BOUND_NOT_RUN`）。
-- 当前边界：只允许从绑定提交唯一一次运行 H-039 完整正式网格并保留全部结果；不得调参、重跑、进入 E1、训练语言模型或扩大验证。
+- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）；H-039 已淘汰。
+- 当前边界：只允许零预算治理复核，决定终止本发现周期或显式重分配储备；此前不得新增 E0、进入 E1、训练语言模型或扩大验证。
 
 ## 关键入口
 
@@ -76,6 +76,10 @@
 - H-039 冻结配置：[`06_experiments/configs/e0_h039.yaml`](06_experiments/configs/e0_h039.yaml)
 - H-039 冻结实现：[`06_experiments/code/h039_sign_certificate_e0.py`](06_experiments/code/h039_sign_certificate_e0.py)
 - H-039 数学与装配测试：[`06_experiments/unit_tests/test_h039_sign_certificate_e0.py`](06_experiments/unit_tests/test_h039_sign_certificate_e0.py)
+- H-039 原始结果：[`07_results/raw/e0_h039_results.json`](07_results/raw/e0_h039_results.json)
+- H-039 结果卡：[`07_results/result_cards/R-E0-H039.yaml`](07_results/result_cards/R-E0-H039.yaml)
+- H-039 实验报告：[`10_deliverables/h039_e0_experimental_report.md`](10_deliverables/h039_e0_experimental_report.md)
+- H-039 本地审查：[`08_reviews/local_reviews/h039_e0_review.md`](08_reviews/local_reviews/h039_e0_review.md)
 
 ## 目录
 
@@ -86,6 +90,16 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.12.3 — 2026-08-03
+
+- 从绑定提交 `ddb66391e42bbaf5e63c85949df6c4fac8d32414` 唯一一次执行 H-039 E0，完整保留 1080 个 seed cell、40 个控制行和 216-cell 汇总；未改角点、共享中心、网格、基线、控制或阈值，未重跑。
+- 有效覆盖安全性成立：216 个 cell 的 false-certified sign rate 与 harmful sample update rate 均为 0；72 个 strong cell 的最小 cosine 为 0.999718、最小 certified mass 为 0.666667。
+- 核心增量预测失败：96 个 heterogeneous/non-collinear 目标 cell 中 qualifying gain 为 0；相对最佳 non-oracle 的最大 cosine gain 仅 `0.000001279`，harmful-rate reduction 最大为 0。
+- H-001/H-027 的平均 cosine 为 0.999887/0.998942，高于 H-039 的 0.877656；0.20 宽区间产生 15 个 zero-mass cell 和 4 个负 cosine cell，最坏为 -0.218434。
+- H-039 记为 `REJECTED_NO_INCREMENTAL_GAIN_AND_DOMINATED`，不做局部修复；符号证书安全性不重新包装为独立算法成功。
+- 正式 E0 消耗 1 单位，累计预算 71/100，剩余 29 单位低于 30 单位探索/重启储备；活跃组合回到 H-001、H-005、H-014 三条，G6 未通过。
+- 下一步仅允许零预算治理复核；在决定终止本周期或显式重分配储备之前，不得自动开展第五轮再生成、E1 或语言模型训练。
 
 ### v0.12.2 — 2026-08-02
 

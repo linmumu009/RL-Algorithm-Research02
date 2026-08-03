@@ -28,7 +28,7 @@ H-035,REJECTED_NOT_NOVEL,P7,0,D-0018,05_hypotheses/rejected/H-035.yaml
 H-036,REJECTED_NOT_NOVEL,P7,0,D-0018,05_hypotheses/rejected/H-036.yaml
 H-037,REJECTED_NOT_NOVEL,P7,0,D-0018,05_hypotheses/rejected/H-037.yaml
 H-038,REJECTED_NOT_NOVEL,P7,0,D-0018,05_hypotheses/rejected/H-038.yaml
-H-039,BOUND_NOT_RUN,P7,0,D-0024,06_experiments/preregistrations/E0-H039.yaml
+H-039,REJECTED_NO_INCREMENTAL_GAIN_AND_DOMINATED,P7,1,D-0025,07_results/result_cards/R-E0-H039.yaml
 H-040,REJECTED_NOT_NOVEL,P7,0,D-0022,05_hypotheses/rejected/H-040.yaml
 H-041,REJECTED_NOT_NOVEL,P7,0,D-0022,05_hypotheses/rejected/H-041.yaml
 H-042,REJECTED_NOT_NOVEL,P7,0,D-0022,05_hypotheses/rejected/H-042.yaml

@@ -258,3 +258,16 @@
 - 反事实判断：若尚未投入本轮时间，仍会先独立完成提交绑定，因为这能阻止依据正式结果修改角点枚举、共享中心、SignCert-PO radius matching、matched acceptance 或成功阈值。
 - 边界：完整网格只能运行一次；必须保留所有 1080 个 seed cell、40 个控制行、216-cell 汇总及负结果，不得静默重跑或结果后调参。
 - 下一项允许任务：从绑定实现唯一一次执行 `E0-H039-CHANNEL-SET-ADVANTAGE-SIGN-CERTIFICATE`，保存全部原始行并按原预注册门槛审查。
+
+## D-0025 — 2026-08-03
+
+- 阶段：P7 / G6
+- 动作：`REJECT_H039_NO_INCREMENTAL_GAIN`
+- 决定：H-039 记为 `REJECTED_NO_INCREMENTAL_GAIN_AND_DOMINATED`，不做局部修复；活跃分支回到 H-001、H-005、H-014 三条。
+- 依据：唯一正式运行完整保留 1080 个 seed cell、40 个控制行和 216-cell 汇总；有效覆盖 false-certified sign 与 harmful update 均为 0，72 个 strong cell 全部通过，但 96 个目标 cell 中 qualifying gain 为 0。
+- 增量判断：相对最佳 non-oracle 的最大 cosine gain 仅 `0.000001279`、harmful-rate reduction 最大为 0；H-001/H-027 平均 cosine 为 0.999887/0.998942，高于 H-039 的 0.877656。
+- 压力判断：0.20 宽区间产生 15 个 zero-mass cell 与 4 个负 cosine cell，最坏 cosine 为 -0.218434；逐样本符号安全不保证选择性聚合后的全局梯度安全。
+- 预算影响：1 单位，累计 71/100，剩余 29 单位，低于声明的 30 单位探索/重启储备。
+- 反事实判断：若尚未投入时间，仍会执行该 E0 以区分“逐样本符号安全”和“超过 point/global-set correction 的算法价值”；不会删除 H-001/H-027、降低增益阈值、扩大 misspecification 或结果后重跑。
+- G6：`NOT_YET_PASS`。活跃组合低于 4，且储备约束已触发；不得自动开展第五轮付费再生成。
+- 下一项允许任务：进行零预算治理复核，在终止本发现周期与显式重分配储备之间作出决定；此前不得新增 E0、进入 E1 或训练语言模型。

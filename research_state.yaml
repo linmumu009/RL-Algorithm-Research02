@@ -1,12 +1,12 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
 current_gate: G6
-phase_status: h039_e0_bound_ready_for_single_execution
+phase_status: h039_e0_failed_portfolio_and_reserve_blocked
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
   total_units: 100
-  used_units: 70
+  used_units: 71
   infrastructure_cap: 10
   exploration_reserve: 30
   scale_up_reserve: 30
@@ -16,7 +16,6 @@ branches:
     - H-001
     - H-005
     - H-014
-    - H-039
   paused: []
   rejected:
     - H-002
@@ -59,6 +58,7 @@ branches:
     - H-042
     - H-043
     - H-044
+    - H-039
 
 core15:
   status: approved_with_replacements
@@ -71,12 +71,14 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0024
-  action: BIND_H039_E0_CODE_SNAPSHOT
-  rationale: The H-039 preregistration is bound to pushed immutable commit ddb66391e42bbaf5e63c85949df6c4fac8d32414; its code config and tests match that snapshot and formal result artifacts remain absent.
+  decision_id: D-0025
+  action: REJECT_H039_NO_INCREMENTAL_GAIN
+  rationale: H-039 achieved zero false sign certifications and passed all 72 strong cells, but zero of 96 target cells met incremental gain; H-001 and H-027 dominated and wide intervals caused zero-mass and negative-cosine cells.
 
-blockers: []
-next_allowed_task: From bound commit ddb66391e42bbaf5e63c85949df6c4fac8d32414 execute the complete H-039 formal grid exactly once, retain every row control and negative result, and do not tune rerun start E1 or train a language model.
+blockers:
+  - Active portfolio has only three non-equivalent E0 survivors after H-039 rejection, below the minimum parallel branch count of four.
+  - Budget usage is 71/100, leaving 29 units and breaching the declared 30-unit exploration/restart reserve; no additional paid regeneration is authorized without an explicit governance reallocation.
+next_allowed_task: Conduct a zero-cost governance review of the failed G6 portfolio and reserve constraint, deciding whether to terminate this discovery cycle or explicitly reallocate reserve before any new hypothesis generation; do not start E0 E1 or language-model training.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

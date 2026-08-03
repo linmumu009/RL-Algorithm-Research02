@@ -61,3 +61,9 @@
 - H-044：restricted policy class 上 unhackability 的必要充分条件已由 arXiv:2209.13085 给出；条件检查不是新的学习机制。
 
 以上候选不得作为 H-039 的组件重新计算新颖性。H-039 若与 SignCert-PO/H-027 行为等价，或收益只来自更低接受率，也必须淘汰。
+
+## H-039 正式 E0 淘汰 — 2026-08-03
+
+- H-039：`REJECTED_NO_INCREMENTAL_GAIN_AND_DOMINATED`。有效覆盖错误认证率与 harmful update 均为 0，72 个 strong cell 全部通过，但 96 个目标 cell 中 qualifying gain 为 0；相对最佳 non-oracle 的最大 cosine gain 仅 `0.000001279`。
+- H-001/H-027 的平均 cosine 分别为 0.999887/0.998942，高于 H-039 的 0.877656；0.20 宽区间另产生 15 个 zero-mass cell 和 4 个负 cosine cell。
+- 不允许删除 H-001/H-027、降低增益阈值、只报告 strong cell、改变 margin 权重或扩大 misspecification 后重跑；符号安全不得重新包装为独立算法成功。

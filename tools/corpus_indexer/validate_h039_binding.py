@@ -27,7 +27,8 @@ def main() -> None:
     errors: list[str] = []
     prereg_path = ROOT / "06_experiments/preregistrations/E0-H039.yaml"
     prereg = yaml.safe_load(prereg_path.read_text(encoding="utf-8"))
-    if prereg.get("code_commit") != EXPECTED_COMMIT or prereg.get("status") != "BOUND_NOT_RUN":
+    lifecycle = prereg.get("status")
+    if prereg.get("code_commit") != EXPECTED_COMMIT or lifecycle not in {"BOUND_NOT_RUN", "COMPLETED_FAIL"}:
         errors.append("H-039 preregistration is not bound to the frozen commit")
 
     try:
@@ -52,16 +53,21 @@ def main() -> None:
 
     raw_path = ROOT / "07_results/raw/e0_h039_results.json"
     table_path = ROOT / "07_results/tables/e0_h039_summary.csv"
-    if raw_path.exists() or table_path.exists():
-        errors.append("formal H-039 results existed at binding time")
+    results_exist = raw_path.exists() and table_path.exists()
+    if lifecycle == "BOUND_NOT_RUN" and (raw_path.exists() or table_path.exists()):
+        errors.append("formal H-039 results existed before execution")
+    if lifecycle == "COMPLETED_FAIL" and not results_exist:
+        errors.append("completed H-039 lifecycle lacks formal results")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if state.get("latest_decision", {}).get("decision_id") != "D-0024":
-        errors.append("research_state does not record D-0024")
-    if state.get("budget", {}).get("used_units") != 70:
-        errors.append("binding changed the research budget")
-    if set(state.get("branches", {}).get("active", [])) != {"H-001", "H-005", "H-014", "H-039"}:
-        errors.append("binding changed the active portfolio")
+    latest_decision = str(state.get("latest_decision", {}).get("decision_id", ""))
+    if not latest_decision.startswith("D-") or int(latest_decision[2:]) < 24:
+        errors.append("research_state predates D-0024")
+    if state.get("budget", {}).get("used_units", 0) < 70:
+        errors.append("research budget predates H-039 binding")
+    active = set(state.get("branches", {}).get("active", []))
+    if not {"H-001", "H-005", "H-014"} <= active or (lifecycle == "BOUND_NOT_RUN" and "H-039" not in active):
+        errors.append("active portfolio is inconsistent with the H-039 lifecycle")
 
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if "D-0024" not in decision_log or "BIND_H039_E0_CODE_SNAPSHOT" not in decision_log:
