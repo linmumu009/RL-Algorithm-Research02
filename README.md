@@ -4,15 +4,15 @@
 
 ## 当前状态
 
-- 当前阶段：`P7_LOW_COST_DECISIVE_EXPERIMENTS`
-- 当前验收门：`G6`
-- 状态：H-039 正式 E0 已唯一一次执行并因零增量收益淘汰；活跃组合剩 3 条，且预算储备约束已触发，等待零预算治理复核。
+- 当前阶段：`P7_CLOSED_GLOBAL_FALLBACK`
+- 当前验收门：`G6_NOT_PASSED`
+- 状态：第一算法发现周期已按强制预算规则关闭；不重分配剩余 29 单位储备，下一步仅准备零预算最终证据与交接包。
 - 本地语料：237 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
-- 活跃分支：H-001、H-005、H-014（均为 `E0_VALIDATED`）；H-039 已淘汰。
-- 当前边界：只允许零预算治理复核，决定终止本发现周期或显式重分配储备；此前不得新增 E0、进入 E1、训练语言模型或扩大验证。
+- 活跃分支：无。H-001、H-005、H-014 保留 `E0_VALIDATED` 证据并转为 `E0_VALIDATED_PAUSED_GLOBAL_FALLBACK`。
+- 当前边界：只允许零预算证据归档、最终交接与仓库维护；研究重启需要新的/修订的 G0/G4 章程、独立预算、至少 4 条非等价分支及新预注册。
 
 ## 关键入口
 
@@ -80,6 +80,7 @@
 - H-039 结果卡：[`07_results/result_cards/R-E0-H039.yaml`](07_results/result_cards/R-E0-H039.yaml)
 - H-039 实验报告：[`10_deliverables/h039_e0_experimental_report.md`](10_deliverables/h039_e0_experimental_report.md)
 - H-039 本地审查：[`08_reviews/local_reviews/h039_e0_review.md`](08_reviews/local_reviews/h039_e0_review.md)
+- P7 全局回退治理复核：[`10_deliverables/p7_global_fallback_governance_review.md`](10_deliverables/p7_global_fallback_governance_review.md)
 
 ## 目录
 
@@ -90,6 +91,16 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.13.0 — 2026-08-03
+
+- 完成 P7/G6 零预算治理复核并执行 `CLOSE_DISCOVERY_CYCLE_GLOBAL_FALLBACK`：当前 Q-001 第一发现周期正式关闭，不挪用剩余 29 单位全局重启储备。
+- 强制依据：施工方案要求始终保留至少 30% 预算，并规定剩余预算低于 30% 且没有候选通过 E2 时必须全局回退；当前累计 71/100，所有候选最高仅到 E0。
+- 证据依据：44 条假设谱系中，四轮替代 E0 H-021/H-027/H-033/H-039 均未超过强 non-oracle 基线；继续第五轮相邻稳健变体的预期信息增益不足。
+- H-001、H-005、H-014 保留 E0 正面证据并从 active 转为 `E0_VALIDATED_PAUSED_GLOBAL_FALLBACK`，不视为淘汰；当前 active 分支清零。
+- 拒绝自动重分配储备、拒绝三条 E0 分支越过 G6、拒绝修补 H-039；29 单位作为真正的未探索分支/全局重启资源保留。
+- 同步更新项目章程、状态、分支卡、谱系、预算台账和 D-0026；本轮治理成本为 0，累计预算保持 71/100。
+- 下一步仅允许准备零预算最终证据与交接包；任何研究重启都需要新的/修订的 G0/G4、独立预算、至少 4 条非等价分支、新颖性审查和新预注册。
 
 ### v0.12.3 — 2026-08-03
 

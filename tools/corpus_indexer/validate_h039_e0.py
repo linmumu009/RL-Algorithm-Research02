@@ -115,10 +115,12 @@ def main() -> None:
     if prereg.get("code_commit") != EXPECTED_COMMIT or prereg.get("status") != "COMPLETED_FAIL":
         errors.append("preregistration binding or terminal status is inconsistent")
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != {"H-001", "H-005", "H-014"}:
-        errors.append("active portfolio does not reflect H-039 rejection")
-    if state.get("budget", {}).get("used_units") != 71 or state.get("latest_decision", {}).get("decision_id") != "D-0025":
-        errors.append("terminal budget or decision is inconsistent")
+    current = set(state.get("branches", {}).get("active", [])) | set(state.get("branches", {}).get("paused", []))
+    if current != {"H-001", "H-005", "H-014"}:
+        errors.append("current portfolio does not reflect H-039 rejection")
+    latest_decision = str(state.get("latest_decision", {}).get("decision_id", ""))
+    if state.get("budget", {}).get("used_units", 0) < 71 or not latest_decision.startswith("D-") or int(latest_decision[2:]) < 25:
+        errors.append("terminal budget or decision predates H-039 rejection")
     if len(state.get("blockers", [])) < 2:
         errors.append("portfolio/reserve blockers are missing")
     lineage = json.loads((ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8"))

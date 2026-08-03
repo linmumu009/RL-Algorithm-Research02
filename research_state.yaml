@@ -1,7 +1,7 @@
 project_id: rl_algorithm_discovery_v1
-current_phase: P7_LOW_COST_DECISIVE_EXPERIMENTS
-current_gate: G6
-phase_status: h039_e0_failed_portfolio_and_reserve_blocked
+current_phase: P7_CLOSED_GLOBAL_FALLBACK
+current_gate: G6_NOT_PASSED
+phase_status: discovery_cycle_1_closed_budget_triggered_global_fallback
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
@@ -12,11 +12,11 @@ budget:
   scale_up_reserve: 30
 
 branches:
-  active:
+  active: []
+  paused:
     - H-001
     - H-005
     - H-014
-  paused: []
   rejected:
     - H-002
     - H-003
@@ -71,14 +71,14 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0025
-  action: REJECT_H039_NO_INCREMENTAL_GAIN
-  rationale: H-039 achieved zero false sign certifications and passed all 72 strong cells, but zero of 96 target cells met incremental gain; H-001 and H-027 dominated and wide intervals caused zero-mass and negative-cosine cells.
+  decision_id: D-0026
+  action: CLOSE_DISCOVERY_CYCLE_GLOBAL_FALLBACK
+  rationale: Mandatory global fallback is triggered because only three E0 survivors remain, four consecutive replacement E0 branches delivered zero incremental gain, no candidate reached E2, and 71/100 usage leaves less than the required 30 percent restart reserve.
 
 blockers:
-  - Active portfolio has only three non-equivalent E0 survivors after H-039 rejection, below the minimum parallel branch count of four.
-  - Budget usage is 71/100, leaving 29 units and breaching the declared 30-unit exploration/restart reserve; no additional paid regeneration is authorized without an explicit governance reallocation.
-next_allowed_task: Conduct a zero-cost governance review of the failed G6 portfolio and reserve constraint, deciding whether to terminate this discovery cycle or explicitly reallocate reserve before any new hypothesis generation; do not start E0 E1 or language-model training.
+  - G6 did not pass: the portfolio has only three E0-validated survivors and no E1/E2 evidence.
+  - Mandatory global fallback is active: 71/100 units are used and the remaining 29 units are below the required 30 percent unexplored-branch/restart reserve.
+next_allowed_task: Prepare a zero-cost final evidence and handoff package only; any research restart requires a new or explicitly amended G0/G4 charter, independent budget authorization, at least four non-equivalent branches, and fresh preregistration before E0 E1 or language-model training.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

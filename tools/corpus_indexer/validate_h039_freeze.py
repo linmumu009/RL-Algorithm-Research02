@@ -120,7 +120,7 @@ def main() -> None:
     match = re.fullmatch(r"D-(\d{4})", latest_decision)
     if match is None or int(match.group(1)) < 23:
         errors.append("research_state predates the H-039 freeze")
-    active = set(state.get("branches", {}).get("active", []))
+    active = set(state.get("branches", {}).get("active", [])) | set(state.get("branches", {}).get("paused", []))
     if not {"H-001", "H-005", "H-014"} <= active or (
         lifecycle in {"IMPLEMENTATION_FROZEN_NOT_RUN", "BOUND_NOT_RUN"} and "H-039" not in active
     ) or (lifecycle == "COMPLETED_FAIL" and "H-039" in active):

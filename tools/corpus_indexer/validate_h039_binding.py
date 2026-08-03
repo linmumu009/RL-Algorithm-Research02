@@ -65,7 +65,7 @@ def main() -> None:
         errors.append("research_state predates D-0024")
     if state.get("budget", {}).get("used_units", 0) < 70:
         errors.append("research budget predates H-039 binding")
-    active = set(state.get("branches", {}).get("active", []))
+    active = set(state.get("branches", {}).get("active", [])) | set(state.get("branches", {}).get("paused", []))
     if not {"H-001", "H-005", "H-014"} <= active or (lifecycle == "BOUND_NOT_RUN" and "H-039" not in active):
         errors.append("active portfolio is inconsistent with the H-039 lifecycle")
 

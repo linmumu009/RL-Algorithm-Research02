@@ -112,17 +112,21 @@ def main() -> None:
                 errors.append(f"{path.name} references missing artifact {artifact}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
-    if not SURVIVORS <= active_ids:
-        errors.append(f"one or more E0 survivor files are absent: {sorted(SURVIVORS - active_ids)}")
+    paused_ids = {path.stem for path in (ROOT / "05_hypotheses/paused").glob("H-*.yaml")}
+    current_ids = active_ids | paused_ids
+    if not SURVIVORS <= current_ids:
+        errors.append(f"one or more E0 survivor files are absent: {sorted(SURVIVORS - current_ids)}")
     rejected_ids = {path.stem for path in (ROOT / "05_hypotheses/rejected").glob("H-*.yaml")}
     if not REJECTED_AT_E0 <= rejected_ids:
         errors.append("one or more E0 rejections are absent from rejected cards")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
     state_active = set(state.get("branches", {}).get("active", []))
-    if not SURVIVORS <= state_active:
+    state_paused = set(state.get("branches", {}).get("paused", []))
+    state_current = state_active | state_paused
+    if not SURVIVORS <= state_current:
         errors.append("research_state no longer preserves all E0 survivors")
-    if REJECTED_AT_E0 & state_active:
+    if REJECTED_AT_E0 & state_current:
         errors.append("an E0-rejected branch was reactivated")
     if state.get("budget", {}).get("used_units", 0) < 51:
         errors.append("research_state budget lost the six E0 units")

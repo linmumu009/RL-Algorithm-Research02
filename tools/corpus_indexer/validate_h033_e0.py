@@ -118,10 +118,12 @@ def main() -> None:
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
+    active_ids |= {path.stem for path in (ROOT / "05_hypotheses/paused").glob("H-*.yaml")}
     if not {"H-001", "H-005", "H-014"} <= active_ids or "H-033" in active_ids:
         errors.append("current active portfolio does not reflect H-033 rejection")
-    if set(state.get("branches", {}).get("active", [])) != active_ids:
-        errors.append("research_state active portfolio differs from current cards")
+    state_current = set(state.get("branches", {}).get("active", [])) | set(state.get("branches", {}).get("paused", []))
+    if state_current != active_ids:
+        errors.append("research_state current portfolio differs from active/paused cards")
     if state.get("budget", {}).get("used_units", 0) < 66:
         errors.append("current budget does not include the H-033 E0 unit")
     if (ROOT / "05_hypotheses/active/H-033.yaml").exists() or not (

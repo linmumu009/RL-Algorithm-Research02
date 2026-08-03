@@ -99,6 +99,7 @@ def main() -> None:
             errors.append(f"{path.name} lacks hypothesis keys: {sorted(missing)}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
+    active_ids |= {path.stem for path in (ROOT / "05_hypotheses/paused").glob("H-*.yaml")}
     if not BASE_SURVIVORS <= active_ids or "H-021" in active_ids:
         errors.append("current portfolio does not preserve the three first-round E0 survivors and H-021 rejection")
 
@@ -132,8 +133,9 @@ def main() -> None:
             errors.append(f"missing or short regeneration report: {relative}")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != active_ids:
-        errors.append("research_state active portfolio differs from the current hypothesis cards")
+    state_current = set(state.get("branches", {}).get("active", [])) | set(state.get("branches", {}).get("paused", []))
+    if state_current != active_ids:
+        errors.append("research_state current portfolio differs from active/paused hypothesis cards")
     if state.get("budget", {}).get("used_units", 0) < 61:
         errors.append("research_state budget lost completed H-021 or H-027 E0 costs")
     if len(active_ids) < 4 and not state.get("blockers"):

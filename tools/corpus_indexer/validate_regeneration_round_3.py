@@ -123,6 +123,7 @@ def main() -> None:
             errors.append(f"{path.name} lacks hypothesis keys: {sorted(missing)}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
+    active_ids |= {path.stem for path in (ROOT / "05_hypotheses/paused").glob("H-*.yaml")}
     if not BASE_SURVIVORS <= active_ids or (h033_rejected.is_file() and "H-033" in active_ids):
         errors.append("current portfolio does not preserve the round-3 survivors and H-033 lifecycle")
     lineage = json.loads((ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8"))
@@ -171,8 +172,9 @@ def main() -> None:
             errors.append(f"missing or short round-3 report: {relative}")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != active_ids:
-        errors.append("research_state active portfolio is inconsistent")
+    state_current = set(state.get("branches", {}).get("active", [])) | set(state.get("branches", {}).get("paused", []))
+    if state_current != active_ids:
+        errors.append("research_state current portfolio is inconsistent")
     expected_budget_floor = 66 if h033_rejected.is_file() else 65
     if state.get("budget", {}).get("used_units", 0) < expected_budget_floor:
         errors.append(f"research_state budget is below {expected_budget_floor}")

@@ -65,7 +65,7 @@ def main() -> None:
         errors.append("preregistration binding or terminal status is inconsistent")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    current_active = set(state.get("branches", {}).get("active", []))
+    current_active = set(state.get("branches", {}).get("active", [])) | set(state.get("branches", {}).get("paused", []))
     if not {"H-001", "H-005", "H-014"} <= current_active or "H-021" in current_active:
         errors.append("current portfolio does not preserve the H-021 terminal decision and its three historical survivors")
     if state.get("budget", {}).get("used_units", 0) < 56:

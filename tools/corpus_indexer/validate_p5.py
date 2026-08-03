@@ -60,6 +60,7 @@ def main() -> None:
     initial = read_csv("05_hypotheses/initial_hypotheses.csv")
     supplement = read_csv("02_literature/extended/p5_novelty_supplement.csv")
     active_cards = sorted((ROOT / "05_hypotheses/active").glob("H-*.yaml"))
+    paused_cards = sorted((ROOT / "05_hypotheses/paused").glob("H-*.yaml"))
     rejected_cards = sorted((ROOT / "05_hypotheses/rejected").glob("H-*.yaml"))
     preregistrations = [
         ROOT / "06_experiments/preregistrations" / f"E0-{hypothesis_id.replace('H-', 'H')}.yaml"
@@ -109,10 +110,10 @@ def main() -> None:
         if int(row["difference_score"]) < 10:
             errors.append(f"active difference below 10: {row['hypothesis_id']}")
 
-    card_ids = {card.stem for card in active_cards + rejected_cards}
+    card_ids = {card.stem for card in active_cards + paused_cards + rejected_cards}
     if not initial_ids <= card_ids:
         errors.append("current active/rejected card files do not preserve all initial 20 hypotheses")
-    for card in active_cards + rejected_cards:
+    for card in active_cards + paused_cards + rejected_cards:
         missing = HYPOTHESIS_KEYS - yaml_keys(card)
         if missing:
             errors.append(f"{card.name} lacks hypothesis keys: {sorted(missing)}")

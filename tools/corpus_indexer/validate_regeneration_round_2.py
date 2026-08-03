@@ -110,6 +110,7 @@ def main() -> None:
             errors.append(f"{path.name} lacks hypothesis keys: {sorted(missing)}")
 
     active_ids = {path.stem for path in (ROOT / "05_hypotheses/active").glob("H-*.yaml")}
+    active_ids |= {path.stem for path in (ROOT / "05_hypotheses/paused").glob("H-*.yaml")}
     if not BASE_SURVIVORS <= active_ids or (h027_rejected.is_file() and "H-027" in active_ids):
         errors.append("current portfolio does not preserve the round-2 survivors and H-027 lifecycle")
     lineage = json.loads((ROOT / "05_hypotheses/lineage_graph.json").read_text(encoding="utf-8"))
@@ -156,8 +157,9 @@ def main() -> None:
             errors.append(f"missing or short round-2 report: {relative}")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if set(state.get("branches", {}).get("active", [])) != active_ids:
-        errors.append("research_state active portfolio is inconsistent with the H-027 lifecycle")
+    state_current = set(state.get("branches", {}).get("active", [])) | set(state.get("branches", {}).get("paused", []))
+    if state_current != active_ids:
+        errors.append("research_state current portfolio is inconsistent with the H-027 lifecycle")
     expected_budget_floor = 61 if h027_rejected.is_file() else 60
     if state.get("budget", {}).get("used_units", 0) < expected_budget_floor:
         errors.append(f"research_state budget is below {expected_budget_floor}")
