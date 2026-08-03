@@ -4,7 +4,7 @@
 
 第一算法发现周期已经完整归档，状态为 `P7_CLOSED_GLOBAL_FALLBACK / G6_NOT_PASSED`。本周期没有候选获得 E1、E2、语言模型训练或扩大验证权限；H-001、H-005、H-014 保留 E0 正面证据并暂停，其他 41 条谱系节点均有淘汰或拒绝记录。累计预算 71/100，剩余 29 单位作为未探索分支/全局重启储备保留。
 
-本交接包是当前仓库的权威入口。它不宣称 Q-001 已解决，也不把 E0 合成结果外推为真实大模型训练收益。接手者应先阅读本文件、全局回退治理复核、研究状态和决策日志，再决定是否提出一个新的 G0/G4 重启章程。
+本交接包是当前仓库的证据入口。施工方案 P9 的正式终局分类见 `10_deliverables/final_research_assessment.md`。两份文件都不宣称 Q-001 已解决，也不把 E0 合成结果外推为真实大模型训练收益。接手者应先阅读本文件、P9 终评、全局回退治理复核、研究状态和决策日志，再决定是否提出一个新的 G0/G4 重启章程。
 
 ## 一页状态
 
@@ -79,11 +79,12 @@
 1. `README.md`：当前状态与版本轨迹。
 2. `PROJECT_CHARTER.md` 和 `research_state.yaml`：权限、预算和关闭边界。
 3. `10_deliverables/p7_global_fallback_governance_review.md`：为什么关闭而不挪用储备。
-4. `04_problems/selected_problem.md`：Q-001 的原始问题定义。
-5. `10_deliverables/knowledge_map.md`：机制—失败模式地图。
-6. `05_hypotheses/lineage_graph.json` 与 `09_decisions/killed_ideas.md`：44 条谱系和禁止换名复活边界。
-7. 各 E0 报告、结果卡和本地审查：正负结果详情。
-8. `09_decisions/decision_log.md` 与 `09_decisions/budget_ledger.csv`：完整治理和预算轨迹。
+4. `10_deliverables/final_research_assessment.md`：P9 五类研究价值终评与继续/停止建议。
+5. `04_problems/selected_problem.md`：Q-001 的原始问题定义。
+6. `10_deliverables/knowledge_map.md`：机制—失败模式地图。
+7. `05_hypotheses/lineage_graph.json` 与 `09_decisions/killed_ideas.md`：44 条谱系和禁止换名复活边界。
+8. 各 E0 报告、结果卡和本地审查：正负结果详情。
+9. `09_decisions/decision_log.md` 与 `09_decisions/budget_ledger.csv`：完整治理和预算轨迹。
 
 ## 验证方法
 
@@ -116,4 +117,4 @@ python -m pytest 06_experiments/unit_tests -q
 - 新的失败阈值、预算和预注册；
 - 明确说明新信息结构为什么不是 H-001/H-005/H-014/H-021/H-027/H-033/H-039 的组合、阈值或换名。
 
-在此之前，仓库只接受维护、勘误和证据归档更新。
+在此之前，仓库只接受维护、勘误、证据归档更新或零成本第二周期 G0/G4 决策材料；不得开展研究执行。

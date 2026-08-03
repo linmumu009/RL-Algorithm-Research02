@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_CLOSED_GLOBAL_FALLBACK`
 - 当前验收门：`G6_NOT_PASSED`
-- 状态：第一算法发现周期已关闭并完成最终证据交接；剩余 29 单位继续保留，当前不授权任何研究执行。
+- 状态：第一算法发现周期已关闭并完成最终证据交接与 P9 终局价值评估；最终无新算法候选，剩余 29 单位继续保留，当前不授权任何研究执行。
 - 本地语料：237 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
 - 活跃分支：无。H-001、H-005、H-014 保留 `E0_VALIDATED` 证据并转为 `E0_VALIDATED_PAUSED_GLOBAL_FALLBACK`。
-- 当前边界：只允许仓库维护或证据勘误；研究重启需要新的/修订的 G0/G4 章程、独立预算、至少 4 条非等价分支、新颖性审查及新预注册。
+- 当前边界：只允许仓库维护、证据勘误或准备零成本第二周期 G0/G4 决策材料；研究重启需要用户确认真实可复现问题、新的/修订的 G0/G4 章程、独立预算、至少 4 条非等价分支、新颖性审查及新预注册。
 
 ## 关键入口
 
@@ -83,16 +83,26 @@
 - P7 全局回退治理复核：[`10_deliverables/p7_global_fallback_governance_review.md`](10_deliverables/p7_global_fallback_governance_review.md)
 - 第一周期最终证据交接：[`10_deliverables/cycle_1_final_evidence_handoff.md`](10_deliverables/cycle_1_final_evidence_handoff.md)
 - 第一周期完整性清单：[`10_deliverables/cycle_1_evidence_manifest.csv`](10_deliverables/cycle_1_evidence_manifest.csv)
+- 第一周期 P9 终局价值评估：[`10_deliverables/final_research_assessment.md`](10_deliverables/final_research_assessment.md)
 
 ## 目录
 
-项目按施工方案分为治理、语料、文献、分类体系、问题、假设、实验、结果、评审、决策和交付物目录。当前已完成 P0–P6、首轮 P7/E0 和定向组合修复；尚未进行语言模型训练。
+项目按施工方案分为治理、语料、文献、分类体系、问题、假设、实验、结果、评审、决策和交付物目录。当前已完成 P0–P7，并通过提前关闭路径完成 P9 终评；没有进入 P8，尚未进行语言模型训练。
 
 ## 更新约定
 
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.13.2 — 2026-08-03
+
+- 按施工方案 P9 五类框架补齐 `final_research_assessment.md`，明确本周期新算法候选为 0，不以提前关闭或 E0 正面信号冒充 P8/G7 成果。
+- 将 H-001/H-005/H-014 统一归类为 E0 正面但暂停的研究线索；同时归档 contextual channel、nuisance causal stress、audit leverage 与符号安全/聚合增益分离等诊断结果。
+- 汇总 coverage、distribution shift、proxy rank、privacy utility、abstention 与聚合几何等边界条件，以及 7 条正式 E0 负结果和 34 条预实验筛除候选。
+- 最终建议是不继续当前 Q-001、不开展第五轮相邻修补；下一步只允许准备零成本第二周期 G0/G4 决策材料，研究执行仍需用户确认真实问题和独立预算。
+- 登记 D-0028 `COMPLETE_P9_TERMINAL_RESEARCH_ASSESSMENT` 与零成本预算项 B-0018；累计保持 71/100，剩余 29 单位不自动挪用。
+- 将 P9 终评纳入最终证据清单和自动校验，保持正式结果固定哈希与禁止重跑边界。
 
 ### v0.13.1 — 2026-08-03
 

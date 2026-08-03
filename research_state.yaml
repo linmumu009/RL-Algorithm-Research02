@@ -1,7 +1,7 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_CLOSED_GLOBAL_FALLBACK
 current_gate: G6_NOT_PASSED
-phase_status: discovery_cycle_1_archived_handoff_ready
+phase_status: discovery_cycle_1_p9_terminal_assessment_complete
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
@@ -71,14 +71,14 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0027
-  action: COMPLETE_CYCLE_1_EVIDENCE_HANDOFF
-  rationale: The closed cycle now has a human-readable final evidence handoff, machine-verifiable integrity manifest, preserved formal-result hashes, explicit limitations, and restart requirements; no research execution was performed and budget remains 71/100.
+  decision_id: D-0028
+  action: COMPLETE_P9_TERMINAL_RESEARCH_ASSESSMENT
+  rationale: The closed cycle now has the construction-plan P9 five-category terminal assessment; it records zero new algorithm candidates, preserves three E0-positive paused leads, classifies diagnostics, boundary conditions and negative results, and authorizes no research execution. Budget remains 71/100.
 
 blockers:
   - G6 did not pass: the portfolio has only three E0-validated survivors and no E1/E2 evidence.
   - Mandatory global fallback is active: 71/100 units are used and the remaining 29 units are below the required 30 percent unexplored-branch/restart reserve.
-next_allowed_task: No research execution is authorized. Only repository maintenance or evidence corrections are allowed; any restart requires a new or explicitly amended G0/G4 charter, independent budget authorization, at least four non-equivalent branches, novelty review, and fresh preregistration before E0 E1 or language-model training.
+next_allowed_task: No research execution is authorized. Only repository maintenance, evidence corrections, or preparation of a zero-cost cycle-2 G0/G4 decision packet are allowed; any restart requires user approval of a real reproducible problem and resource boundary, independent budget authorization, at least four non-equivalent branches, novelty review, and fresh preregistration before E0 E1 or language-model training.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2
