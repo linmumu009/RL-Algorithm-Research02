@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_CLOSED_GLOBAL_FALLBACK`
 - 当前验收门：`G6_NOT_PASSED`
-- 状态：第一算法发现周期已关闭并完成最终证据交接与 P9 终局价值评估；最终无新算法候选，剩余 29 单位继续保留，当前不授权任何研究执行。
+- 状态：第一算法发现周期已关闭并完成 P9 终评；第二周期 G0/G4 决策包已准备，但问题、预算和研究执行均未获批准，剩余 29 单位继续保留。
 - 本地语料：237 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
 - 活跃分支：无。H-001、H-005、H-014 保留 `E0_VALIDATED` 证据并转为 `E0_VALIDATED_PAUSED_GLOBAL_FALLBACK`。
-- 当前边界：只允许仓库维护、证据勘误或准备零成本第二周期 G0/G4 决策材料；研究重启需要用户确认真实可复现问题、新的/修订的 G0/G4 章程、独立预算、至少 4 条非等价分支、新颖性审查及新预注册。
+- 当前边界：只允许仓库维护、证据勘误，或接收用户真实失败事实包并做只读 G4 重评分；在用户批准 G0/G4 和独立预算前，不生成算法候选、不定向扩库、不预注册或运行实验。
 
 ## 关键入口
 
@@ -84,6 +84,9 @@
 - 第一周期最终证据交接：[`10_deliverables/cycle_1_final_evidence_handoff.md`](10_deliverables/cycle_1_final_evidence_handoff.md)
 - 第一周期完整性清单：[`10_deliverables/cycle_1_evidence_manifest.csv`](10_deliverables/cycle_1_evidence_manifest.csv)
 - 第一周期 P9 终局价值评估：[`10_deliverables/final_research_assessment.md`](10_deliverables/final_research_assessment.md)
+- 第二周期 G0/G4 决策包：[`10_deliverables/cycle_2_g0_g4_decision_packet.md`](10_deliverables/cycle_2_g0_g4_decision_packet.md)
+- 第二周期候选问题：[`04_problems/cycle_2_candidate_problem_statements.md`](04_problems/cycle_2_candidate_problem_statements.md)
+- 第二周期重启准备记录：[`09_decisions/restart_records/cycle_2_g0_g4_preparation.md`](09_decisions/restart_records/cycle_2_g0_g4_preparation.md)
 
 ## 目录
 
@@ -94,6 +97,16 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.13.3 — 2026-08-03
+
+- 完成第二周期零成本 G0/G4 人工决策包，起草使命、非目标、预算原则、停止规则、人工决策选项和最小真实失败事实模板；该文件不构成研究重启批准。
+- 登记五个候选问题：安全轨迹复用、早期 token 信用衰减、任务条件长度效用、trust gate 方向偏差和吞吐—尾延迟脱钩；明确排除继续 Q-001 及第一周期候选的组合或换名复活。
+- 纠正第一周期候选问题评分的证据边界：由于没有用户真实训练日志、稳定复现基线和第二周期资源上限，五个方向可复现性均为 0/20，全部保持 `HOLD_EVIDENCE_REQUIRED`，G4 未通过。
+- 问题获批前不开展定向文献下载或 MinerU 解析；通过 G4 后才对单一选定方向刷新最新近邻并进入 P5/P6。
+- 登记 D-0029 `PREPARE_CYCLE2_G0_G4_DECISION_PACKET`、重启准备记录和零成本预算项 B-0019；累计保持 71/100，第一周期 29 单位储备未重分配。
+- 新增第二周期决策包权限校验，强制检查选定问题为 `null`、研究与预算均未批准、活跃分支为 0，且 `06_experiments/` 中不存在第二周期实验文件。
+- 下一步仅接收用户的 G0 决定和真实失败事实包，做只读证据核查及正式 G4 重评分；仍不授权候选生成、预注册或实验。
 
 ### v0.13.2 — 2026-08-03
 

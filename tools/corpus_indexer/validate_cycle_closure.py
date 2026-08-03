@@ -26,8 +26,8 @@ def main() -> None:
     if state.get("budget", {}).get("used_units") != 71:
         errors.append("cycle closure changed the used budget")
     latest_decision = state.get("latest_decision", {}).get("decision_id")
-    if latest_decision not in {"D-0026", "D-0027", "D-0028"}:
-        errors.append("research_state does not retain the cycle closure, handoff, or terminal assessment decision")
+    if latest_decision not in {"D-0026", "D-0027", "D-0028", "D-0029"}:
+        errors.append("research_state does not retain the cycle closure or an allowed zero-cost follow-up decision")
     if len(state.get("blockers", [])) < 2:
         errors.append("G6/reserve closure reasons are missing")
 
@@ -63,20 +63,27 @@ def main() -> None:
     closure_entry = ledger_by_id.get("B-0016", {})
     handoff_entry = ledger_by_id.get("B-0017", {})
     assessment_entry = ledger_by_id.get("B-0018", {})
+    cycle2_packet_entry = ledger_by_id.get("B-0019", {})
     if closure_entry.get("units") != "0" or closure_entry.get("cumulative_units") != "71":
         errors.append("zero-cost closure ledger entry is inconsistent")
-    if latest_decision in {"D-0027", "D-0028"} and (
+    if latest_decision in {"D-0027", "D-0028", "D-0029"} and (
         handoff_entry.get("units") != "0"
         or handoff_entry.get("cumulative_units") != "71"
         or handoff_entry.get("decision_id") != "D-0027"
     ):
         errors.append("zero-cost final handoff ledger entry is inconsistent")
-    if latest_decision == "D-0028" and (
+    if latest_decision in {"D-0028", "D-0029"} and (
         assessment_entry.get("units") != "0"
         or assessment_entry.get("cumulative_units") != "71"
         or assessment_entry.get("decision_id") != "D-0028"
     ):
         errors.append("zero-cost terminal assessment ledger entry is inconsistent")
+    if latest_decision == "D-0029" and (
+        cycle2_packet_entry.get("units") != "0"
+        or cycle2_packet_entry.get("cumulative_units") != "71"
+        or cycle2_packet_entry.get("decision_id") != "D-0029"
+    ):
+        errors.append("zero-cost cycle-2 decision packet ledger entry is inconsistent")
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if "D-0026" not in decision_log or "CLOSE_DISCOVERY_CYCLE_GLOBAL_FALLBACK" not in decision_log:
         errors.append("cycle closure decision is missing")

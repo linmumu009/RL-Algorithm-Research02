@@ -1,7 +1,7 @@
 project_id: rl_algorithm_discovery_v1
 current_phase: P7_CLOSED_GLOBAL_FALLBACK
 current_gate: G6_NOT_PASSED
-phase_status: discovery_cycle_1_p9_terminal_assessment_complete
+phase_status: cycle_2_g0_g4_decision_packet_ready_human_review
 selected_problem: Q-001_adaptive_instance_dependent_verifier_noise
 
 budget:
@@ -71,14 +71,31 @@ core15:
   candidate_set: core15_v2
 
 latest_decision:
-  decision_id: D-0028
-  action: COMPLETE_P9_TERMINAL_RESEARCH_ASSESSMENT
-  rationale: The closed cycle now has the construction-plan P9 five-category terminal assessment; it records zero new algorithm candidates, preserves three E0-positive paused leads, classifies diagnostics, boundary conditions and negative results, and authorizes no research execution. Budget remains 71/100.
+  decision_id: D-0029
+  action: PREPARE_CYCLE2_G0_G4_DECISION_PACKET
+  rationale: A zero-cost cycle-2 governance and problem-selection packet is ready. Five candidate directions are recorded, but all remain below the formal G4 threshold because no user-observed reproducible failure or cycle-2 resource boundary has been supplied. No problem, budget, branch, literature refresh, or experiment is authorized.
 
 blockers:
   - G6 did not pass: the portfolio has only three E0-validated survivors and no E1/E2 evidence.
   - Mandatory global fallback is active: 71/100 units are used and the remaining 29 units are below the required 30 percent unexplored-branch/restart reserve.
-next_allowed_task: No research execution is authorized. Only repository maintenance, evidence corrections, or preparation of a zero-cost cycle-2 G0/G4 decision packet are allowed; any restart requires user approval of a real reproducible problem and resource boundary, independent budget authorization, at least four non-equivalent branches, novelty review, and fresh preregistration before E0 E1 or language-model training.
+  - Cycle 2 G0/G4 is not approved: the selected problem is null, reproducible user evidence is missing, and no independent budget or resource boundary exists.
+
+cycle_2_restart:
+  status: G0_G4_DECISION_PACKET_READY_HUMAN_REVIEW_REQUIRED
+  selected_problem: null
+  research_authorized: false
+  budget_requested: false
+  budget_approved: false
+  first_cycle_reserve_reallocated: false
+  candidate_problem_ids:
+    - C2-Q01
+    - C2-Q02
+    - C2-Q03
+    - C2-Q04
+    - C2-Q05
+  candidate_problem_gate_status: HOLD_EVIDENCE_REQUIRED
+
+next_allowed_task: Receive the user G0 decision and a real reproducible failure fact package, then perform read-only evidence verification and formal G4 rescoring. If no observed problem exists, retain DEFER_G4_NO_OBSERVED_PROBLEM. No candidate generation, targeted literature download, preregistration, E0 E1 E2, language-model training, or reserve reallocation is authorized.
 
 hard_constraints:
   max_local_repairs_per_hypothesis: 2

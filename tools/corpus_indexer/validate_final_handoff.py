@@ -31,8 +31,8 @@ def main() -> None:
     assessment_path = ROOT / "10_deliverables/final_research_assessment.md"
     with manifest_path.open(encoding="utf-8-sig", newline="") as handle:
         records = list(csv.DictReader(handle))
-    if len(records) != 58:
-        errors.append(f"manifest contains {len(records)} records instead of 58")
+    if len(records) != 61:
+        errors.append(f"manifest contains {len(records)} records instead of 61")
     paths = [record["path"] for record in records]
     if len(paths) != len(set(paths)):
         errors.append("manifest paths are not unique")
@@ -55,9 +55,9 @@ def main() -> None:
 
     categories = Counter(record["category"] for record in records)
     expected_counts = {
-        "governance": 8,
+        "governance": 9,
         "corpus": 7,
-        "deliverable": 15,
+        "deliverable": 17,
         "formal_result": 5,
         "result_card": 10,
         "preregistration": 10,
@@ -86,10 +86,10 @@ def main() -> None:
         errors.append("handoff branch counts are not 0 active / 3 paused / 41 rejected")
 
     state = yaml.safe_load((ROOT / "research_state.yaml").read_text(encoding="utf-8"))
-    if state.get("phase_status") != "discovery_cycle_1_p9_terminal_assessment_complete":
-        errors.append("research_state is not P9 terminal-assessment complete")
-    if state.get("latest_decision", {}).get("decision_id") != "D-0028":
-        errors.append("research_state does not record D-0028")
+    if state.get("phase_status") != "cycle_2_g0_g4_decision_packet_ready_human_review":
+        errors.append("research_state is not at the allowed cycle-2 human-review checkpoint")
+    if state.get("latest_decision", {}).get("decision_id") != "D-0029":
+        errors.append("research_state does not record D-0029")
     if state.get("budget", {}).get("used_units") != 71:
         errors.append("handoff changed the used budget")
     if set(state.get("branches", {}).get("paused", [])) != {"H-001", "H-005", "H-014"}:
@@ -124,16 +124,18 @@ def main() -> None:
         if token not in assessment:
             errors.append(f"terminal assessment lacks {token}")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    if "v0.13.2" not in readme or "final_research_assessment.md" not in readme:
-        errors.append("README lacks P9 terminal assessment entry")
+    if "v0.13.3" not in readme or "cycle_2_g0_g4_decision_packet.md" not in readme:
+        errors.append("README lacks cycle-2 G0/G4 decision packet entry")
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if (
         "D-0027" not in decision_log
         or "COMPLETE_CYCLE_1_EVIDENCE_HANDOFF" not in decision_log
         or "D-0028" not in decision_log
         or "COMPLETE_P9_TERMINAL_RESEARCH_ASSESSMENT" not in decision_log
+        or "D-0029" not in decision_log
+        or "PREPARE_CYCLE2_G0_G4_DECISION_PACKET" not in decision_log
     ):
-        errors.append("final handoff or P9 terminal assessment decision is missing")
+        errors.append("final handoff, P9 assessment, or cycle-2 preparation decision is missing")
 
     output = {
         "manifest_records": len(records),

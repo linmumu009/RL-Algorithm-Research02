@@ -10,6 +10,7 @@
 - G6 未通过；未进行 E1、E2、语言模型训练或扩大验证。
 - H-001、H-005、H-014 保留 E0 验证证据并处于全局回退暂停状态。
 - 当前只允许仓库维护、证据勘误或准备零成本第二周期 G0/G4 决策材料；研究重启必须重新通过问题、预算、新颖性和预注册审批。
+- 第二周期 G0/G4 决策包已经准备完成，但选定问题仍为 `null`，研究执行和预算均未获批准；下一步只能接收用户真实失败证据并做正式 G4 重评分。
 
 ## 成功定义
 
@@ -32,3 +33,4 @@
 - 第一周期关闭决定见 `10_deliverables/p7_global_fallback_governance_review.md` 与 D-0026。
 - 第一周期最终交接入口见 `10_deliverables/cycle_1_final_evidence_handoff.md` 与 D-0027。
 - 第一周期 P9 终局价值评估见 `10_deliverables/final_research_assessment.md` 与 D-0028；最终分类为无新算法候选，但保留 E0 级诊断、边界条件和负结果。
+- 第二周期治理与问题选择草案见 `10_deliverables/cycle_2_g0_g4_decision_packet.md`、`04_problems/cycle_2_candidate_problem_statements.md` 与 D-0029；该草案不构成 G0/G4 批准。

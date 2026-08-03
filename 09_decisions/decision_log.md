@@ -309,3 +309,16 @@
 - 预算影响：0，累计保持 71/100，剩余 29 单位继续作为全局重启储备。
 - 交付：`10_deliverables/final_research_assessment.md`；该文件与最终证据交接和完整性清单共同构成第一周期终局交付物。
 - 下一项允许任务：准备零成本第二周期 G0/G4 决策包；不得自动选择问题、挪用储备或运行研究实验。
+
+## D-0029 — 2026-08-03
+
+- 阶段：第二周期 G0/G4 零成本准备（未启动研究）
+- 动作：`PREPARE_CYCLE2_G0_G4_DECISION_PACKET`
+- 决定：完成第二周期治理与候选问题决策材料，但不选择问题、不批准预算、不生成算法候选、不下载无目标文献、不运行实验；状态为 `G0_G4_DECISION_PACKET_READY_HUMAN_REVIEW_REQUIRED`。
+- 候选范围：登记 C2-Q01 安全轨迹复用、C2-Q02 早期 token 信用衰减、C2-Q03 任务条件长度效用、C2-Q04 trust gate 方向偏差、C2-Q05 吞吐—尾延迟脱钩五个方向。
+- 门槛判断：仓库没有用户真实训练日志、稳定复现基线或第二周期资源上限；五个方向可复现性均记为 0/20，正式总分均未达到 75，G4 为 `NOT_PASSED_EVIDENCE_AND_HUMAN_DECISION_REQUIRED`。
+- 禁区：不继续 Q-001 第五轮相邻修补，不组合 H-001/H-005/H-014，不复活 41 条拒绝谱系，不将系统吞吐改进包装为优化算法。
+- 文献判断：问题未选定前不做定向扩库；G4 通过后才允许针对所选问题刷新最新近邻、下载去重、MinerU 解析和 P6 新颖性/等价性审查。
+- 预算影响：0，累计保持 71/100；第二周期预算未申请/未批准，第一周期剩余 29 单位未重分配。
+- 交付：`10_deliverables/cycle_2_g0_g4_decision_packet.md`、`04_problems/cycle_2_candidate_problem_statements.md` 和 `09_decisions/restart_records/cycle_2_g0_g4_preparation.md`。
+- 下一项允许任务：接收用户的 G0 决定和真实失败事实包，进行只读证据核查与 G4 正式重评分；若没有真实问题则保持延后。
