@@ -25,8 +25,9 @@ def main() -> None:
         errors.append("paused survivor set is not H-001/H-005/H-014")
     if state.get("budget", {}).get("used_units") != 71:
         errors.append("cycle closure changed the used budget")
-    if state.get("latest_decision", {}).get("decision_id") != "D-0026":
-        errors.append("research_state does not record D-0026")
+    latest_decision = state.get("latest_decision", {}).get("decision_id")
+    if latest_decision not in {"D-0026", "D-0027"}:
+        errors.append("research_state does not retain the cycle closure or final handoff decision")
     if len(state.get("blockers", [])) < 2:
         errors.append("G6/reserve closure reasons are missing")
 
@@ -58,8 +59,17 @@ def main() -> None:
 
     with (ROOT / "09_decisions/budget_ledger.csv").open(encoding="utf-8-sig", newline="") as handle:
         ledger = list(csv.DictReader(handle))
-    if not ledger or ledger[-1].get("entry_id") != "B-0016" or ledger[-1].get("units") != "0" or ledger[-1].get("cumulative_units") != "71":
+    ledger_by_id = {row.get("entry_id"): row for row in ledger}
+    closure_entry = ledger_by_id.get("B-0016", {})
+    handoff_entry = ledger_by_id.get("B-0017", {})
+    if closure_entry.get("units") != "0" or closure_entry.get("cumulative_units") != "71":
         errors.append("zero-cost closure ledger entry is inconsistent")
+    if latest_decision == "D-0027" and (
+        handoff_entry.get("units") != "0"
+        or handoff_entry.get("cumulative_units") != "71"
+        or handoff_entry.get("decision_id") != "D-0027"
+    ):
+        errors.append("zero-cost final handoff ledger entry is inconsistent")
     decision_log = (ROOT / "09_decisions/decision_log.md").read_text(encoding="utf-8")
     if "D-0026" not in decision_log or "CLOSE_DISCOVERY_CYCLE_GLOBAL_FALLBACK" not in decision_log:
         errors.append("cycle closure decision is missing")

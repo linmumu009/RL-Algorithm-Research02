@@ -6,13 +6,13 @@
 
 - 当前阶段：`P7_CLOSED_GLOBAL_FALLBACK`
 - 当前验收门：`G6_NOT_PASSED`
-- 状态：第一算法发现周期已按强制预算规则关闭；不重分配剩余 29 单位储备，下一步仅准备零预算最终证据与交接包。
+- 状态：第一算法发现周期已关闭并完成最终证据交接；剩余 29 单位继续保留，当前不授权任何研究执行。
 - 本地语料：237 篇唯一 arXiv 论文，全部可读、无重复、官方元数据完整。
 - 核心基底：15 篇，均已关联 PDF、MinerU Markdown、Paper Card 和机制矩阵。
 - P3 结构化成果：15 张 Mechanism Card、20 条定向 Claim Card、13 组机制冲突和 10 个低成本解释区分实验。
 - 正式研究问题：`Q-001 — 适应性、实例依赖的 verifier 噪声`。
 - 活跃分支：无。H-001、H-005、H-014 保留 `E0_VALIDATED` 证据并转为 `E0_VALIDATED_PAUSED_GLOBAL_FALLBACK`。
-- 当前边界：只允许零预算证据归档、最终交接与仓库维护；研究重启需要新的/修订的 G0/G4 章程、独立预算、至少 4 条非等价分支及新预注册。
+- 当前边界：只允许仓库维护或证据勘误；研究重启需要新的/修订的 G0/G4 章程、独立预算、至少 4 条非等价分支、新颖性审查及新预注册。
 
 ## 关键入口
 
@@ -81,6 +81,8 @@
 - H-039 实验报告：[`10_deliverables/h039_e0_experimental_report.md`](10_deliverables/h039_e0_experimental_report.md)
 - H-039 本地审查：[`08_reviews/local_reviews/h039_e0_review.md`](08_reviews/local_reviews/h039_e0_review.md)
 - P7 全局回退治理复核：[`10_deliverables/p7_global_fallback_governance_review.md`](10_deliverables/p7_global_fallback_governance_review.md)
+- 第一周期最终证据交接：[`10_deliverables/cycle_1_final_evidence_handoff.md`](10_deliverables/cycle_1_final_evidence_handoff.md)
+- 第一周期完整性清单：[`10_deliverables/cycle_1_evidence_manifest.csv`](10_deliverables/cycle_1_evidence_manifest.csv)
 
 ## 目录
 
@@ -91,6 +93,15 @@
 每次项目更新均同步维护本 README 的版本说明，并在完成验证后提交、推送至远程仓库的 `main` 分支。
 
 ## 版本记录
+
+### v0.13.1 — 2026-08-03
+
+- 完成第一发现周期最终证据交接，统一汇总 237 篇唯一语料、15 篇核心机制、44 条假设谱系、10 条正式 E0、3 条暂停存活分支、41 条拒绝/淘汰节点和 71/100 预算轨迹。
+- 新增正式 E0 总表，明确 H-001/H-005/H-014 可复用的 E0 证据、不可外推范围，以及 H-004/H-008/H-018/H-021/H-027/H-033/H-039 的失败原因。
+- 固定五组正式结果的 LF 规范 SHA-256，并新增关键文件路径、大小和规范哈希清单；交接校验不重新运行任何正式实验。
+- 新增推荐阅读顺序、只读验证命令、已知边界和研究重启清单；当前仅允许仓库维护或证据勘误。
+- 更新周期关闭校验规则，使其同时核验 D-0026/B-0016 关闭记录与后续 D-0027/B-0017 零成本交接记录，避免将合法的归档推进误报为状态漂移。
+- 登记 D-0027 `COMPLETE_CYCLE_1_EVIDENCE_HANDOFF` 和零成本预算项 B-0017；累计保持 71/100，剩余 29 单位继续作为全局重启储备。
 
 ### v0.13.0 — 2026-08-03
 

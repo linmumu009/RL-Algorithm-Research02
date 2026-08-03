@@ -30,3 +30,4 @@
 - 仓库包含 237 篇唯一 arXiv 语料、完整 MinerU 解析链、44 条假设谱系、10 条正式 E0 分支及全部正负结果。
 - 第一周期累计使用 71/100 单位，只余 29，触发“剩余预算低于 30% 且无 E2 候选”的强制全局回退。
 - 第一周期关闭决定见 `10_deliverables/p7_global_fallback_governance_review.md` 与 D-0026。
+- 第一周期最终交接入口见 `10_deliverables/cycle_1_final_evidence_handoff.md` 与 D-0027。
